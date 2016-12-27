@@ -1,0 +1,36 @@
+﻿@using HongGia.Helpers
+@using HongGia.Models.Classes
+
+<ul class="nav navbar-nav">
+    @Html.MenuSection("Home", "Index", "Home")
+    
+    @Html.DropdownMenuSection("Hong Gia", new List<MenuSectionParameters>()
+                                            {
+                                                new MenuSectionParameters() {LinkText = "About", ActionName = "About", ControllerName = "HongGia"},
+                                                new MenuSectionParameters() {LinkText = "History", ActionName = "History", ControllerName = "HongGia"},
+                                                new MenuSectionParameters() {LinkText = "Levels", ActionName = "Levels", ControllerName = "HongGia"},
+                                                new MenuSectionParameters() {LinkText = "Program", ActionName = "Program", ControllerName = "HongGia"},
+                                                new MenuSectionParameters() {LinkText = "To Beginner", ActionName = "ToBeginner", ControllerName = "HongGia"}
+                                            })
+    @Html.DropdownMenuSection("Directions", new List<MenuSectionParameters>()
+                                            {
+                                                new MenuSectionParameters() {LinkText = "Hong-Gia Vietnam", ActionName = "HongGiaVietnam", ControllerName = "Directions"},
+                                                new MenuSectionParameters() {LinkText = "Kung-Fu", ActionName = "KungFu", ControllerName = "Directions"},
+                                                new MenuSectionParameters() {LinkText = "Chi-Kong", ActionName = "ChiKong", ControllerName = "Directions"},
+                                                new MenuSectionParameters() {LinkText = "Tai-Chi", ActionName = "TaiChi", ControllerName = "Directions"},
+                                                new MenuSectionParameters() {LinkText = "Wu-Chi", ActionName = "WuChi", ControllerName = "Directions"},
+                                                new MenuSectionParameters() {LinkText = "Nga-Mi", ActionName = "NgaMi", ControllerName = "Directions"},
+                                                new MenuSectionParameters() {LinkText = "Vin-Chun", ActionName = "VinChun", ControllerName = "Directions"},
+                                                new MenuSectionParameters() {LinkText = "Pa-Kua", ActionName = "PaKua", ControllerName = "Directions"},
+                                                new MenuSectionParameters() {LinkText = "Sin-I", ActionName = "SinI", ControllerName = "Directions"},
+                                                new MenuSectionParameters() {LinkText = "Bai My", ActionName = "BaiMy", ControllerName = "Directions"},
+                                                new MenuSectionParameters() {LinkText = "Five Enimals", ActionName = "FiveEnimals", ControllerName = "Directions"},
+                                                new MenuSectionParameters() {LinkText = "Weapon", ActionName = "Weapon", ControllerName = "Directions"},
+                                                new MenuSectionParameters() {LinkText = "Meditation", ActionName = "Meditation", ControllerName = "Directions"}
+                                            })
+    @Html.MenuSection("Training", "Index", "Training")
+    @Html.MenuSection("Media", "Index", "Media")
+    
+    @Html.MenuSection("Master", "About", "Home")
+    @Html.MenuSection("FeedBack", "Contact", "Home")
+</ul>

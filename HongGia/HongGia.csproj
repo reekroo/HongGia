@@ -208,11 +208,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\DirectionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HongGiaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MediaController.cs" />
+    <Compile Include="Controllers\TrainingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\MenuHelper.cs" />
+    <Compile Include="Helpers\SwitchLanguageHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -277,6 +283,28 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_LangMenuPartial.cshtml" />
+    <Content Include="Views\HongGia\About.cshtml" />
+    <Content Include="Views\Shared\_MenuPartial.cshtml" />
+    <Content Include="Views\Directions\HongGiaVietnam.cshtml" />
+    <Content Include="Views\Training\Index.cshtml" />
+    <Content Include="Views\Media\Index.cshtml" />
+    <Content Include="Views\HongGia\History.cshtml" />
+    <Content Include="Views\HongGia\Levels.cshtml" />
+    <Content Include="Views\HongGia\ToBeginner.cshtml" />
+    <Content Include="Views\HongGia\Program.cshtml" />
+    <Content Include="Views\Directions\Meditation.cshtml" />
+    <Content Include="Views\Directions\WuChi.cshtml" />
+    <Content Include="Views\Directions\NgaMi.cshtml" />
+    <Content Include="Views\Directions\VinChun.cshtml" />
+    <Content Include="Views\Directions\PaKua.cshtml" />
+    <Content Include="Views\Directions\SinI.cshtml" />
+    <Content Include="Views\Directions\BaiMy.cshtml" />
+    <Content Include="Views\Directions\FiveEnimals.cshtml" />
+    <Content Include="Views\Directions\Weapon.cshtml" />
+    <Content Include="Views\Directions\KungFu.cshtml" />
+    <Content Include="Views\Directions\ChiKong.cshtml" />
+    <Content Include="Views\Directions\TaiChi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -300,6 +328,12 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HongGia.Models\HongGia.Models.csproj">
+      <Project>{1c544790-b8c0-42d6-8832-32784dde3d07}</Project>
+      <Name>HongGia.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

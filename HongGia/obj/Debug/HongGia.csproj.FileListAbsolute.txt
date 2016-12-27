@@ -85,3 +85,5 @@ C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\
 C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\bin\en\HongGia.resources.dll
 C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\obj\Debug\HongGia.App_LocalResources.GlobalRes.en.resources
 C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\obj\Debug\en\HongGia.resources.dll
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\bin\HongGia.Models.dll
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\bin\HongGia.Models.pdb

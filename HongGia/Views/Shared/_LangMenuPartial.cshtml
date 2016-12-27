@@ -1,0 +1,13 @@
+﻿@using HongGia.Helpers
+
+
+<ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Lang <b class="caret"></b></a>
+
+        <ul class="dropdown-menu">
+            @Url.Switcher("ru", ViewContext.RouteData, "ru")
+            @Url.Switcher("en", ViewContext.RouteData, "en")
+        </ul>
+    </li>
+</ul>

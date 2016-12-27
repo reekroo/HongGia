@@ -1,0 +1,5 @@
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia.Models\bin\Debug\HongGia.Models.dll
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia.Models\bin\Debug\HongGia.Models.pdb
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia.Models\obj\Debug\HongGia.Models.csprojResolveAssemblyReference.cache
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia.Models\obj\Debug\HongGia.Models.dll
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia.Models\obj\Debug\HongGia.Models.pdb
