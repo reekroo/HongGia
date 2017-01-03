@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace HongGia.Controllers
 {
     public class TrainingController : Controller
     {
         // GET: Training
-        public ActionResult Index()
+        public ActionResult Groups()
+        {
+            return View();
+        }
+        public ActionResult Online()
+        {
+            return View();
+        }
+        public ActionResult Seminars()
         {
             return View();
         }

@@ -1,13 +1,14 @@
 ﻿@using HongGia.Helpers
-
+@using HongGia.Models.Classes
 
 <ul class="nav navbar-nav navbar-right">
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Lang <b class="caret"></b></a>
-
-        <ul class="dropdown-menu">
-            @Url.Switcher("ru", ViewContext.RouteData, "ru")
-            @Url.Switcher("en", ViewContext.RouteData, "en")
-        </ul>
-    </li>
+    @Url.DropdownSwitcher("Lang",new List<SwitchLanguagParameters>()
+    {
+       new SwitchLanguagParameters() {Lang = "ru", RouteData = ViewContext.RouteData, Name = "ru"},
+       new SwitchLanguagParameters() {Lang = "en", RouteData = ViewContext.RouteData, Name = "en"},
+       new SwitchLanguagParameters() {Lang = "de", RouteData = ViewContext.RouteData, Name = "de"},
+       new SwitchLanguagParameters() {Lang = "fr", RouteData = ViewContext.RouteData, Name = "fr"},
+       new SwitchLanguagParameters() {Lang = "lt", RouteData = ViewContext.RouteData, Name = "lt"},
+       new SwitchLanguagParameters() {Lang = "sv", RouteData = ViewContext.RouteData, Name = "sv"}
+    })
 </ul>

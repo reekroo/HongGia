@@ -61,38 +61,290 @@ namespace HongGia.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вход.
+        ///   Looks up a localized string similar to О школе.
         /// </summary>
-        public static string Enter {
+        public static string AboutSchool {
             get {
-                return ResourceManager.GetString("Enter", resourceCulture);
+                return ResourceManager.GetString("AboutSchool", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Регистрация.
+        ///   Looks up a localized string similar to Статьи.
         /// </summary>
-        public static string Register {
+        public static string Articles {
             get {
-                return ResourceManager.GetString("Register", resourceCulture);
+                return ResourceManager.GetString("Articles", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Роли.
+        ///   Looks up a localized string similar to Бай-Май.
         /// </summary>
-        public static string Roles {
+        public static string BaiMy {
             get {
-                return ResourceManager.GetString("Roles", resourceCulture);
+                return ResourceManager.GetString("BaiMy", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Пользователи.
+        ///   Looks up a localized string similar to Книги.
         /// </summary>
-        public static string Users {
+        public static string Books {
             get {
-                return ResourceManager.GetString("Users", resourceCulture);
+                return ResourceManager.GetString("Books", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Чи-Конг.
+        /// </summary>
+        public static string ChiKong {
+            get {
+                return ResourceManager.GetString("ChiKong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Направления.
+        /// </summary>
+        public static string Directions {
+            get {
+                return ResourceManager.GetString("Directions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отзывы.
+        /// </summary>
+        public static string FeedBacks {
+            get {
+                return ResourceManager.GetString("FeedBacks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пять Зверей.
+        /// </summary>
+        public static string FiveEnimals {
+            get {
+                return ResourceManager.GetString("FiveEnimals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Группы.
+        /// </summary>
+        public static string Groups {
+            get {
+                return ResourceManager.GetString("Groups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to История.
+        /// </summary>
+        public static string History {
+            get {
+                return ResourceManager.GetString("History", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Главная.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Хонг-Гия.
+        /// </summary>
+        public static string HongGia {
+            get {
+                return ResourceManager.GetString("HongGia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Хонг-Гия Вьетнам.
+        /// </summary>
+        public static string HongGiaVietnam {
+            get {
+                return ResourceManager.GetString("HongGiaVietnam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Кунг-Фу.
+        /// </summary>
+        public static string KungFu {
+            get {
+                return ResourceManager.GetString("KungFu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Уровни.
+        /// </summary>
+        public static string Levels {
+            get {
+                return ResourceManager.GetString("Levels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Мастер.
+        /// </summary>
+        public static string Master {
+            get {
+                return ResourceManager.GetString("Master", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Медиа.
+        /// </summary>
+        public static string Media {
+            get {
+                return ResourceManager.GetString("Media", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Медитация.
+        /// </summary>
+        public static string Meditation {
+            get {
+                return ResourceManager.GetString("Meditation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Нга-Ми.
+        /// </summary>
+        public static string NgaMi {
+            get {
+                return ResourceManager.GetString("NgaMi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Онлайн.
+        /// </summary>
+        public static string Online {
+            get {
+                return ResourceManager.GetString("Online", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Па-Куа.
+        /// </summary>
+        public static string PaKua {
+            get {
+                return ResourceManager.GetString("PaKua", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Фото.
+        /// </summary>
+        public static string Photo {
+            get {
+                return ResourceManager.GetString("Photo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Программа.
+        /// </summary>
+        public static string Program {
+            get {
+                return ResourceManager.GetString("Program", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Семинары.
+        /// </summary>
+        public static string Seminars {
+            get {
+                return ResourceManager.GetString("Seminars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Синь-И.
+        /// </summary>
+        public static string SinI {
+            get {
+                return ResourceManager.GetString("SinI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Тай-Чи.
+        /// </summary>
+        public static string TaiChi {
+            get {
+                return ResourceManager.GetString("TaiChi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Начинающим.
+        /// </summary>
+        public static string ToBeginner {
+            get {
+                return ResourceManager.GetString("ToBeginner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Обучение.
+        /// </summary>
+        public static string Training {
+            get {
+                return ResourceManager.GetString("Training", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Видео.
+        /// </summary>
+        public static string Video {
+            get {
+                return ResourceManager.GetString("Video", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вин-Чун.
+        /// </summary>
+        public static string VinChun {
+            get {
+                return ResourceManager.GetString("VinChun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Оружие.
+        /// </summary>
+        public static string Weapon {
+            get {
+                return ResourceManager.GetString("Weapon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ву-Чи.
+        /// </summary>
+        public static string WuChi {
+            get {
+                return ResourceManager.GetString("WuChi", resourceCulture);
             }
         }
     }

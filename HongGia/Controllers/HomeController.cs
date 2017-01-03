@@ -13,14 +13,14 @@ namespace HongGia.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Master()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult FeedBack()
         {
             ViewBag.Message = "Your contact page.";
 

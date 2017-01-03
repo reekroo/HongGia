@@ -117,16 +117,100 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Enter" xml:space="preserve">
-    <value>Enter</value>
+  <data name="AboutSchool" xml:space="preserve">
+    <value>About School</value>
   </data>
-  <data name="Register" xml:space="preserve">
-    <value>Register</value>
+  <data name="Articles" xml:space="preserve">
+    <value>Articles</value>
   </data>
-  <data name="Roles" xml:space="preserve">
-    <value>Roles</value>
+  <data name="BaiMy" xml:space="preserve">
+    <value>Bai-My</value>
   </data>
-  <data name="Users" xml:space="preserve">
-    <value>Users</value>
+  <data name="Books" xml:space="preserve">
+    <value>Books</value>
+  </data>
+  <data name="ChiKong" xml:space="preserve">
+    <value>Chi-Kong</value>
+  </data>
+  <data name="Directions" xml:space="preserve">
+    <value>Directions</value>
+  </data>
+  <data name="FeedBacks" xml:space="preserve">
+    <value>FeedBacks</value>
+  </data>
+  <data name="FiveEnimals" xml:space="preserve">
+    <value>Five Enimals</value>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>Groups</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="HongGia" xml:space="preserve">
+    <value>Hong-Gia</value>
+  </data>
+  <data name="HongGiaVietnam" xml:space="preserve">
+    <value>Hong-Gia Vietnam</value>
+  </data>
+  <data name="KungFu" xml:space="preserve">
+    <value>Kung-Fu</value>
+  </data>
+  <data name="Levels" xml:space="preserve">
+    <value>Levels</value>
+  </data>
+  <data name="Master" xml:space="preserve">
+    <value>Master</value>
+  </data>
+  <data name="Media" xml:space="preserve">
+    <value>Media</value>
+  </data>
+  <data name="Meditation" xml:space="preserve">
+    <value>Meditation</value>
+  </data>
+  <data name="NgaMi" xml:space="preserve">
+    <value>Nga-Mi</value>
+  </data>
+  <data name="Online" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="PaKua" xml:space="preserve">
+    <value>Pa-Kua</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="Program" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="Seminars" xml:space="preserve">
+    <value>Seminars</value>
+  </data>
+  <data name="SinI" xml:space="preserve">
+    <value>Sin-I</value>
+  </data>
+  <data name="TaiChi" xml:space="preserve">
+    <value>Tai-Chi</value>
+  </data>
+  <data name="ToBeginner" xml:space="preserve">
+    <value>To Beginner</value>
+  </data>
+  <data name="Training" xml:space="preserve">
+    <value>Training</value>
+  </data>
+  <data name="Video" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="VinChun" xml:space="preserve">
+    <value>Vin-Chun</value>
+  </data>
+  <data name="Weapon" xml:space="preserve">
+    <value>Weapon</value>
+  </data>
+  <data name="WuChi" xml:space="preserve">
+    <value>Wu-Chi</value>
   </data>
 </root>

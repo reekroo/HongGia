@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
-
 using HongGia.Models.Classes;
 
 namespace HongGia.Helpers

@@ -1,15 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace HongGia.Controllers
 {
     public class MediaController : Controller
     {
         // GET: Media
-        public ActionResult Index()
+        public ActionResult Articles()
+        {
+            return View();
+        }
+        public ActionResult Books()
+        {
+            return View();
+        }
+        public ActionResult Photo()
+        {
+            return View();
+        }
+        public ActionResult Video()
         {
             return View();
         }
