@@ -132,6 +132,9 @@
   <data name="ChiKong" xml:space="preserve">
     <value>Чи-Конг</value>
   </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
   <data name="Directions" xml:space="preserve">
     <value>Направления</value>
   </data>
@@ -177,6 +180,9 @@
   <data name="Online" xml:space="preserve">
     <value>Онлайн</value>
   </data>
+  <data name="OurProjects" xml:space="preserve">
+    <value>Наши проекты</value>
+  </data>
   <data name="PaKua" xml:space="preserve">
     <value>Па-Куа</value>
   </data>
@@ -185,6 +191,9 @@
   </data>
   <data name="Program" xml:space="preserve">
     <value>Программа</value>
+  </data>
+  <data name="SeeMore" xml:space="preserve">
+    <value>Смотрите также</value>
   </data>
   <data name="Seminars" xml:space="preserve">
     <value>Семинары</value>

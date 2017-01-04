@@ -13,7 +13,7 @@ namespace HongGia
                 name: "lang",
                 url: "{lang}/{controller}/{action}/{id}",
                 defaults: new { lang = "ru", controller = "Home", action = "Index", id = UrlParameter.Optional },
-                constraints: new { lang = @"ru|en" }
+                constraints: new { lang = @"ru|en|de|fr|lt|sv" }
             );
 
             //routes.MapRoute(

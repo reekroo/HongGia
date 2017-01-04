@@ -106,6 +106,15 @@ namespace HongGia.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Контакты.
+        /// </summary>
+        public static string Contacts {
+            get {
+                return ResourceManager.GetString("Contacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Направления.
         /// </summary>
         public static string Directions {
@@ -241,6 +250,15 @@ namespace HongGia.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Наши проекты.
+        /// </summary>
+        public static string OurProjects {
+            get {
+                return ResourceManager.GetString("OurProjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Па-Куа.
         /// </summary>
         public static string PaKua {
@@ -264,6 +282,15 @@ namespace HongGia.App_LocalResources {
         public static string Program {
             get {
                 return ResourceManager.GetString("Program", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Смотрите также.
+        /// </summary>
+        public static string SeeMore {
+            get {
+                return ResourceManager.GetString("SeeMore", resourceCulture);
             }
         }
         

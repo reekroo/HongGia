@@ -87,3 +87,15 @@ C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\
 C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\obj\Debug\en\HongGia.resources.dll
 C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\bin\HongGia.Models.dll
 C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\bin\HongGia.Models.pdb
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\bin\de\HongGia.resources.dll
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\bin\lt\HongGia.resources.dll
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\bin\fr\HongGia.resources.dll
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\bin\sv\HongGia.resources.dll
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\obj\Debug\HongGia.App_LocalResources.GlobalRes.de.resources
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\obj\Debug\HongGia.App_LocalResources.GlobalRes.lt.resources
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\obj\Debug\HongGia.App_LocalResources.GlobalRes.fr.resources
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\obj\Debug\HongGia.App_LocalResources.GlobalRes.sv.resources
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\obj\Debug\de\HongGia.resources.dll
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\obj\Debug\lt\HongGia.resources.dll
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\obj\Debug\fr\HongGia.resources.dll
+C:\Users\Pavel_Davidouski\Documents\Visual Studio 2015\Projects\HongGia\HongGia\obj\Debug\sv\HongGia.resources.dll
