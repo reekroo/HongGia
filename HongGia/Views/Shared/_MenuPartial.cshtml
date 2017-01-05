@@ -5,41 +5,41 @@
 <ul class="nav navbar-nav">
     @Html.DropdownMenuSection(@GlobalRes.HongGia, new List<MenuSectionParameters>()
                                             {
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.AboutSchool, ActionName = "About", ControllerName = "HongGia"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.History, ActionName = "History", ControllerName = "HongGia"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.Levels, ActionName = "Levels", ControllerName = "HongGia"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.Program, ActionName = "Program", ControllerName = "HongGia"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.ToBeginner, ActionName = "ToBeginner", ControllerName = "HongGia"}
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.AboutSchool, ActionName = "About", ControllerName = "HongGia", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.History, ActionName = "History", ControllerName = "HongGia", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.Levels, ActionName = "Levels", ControllerName = "HongGia", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.Program, ActionName = "Program", ControllerName = "HongGia", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.ToBeginner, ActionName = "ToBeginner", ControllerName = "HongGia", RouteData = ViewContext.RouteData}
                                             })
     @Html.DropdownMenuSection(@GlobalRes.Directions, new List<MenuSectionParameters>()
                                             {
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.HongGiaVietnam, ActionName = "HongGiaVietnam", ControllerName = "Directions"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.KungFu, ActionName = "KungFu", ControllerName = "Directions"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.ChiKong, ActionName = "ChiKong", ControllerName = "Directions"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.TaiChi, ActionName = "TaiChi", ControllerName = "Directions"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.WuChi, ActionName = "WuChi", ControllerName = "Directions"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.NgaMi, ActionName = "NgaMi", ControllerName = "Directions"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.VinChun, ActionName = "VinChun", ControllerName = "Directions"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.PaKua, ActionName = "PaKua", ControllerName = "Directions"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.SinI, ActionName = "SinI", ControllerName = "Directions"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.BaiMy, ActionName = "BaiMy", ControllerName = "Directions"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.FiveEnimals, ActionName = "FiveEnimals", ControllerName = "Directions"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.Weapon, ActionName = "Weapon", ControllerName = "Directions"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.Meditation, ActionName = "Meditation", ControllerName = "Directions"}
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.HongGiaVietnam, ActionName = "HongGiaVietnam", ControllerName = "Directions", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.KungFu, ActionName = "KungFu", ControllerName = "Directions", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.ChiKong, ActionName = "ChiKong", ControllerName = "Directions", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.TaiChi, ActionName = "TaiChi", ControllerName = "Directions", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.WuChi, ActionName = "WuChi", ControllerName = "Directions", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.NgaMi, ActionName = "NgaMi", ControllerName = "Directions", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.VinChun, ActionName = "VinChun", ControllerName = "Directions", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.PaKua, ActionName = "PaKua", ControllerName = "Directions", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.SinI, ActionName = "SinI", ControllerName = "Directions", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.BaiMy, ActionName = "BaiMy", ControllerName = "Directions", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.FiveEnimals, ActionName = "FiveEnimals", ControllerName = "Directions", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.Weapon, ActionName = "Weapon", ControllerName = "Directions", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.Meditation, ActionName = "Meditation", ControllerName = "Directions", RouteData = ViewContext.RouteData}
                                             })
     @Html.DropdownMenuSection(@GlobalRes.Training, new List<MenuSectionParameters>()
                                             {
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.Groups, ActionName = "Groups", ControllerName = "Training"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.Online, ActionName = "Online", ControllerName = "Training"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.Seminars, ActionName = "Seminars", ControllerName = "Training"}
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.Groups, ActionName = "Groups", ControllerName = "Training", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.Online, ActionName = "Online", ControllerName = "Training", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.Seminars, ActionName = "Seminars", ControllerName = "Training", RouteData = ViewContext.RouteData}
                                             })
     @Html.DropdownMenuSection(@GlobalRes.Media, new List<MenuSectionParameters>()
                                             {
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.Articles, ActionName = "Articles", ControllerName = "Media"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.Books, ActionName = "Books", ControllerName = "Media"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.Photo, ActionName = "Photo", ControllerName = "Media"},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.Video, ActionName = "Video", ControllerName = "Media"}
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.Articles, ActionName = "Articles", ControllerName = "Media", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.Books, ActionName = "Books", ControllerName = "Media", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.Photo, ActionName = "Photo", ControllerName = "Media", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.Video, ActionName = "Video", ControllerName = "Media", RouteData = ViewContext.RouteData}
                                             })
-    @Html.MenuSection(@GlobalRes.Master, "Master", "Home")
-    @Html.MenuSection(@GlobalRes.FeedBacks, "Feedback", "Home")
+    @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.Master, ActionName = "Master", ControllerName = "Home", RouteData = ViewContext.RouteData })
+    @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.Master, ActionName = "Feedback", ControllerName = "Home", RouteData = ViewContext.RouteData })
 </ul>

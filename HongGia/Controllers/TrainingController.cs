@@ -2,7 +2,7 @@
 
 namespace HongGia.Controllers
 {
-    public class TrainingController : Controller
+    public class TrainingController : DefaultController
     {
         // GET: Training
         public ActionResult Groups()

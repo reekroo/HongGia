@@ -2,7 +2,7 @@
 
 namespace HongGia.Controllers
 {
-    public class MediaController : Controller
+    public class MediaController : DefaultController
     {
         // GET: Media
         public ActionResult Articles()
