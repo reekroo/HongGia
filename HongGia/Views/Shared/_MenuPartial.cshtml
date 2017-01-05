@@ -3,7 +3,6 @@
 @using HongGia.Models.Classes
 
 <ul class="nav navbar-nav">
-    @Html.MenuSection(@GlobalRes.Home, "Index", "Home")
     @Html.DropdownMenuSection(@GlobalRes.HongGia, new List<MenuSectionParameters>()
                                             {
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.AboutSchool, ActionName = "About", ControllerName = "HongGia"},
