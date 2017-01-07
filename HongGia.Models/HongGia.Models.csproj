@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\CommentsListParameters.cs" />
+    <Compile Include="Classes\SliderParameters.cs" />
+    <Compile Include="Classes\ImageParameters.cs" />
+    <Compile Include="Classes\ListParameters.cs" />
+    <Compile Include="Classes\NewsListParameters.cs" />
     <Compile Include="Classes\SwitchLanguagParameters.cs" />
     <Compile Include="Classes\MenuSectionParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -257,6 +257,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\SliderHelper.cs" />
+    <Compile Include="Helpers\ListGroupHelper.cs" />
     <Compile Include="Helpers\MenuHelper.cs" />
     <Compile Include="Helpers\SwitchLanguageHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />

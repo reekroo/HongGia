@@ -1,4 +1,6 @@
-﻿@{
+﻿@using HongGia.Helpers
+@using HongGia.Models.Classes
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -65,32 +67,13 @@
     </div>
 
     <div class="col-md-6">
-        <div class="thumbnail">
-            <div class="list-group"style="margin-bottom: 0"> @*style*@
-                <a href="#" class="list-group-item list-group-item-action">
-                    <h4 class="list-group-item-heading text"><ins>List group item heading</ins></h4>
-                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit. Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                    <p class="list-group-item-text text-right"><em>12.12.12</em></p>
-                </a>
-
-                <a href="#" class="list-group-item list-group-item-action">
-                    <h4 class="list-group-item-heading text"><ins>List group item heading</ins></h4>
-                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                    <p class="list-group-item-text text-right"><em>12.12.12</em></p>
-                </a>
-
-                <a href="#" class="list-group-item list-group-item-action">
-                    <h4 class="list-group-item-heading text"><ins>List group item heading</ins></h4>
-                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit. Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit. Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                    <p class="list-group-item-text text-right"><em>12.12.12</em></p>
-                </a>
-
-                <a href="#" class="list-group-item list-group-item-action">
-                    <h4 class="list-group-item-heading text"><ins>List group item heading</ins></h4>
-                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                    <p class="list-group-item-text text-right"><em>12.12.12</em></p>
-                </a>
-            </div>
-        </div>
+        @Html.ListGroup(new List<NewsListParameters>()
+        {
+            new NewsListParameters() {Date = "12.12.12".AsDateTime(), Header = "111", Text = "124qfer asf", Link = "#"},
+            new NewsListParameters() {Date = "12.12.12".AsDateTime(), Header = "111", Text = "124qfer asf", Link = "#"},
+            new NewsListParameters() {Date = "12.12.12".AsDateTime(), Header = "111", Text = "124qfer asf", Link = "#"},
+            new NewsListParameters() {Date = "12.12.12".AsDateTime(), Header = "111", Text = "124qfer asf", Link = "#"}
+        })
+      
     </div>
 </div>
