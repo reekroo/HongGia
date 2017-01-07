@@ -7,41 +7,92 @@ namespace HongGia.Helpers
 {
     public static class SliderHelper
     {
-        //public static MvcHtmlString Slider(this HtmlHelper htmlHelper, IEnumerable<SliderParameters> parameters)
-        //{
-        //    if (parameters == null || !parameters.Any())
-        //    {
-        //        return new MvcHtmlString(string.Empty);
-        //    }
+        public static MvcHtmlString Slider(this HtmlHelper htmlHelper, IEnumerable<SliderParameters> parameters)
+        {
+            if (parameters == null || !parameters.Any())
+            {
+                return new MvcHtmlString(string.Empty);
+            }
 
-        //    var indicatorTagBuilder = new TagBuilder("ol");
-        //    indicatorTagBuilder.AddCssClass("carousel-indicators");
+            var carouselTagBuilder = new TagBuilder("div");
+            carouselTagBuilder.AddCssClass("carousel slide");
+            carouselTagBuilder.MergeAttribute("id", "carousel-example-generic");
+            carouselTagBuilder.MergeAttribute("data-ride", "carousel");
 
-        //    var count = parameters.Count();
+            carouselTagBuilder.InnerHtml += Indicators(parameters.Count());
+            carouselTagBuilder.InnerHtml += Slides(parameters);
+            carouselTagBuilder.InnerHtml += Controls();
 
-        //    for (var i = 0; i < count - 1; i++)
-        //    {
-        //        indicatorTagBuilder.InnerHtml += Indicators(i);
-        //    }
+            return new MvcHtmlString(carouselTagBuilder.ToString());
+        }
 
-        //}
+        private static string Controls()
+        {
+            return
+                "<a class=\"left carousel-control\" href=\"#carousel-example-generic\" role=\"button\" data-slide=\"prev\">" +
+                "<span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>" +
+                "<span class=\"sr-only\">Previous</span></a>" +
+                "<a class=\"right carousel-control\" href=\"#carousel-example-generic\" role=\"button\" data-slide=\"next\">" +
+                "<span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>" +
+                "<span class=\"sr-only\">Next</span></a>";
+        }
 
-        //private static string Controls()
-        //{
-        //    return
-        //        "<a class=\"left carousel-control\" href=\"#carousel-example-generic\" role=\"button\" data-slide=\"prev\">" +
-        //        "< span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>" +
-        //        "<span class=\"sr-only\">Previous</span></a>" +
-        //        "<a class=\"right carousel-control\" href=\"#carousel-example-generic\" role=\"button\" data-slide=\"next\">" +
-        //        "<span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>" +
-        //        "<span class=\"sr-only\">Next</span></a>";
-        //}
+        private static string Indicators(int count)
+        {
+            var indicatorTagBuilder = new TagBuilder("ol");
+            indicatorTagBuilder.AddCssClass("carousel-indicators");
 
-        //private static string Indicators(int index)
-        //{
+            for (var i = 0; i < count; i++)
+            {
+                var genericTagBuilder = new TagBuilder("li");
+                genericTagBuilder.MergeAttribute("data-target", "#carousel-example-generic");
+                genericTagBuilder.MergeAttribute("data-slide-to", i.ToString());
 
-        //    var indicatorTagBuilder = new TagBuilder("ol");
-        //    indicatorTagBuilder.AddCssClass("carousel-indicators");
-        //}
+                if (i == 0)
+                {
+                    genericTagBuilder.AddCssClass("active");
+                }
+
+                indicatorTagBuilder.InnerHtml += genericTagBuilder;
+            }
+
+            return indicatorTagBuilder.ToString();
+        }
+
+        private static string Slides(IEnumerable<SliderParameters> parameters)
+        {
+            var wrapperTagBuilder = new TagBuilder("div");
+            wrapperTagBuilder.AddCssClass("carousel-inner");
+            wrapperTagBuilder.MergeAttribute("role", "listbox");
+
+            var sliderParameterses = parameters as SliderParameters[] ?? parameters.ToArray();
+
+            for (var i = 0; i < sliderParameterses.Count(); i++)
+            {
+                var itemTagBuilder = new TagBuilder("div");
+                itemTagBuilder.AddCssClass("item");
+
+                itemTagBuilder.InnerHtml = Image(sliderParameterses[i]);
+
+                if (i == 0)
+                {
+                    itemTagBuilder.AddCssClass("active");
+                }
+
+                wrapperTagBuilder.InnerHtml += itemTagBuilder;
+            }
+
+            return wrapperTagBuilder.ToString();
+        }
+
+        private static string Image(SliderParameters parameter)
+        {
+            var imageTagBuilder = new TagBuilder("img");
+
+            imageTagBuilder.MergeAttribute("src", parameter.Src);
+            imageTagBuilder.MergeAttribute("alt", parameter.Alt);
+
+            return imageTagBuilder.ToString();
+        }
     }
 } 
