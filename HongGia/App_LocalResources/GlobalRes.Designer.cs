@@ -250,6 +250,15 @@ namespace HongGia.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Новости.
+        /// </summary>
+        public static string News {
+            get {
+                return ResourceManager.GetString("News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Нга-Ми.
         /// </summary>
         public static string NgaMi {

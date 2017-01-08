@@ -253,6 +253,7 @@
     <Compile Include="Controllers\HongGiaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MediaController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\TrainingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -262,6 +263,8 @@
     <Compile Include="Helpers\MenuHelper.cs" />
     <Compile Include="Helpers\SwitchLanguageHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\HomeViewModels.cs" />
+    <Compile Include="Models\NewsViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -355,8 +358,9 @@
     <Content Include="Views\Media\Books.cshtml" />
     <Content Include="Views\Media\Articles.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
-    <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\Contacts.cshtml" />
+    <Content Include="Views\News\AllNews.cshtml" />
+    <Content Include="Views\News\News.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

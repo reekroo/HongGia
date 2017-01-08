@@ -180,6 +180,9 @@
   <data name="Meditation" xml:space="preserve">
     <value>Meditation</value>
   </data>
+  <data name="News" xml:space="preserve">
+    <value>News</value>
+  </data>
   <data name="NgaMi" xml:space="preserve">
     <value>Nga-Mi</value>
   </data>

@@ -3,6 +3,9 @@
 @using HongGia.Models.Classes
 
 <ul class="nav navbar-nav">
+    @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.Home, ActionName = "Index", ControllerName = "Home", RouteData = ViewContext.RouteData })
+    @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.News, ActionName = "AllNews", ControllerName = "News", RouteData = ViewContext.RouteData })
+
     @Html.DropdownMenuSection(@GlobalRes.HongGia, new List<MenuSectionParameters>()
                                             {
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.AboutSchool, ActionName = "About", ControllerName = "HongGia", RouteData = ViewContext.RouteData},
@@ -41,6 +44,6 @@
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Video, ActionName = "Video", ControllerName = "Media", RouteData = ViewContext.RouteData}
                                             })
     @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.Master, ActionName = "Master", ControllerName = "Home", RouteData = ViewContext.RouteData })
-    @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.Master, ActionName = "Feedback", ControllerName = "Home", RouteData = ViewContext.RouteData })
+    @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.FeedBacks, ActionName = "Feedback", ControllerName = "Home", RouteData = ViewContext.RouteData })
     @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.Contacts, ActionName = "Contacts", ControllerName = "Home", RouteData = ViewContext.RouteData })
 </ul>

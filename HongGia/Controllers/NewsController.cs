@@ -3,21 +3,16 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Web.WebPages;
 using HongGia.Models;
-using HongGia.Models.Classes;
 
 namespace HongGia.Controllers
 {
-    public class HomeController : DefaultController
+    public class NewsController : DefaultController
     {
-        private HomeViewModel temp = new HomeViewModel()
+        private const int PageSize = 10;
+
+        private AllNewsViewModel temp = new AllNewsViewModel()
         {
-            SliderImages = new List<ImageParameters>()
-            {
-                new ImageParameters() {Alt = "1", Src = "/Content/Images/download.svg"},
-                new ImageParameters() {Alt = "2", Src = "/Content/Images/download.svg"},
-                new ImageParameters() {Alt = "3", Src = "/Content/Images/download.svg"}
-            },
-            TopNews = new List<NewsViewModel>()
+            AllNews = new List<NewsViewModel>()
             {
                 new NewsViewModel() {Date = "12.12.12".AsDateTime(), Header = "111", Text = "124qfer asf", Id = 1},
                 new NewsViewModel() {Date = "12.12.12".AsDateTime(), Header = "112", Text = "124qfer asf", Id = 2},
@@ -33,29 +28,23 @@ namespace HongGia.Controllers
             }
         };
 
-
-        public ActionResult Index()
+        public ActionResult AllNews(int pageNum = 0)
         {
-            var model = temp;
+            var allNews = temp;
+
+            ViewData["PageNum"] = pageNum;
+            ViewData["ItemCount"] = allNews.AllNews.Count();
+            ViewData["PageSize"] = PageSize;
             
-            model.TopNews = model.TopNews.Where(x => x.Language == CurrentLangCode || string.IsNullOrEmpty(x.Language)).OrderBy(x => x.Date).Take(4).ToList();
+            allNews.AllNews = allNews.AllNews.OrderBy(p => p.Date).Skip(PageSize * pageNum).Take(PageSize).ToList();
 
-            return View(model);
+            return View(allNews);
         }
 
-        public ActionResult Master()
+        public ActionResult News(int id)
         {
-            return View();
-        }
-
-        public ActionResult FeedBack()
-        {
-            return View();
-        }
-
-        public ActionResult Contacts()
-        {
-            return View();
+            var news = temp.AllNews.FirstOrDefault(x => x.Id == id);
+            return View(news);
         }
     }
 }

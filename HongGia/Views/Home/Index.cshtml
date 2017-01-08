@@ -1,17 +1,13 @@
 ﻿@using HongGia.Helpers
-@using HongGia.Models.Classes
+
+@model HongGia.Models.HomeViewModel
+
 @{
     ViewBag.Title = "Home Page";
 }
 
 <!-- carousel -->
-@Html.Slider(new List<SliderParameters>()
-{
-    new SliderParameters() {Alt = "1", Src = "/Content/Images/download.svg"},
-    new SliderParameters() {Alt = "1", Src = "/Content/Images/download.svg"},
-    new SliderParameters() {Alt = "1", Src = "/Content/Images/download.svg"}
-})
-
+@Html.Slider(@Model.SliderImages)})
 
 <!-- items -->
 <div class="row" style="margin-top:20px; margin-bottom: 20px;"> @*style*@
@@ -44,12 +40,6 @@
     </div>
 
     <div class="col-md-6">
-        @Html.ListGroup(new List<NewsListParameters>()
-        {
-            new NewsListParameters() {Date = "12.12.12".AsDateTime(), Header = "111", Text = "124qfer asf", Link = "#"},
-            new NewsListParameters() {Date = "12.12.12".AsDateTime(), Header = "111", Text = "124qfer asf", Link = "#"},
-            new NewsListParameters() {Date = "12.12.12".AsDateTime(), Header = "111", Text = "124qfer asf", Link = "#"},
-            new NewsListParameters() {Date = "12.12.12".AsDateTime(), Header = "111", Text = "124qfer asf", Link = "#"}
-        })
+        @Html.ListGroup(@Model.TopNews)
     </div>
 </div>

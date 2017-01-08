@@ -7,7 +7,7 @@ namespace HongGia.Helpers
 {
     public static class SliderHelper
     {
-        public static MvcHtmlString Slider(this HtmlHelper htmlHelper, IEnumerable<SliderParameters> parameters)
+        public static MvcHtmlString Slider(this HtmlHelper htmlHelper, IEnumerable<ImageParameters> parameters)
         {
             if (parameters == null || !parameters.Any())
             {
@@ -59,7 +59,7 @@ namespace HongGia.Helpers
             return indicatorTagBuilder.ToString();
         }
 
-        private static string Slides(IEnumerable<SliderParameters> parameters)
+        private static string Slides(IEnumerable<ImageParameters> parameters)
         {
             var wrapperTagBuilder = new TagBuilder("div");
             wrapperTagBuilder.AddCssClass("carousel-inner");
@@ -85,7 +85,7 @@ namespace HongGia.Helpers
             return wrapperTagBuilder.ToString();
         }
 
-        private static string Image(SliderParameters parameter)
+        private static string Image(ImageParameters parameter)
         {
             var imageTagBuilder = new TagBuilder("img");
 
