@@ -120,6 +120,9 @@
   <data name="AboutSchool" xml:space="preserve">
     <value>About School</value>
   </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
   <data name="Articles" xml:space="preserve">
     <value>Articles</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="Directions" xml:space="preserve">
     <value>Directions</value>
+  </data>
+  <data name="Emails" xml:space="preserve">
+    <value>Emails</value>
   </data>
   <data name="FeedBacks" xml:space="preserve">
     <value>FeedBacks</value>
@@ -185,6 +191,9 @@
   </data>
   <data name="PaKua" xml:space="preserve">
     <value>Pa-Kua</value>
+  </data>
+  <data name="Phones" xml:space="preserve">
+    <value>Phones</value>
   </data>
   <data name="Photo" xml:space="preserve">
     <value>Photo</value>

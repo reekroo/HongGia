@@ -70,6 +70,15 @@ namespace HongGia.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Адрес.
+        /// </summary>
+        public static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Статьи.
         /// </summary>
         public static string Articles {
@@ -120,6 +129,15 @@ namespace HongGia.App_LocalResources {
         public static string Directions {
             get {
                 return ResourceManager.GetString("Directions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Электронная почта.
+        /// </summary>
+        public static string Emails {
+            get {
+                return ResourceManager.GetString("Emails", resourceCulture);
             }
         }
         
@@ -264,6 +282,15 @@ namespace HongGia.App_LocalResources {
         public static string PaKua {
             get {
                 return ResourceManager.GetString("PaKua", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Телефоны.
+        /// </summary>
+        public static string Phones {
+            get {
+                return ResourceManager.GetString("Phones", resourceCulture);
             }
         }
         

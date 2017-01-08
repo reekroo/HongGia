@@ -120,6 +120,9 @@
   <data name="AboutSchool" xml:space="preserve">
     <value>О школе</value>
   </data>
+  <data name="Address" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
   <data name="Articles" xml:space="preserve">
     <value>Статьи</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="Directions" xml:space="preserve">
     <value>Направления</value>
+  </data>
+  <data name="Emails" xml:space="preserve">
+    <value>Электронная почта</value>
   </data>
   <data name="FeedBacks" xml:space="preserve">
     <value>Отзывы</value>
@@ -185,6 +191,9 @@
   </data>
   <data name="PaKua" xml:space="preserve">
     <value>Па-Куа</value>
+  </data>
+  <data name="Phones" xml:space="preserve">
+    <value>Телефоны</value>
   </data>
   <data name="Photo" xml:space="preserve">
     <value>Фото</value>
