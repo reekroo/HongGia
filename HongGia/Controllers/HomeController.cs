@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.WebPages;
@@ -33,6 +34,28 @@ namespace HongGia.Controllers
             }
         };
 
+        private FeedBackViewModel tempFeedBack = new FeedBackViewModel()
+        {
+            FeedBacks = new List<FeedBack>()
+            {
+                new FeedBack() {Date = "12.12.12".AsDateTime(), Name = "111", Text = "124qfer asf", Id = 1,Email = "1111111111@eeee",Language = ""},
+                new FeedBack() {Date = "12.12.12".AsDateTime(), Name = "111", Text = "124qfer asf", Id = 1,Email = "1111111111@eeee",Language = ""},
+                new FeedBack() {Date = "12.12.12".AsDateTime(), Name = "111", Text = "124qfer asf", Id = 1,Email = "1111111111@eeee",Language = ""},
+                new FeedBack() {Date = "12.12.12".AsDateTime(), Name = "111", Text = "124qfer asf", Id = 1,Email = "1111111111@eeee",Language = ""},
+                new FeedBack() {Date = "12.12.12".AsDateTime(), Name = "111", Text = "124qfer asf", Id = 1,Email = "1111111111@eeee",Language = ""},
+                new FeedBack() {Date = "12.12.12".AsDateTime(), Name = "111", Text = "124qfer asf", Id = 1,Email = "1111111111@eeee",Language = ""},
+                new FeedBack() {Date = "12.12.12".AsDateTime(), Name = "111", Text = "124qfer asf", Id = 1,Email = "1111111111@eeee",Language = ""},
+                new FeedBack() {Date = "12.12.12".AsDateTime(), Name = "111", Text = "124qfer asf", Id = 1,Email = "1111111111@eeee",Language = ""},
+                new FeedBack() {Date = "12.12.12".AsDateTime(), Name = "111", Text = "124qfer asf", Id = 1,Email = "1111111111@eeee",Language = ""},
+                new FeedBack() {Date = "12.12.12".AsDateTime(), Name = "111", Text = "124qfer asf", Id = 1,Email = "1111111111@eeee",Language = ""},
+                new FeedBack() {Date = "12.12.12".AsDateTime(), Name = "111", Text = "124qfer asf", Id = 1,Email = "1111111111@eeee",Language = ""},
+                new FeedBack() {Date = "12.12.12".AsDateTime(), Name = "111", Text = "124qfer asf", Id = 1,Email = "1111111111@eeee",Language = ""}
+            }
+        };
+
+        //readonly EntitiesDB _context = new EntitiesDB();
+
+        private const int PageSize = 10;
 
         public ActionResult Index()
         {
@@ -48,9 +71,36 @@ namespace HongGia.Controllers
             return View();
         }
 
-        public ActionResult FeedBack()
+        [HttpGet]
+        public ActionResult FeedBack(int pageNum = 0)
         {
-            return View();
+            var feedbacks = tempFeedBack;
+
+            ViewData["PageNum"] = pageNum;
+            ViewData["ItemCount"] = feedbacks.FeedBacks.Count();
+            ViewData["PageSize"] = PageSize;
+
+            feedbacks.FeedBacks = feedbacks.FeedBacks.OrderBy(p => p.Date).Skip(PageSize * pageNum).Take(PageSize).ToList();
+
+            return View(feedbacks);
+        }
+
+        [HttpPost]
+        public ActionResult FeedBack(FeedBack feedback)
+        {
+            if (ModelState.IsValid)
+            {
+                feedback.Id = 1;
+                feedback.Date = DateTime.Now;
+                feedback.Language = CurrentLangCode;
+
+                //_context.FeedBack.Add(feedback);
+                //_context.SaveChanges();
+
+                return View("FeedBack");
+            }
+
+            return View("FeedBack");
         }
 
         public ActionResult Contacts()

@@ -1,17 +1,60 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@using HongGia.Helpers
+
+@model HongGia.Models.FeedBackViewModel
+
+@{
+    ViewBag.Title = "FeedBack";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div class="row" style="margin-top:20px; margin-bottom: 20px;">@*style*@ 
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    <div class="col-md-4">
+        <div class="thumbnail">
+            
+            @using (Html.BeginForm("FeedBack", "Home", FormMethod.Post))
+            {
+                <textarea class="form-control" rows="6"></textarea>
+
+                <div class="form-group">
+                    <label for="InputName">Name</label>
+                    <input type="text" class="form-control" id="InputName" placeholder="example">
+                </div>
+
+                <div class="form-group">
+                    <label for="InputEmail">Email</label>
+                    <input type="email" class="form-control" id="InputEmail" placeholder="example@example.com">
+                </div>
+
+                <button type="submit" class="btn btn-default">Send</button>
+            }
+
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        
+        <div style="margin-bottom: 20px; border-bottom: 1px solid #dddddd">
+            <p class="text-justify">asas ga gla sdgsabdglkasbdgla sldgk asdg laskdglssdg sadg asdbgas dgasdbg;lkaa dgksa dg asdg sadg asdbgas dgasdbg;lkabsdg sdg sadg asdbgas dgasdbg;lka asdg; sadgba;sdg asdga;sdbgaws;gd walskgdb;</p>
+            <p class="text-right" style="color:#dddddd"><i class="glyphicon glyphicon-user"></i> Author / <i class="glyphicon glyphicon-calendar"></i> date</p>
+        </div>
+
+        <div style="margin-bottom: 20px; border-bottom: 1px solid #dddddd">
+            <p class="text-justify">asas ga gla sdgsabdglkasbdgla sldgk asdg laskdglssdg sadg asdbgas dgasdbg;lkaa dgksa dg asdg sadg asdbgas dgasdbg;lkabsdg sdg sadg asdbgas dgasdbg;lka asdg; sadgba;sdg asdga;sdbgaws;gd walskgdb;</p>
+            <p class="text-right" style="color:#dddddd"><i class="glyphicon glyphicon-user"></i> Author / <i class="glyphicon glyphicon-calendar"></i> date</p>
+        </div>
+
+        <div style="margin-bottom: 20px; border-bottom: 1px solid #dddddd">
+            <p class="text-justify">asas ga gla sdgsabdglkasbdgla sldgk asdg laskdglssdg sadg asdbgas dgasdbg;lkaa dgksa dg asdg sadg asdbgas dgasdbg;lkabsdg sdg sadg asdbgas dgasdbg;lka asdg; sadgba;sdg asdga;sdbgaws;gd walskgdb;</p>
+            <p class="text-right" style="color:#dddddd"><i class="glyphicon glyphicon-user"></i> Author / <i class="glyphicon glyphicon-calendar"></i> date</p>
+        </div>
+
+        <div class="text-center">
+            @Html.PageLinks(
+                (int)Html.ViewData["PageNum"],
+                (int)Html.ViewData["ItemCount"],
+                (int)Html.ViewData["PageSize"],
+                x => Url.Action("FeedBack", new { pageNum = x }))
+        </div>
+
+    </div>
+</div>
