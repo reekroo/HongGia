@@ -3,13 +3,13 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-using HongGia.Models.Classes;
+using HongGia.Core.Parameters;
 
 namespace HongGia.Helpers
 {
     public static class SwitchLanguageHelper
     {
-        public static MvcHtmlString Switcher(this UrlHelper url, SwitchLanguagParameters parameter)
+        public static MvcHtmlString Switcher(this UrlHelper url, SwitchLanguageParameters parameter)
         {
             var liTagBuilder = new TagBuilder("li");
             var aTagBuilder = new TagBuilder("a");
@@ -36,7 +36,7 @@ namespace HongGia.Helpers
             return new MvcHtmlString(liTagBuilder.ToString());
         }
 
-        public static MvcHtmlString DropdownSwitcher(this UrlHelper url, string name, IEnumerable<SwitchLanguagParameters> parameters)
+        public static MvcHtmlString DropdownSwitcher(this UrlHelper url, string name, IEnumerable<SwitchLanguageParameters> parameters)
         {
             var liTagBuilder = new TagBuilder("li");
             liTagBuilder.AddCssClass("dropdown");
@@ -63,7 +63,7 @@ namespace HongGia.Helpers
             return new MvcHtmlString(liTagBuilder.ToString());
         }
 
-        private static string CurrentLanguage(IEnumerable<SwitchLanguagParameters> parameters)
+        private static string CurrentLanguage(IEnumerable<SwitchLanguageParameters> parameters)
         {
             var result = parameters.FirstOrDefault(x => x.Lang == x.RouteData.Values["lang"] as string);
 

@@ -1,14 +1,14 @@
-﻿@using HongGia.Helpers
-@using HongGia.Models.Classes
+﻿@using HongGia.Core.Parameters
+@using HongGia.Helpers
 
 <ul class="nav navbar-nav navbar-right">
-    @Url.DropdownSwitcher("Lang",new List<SwitchLanguagParameters>()
+    @Url.DropdownSwitcher("Lang",new List<SwitchLanguageParameters>()
     {
-       new SwitchLanguagParameters() {Lang = "ru", RouteData = ViewContext.RouteData, Name = "ru"},
-       new SwitchLanguagParameters() {Lang = "en", RouteData = ViewContext.RouteData, Name = "en"},
-       new SwitchLanguagParameters() {Lang = "de", RouteData = ViewContext.RouteData, Name = "de"},
-       new SwitchLanguagParameters() {Lang = "fr", RouteData = ViewContext.RouteData, Name = "fr"},
-       new SwitchLanguagParameters() {Lang = "lt", RouteData = ViewContext.RouteData, Name = "lt"},
-       new SwitchLanguagParameters() {Lang = "sv", RouteData = ViewContext.RouteData, Name = "sv"}
+       new SwitchLanguageParameters() {Lang = "ru", RouteData = ViewContext.RouteData, Name = "ru"},
+       new SwitchLanguageParameters() {Lang = "en", RouteData = ViewContext.RouteData, Name = "en"},
+       new SwitchLanguageParameters() {Lang = "de", RouteData = ViewContext.RouteData, Name = "de"},
+       new SwitchLanguageParameters() {Lang = "fr", RouteData = ViewContext.RouteData, Name = "fr"},
+       new SwitchLanguageParameters() {Lang = "lt", RouteData = ViewContext.RouteData, Name = "lt"},
+       new SwitchLanguageParameters() {Lang = "sv", RouteData = ViewContext.RouteData, Name = "sv"}
     })
 </ul>

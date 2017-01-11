@@ -1,0 +1,11 @@
+﻿namespace HongGia.Core.Constants
+{
+    public static class PageConstants
+    {
+        public const int PageNewsSize = 10;
+
+        public const int PageFeedbackSize = 10;
+
+        public const int PageIndexNewsSize = 4;
+    }
+}

@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.WebPages;
+
 using HongGia.Models;
-using HongGia.Models.Classes;
+
+using HongGia.Core.Constants;
+using HongGia.Core.Parameters;
 
 namespace HongGia.Controllers
 {
@@ -54,23 +57,17 @@ namespace HongGia.Controllers
         };
 
         //readonly EntitiesDB _context = new EntitiesDB();
-
-        private const int PageSize = 10;
+        
 
         public ActionResult Index()
         {
             var model = temp;
             
-            model.TopNews = model.TopNews.Where(x => x.Language == CurrentLangCode || string.IsNullOrEmpty(x.Language)).OrderBy(x => x.Date).Take(4).ToList();
+            model.TopNews = model.TopNews.Where(x => x.Language == CurrentLangCode || string.IsNullOrEmpty(x.Language)).OrderBy(x => x.Date).Take(PageConstants.PageIndexNewsSize).ToList();
 
             return View(model);
         }
-
-        public ActionResult Master()
-        {
-            return View();
-        }
-
+        
         [HttpGet]
         public ActionResult FeedBack(int pageNum = 0)
         {
@@ -78,9 +75,9 @@ namespace HongGia.Controllers
 
             ViewData["PageNum"] = pageNum;
             ViewData["ItemCount"] = feedbacks.FeedBacks.Count();
-            ViewData["PageSize"] = PageSize;
+            ViewData["PageSize"] = PageConstants.PageFeedbackSize;
 
-            feedbacks.FeedBacks = feedbacks.FeedBacks.OrderBy(p => p.Date).Skip(PageSize * pageNum).Take(PageSize).ToList();
+            feedbacks.FeedBacks = feedbacks.FeedBacks.OrderBy(p => p.Date).Skip(PageConstants.PageFeedbackSize * pageNum).Take(PageConstants.PageFeedbackSize).ToList();
 
             return View(feedbacks);
         }
@@ -107,5 +104,11 @@ namespace HongGia.Controllers
         {
             return View();
         }
+
+        public ActionResult Master()
+        {
+            return View();
+        }
+
     }
 }

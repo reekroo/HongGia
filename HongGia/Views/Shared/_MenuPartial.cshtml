@@ -1,6 +1,6 @@
 ﻿@using HongGia.App_LocalResources
+@using HongGia.Core.Parameters
 @using HongGia.Helpers
-@using HongGia.Models.Classes
 
 <ul class="nav navbar-nav">
     @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.Home, ActionName = "Index", ControllerName = "Home", RouteData = ViewContext.RouteData })

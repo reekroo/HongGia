@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HongGia.Tests", "HongGia.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HongGia.Models", "HongGia.Models\HongGia.Models.csproj", "{1C544790-B8C0-42D6-8832-32784DDE3D07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HongGia.Core", "HongGia.Core\HongGia.Core.csproj", "{B8FF1929-0075-42E4-92E7-DA72DDC6DDF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1C544790-B8C0-42D6-8832-32784DDE3D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C544790-B8C0-42D6-8832-32784DDE3D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C544790-B8C0-42D6-8832-32784DDE3D07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8FF1929-0075-42E4-92E7-DA72DDC6DDF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8FF1929-0075-42E4-92E7-DA72DDC6DDF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8FF1929-0075-42E4-92E7-DA72DDC6DDF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8FF1929-0075-42E4-92E7-DA72DDC6DDF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,14 +2,15 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.WebPages;
+
 using HongGia.Models;
+
+using HongGia.Core.Constants;
 
 namespace HongGia.Controllers
 {
     public class NewsController : DefaultController
     {
-        private const int PageSize = 10;
-
         private AllNewsViewModel temp = new AllNewsViewModel()
         {
             AllNews = new List<NewsViewModel>()
@@ -34,9 +35,9 @@ namespace HongGia.Controllers
 
             ViewData["PageNum"] = pageNum;
             ViewData["ItemCount"] = allNews.AllNews.Count();
-            ViewData["PageSize"] = PageSize;
+            ViewData["PageSize"] = PageConstants.PageNewsSize;
             
-            allNews.AllNews = allNews.AllNews.OrderBy(p => p.Date).Skip(PageSize * pageNum).Take(PageSize).ToList();
+            allNews.AllNews = allNews.AllNews.OrderBy(p => p.Date).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
 
             return View(allNews);
         }

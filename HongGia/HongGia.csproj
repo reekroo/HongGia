@@ -402,9 +402,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HongGia.Models\HongGia.Models.csproj">
-      <Project>{1c544790-b8c0-42d6-8832-32784dde3d07}</Project>
-      <Name>HongGia.Models</Name>
+    <ProjectReference Include="..\HongGia.Core\HongGia.Core.csproj">
+      <Project>{b8ff1929-0075-42e4-92e7-da72ddc6ddf3}</Project>
+      <Name>HongGia.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

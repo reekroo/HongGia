@@ -6,6 +6,19 @@
     ViewBag.Title = "FeedBack";
 }
 
+<style>
+    .feetback {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #dddddd;
+    }
+    .feetback:last-child {
+        border-bottom: none;
+    }
+    .feetback .text-right {
+        color: #dddddd;
+    }
+</style>
+
 <div class="row" style="margin-top:20px; margin-bottom: 20px;">@*style*@ 
 
     <div class="col-md-4">
@@ -31,22 +44,8 @@
         </div>
     </div>
 
-    <div class="col-md-8">
-        
-        <div style="margin-bottom: 20px; border-bottom: 1px solid #dddddd">
-            <p class="text-justify">asas ga gla sdgsabdglkasbdgla sldgk asdg laskdglssdg sadg asdbgas dgasdbg;lkaa dgksa dg asdg sadg asdbgas dgasdbg;lkabsdg sdg sadg asdbgas dgasdbg;lka asdg; sadgba;sdg asdga;sdbgaws;gd walskgdb;</p>
-            <p class="text-right" style="color:#dddddd"><i class="glyphicon glyphicon-user"></i> Author / <i class="glyphicon glyphicon-calendar"></i> date</p>
-        </div>
-
-        <div style="margin-bottom: 20px; border-bottom: 1px solid #dddddd">
-            <p class="text-justify">asas ga gla sdgsabdglkasbdgla sldgk asdg laskdglssdg sadg asdbgas dgasdbg;lkaa dgksa dg asdg sadg asdbgas dgasdbg;lkabsdg sdg sadg asdbgas dgasdbg;lka asdg; sadgba;sdg asdga;sdbgaws;gd walskgdb;</p>
-            <p class="text-right" style="color:#dddddd"><i class="glyphicon glyphicon-user"></i> Author / <i class="glyphicon glyphicon-calendar"></i> date</p>
-        </div>
-
-        <div style="margin-bottom: 20px; border-bottom: 1px solid #dddddd">
-            <p class="text-justify">asas ga gla sdgsabdglkasbdgla sldgk asdg laskdglssdg sadg asdbgas dgasdbg;lkaa dgksa dg asdg sadg asdbgas dgasdbg;lkabsdg sdg sadg asdbgas dgasdbg;lka asdg; sadgba;sdg asdga;sdbgaws;gd walskgdb;</p>
-            <p class="text-right" style="color:#dddddd"><i class="glyphicon glyphicon-user"></i> Author / <i class="glyphicon glyphicon-calendar"></i> date</p>
-        </div>
+    <div class="col-md-8">        
+        @Html.ListGroup(@Model.FeedBacks)
 
         <div class="text-center">
             @Html.PageLinks(
