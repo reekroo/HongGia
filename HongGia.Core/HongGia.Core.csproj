@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Constants\PageConstants.cs" />
     <Compile Include="Models\FeedBack.cs" />
+    <Compile Include="Parameters\CollapsiblePanelParameters.cs" />
     <Compile Include="Parameters\ImageParameters.cs" />
     <Compile Include="Parameters\MenuSectionParameters.cs" />
     <Compile Include="Parameters\SliderParameters.cs" />
