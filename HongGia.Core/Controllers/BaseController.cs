@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace HongGia.Controllers
+namespace HongGia.Core.Controllers
 {
     public class BaseController : Controller
     {

@@ -7,6 +7,7 @@ using System.Web.WebPages;
 using HongGia.Models;
 
 using HongGia.Core.Constants;
+using HongGia.Core.Controllers;
 using HongGia.Core.Parameters;
 
 namespace HongGia.Controllers
