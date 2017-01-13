@@ -1,7 +1,44 @@
-﻿
+﻿@using HongGia.Core.Parameters
+@using HongGia.Helpers
 @{
     ViewBag.Title = "View";
 }
 
-<h2>Hong Gia</h2>
+<style>
+    .panel-collapse-clickable {
+        cursor: pointer;
+    }
 
+    .panel-heading h4:hover {
+        cursor: pointer;
+    }
+
+    .img-responsive {
+        margin: 0 auto;
+    }
+</style>
+
+<div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+    <div class="col-md-12">
+        @Html.CollapsiblePanel(new CollapsiblePanelParameters()
+           {
+               Header = "1111",
+               Text = "12412412515125251435"
+           })
+    </div>
+</div>
+
+<div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+    <div class="col-md-12">
+        @Html.CollapsiblePanel(new CollapsiblePanelParameters()
+           {
+               Header = "3333",
+               Text = "qwqfgsadgwegwe",
+               Image = new ImageParameters()
+               {
+                   Alt = "333",
+                   Src = "/Content/Images/download.svg"
+               }
+           })
+    </div>
+</div>

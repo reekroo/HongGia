@@ -42,10 +42,16 @@ namespace HongGia.Helpers
             
             foreach (var parameter in parameters)
             {
-                ulTagBuilder.InnerHtml += MenuSection(htmlHelper, parameter);
+                if (parameter == null)
+                {
+                    ulTagBuilder.InnerHtml += AddSeporator();
+                }
+                else
+                {
+                    ulTagBuilder.InnerHtml += MenuSection(htmlHelper, parameter);
+                }
             }
-
-
+            
             if (ulTagBuilder.InnerHtml.Contains("active"))
             {
                 liTagBuilder.AddCssClass("active");
@@ -55,6 +61,15 @@ namespace HongGia.Helpers
             liTagBuilder.InnerHtml = aTagBuilder.ToString() + ulTagBuilder.ToString();
             
             return new MvcHtmlString(liTagBuilder.ToString());
+        }
+
+        private static string AddSeporator()
+        {
+            var separator = new TagBuilder("li");
+            separator.AddCssClass("divider");
+            separator.MergeAttribute("role", "separator");
+
+            return separator.ToString();
         }
 
         private static bool IsActiveClass(MenuSectionParameters menu, string param)

@@ -63,14 +63,16 @@ namespace HongGia.Helpers
             panelTagBuilder.InnerHtml = headerTagBuilder.ToString() + collapseTagBuilder.ToString();
             groupTagBuilder.InnerHtml = panelTagBuilder.ToString();
 
-            scriptTagBuilder.InnerHtml = "window.onload = function () {" +
-                                         "$(\".panel-collapse\").on(\"hide.bs.collapse\", function() {" +
-                "$(\".panel-collapse-"+ parameters.Header.GetHashCode().ToString() + "\").find('i').removeClass(\"glyphicon-chevron-up\").addClass(\"glyphicon-chevron-down\");" +
+            scriptTagBuilder.InnerHtml = //"window.onload = function () {" +
+                "$(\"#" + parameters.Header.GetHashCode().ToString() + "\").on(\"hide.bs.collapse\", function() {" +
+                "$(\".panel-collapse-" + parameters.Header.GetHashCode().ToString() +
+                "\").find('i').removeClass(\"glyphicon-chevron-up\").addClass(\"glyphicon-chevron-down\");" +
                 "});" +
-                "$(\".panel-collapse\").on(\"show.bs.collapse\", function() {" +
-                "$(\".panel-collapse-" + parameters.Header.GetHashCode().ToString() + "\").find('i').removeClass(\"glyphicon-chevron-down\").addClass(\"glyphicon-chevron-up\");" +
-                "});" +
-                "}";
+                "$(\"#" + parameters.Header.GetHashCode().ToString() + "\").on(\"show.bs.collapse\", function() {" +
+                "$(\".panel-collapse-" + parameters.Header.GetHashCode().ToString() +
+                "\").find('i').removeClass(\"glyphicon-chevron-down\").addClass(\"glyphicon-chevron-up\");" +
+                "});";//+
+                //"}";
 
             groupTagBuilder.InnerHtml += scriptTagBuilder.ToString();
 

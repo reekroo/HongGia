@@ -12,8 +12,11 @@
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.History, ActionName = "History", ControllerName = "HongGia", RouteData = ViewContext.RouteData},
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Levels, ActionName = "Levels", ControllerName = "HongGia", RouteData = ViewContext.RouteData},
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Program, ActionName = "Program", ControllerName = "HongGia", RouteData = ViewContext.RouteData},
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.ToBeginner, ActionName = "ToBeginner", ControllerName = "HongGia", RouteData = ViewContext.RouteData}
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.ToBeginner, ActionName = "ToBeginner", ControllerName = "HongGia", RouteData = ViewContext.RouteData},
+                                                null,
+                                                new MenuSectionParameters() { LinkText = @GlobalRes.Master, ActionName = "Master", ControllerName = "Home", RouteData = ViewContext.RouteData}
                                             })
+
     @Html.DropdownMenuSection(@GlobalRes.Directions, new List<MenuSectionParameters>()
                                             {
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.HongGiaVietnam, ActionName = "HongGiaVietnam", ControllerName = "Directions", RouteData = ViewContext.RouteData},
@@ -30,12 +33,14 @@
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Weapon, ActionName = "Weapon", ControllerName = "Directions", RouteData = ViewContext.RouteData},
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Meditation, ActionName = "Meditation", ControllerName = "Directions", RouteData = ViewContext.RouteData}
                                             })
+
     @Html.DropdownMenuSection(@GlobalRes.Training, new List<MenuSectionParameters>()
                                             {
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Groups, ActionName = "Groups", ControllerName = "Training", RouteData = ViewContext.RouteData},
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Online, ActionName = "Online", ControllerName = "Training", RouteData = ViewContext.RouteData},
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Seminars, ActionName = "Seminars", ControllerName = "Training", RouteData = ViewContext.RouteData}
                                             })
+
     @Html.DropdownMenuSection(@GlobalRes.Media, new List<MenuSectionParameters>()
                                             {
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Articles, ActionName = "Articles", ControllerName = "Media", RouteData = ViewContext.RouteData},
@@ -43,7 +48,7 @@
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Photo, ActionName = "Photo", ControllerName = "Media", RouteData = ViewContext.RouteData},
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Video, ActionName = "Video", ControllerName = "Media", RouteData = ViewContext.RouteData}
                                             })
-    @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.Master, ActionName = "Master", ControllerName = "Home", RouteData = ViewContext.RouteData })
+
     @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.FeedBacks, ActionName = "Feedback", ControllerName = "Home", RouteData = ViewContext.RouteData })
     @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.Contacts, ActionName = "Contacts", ControllerName = "Home", RouteData = ViewContext.RouteData })
 </ul>
