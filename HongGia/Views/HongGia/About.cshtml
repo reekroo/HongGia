@@ -21,24 +21,36 @@
 <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
     <div class="col-md-12">
         @Html.CollapsiblePanel(new CollapsiblePanelParameters()
-           {
-               Header = "1111",
-               Text = "12412412515125251435"
-           })
+   {
+       Header = "1111",
+       Text = "12412412515125251435"
+   })
     </div>
 </div>
 
 <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
     <div class="col-md-12">
         @Html.CollapsiblePanel(new CollapsiblePanelParameters()
-           {
-               Header = "3333",
-               Text = "qwqfgsadgwegwe",
-               Image = new ImageParameters()
-               {
-                   Alt = "333",
-                   Src = "/Content/Images/download.svg"
-               }
-           })
+   {
+       Header = "3333",
+       Text = "qwqfgsadgwegwe",
+       Image = new ImageParameters()
+       {
+           Alt = "333",
+           Src = "/Content/Images/download.svg"
+       }
+   })
+    </div>
+</div>
+
+
+<div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+    <div class="col-md-12">
+        @Html.ListGroup(new List<FileParameters>()
+        {
+            new FileParameters() {Name = "1", Path = "/1"},
+            new FileParameters() {Name = "2", Path = "/2"},
+            new FileParameters() {Name = "3", Path = "/3"}
+        })
     </div>
 </div>

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-using HongGia.Core.Parameters;
+using HongGia.Core.Models;
 
 namespace HongGia.Models
 {
@@ -10,13 +9,7 @@ namespace HongGia.Models
         public IEnumerable<NewsViewModel> AllNews { get; set; }
     }
 
-    public class NewsViewModel
+    public class NewsViewModel : News
     {
-        public int Id { get; set; }
-        public string Text { get; set; }
-        public string Header { get; set; }
-        public DateTime Date { get; set; }
-        public ImageParameters Image { get; set; }
-        public string Language { get; set; }
     }
 }

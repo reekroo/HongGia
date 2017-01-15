@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+
+using HongGia.Core.Models;
+using HongGia.Core.Parameters;
+
 using HongGia.Models;
 
 namespace HongGia.Helpers
@@ -86,6 +90,67 @@ namespace HongGia.Helpers
             }
 
             return new MvcHtmlString(listTagBuilder.ToString());
+        }
+
+        #endregion
+
+        #region DownLoads
+
+        public static MvcHtmlString Group(this HtmlHelper htmlHelper, FileParameters parameter)
+        {
+            var linkTagBuilder = new TagBuilder("a");
+            var spanTagBuilder = new TagBuilder("span");
+            var iconTagBuilder = new TagBuilder("i");
+
+            linkTagBuilder.AddCssClass("list-group-item");
+            linkTagBuilder.MergeAttribute("href", parameter.Path);
+
+            spanTagBuilder.AddCssClass("pull-left");
+            spanTagBuilder.MergeAttribute("style", "margin-right: 10px");
+
+            iconTagBuilder.AddCssClass("glyphicon glyphicon-file");
+
+            spanTagBuilder.InnerHtml = iconTagBuilder.ToString();
+            linkTagBuilder.InnerHtml = spanTagBuilder.ToString() + parameter.Name;
+
+            return new MvcHtmlString(linkTagBuilder.ToString());
+        }
+
+        public static MvcHtmlString ListGroup(this HtmlHelper htmlHelper, IEnumerable<FileParameters> parameters)
+        {
+            var groupTagBuilder = new TagBuilder("div");
+            var headerLinkTagBuilder = new TagBuilder("a");
+            var spanTagBuilder = new TagBuilder("span");
+            var iconTagBuilder = new TagBuilder("i");
+            var scriptTagBuilder = new TagBuilder("script");
+
+            groupTagBuilder.AddCssClass("list-group");
+            headerLinkTagBuilder.AddCssClass("list-group-item active links");
+            headerLinkTagBuilder.MergeAttribute("href", "#");
+            spanTagBuilder.AddCssClass("pull-right");
+            iconTagBuilder.AddCssClass("glyphicon glyphicon-download-alt");
+
+            spanTagBuilder.InnerHtml = iconTagBuilder.ToString();
+            headerLinkTagBuilder.InnerHtml = "Download all files" + spanTagBuilder.ToString();
+            groupTagBuilder.InnerHtml = headerLinkTagBuilder.ToString();
+
+            foreach (var parameter in parameters)
+            {
+                groupTagBuilder.InnerHtml += Group(htmlHelper, parameter);
+            }
+
+            scriptTagBuilder.InnerHtml = "$('a.links').click(function(e) { e.preventDefault();";
+            
+            foreach (var parameter in parameters)
+            {
+                scriptTagBuilder.InnerHtml += "window.open('" + parameter.Path + "');";
+            }
+
+            scriptTagBuilder.InnerHtml += "});";
+
+            groupTagBuilder.InnerHtml += scriptTagBuilder.ToString();
+
+            return new MvcHtmlString(groupTagBuilder.ToString());
         }
 
         #endregion
