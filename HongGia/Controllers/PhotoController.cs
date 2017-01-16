@@ -30,7 +30,19 @@ namespace HongGia.Controllers
                 new Photo() {Id = 13, Name = "13", Path = "13", Categories = new List<string>() { "cat2" }},
                 new Photo() {Id = 14, Name = "14", Path = "14", Categories = new List<string>() { "cat2" }},
                 new Photo() {Id = 15, Name = "15", Path = "15", Categories = new List<string>() { "cat4" }},
-                new Photo() {Id = 16, Name = "16", Path = "16", Categories = new List<string>() { "cat4" }}
+                new Photo() {Id = 16, Name = "16", Path = "16", Categories = new List<string>() { "cat4" }},
+                new Photo() {Id = 17, Name = "17", Path = "17", Categories = new List<string>() { "cat1" }},
+                new Photo() {Id = 18, Name = "18", Path = "18", Categories = new List<string>() { "cat1" }},
+                new Photo() {Id = 19, Name = "19", Path = "19", Categories = new List<string>() { "cat1" }},
+                new Photo() {Id = 20, Name = "20", Path = "20", Categories = new List<string>() { "cat1" }},
+                new Photo() {Id = 21, Name = "21", Path = "21", Categories = new List<string>() { "cat1" }},
+                new Photo() {Id = 22, Name = "22", Path = "22", Categories = new List<string>() { "cat1" }},
+                new Photo() {Id = 23, Name = "23", Path = "23", Categories = new List<string>() { "cat1" }},
+                new Photo() {Id = 24, Name = "24", Path = "24", Categories = new List<string>() { "cat1" }},
+                new Photo() {Id = 25, Name = "25", Path = "25", Categories = new List<string>() { "cat1" }},
+                new Photo() {Id = 26, Name = "26", Path = "26", Categories = new List<string>() { "cat1" }},
+                new Photo() {Id = 27, Name = "27", Path = "27", Categories = new List<string>() { "cat1" }},
+                new Photo() {Id = 28, Name = "28", Path = "28", Categories = new List<string>() { "cat1" }}
             }
         };
 

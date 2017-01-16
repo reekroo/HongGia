@@ -12,6 +12,6 @@
                 (int)Html.ViewData["PageNum"],
                 (int)Html.ViewData["ItemCount"],
                 (int)Html.ViewData["PageSize"],
-                x => Url.Action("CategoryPhoto", new {categoty = @Model.Category, pageNum = x }))
+                x => Url.Action("CategoryPhoto", new { category = @Model.Category, pageNum = x }))
     </div>
 </div>
