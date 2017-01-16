@@ -1,0 +1,17 @@
+﻿@using HongGia.Helpers
+
+@model HongGia.Models.CategoryPhotoViewModel
+
+@{
+    ViewBag.Title = "Category Photo";
+}
+
+<div class="row" style="margin-top:20px; margin-bottom: 20px;">@*style*@
+    <div class="col-md-12 text-center">
+        @Html.PageLinks(
+                (int)Html.ViewData["PageNum"],
+                (int)Html.ViewData["ItemCount"],
+                (int)Html.ViewData["PageSize"],
+                x => Url.Action("CategoryPhoto", new {categoty = @Model.Category, pageNum = x }))
+    </div>
+</div>

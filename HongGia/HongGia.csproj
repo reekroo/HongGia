@@ -252,6 +252,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MediaController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\TrainingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -263,6 +264,7 @@
     <Compile Include="Helpers\SwitchLanguageHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\HomeViewModels.cs" />
+    <Compile Include="Models\PhotoViewModels.cs" />
     <Compile Include="Models\NewsViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -360,6 +362,8 @@
     <Content Include="Views\Home\Contacts.cshtml" />
     <Content Include="Views\News\AllNews.cshtml" />
     <Content Include="Views\News\News.cshtml" />
+    <Content Include="Views\Photo\AllPhoto.cshtml" />
+    <Content Include="Views\Photo\CategoryPhoto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
