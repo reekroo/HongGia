@@ -6,13 +6,13 @@
     ViewBag.Title = "All News Page";
 }
 
-<div class="row" style="margin-top:20px; margin-bottom: 20px;">@*style*@
+<div class="row row-margin">
     <div class="col-md-12">
         @Html.ListGroup(Model.AllNews)
     </div>
 </div>
 
-<div class="row" style="margin-top:20px; margin-bottom: 20px;">@*style*@
+<div class="row row-margin">
     <div class="col-md-12 text-center">
         @Html.PageLinks(
             (int)Html.ViewData["PageNum"], 

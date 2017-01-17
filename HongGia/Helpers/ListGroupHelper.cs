@@ -40,10 +40,8 @@ namespace HongGia.Helpers
             var listGroupTagBuilder = new TagBuilder("div");
 
             thumbnailTagBuilder.AddCssClass("thumbnail");
-            listGroupTagBuilder.AddCssClass("list-group");
-
-            listGroupTagBuilder.MergeAttribute("style", "margin-bottom: 0");
-
+            listGroupTagBuilder.AddCssClass("list-group margin-bottom-zero");
+            
             foreach (var parameter in parameters)
             {
                 listGroupTagBuilder.InnerHtml += Group(htmlHelper, parameter);
@@ -105,8 +103,7 @@ namespace HongGia.Helpers
             linkTagBuilder.AddCssClass("list-group-item");
             linkTagBuilder.MergeAttribute("href", parameter.Path);
 
-            spanTagBuilder.AddCssClass("pull-left");
-            spanTagBuilder.MergeAttribute("style", "margin-right: 10px");
+            spanTagBuilder.AddCssClass("pull-left margin-right-ten");
 
             iconTagBuilder.AddCssClass("glyphicon glyphicon-file");
 

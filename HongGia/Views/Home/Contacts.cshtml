@@ -3,24 +3,7 @@
     ViewBag.Title = "Contacts";
 }
 
-<style>
-    .google-maps {
-        position: relative;
-        padding-bottom: 75%;
-        overflow: hidden;
-    }
-
-    .google-maps iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100% !important;
-        height: 100% !important;
-    }
-</style>
-
-<div class="row" style="margin-top:20px; margin-bottom: 20px;">
-    @*style*@
+<div class="row row-margin">
     <div class="col-md-6">
         <div class="thumbnail">
             <div class="google-maps">
@@ -30,7 +13,7 @@
     </div>
 
     <div class="col-md-6">
-        <div class="thumbnail" style="margin-bottom: 10px">@*style*@
+        <div class="thumbnail thumbnail-margin">
             <div class="caption">
                 <h4>@GlobalRes.Phones :</h4>
 
@@ -40,7 +23,7 @@
             </div>
         </div>
 
-        <div class="thumbnail" style="margin-bottom: 10px">@*style*@
+        <div class="thumbnail thumbnail-margin">
             <div class="caption">
                 <h4>@GlobalRes.Emails :</h4>
 
@@ -49,7 +32,7 @@
             </div>
         </div>
 
-        <div class="thumbnail" style="margin-bottom: 10px">@*style*@
+        <div class="thumbnail thumbnail-margin">
             <div class="caption">
                 <h4>@GlobalRes.Address :</h4>
 

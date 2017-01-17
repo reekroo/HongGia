@@ -4,7 +4,7 @@
     ViewBag.Title = "All News Page";
 }
 
-<div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+<div class="row row-margin">
     <div class="col-md-12 text-center">
         <h3>@Model.Header <small>@Model.Date</small></h3>
     </div>
@@ -12,14 +12,14 @@
 
 @if (Model.Image != null)
 {
-    <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+    <div class="row row-margin">
         <div class="col-md-12 text-center">
-            <img src="@Model.Image.Src" alt="@Model.Image.Alt"/>
+            <img src="@Model.Image.Src" alt="@Model.Image.Alt" />
         </div>
     </div>
 }
 
-<div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+<div class="row row-margin">
     <div class="col-md-12 text-justify">
         <p>@Model.Text</p>
     </div>

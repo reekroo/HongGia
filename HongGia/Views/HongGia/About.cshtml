@@ -4,21 +4,7 @@
     ViewBag.Title = "View";
 }
 
-<style>
-    .panel-collapse-clickable {
-        cursor: pointer;
-    }
-
-    .panel-heading h4:hover {
-        cursor: pointer;
-    }
-
-    .img-responsive {
-        margin: 0 auto;
-    }
-</style>
-
-<div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+<div class="row row-margin">
     <div class="col-md-12">
         @Html.CollapsiblePanel(new CollapsiblePanelParameters()
    {
@@ -28,7 +14,7 @@
     </div>
 </div>
 
-<div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+<div class="row row-margin">
     <div class="col-md-12">
         @Html.CollapsiblePanel(new CollapsiblePanelParameters()
    {
@@ -44,7 +30,7 @@
 </div>
 
 
-<div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+<div class="row row-margin">
     <div class="col-md-12">
         @Html.ListGroup(new List<FileParameters>()
         {

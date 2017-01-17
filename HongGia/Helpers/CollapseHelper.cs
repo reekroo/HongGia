@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
@@ -29,7 +28,7 @@ namespace HongGia.Helpers
             panelTagBuilder.AddCssClass("panel panel-default");
             headerTagBuilder.AddCssClass("panel-heading");
 
-            titleTagBuilder.AddCssClass("panel-title");
+            titleTagBuilder.AddCssClass("panel-title collapsable-header");
             titleTagBuilder.MergeAttribute("data-toggle", "collapse");
             titleTagBuilder.MergeAttribute("href", "#" + parameters.Header.GetHashCode().ToString());
 
@@ -98,7 +97,7 @@ namespace HongGia.Helpers
             panelTagBuilder.AddCssClass("panel panel-default");
             headerTagBuilder.AddCssClass("panel-heading");
 
-            titleTagBuilder.AddCssClass("panel-title");
+            titleTagBuilder.AddCssClass("panel-title collapsable-header");
             titleTagBuilder.MergeAttribute("data-toggle", "collapse");
             titleTagBuilder.MergeAttribute("href", "#" + header.GetHashCode().ToString());
 
@@ -150,10 +149,8 @@ namespace HongGia.Helpers
             var firstRowTagBuilder = new TagBuilder("div");
             var secondRowTagBuilder = new TagBuilder("div");
 
-            firstRowTagBuilder.AddCssClass("row");
-            firstRowTagBuilder.MergeAttribute("style", "margin-top:20px; margin-bottom: 20px;");
-            secondRowTagBuilder.AddCssClass("row");
-            secondRowTagBuilder.MergeAttribute("style", "margin-top:20px; margin-bottom: 20px;");
+            firstRowTagBuilder.AddCssClass("row row-margin");
+            secondRowTagBuilder.AddCssClass("row row-margin");
 
             foreach (var parameter in parameters.Take(4).ToList())
             {

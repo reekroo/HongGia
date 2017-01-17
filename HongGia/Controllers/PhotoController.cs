@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+
 using HongGia.Core.Constants;
+using HongGia.Core.Controllers;
 using HongGia.Core.Models;
+
 using HongGia.Models;
 
 namespace HongGia.Controllers
 {
-    public class PhotoController : Controller
+    public class PhotoController : DefaultController
     {
 
         private AllPhotoViewModel temp = new AllPhotoViewModel()
