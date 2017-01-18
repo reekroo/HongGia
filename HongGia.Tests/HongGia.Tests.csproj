@@ -35,6 +35,10 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Moq, Version=4.1.1309.1617, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.1.1309.1617\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -86,6 +90,8 @@
     <Compile Include="Controllers\HongGiaControllerTest.cs" />
     <Compile Include="Controllers\MediaControllerTest.cs" />
     <Compile Include="Controllers\TrainingControllerTest.cs" />
+    <Compile Include="Helpers\CollapseHelperTest.cs" />
+    <Compile Include="Moks\Moks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -96,6 +102,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HongGia.Core\HongGia.Core.csproj">
+      <Project>{B8FF1929-0075-42E4-92E7-DA72DDC6DDF3}</Project>
+      <Name>HongGia.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HongGia\HongGia.csproj">
       <Project>{110836EE-D8A6-4782-8F3E-B158FE333C86}</Project>
       <Name>HongGia</Name>
