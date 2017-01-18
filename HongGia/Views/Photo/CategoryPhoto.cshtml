@@ -7,11 +7,23 @@
 }
 
 
+<link href="~/Content/jquery.fancybox.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.fancybox.js"></script>
+
 <div class="row row-margin">
-    <div class="col-md-12 text-center">
+    <div class="list-group gallery">
+
+        @foreach (var photo in @Model.CategoryPhoto)
+        {
+            <div class="col-md-3">
+                <a class="thumbnail fancybox  margin-bottom-ten" rel="ligthbox" href="@photo.Path">
+                    <img class="img-responsive" alt="@photo.Name" src="@photo.Path" />
+                </a>
+            </div>
+        }
+
     </div>
 </div>
-
 
 <div class="row row-margin">
     <div class="col-md-12 text-center">
@@ -22,3 +34,13 @@
                 x => Url.Action("CategoryPhoto", new { category = @Model.Category, pageNum = x }))
     </div>
 </div>
+
+
+<script>
+    $(document).ready(function () {
+        $(".fancybox").fancybox({
+            openEffect: "none",
+            closeEffect: "none"
+        });
+    });
+</script>
