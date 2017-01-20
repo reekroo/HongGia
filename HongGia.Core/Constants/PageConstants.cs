@@ -8,6 +8,8 @@
 
         public const int PageCategoriesPhotoSize = 16;
 
+        public const int PageVideoSize = 16;
+
         public const int PageIndexNewsSize = 4;
     }
 }

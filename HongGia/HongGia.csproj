@@ -264,6 +264,7 @@
     <Compile Include="Helpers\SwitchLanguageHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\HomeViewModels.cs" />
+    <Compile Include="Models\MediaViewModels.cs" />
     <Compile Include="Models\PhotoViewModels.cs" />
     <Compile Include="Models\NewsViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -275,6 +276,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ekko-lightbox.css" />
+    <Content Include="Content\ekko-lightbox.min.css" />
     <Content Include="Content\fancybox\blank.gif" />
     <Content Include="Content\fancybox\fancybox_buttons.png" />
     <Content Include="Content\fancybox\fancybox_loading%402x.gif" />
@@ -296,6 +299,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\ekko-lightbox.js" />
+    <Content Include="Scripts\ekko-lightbox.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -371,7 +376,6 @@
     <Content Include="Views\Directions\TaiChi.cshtml" />
     <Content Include="Views\Training\Online.cshtml" />
     <Content Include="Views\Training\Groups.cshtml" />
-    <Content Include="Views\Media\Photo.cshtml" />
     <Content Include="Views\Media\Books.cshtml" />
     <Content Include="Views\Media\Articles.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />

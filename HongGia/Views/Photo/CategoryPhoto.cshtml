@@ -7,8 +7,10 @@
 }
 
 
-<link href="~/Content/jquery.fancybox.css" rel="stylesheet" />
-<script src="~/Scripts/jquery.fancybox.js"></script>
+@*<link href="~/Content/jquery.fancybox.css" rel="stylesheet" />*@
+<link href="~/Content/ekko-lightbox.min.css" rel="stylesheet" />
+@*<script src="~/Scripts/jquery.fancybox.js"></script>*@
+<script src="~/Scripts/ekko-lightbox.min.js"></script>
 
 <div class="row row-margin">
     <div class="list-group gallery">
@@ -16,8 +18,12 @@
         @foreach (var photo in @Model.CategoryPhoto)
         {
             <div class="col-md-3">
-                <a class="thumbnail fancybox  margin-bottom-ten" rel="ligthbox" href="@photo.Path">
+                @*<a class="thumbnail fancybox  margin-bottom-ten" rel="ligthbox" href="@photo.Path">
                     <img class="img-responsive" alt="@photo.Name" src="@photo.Path" />
+                </a>*@
+                
+                <a href="@photo.Path" data-toggle="lightbox" data-gallery="example-gallery" class="thumbnail fancybox  margin-bottom-ten">
+                    <img class="img-fluid" alt="@photo.Name" src="@photo.Path" >
                 </a>
             </div>
         }
@@ -37,10 +43,14 @@
 
 
 <script>
-    $(document).ready(function () {
-        $(".fancybox").fancybox({
-            openEffect: "none",
-            closeEffect: "none"
-        });
+    //$(document).ready(function () {
+    //    $(".fancybox").fancybox({
+    //        openEffect: "none",
+    //        closeEffect: "none"
+    //    });
+    //});
+    $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
     });
 </script>

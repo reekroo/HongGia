@@ -18,12 +18,12 @@ namespace HongGia.Controllers
             Categories = new List<string>() { "cat1", "cat2", "cat3", "cat4", "cat5" },
             AllPhoto = new List<Photo>()
             {
-                new Photo() {Id = 1, Name = "1", Path = "1", Categories = new List<string>() { "cat1", "cat2", "cat3" }},
-                new Photo() {Id = 2, Name = "2", Path = "2", Categories = new List<string>() { "cat1", "cat2", "cat3" }},
-                new Photo() {Id = 3, Name = "3", Path = "3", Categories = new List<string>() { "cat1", "cat2", "cat3" }},
-                new Photo() {Id = 4, Name = "4", Path = "4", Categories = new List<string>() { "cat1" }},
-                new Photo() {Id = 5, Name = "5", Path = "5", Categories = new List<string>() { "cat1" }},
-                new Photo() {Id = 6, Name = "6", Path = "6", Categories = new List<string>() { "cat1" }},
+                new Photo() {Id = 1, Name = "1", Path = "https://www.aviary.com/img/photo-landscape.jpg", Categories = new List<string>() { "cat1", "cat2", "cat3" }},
+                new Photo() {Id = 2, Name = "2", Path = "http://static.bigstockphoto.com/images/homepage/2016_popular_photo_categories.jpg", Categories = new List<string>() { "cat1", "cat2", "cat3" }},
+                new Photo() {Id = 3, Name = "3", Path = "https://iso.500px.com/wp-content/uploads/2016/06/stock-photo-142869191-1-1500x1000.jpg", Categories = new List<string>() { "cat1", "cat2", "cat3" }},
+                new Photo() {Id = 4, Name = "4", Path = "https://lh3.googleusercontent.com/-jkGsCQ_VDm4/AAAAAAAAAAI/AAAAAAAAAAA/ZEhC2NmPfcw/photo.jpg", Categories = new List<string>() { "cat1" }},
+                new Photo() {Id = 5, Name = "5", Path = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRNcoFR6Sq-nv7-cPwmapzH62_KhmAeFFV7UHtjourdNwleyaTQ", Categories = new List<string>() { "cat1" }},
+                new Photo() {Id = 6, Name = "6", Path = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6oSBLS9DxvENlC-Mwoi72wNsa80Dr5mU2KEt5txnStztL8FLa", Categories = new List<string>() { "cat1" }},
                 new Photo() {Id = 7, Name = "7", Path = "7", Categories = new List<string>() { "cat1" }},
                 new Photo() {Id = 8, Name = "8", Path = "8", Categories = new List<string>() { "cat1" }},
                 new Photo() {Id = 9, Name = "9", Path = "9", Categories = new List<string>() { "cat1" }},

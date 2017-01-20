@@ -75,6 +75,7 @@
     <Compile Include="Models\FeedBack.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Photo.cs" />
+    <Compile Include="Models\Video.cs" />
     <Compile Include="Parameters\CollapsiblePanelParameters.cs" />
     <Compile Include="Parameters\FileParameters.cs" />
     <Compile Include="Parameters\ImageParameters.cs" />
