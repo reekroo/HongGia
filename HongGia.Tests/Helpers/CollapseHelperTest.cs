@@ -1,6 +1,5 @@
-﻿using System.Web.Mvc;
-using HongGia.Core.Models;
-using HongGia.Core.Parameters;
+﻿using HongGia.Core.Models;
+using HongGia.Core.Parameters.PartialElements;
 using HongGia.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -18,11 +17,56 @@ namespace HongGia.Tests.Helpers
 			string actualResult = CollapseHelper.CollapsiblePanel(htmlHelper, new CollapsiblePanelParameters()
 			{
 				Header = "1111",
-				Text = "12412412515125251435"
-			}).ToString();
+				HtmlText = "12412412515125251435"
+			}
+			).ToString();
 			
 			Assert.AreEqual(expectedResult, actualResult,  "Correct");
 
 		}
-}
+		[TestMethod]
+		public void CollapsiblePanelEmptyHeaderArguments()
+		{
+			var expectedResult = "";
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<Photo>(true, true);
+
+			string actualResult = CollapseHelper.CollapsiblePanel(htmlHelper, new CollapsiblePanelParameters()
+			{
+				Header = "",
+				HtmlText = ""
+			}).ToString();
+
+			Assert.AreEqual(expectedResult, actualResult, "Correct");
+
+		}
+
+		[TestMethod]
+		public void CollapsiblePanelNullHtmlTextArguments()
+		{
+			var expectedResult =
+			"<div class=\"panel-group\"><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title collapsable-header\" data-toggle=\"collapse\" href=\"#-444953022\"><a data-toggle=\"collapse\" href=\"#-444953022\">TestHeader</a><span class=\"pull-right panel-collapse--444953022\" data-toggle=\"collapse\" href=\"#-444953022\"><i class=\"glyphicon glyphicon-chevron-down\"></i></span></h4></div><div class=\"panel-collapse collapse\" id=\"-444953022\"><div class=\"panel-body\"></div></div></div><script>$(\"#-444953022\").on(\"hide.bs.collapse\", function() {$(\".panel-collapse--444953022\").find('i').removeClass(\"glyphicon-chevron-up\").addClass(\"glyphicon-chevron-down\");});$(\"#-444953022\").on(\"show.bs.collapse\", function() {$(\".panel-collapse--444953022\").find('i').removeClass(\"glyphicon-chevron-down\").addClass(\"glyphicon-chevron-up\");});</script></div>";
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<Photo>(true, true);
+
+			string actualResult = CollapseHelper.CollapsiblePanel(htmlHelper, new CollapsiblePanelParameters()
+			{
+				Header = "TestHeader",
+				
+			}).ToString();
+
+			Assert.AreEqual(expectedResult, actualResult, "Correct");
+
+		}
+
+		[TestMethod]
+		public void CollapsiblePanelNullArguments()
+		{
+			var expectedResult = "";
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<Photo>(true, true);
+
+			string actualResult = CollapseHelper.CollapsiblePanel(htmlHelper, new CollapsiblePanelParameters()).ToString();
+
+			Assert.AreEqual(expectedResult, actualResult, "Correct");
+
+		}
+	}
 }

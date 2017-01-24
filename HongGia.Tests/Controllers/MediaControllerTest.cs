@@ -35,19 +35,6 @@ namespace HongGia.Tests.Controllers
         }
 
         [TestMethod]
-        public void Photo()
-        {
-            // Arrange
-            MediaController controller = new MediaController();
-
-            // Act
-            ViewResult result = controller.Photo() as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
-        }
-
-        [TestMethod]
         public void Video()
         {
             // Arrange
