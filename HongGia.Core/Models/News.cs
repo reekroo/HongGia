@@ -1,6 +1,6 @@
 ﻿using System;
 
-using HongGia.Core.Parameters;
+using HongGia.Core.Parameters.Base;
 
 namespace HongGia.Core.Models
 {

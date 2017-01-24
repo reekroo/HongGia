@@ -2,7 +2,8 @@
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
-using HongGia.Core.Parameters;
+
+using HongGia.Core.Parameters.PartialElements;
 
 namespace HongGia.Helpers
 {

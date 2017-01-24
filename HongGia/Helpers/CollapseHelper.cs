@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
 using HongGia.Core.Models;
-using HongGia.Core.Parameters;
+using HongGia.Core.Parameters.PartialElements;
 
 namespace HongGia.Helpers
 {
@@ -67,7 +67,7 @@ namespace HongGia.Helpers
                 bodyTagBuilder.InnerHtml += imageTagBuilder.ToString();
             }
 
-            bodyTagBuilder.InnerHtml += parameters.Text;
+            bodyTagBuilder.InnerHtml += parameters.HtmlText;
 
             spanTagBuilder.InnerHtml = iconTagBuilder.ToString();
             titleTagBuilder.InnerHtml = linkTagBuilder.ToString() + spanTagBuilder.ToString();

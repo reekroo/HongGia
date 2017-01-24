@@ -3,7 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-using HongGia.Core.Parameters;
+using HongGia.Core.Parameters.PartialElements;
 
 namespace HongGia.Helpers
 {

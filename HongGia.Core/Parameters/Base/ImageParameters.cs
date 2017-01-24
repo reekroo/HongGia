@@ -1,4 +1,4 @@
-﻿namespace HongGia.Core.Parameters
+﻿namespace HongGia.Core.Parameters.Base
 {
     public class ImageParameters
     {

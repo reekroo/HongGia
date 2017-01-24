@@ -1,6 +1,6 @@
 ﻿using System.Web.Routing;
 
-namespace HongGia.Core.Parameters
+namespace HongGia.Core.Parameters.PartialElements
 {
     public class SwitchLanguageParameters
     {

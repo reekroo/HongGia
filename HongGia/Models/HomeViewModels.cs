@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 using HongGia.Core.Models;
-using HongGia.Core.Parameters;
+using HongGia.Core.Parameters.Base;
 
 namespace HongGia.Models
 {
