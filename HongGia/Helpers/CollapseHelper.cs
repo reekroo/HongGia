@@ -10,6 +10,8 @@ namespace HongGia.Helpers
 {
     public static class CollapseHelper
     {
+        #region Colllapsible Panel
+
         public static MvcHtmlString CollapsiblePanel(this HtmlHelper htmlHelper, CollapsiblePanelParameters parameters)
         {
             if (parameters == null)
@@ -84,6 +86,10 @@ namespace HongGia.Helpers
 
             return new MvcHtmlString(groupTagBuilder.ToString());
         }
+
+        #endregion
+
+        #region Colllapsible Photo Panel
 
         public static MvcHtmlString ColllapsiblePhotoPanel(this HtmlHelper htmlHelper, IEnumerable<Photo> parameters, string header)
         {
@@ -203,7 +209,7 @@ namespace HongGia.Helpers
 
             return col.ToString();
         }
-
+        
         private static string GetLink(HtmlHelper htmlHelper, string category)
         {
             var col = new TagBuilder("div");
@@ -212,13 +218,99 @@ namespace HongGia.Helpers
             col.AddCssClass("col-md-3");
             thumbnail.AddCssClass("thumbnail");
 
-            var link = htmlHelper.ActionLink("See More Photo", "CategoryPhoto", "Photo", routeValues:new { category }, htmlAttributes:new { @class = "btn btn-default"});
-            
+            var link = htmlHelper.ActionLink("See More Photo", "CategoryPhoto", "Photo", routeValues: new { category }, htmlAttributes: new { @class = "btn btn-default" });
+
             thumbnail.InnerHtml = link.ToString();
             col.InnerHtml = thumbnail.ToString();
 
             return col.ToString();
         }
+
+        #endregion
+        
+        #region Colllapsible Links List Panel
+
+        public static MvcHtmlString ColllapsibleArticleLinkListPanel(this HtmlHelper htmlHelper, IEnumerable<Article> parameters, string header)
+        {
+            if (parameters == null || parameters.Count() == 0)
+            {
+                return new MvcHtmlString(string.Empty);
+            }
+
+            if (string.IsNullOrEmpty(header) == true)
+            {
+                return new MvcHtmlString(string.Empty);
+            }
+
+            var groupTagBuilder = new TagBuilder("div");
+            var panelTagBuilder = new TagBuilder("div");
+            var headerTagBuilder = new TagBuilder("div");
+            var titleTagBuilder = new TagBuilder("h4");
+            var linkTagBuilder = new TagBuilder("a");
+            var collapseTagBuilder = new TagBuilder("div");
+            var bodyTagBuilder = new TagBuilder("div");
+            var spanTagBuilder = new TagBuilder("span");
+            var iconTagBuilder = new TagBuilder("i");
+            var scriptTagBuilder = new TagBuilder("script");
+
+            groupTagBuilder.AddCssClass("panel-group");
+            panelTagBuilder.AddCssClass("panel panel-default");
+            headerTagBuilder.AddCssClass("panel-heading");
+
+            titleTagBuilder.AddCssClass("panel-title collapsable-header");
+            titleTagBuilder.MergeAttribute("data-toggle", "collapse");
+            titleTagBuilder.MergeAttribute("href", "#" + header.GetHashCode().ToString());
+
+            linkTagBuilder.MergeAttribute("data-toggle", "collapse");
+            linkTagBuilder.MergeAttribute("href", "#" + header.GetHashCode().ToString());
+
+            spanTagBuilder.AddCssClass("pull-right panel-collapse-" + header.GetHashCode().ToString());
+            spanTagBuilder.MergeAttribute("data-toggle", "collapse");
+            spanTagBuilder.MergeAttribute("href", "#" + header.GetHashCode().ToString());
+
+            iconTagBuilder.AddCssClass("glyphicon glyphicon-chevron-down");
+
+            collapseTagBuilder.AddCssClass("panel-collapse collapse");
+            collapseTagBuilder.MergeAttribute("id", header.GetHashCode().ToString());
+
+            //bodyTagBuilder.AddCssClass("panel-body");
+
+            linkTagBuilder.InnerHtml = header;
+
+            bodyTagBuilder.InnerHtml = ArticleLinkList(htmlHelper, parameters);
+
+            spanTagBuilder.InnerHtml = iconTagBuilder.ToString();
+            titleTagBuilder.InnerHtml = linkTagBuilder.ToString() + spanTagBuilder.ToString();
+            headerTagBuilder.InnerHtml = titleTagBuilder.ToString();
+
+            collapseTagBuilder.InnerHtml = bodyTagBuilder.ToString();
+
+            panelTagBuilder.InnerHtml = headerTagBuilder.ToString() + collapseTagBuilder.ToString();
+            groupTagBuilder.InnerHtml = panelTagBuilder.ToString();
+
+            scriptTagBuilder.InnerHtml = GetScript(header);
+
+            groupTagBuilder.InnerHtml += scriptTagBuilder.ToString();
+            
+            return new MvcHtmlString(groupTagBuilder.ToString());
+        }
+
+        private static string ArticleLinkList(this HtmlHelper htmlHelper, IEnumerable<Article> parameters)
+        {
+            var listGroupTagBuilder = new TagBuilder("div");
+            listGroupTagBuilder.AddCssClass("list-group margin-bottom-zero");
+
+            foreach (var parameter in parameters)
+            {
+                var link = htmlHelper.ActionLink(parameter.Header, "Article", "Article", routeValues: new { @id = parameter.Id }, htmlAttributes: new { @class= "list-group-item" });
+                
+                listGroupTagBuilder.InnerHtml += link.ToString();
+            }
+
+            return listGroupTagBuilder.ToString();
+        }
+
+        #endregion
 
         private static string GetScript(string parameter)
         {
