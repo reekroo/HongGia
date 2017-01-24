@@ -12,6 +12,16 @@ namespace HongGia.Helpers
     {
         public static MvcHtmlString CollapsiblePanel(this HtmlHelper htmlHelper, CollapsiblePanelParameters parameters)
         {
+            if (parameters == null)
+            {
+                return new MvcHtmlString(string.Empty);
+            }
+
+            if (string.IsNullOrEmpty(parameters.Header) == true)
+            {
+                return new MvcHtmlString(string.Empty);
+            }
+
             var groupTagBuilder = new TagBuilder("div");
             var panelTagBuilder = new TagBuilder("div");
             var headerTagBuilder = new TagBuilder("div");
@@ -79,9 +89,14 @@ namespace HongGia.Helpers
         {
             if (parameters == null || parameters.Count() == 0)
             {
-                return new MvcHtmlString("");
+                return new MvcHtmlString(string.Empty);
             }
-            
+
+            if (string.IsNullOrEmpty(header) == true)
+            {
+                return new MvcHtmlString(string.Empty);
+            }
+
             var groupTagBuilder = new TagBuilder("div");
             var panelTagBuilder = new TagBuilder("div");
             var headerTagBuilder = new TagBuilder("div");
