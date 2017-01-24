@@ -8,4 +8,9 @@ namespace HongGia.Models
     {
         public IEnumerable<Video> AllVideo { get; set; }
     }
+
+    public class BooksViewModel
+    {
+        public IEnumerable<Book> AllBooks { get; set; }
+    }
 }

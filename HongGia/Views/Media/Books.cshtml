@@ -1,7 +1,20 @@
-﻿
+﻿@using HongGia.App_LocalResources
+@using HongGia.Helpers
+
+@model HongGia.Models.BooksViewModel
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Books";
 }
 
-<h2>Index</h2>
+<div class="row row-margin">
+    <div class="col-md-12">
+        <h2>@GlobalRes.Books :</h2>
+    </div>
+</div>
 
+<div class="row row-margin">
+    <div class="col-md-12">
+        @Html.ListGroup(@Model.AllBooks)
+    </div>
+</div>
