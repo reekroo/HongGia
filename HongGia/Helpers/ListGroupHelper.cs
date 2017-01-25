@@ -52,7 +52,7 @@ namespace HongGia.Helpers
 		public static MvcHtmlString ListGroup(this HtmlHelper htmlHelper, IEnumerable<News> parameters)
 		{
 
-			if (parameters == null|| parameters.Count() == 0)
+			if (parameters == null || parameters.Count() == 0)
 			{
 				return new MvcHtmlString(string.Empty);
 			}
@@ -79,6 +79,21 @@ namespace HongGia.Helpers
 
 		public static MvcHtmlString Group(this HtmlHelper htmlHelper, FeedBack parameter)
 		{
+			if (parameter == null)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
+
+			if (string.IsNullOrEmpty(parameter.Text) == true
+ 			  || string.IsNullOrEmpty(parameter.Email) == true
+			  || string.IsNullOrEmpty(parameter.Date.ToString()) == true
+			  || string.IsNullOrEmpty(parameter.Language) == true
+			  || string.IsNullOrEmpty(parameter.Name) == true
+			  || string.IsNullOrEmpty(parameter.Id.ToString()) == true)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
+
 			var groupTagBuilder = new TagBuilder("div");
 			var textTagBuilder = new TagBuilder("p");
 			var commenterTagBuilder = new TagBuilder("p");
@@ -101,6 +116,11 @@ namespace HongGia.Helpers
 
 		public static MvcHtmlString ListGroup(this HtmlHelper htmlHelper, IEnumerable<FeedBack> parameters)
 		{
+			if (parameters == null || parameters.Count() == 0)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
+
 			var listTagBuilder = new TagBuilder("div");
 
 			foreach (var parameter in parameters)
@@ -117,6 +137,17 @@ namespace HongGia.Helpers
 
 		public static MvcHtmlString Group(this HtmlHelper htmlHelper, FileParameters parameter)
 		{
+			if (parameter == null)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
+
+			if (string.IsNullOrEmpty(parameter.Name) == true
+ 			  || string.IsNullOrEmpty(parameter.Path) == true)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
+
 			var linkTagBuilder = new TagBuilder("a");
 			var spanTagBuilder = new TagBuilder("span");
 			var iconTagBuilder = new TagBuilder("i");
@@ -136,6 +167,12 @@ namespace HongGia.Helpers
 
 		public static MvcHtmlString ListGroup(this HtmlHelper htmlHelper, IEnumerable<FileParameters> parameters)
 		{
+
+			if (parameters == null || parameters.Count() == 0)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
+
 			var groupTagBuilder = new TagBuilder("div");
 			var headerLinkTagBuilder = new TagBuilder("a");
 			var spanTagBuilder = new TagBuilder("span");
