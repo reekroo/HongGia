@@ -343,7 +343,6 @@ namespace HongGia.Tests.Helpers
 		}
 
 		#endregion
-
 		#region DownLoads
 		[TestMethod]
 		public void ListGroupHelperDownLoadsGroup()

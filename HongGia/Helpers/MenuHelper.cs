@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Linq;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 
@@ -11,7 +12,20 @@ namespace HongGia.Helpers
     {
         public static MvcHtmlString MenuSection(this HtmlHelper htmlHelper, MenuSectionParameters parameters)
         {
-            var liTagBuilder = new TagBuilder("li");
+			if (parameters == null)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
+
+			if (string.IsNullOrEmpty(parameters.ActionName) == true||
+			  string.IsNullOrEmpty(parameters.ControllerName) == true ||
+			  string.IsNullOrEmpty(parameters.LinkText) == true ||
+			  parameters.RouteData == null )
+			{
+				return new MvcHtmlString(string.Empty);
+			}
+
+			var liTagBuilder = new TagBuilder("li");
 
             var link = htmlHelper.ActionLink(parameters.LinkText, parameters.ActionName, parameters.ControllerName);
 
@@ -27,7 +41,12 @@ namespace HongGia.Helpers
 
         public static MvcHtmlString DropdownMenuSection(this HtmlHelper htmlHelper, string dropdownName, IEnumerable<MenuSectionParameters> parameters)
         {
-            var liTagBuilder = new TagBuilder("li");
+			if (parameters == null || parameters.Count() == 0)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
+
+			var liTagBuilder = new TagBuilder("li");
             liTagBuilder.AddCssClass("dropdown");
             
             var aTagBuilder = new TagBuilder("a");
