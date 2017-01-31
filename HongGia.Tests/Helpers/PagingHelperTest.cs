@@ -51,5 +51,35 @@ namespace HongGia.Tests.Helpers
 			string actualResult = PagingHelper.PageLinks(htmlHelper, CurrentPage, itemCount, pageSize, pageUrl).ToString();
 			Assert.AreEqual(expectedResult, actualResult, "Correct");
 		}
+
+		[TestMethod]
+		public void PageLinksitemCount0()
+		{
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<News>(true, true);
+			int CurrentPage = 0;
+			int itemCount = 0;
+			int pageSize = 10;
+
+			var expectedResult = "<ul class=\"pagination \"><li class=\"active\"><a href=\"#\">«</a></li>\r\n<li><a href=\"Page1\">»</a></li>\r\n</ul>";
+
+			Func<int, string> pageUrl = i => "Page" + i;
+			string actualResult = PagingHelper.PageLinks(htmlHelper, CurrentPage, itemCount, pageSize, pageUrl).ToString();
+			Assert.AreEqual(expectedResult, actualResult, "Correct");
+		}
+
+		[TestMethod]
+		public void PageLinkspageSize0()
+		{
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<News>(true, true);
+			int CurrentPage = 0;
+			int itemCount = 10;
+			int pageSize = 0;
+
+			var expectedResult = "<ul class=\"pagination \"><li class=\"active\"><a href=\"#\">«</a></li>\r\n<li><a href=\"Page1\">»</a></li>\r\n</ul>";
+
+			Func<int, string> pageUrl = i => "Page" + i;
+			string actualResult = PagingHelper.PageLinks(htmlHelper, CurrentPage, itemCount, pageSize, pageUrl).ToString();
+			Assert.AreEqual(expectedResult, actualResult, "Correct");
+		}
 	}
 }
