@@ -289,6 +289,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Feedback_LanguageId">
+          <End Role="Language" Type="Self.Language" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Files_PageContent">
           <End Role="PageContent" Type="Self.PageContent" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -342,6 +356,20 @@
             </Principal>
             <Dependent Role="Image">
               <PropertyRef Name="PageContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_LanguageId">
+          <End Role="Language" Type="Self.Language" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="LanguageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -419,6 +447,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Topic_TopicType">
+          <End Role="TopicType" Type="Self.TopicType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Topic" Type="Self.Topic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TopicType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Topic">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_VideoCatigories_Catigory">
           <End Role="Catigory" Type="Self.Catigory" Multiplicity="1" />
           <End Role="VideoCatigory" Type="Self.VideoCatigory" Multiplicity="*" />
@@ -484,6 +526,10 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
           </AssociationSet>
+          <AssociationSet Name="FK_Feedback_LanguageId" Association="Self.FK_Feedback_LanguageId">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
           <AssociationSet Name="FK_Files_PageContent" Association="Self.FK_Files_PageContent">
             <End Role="PageContent" EntitySet="PageContent" />
             <End Role="File" EntitySet="File" />
@@ -499,6 +545,10 @@
           <AssociationSet Name="FK_Images_PageContent" Association="Self.FK_Images_PageContent">
             <End Role="PageContent" EntitySet="PageContent" />
             <End Role="Image" EntitySet="Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_LanguageId" Association="Self.FK_News_LanguageId">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="News" EntitySet="News" />
           </AssociationSet>
           <AssociationSet Name="FK_PageContentLanguages_Language" Association="Self.FK_PageContentLanguages_Language">
             <End Role="Language" EntitySet="Language" />
@@ -522,6 +572,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Topic_PageContent" Association="Self.FK_Topic_PageContent">
             <End Role="PageContent" EntitySet="PageContent" />
+            <End Role="Topic" EntitySet="Topic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Topic_TopicType" Association="Self.FK_Topic_TopicType">
+            <End Role="TopicType" EntitySet="TopicType" />
             <End Role="Topic" EntitySet="Topic" />
           </AssociationSet>
           <AssociationSet Name="FK_VideoCatigories_Catigory" Association="Self.FK_VideoCatigories_Catigory">
@@ -697,6 +751,18 @@
             <End Role="Firm" EntitySet="Firms" />
             <End Role="FirmContact" EntitySet="FirmContacts" />
           </AssociationSet>
+          <AssociationSet Name="FK_News_LanguageId" Association="Model.FK_News_LanguageId">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedback_LanguageId" Association="Model.FK_Feedback_LanguageId">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Topic_TopicType" Association="Model.FK_Topic_TopicType">
+            <End Role="TopicType" EntitySet="TopicTypes" />
+            <End Role="Topic" EntitySet="Topics" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="File">
           <Key>
@@ -729,6 +795,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="PageContents" Relationship="Model.PageContentLanguages" FromRole="Language" ToRole="PageContent" />
+          <NavigationProperty Name="News" Relationship="Model.FK_News_LanguageId" FromRole="Language" ToRole="News" />
+          <NavigationProperty Name="Feedbacks" Relationship="Model.FK_Feedback_LanguageId" FromRole="Language" ToRole="Feedback" />
         </EntityType>
         <EntityType Name="Page">
           <Key>
@@ -812,6 +880,7 @@
           <Property Name="Position" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="PageContent" Relationship="Model.FK_Topic_PageContent" FromRole="Topic" ToRole="PageContent" />
+          <NavigationProperty Name="TopicType" Relationship="Model.FK_Topic_TopicType" FromRole="Topic" ToRole="TopicType" />
         </EntityType>
         <Association Name="FK_Topic_PageContent">
           <End Type="Model.PageContent" Role="PageContent" Multiplicity="1" />
@@ -845,6 +914,7 @@
           <Property Name="AuthorName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="AuthorMail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Language" Relationship="Model.FK_Feedback_LanguageId" FromRole="Feedback" ToRole="Language" />
         </EntityType>
         <EntityType Name="News">
           <Key>
@@ -856,6 +926,7 @@
           <Property Name="Header" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="HTMLText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Language" Relationship="Model.FK_News_LanguageId" FromRole="News" ToRole="Language" />
         </EntityType>
         <EntityType Name="Photo">
           <Key>
@@ -874,6 +945,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Topics" Relationship="Model.FK_Topic_TopicType" FromRole="TopicType" ToRole="Topic" />
         </EntityType>
         <Association Name="PhotoCatigories">
           <End Type="Model.Catigory" Role="Catigory" Multiplicity="*" />
@@ -954,6 +1026,48 @@
             </Principal>
             <Dependent Role="FirmContact">
               <PropertyRef Name="FirmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_LanguageId">
+          <End Type="Model.Language" Role="Language" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.News" Role="News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedback_LanguageId">
+          <End Type="Model.Language" Role="Language" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.Feedback" Role="Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Topic_TopicType">
+          <End Type="Model.TopicType" Role="TopicType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.Topic" Role="Topic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TopicType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Topic">
+              <PropertyRef Name="TypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

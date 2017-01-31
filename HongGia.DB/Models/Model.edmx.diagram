@@ -14,7 +14,7 @@
         <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="Model.AspNetUserRoles" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Model.File" Width="1.5" PointX="3" PointY="9.125" />
-        <EntityTypeShape EntityType="Model.Image" Width="1.5" PointX="5.25" PointY="7.625" />
+        <EntityTypeShape EntityType="Model.Image" Width="1.5" PointX="5.25" PointY="7.875" />
         <EntityTypeShape EntityType="Model.Language" Width="1.5" PointX="5.25" PointY="5.625" />
         <EntityTypeShape EntityType="Model.Page" Width="1.5" PointX="0.5" PointY="5.625" />
         <EntityTypeShape EntityType="Model.PageContent" Width="1.5" PointX="3" PointY="5.625" />
@@ -24,19 +24,22 @@
         <AssociationConnector Association="Model.PageContentLanguages" />
         <EntityTypeShape EntityType="Model.Topic" Width="1.5" PointX="0.5" PointY="8" />
         <AssociationConnector Association="Model.FK_Topic_PageContent" />
-        <EntityTypeShape EntityType="Model.Catigory" Width="1.5" PointX="7.375" PointY="8" />
+        <EntityTypeShape EntityType="Model.Catigory" Width="1.5" PointX="7.375" PointY="8.25" />
         <EntityTypeShape EntityType="Model.Feedback" Width="1.5" PointX="7.375" PointY="5.625" />
-        <EntityTypeShape EntityType="Model.News" Width="1.5" PointX="9.625" PointY="5.625" />
-        <EntityTypeShape EntityType="Model.Photo" Width="1.5" PointX="9.625" PointY="8" />
-        <EntityTypeShape EntityType="Model.TopicType" Width="1.5" PointX="0.5" PointY="10.875" />
+        <EntityTypeShape EntityType="Model.News" Width="1.5" PointX="9.625" PointY="5.125" />
+        <EntityTypeShape EntityType="Model.Photo" Width="1.5" PointX="9.625" PointY="7.75" />
+        <EntityTypeShape EntityType="Model.TopicType" Width="1.5" PointX="0.5" PointY="11.25" />
         <AssociationConnector Association="Model.PhotoCatigories" />
-        <EntityTypeShape EntityType="Model.Video" Width="1.5" PointX="9.625" PointY="10.375" />
+        <EntityTypeShape EntityType="Model.Video" Width="1.5" PointX="9.625" PointY="10.25" />
         <AssociationConnector Association="Model.VideoCatigory" />
-        <EntityTypeShape EntityType="Model.Firm" Width="1.5" PointX="0.5" PointY="12.75" />
-        <EntityTypeShape EntityType="Model.FirmAddress" Width="1.5" PointX="4.875" PointY="11.5" />
-        <EntityTypeShape EntityType="Model.FirmContact" Width="1.5" PointX="3" PointY="11.875" />
+        <EntityTypeShape EntityType="Model.Firm" Width="1.5" PointX="3" PointY="12" />
+        <EntityTypeShape EntityType="Model.FirmAddress" Width="1.5" PointX="5.25" PointY="10.75" />
+        <EntityTypeShape EntityType="Model.FirmContact" Width="1.5" PointX="7.5" PointY="11.75" />
         <AssociationConnector Association="Model.FK_FirmAddresses_Firm" />
         <AssociationConnector Association="Model.FK_FirmContacts_Firm" />
+        <AssociationConnector Association="Model.FK_News_LanguageId" />
+        <AssociationConnector Association="Model.FK_Feedback_LanguageId" />
+        <AssociationConnector Association="Model.FK_Topic_TopicType" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -20,5 +20,7 @@ namespace HongGia.DB.Models
         public string AuthorName { get; set; }
         public string AuthorMail { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
+    
+        public virtual Language Language { get; set; }
     }
 }

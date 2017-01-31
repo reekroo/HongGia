@@ -23,5 +23,6 @@ namespace HongGia.DB.Models
         public Nullable<System.DateTime> Date { get; set; }
     
         public virtual PageContent PageContent { get; set; }
+        public virtual TopicType TopicType { get; set; }
     }
 }

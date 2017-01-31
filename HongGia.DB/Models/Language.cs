@@ -18,6 +18,8 @@ namespace HongGia.DB.Models
         public Language()
         {
             this.PageContents = new HashSet<PageContent>();
+            this.News = new HashSet<News>();
+            this.Feedbacks = new HashSet<Feedback>();
         }
     
         public int Id { get; set; }
@@ -25,5 +27,9 @@ namespace HongGia.DB.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PageContent> PageContents { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<News> News { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Feedback> Feedbacks { get; set; }
     }
 }
