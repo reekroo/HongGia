@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 using HongGia.Core.Models;
@@ -8,158 +9,215 @@ using HongGia.Models;
 
 namespace HongGia.Helpers
 {
-    public static class ListGroupHelper
-    {
-        #region News
+	public static class ListGroupHelper
+	{
+		#region News
 
-        public static MvcHtmlString Group(this HtmlHelper htmlHelper, NewsViewModel parameter)
-        {
-            var linkTagBuilder = new TagBuilder("a");
-            var headerTagBuilder = new TagBuilder("h4");
-            var textTagBuilder = new TagBuilder("p");
-            var dateTagBuilder = new TagBuilder("p");
+		public static MvcHtmlString Group(this HtmlHelper htmlHelper, News parameter)
+		{
+			if (parameter == null)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
 
-            linkTagBuilder.AddCssClass("list-group-item list-group-item-action");
-            headerTagBuilder.AddCssClass("list-group-item-heading text");
-            textTagBuilder.AddCssClass("list-group-item-text");
-            dateTagBuilder.AddCssClass("list-group-item-text text-right");
+			if (string.IsNullOrEmpty(parameter.Text) == true
+ 			  || string.IsNullOrEmpty(parameter.Header) == true
+			  || string.IsNullOrEmpty(parameter.Date.ToString()) == true
+			  || string.IsNullOrEmpty(parameter.Language) == true
+			  || string.IsNullOrEmpty(parameter.Id.ToString()) == true)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
 
-            linkTagBuilder.MergeAttribute("href", GetLink(parameter.Id, parameter.Language));
-            headerTagBuilder.SetInnerText(parameter.Header);
-            textTagBuilder.SetInnerText(parameter.Text);
-            dateTagBuilder.SetInnerText(parameter.Date.ToString("d"));
+			var linkTagBuilder = new TagBuilder("a");
+			var headerTagBuilder = new TagBuilder("h4");
+			var textTagBuilder = new TagBuilder("p");
+			var dateTagBuilder = new TagBuilder("p");
 
-            linkTagBuilder.InnerHtml = headerTagBuilder.ToString() + textTagBuilder.ToString() + dateTagBuilder.ToString();
+			linkTagBuilder.AddCssClass("list-group-item list-group-item-action");
+			headerTagBuilder.AddCssClass("list-group-item-heading text");
+			textTagBuilder.AddCssClass("list-group-item-text");
+			dateTagBuilder.AddCssClass("list-group-item-text text-right");
 
-            return new MvcHtmlString(linkTagBuilder.ToString());
-        }
+			linkTagBuilder.MergeAttribute("href", GetLink(parameter.Id, parameter.Language));
+			headerTagBuilder.SetInnerText(parameter.Header);
+			textTagBuilder.SetInnerText(parameter.Text);
+			dateTagBuilder.SetInnerText(parameter.Date.ToString("d"));
 
-        public static MvcHtmlString ListGroup(this HtmlHelper htmlHelper, IEnumerable<NewsViewModel> parameters)
-        {
-            var thumbnailTagBuilder = new TagBuilder("div");
-            var listGroupTagBuilder = new TagBuilder("div");
+			linkTagBuilder.InnerHtml = headerTagBuilder.ToString() + textTagBuilder.ToString() + dateTagBuilder.ToString();
 
-            thumbnailTagBuilder.AddCssClass("thumbnail");
-            listGroupTagBuilder.AddCssClass("list-group margin-bottom-zero");
-            
-            foreach (var parameter in parameters)
-            {
-                listGroupTagBuilder.InnerHtml += Group(htmlHelper, parameter);
-            }
+			return new MvcHtmlString(linkTagBuilder.ToString());
+		}
 
-            thumbnailTagBuilder.InnerHtml = listGroupTagBuilder.ToString();
+		public static MvcHtmlString ListGroup(this HtmlHelper htmlHelper, IEnumerable<News> parameters)
+		{
 
-            return new MvcHtmlString(thumbnailTagBuilder.ToString());
-        }
+			if (parameters == null || parameters.Count() == 0)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
 
-        #endregion
+			var thumbnailTagBuilder = new TagBuilder("div");
+			var listGroupTagBuilder = new TagBuilder("div");
 
-        #region FeedBacks
+			thumbnailTagBuilder.AddCssClass("thumbnail");
+			listGroupTagBuilder.AddCssClass("list-group margin-bottom-zero");
 
-        public static MvcHtmlString Group(this HtmlHelper htmlHelper, FeedBack parameter)
-        {
-            var groupTagBuilder = new TagBuilder("div");
-            var textTagBuilder = new TagBuilder("p");
-            var commenterTagBuilder = new TagBuilder("p");
-            var authorImgTagBuilder = new TagBuilder("i");
-            var dateImgTagBuilder = new TagBuilder("i");
+			foreach (var parameter in parameters)
+			{
+				listGroupTagBuilder.InnerHtml += Group(htmlHelper, parameter);
+			}
 
-            groupTagBuilder.AddCssClass("feetback");
-            textTagBuilder.AddCssClass("text-justify");
-            commenterTagBuilder.AddCssClass("text-right");
-            authorImgTagBuilder.AddCssClass("glyphicon glyphicon-user");
-            dateImgTagBuilder.AddCssClass("glyphicon glyphicon-calendar");
+			thumbnailTagBuilder.InnerHtml = listGroupTagBuilder.ToString();
 
-            textTagBuilder.InnerHtml = parameter.Text;
-            commenterTagBuilder.InnerHtml = authorImgTagBuilder + " " + parameter.Name + " / " + dateImgTagBuilder + " " + parameter.Date.ToString("d");
+			return new MvcHtmlString(thumbnailTagBuilder.ToString());
+		}
 
-            groupTagBuilder.InnerHtml = textTagBuilder.ToString() + commenterTagBuilder.ToString();
+		#endregion
 
-            return new MvcHtmlString(groupTagBuilder.ToString());
-        }
+		#region FeedBacks
 
-        public static MvcHtmlString ListGroup(this HtmlHelper htmlHelper, IEnumerable<FeedBack> parameters)
-        {
-            var listTagBuilder = new TagBuilder("div");
-            
-            foreach (var parameter in parameters)
-            {
-                listTagBuilder.InnerHtml += Group(htmlHelper, parameter);
-            }
+		public static MvcHtmlString Group(this HtmlHelper htmlHelper, FeedBack parameter)
+		{
+			if (parameter == null)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
 
-            return new MvcHtmlString(listTagBuilder.ToString());
-        }
+			if (string.IsNullOrEmpty(parameter.Text) == true
+ 			  || string.IsNullOrEmpty(parameter.Email) == true
+			  || string.IsNullOrEmpty(parameter.Date.ToString()) == true
+			  || string.IsNullOrEmpty(parameter.Language) == true
+			  || string.IsNullOrEmpty(parameter.Name) == true
+			  || string.IsNullOrEmpty(parameter.Id.ToString()) == true)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
 
-        #endregion
+			var groupTagBuilder = new TagBuilder("div");
+			var textTagBuilder = new TagBuilder("p");
+			var commenterTagBuilder = new TagBuilder("p");
+			var authorImgTagBuilder = new TagBuilder("i");
+			var dateImgTagBuilder = new TagBuilder("i");
 
-        #region DownLoads
+			groupTagBuilder.AddCssClass("feetback");
+			textTagBuilder.AddCssClass("text-justify");
+			commenterTagBuilder.AddCssClass("text-right");
+			authorImgTagBuilder.AddCssClass("glyphicon glyphicon-user");
+			dateImgTagBuilder.AddCssClass("glyphicon glyphicon-calendar");
 
-        public static MvcHtmlString Group(this HtmlHelper htmlHelper, FileParameters parameter)
-        {
-            var linkTagBuilder = new TagBuilder("a");
-            var spanTagBuilder = new TagBuilder("span");
-            var iconTagBuilder = new TagBuilder("i");
+			textTagBuilder.InnerHtml = parameter.Text;
+			commenterTagBuilder.InnerHtml = authorImgTagBuilder + " " + parameter.Name + " / " + dateImgTagBuilder + " " + parameter.Date.ToString("d");
 
-            linkTagBuilder.AddCssClass("list-group-item");
-            linkTagBuilder.MergeAttribute("href", parameter.Path);
+			groupTagBuilder.InnerHtml = textTagBuilder.ToString() + commenterTagBuilder.ToString();
 
-            spanTagBuilder.AddCssClass("pull-left margin-right-ten");
+			return new MvcHtmlString(groupTagBuilder.ToString());
+		}
 
-            iconTagBuilder.AddCssClass("glyphicon glyphicon-file");
+		public static MvcHtmlString ListGroup(this HtmlHelper htmlHelper, IEnumerable<FeedBack> parameters)
+		{
+			if (parameters == null || parameters.Count() == 0)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
 
-            spanTagBuilder.InnerHtml = iconTagBuilder.ToString();
-            linkTagBuilder.InnerHtml = spanTagBuilder.ToString() + parameter.Name;
+			var listTagBuilder = new TagBuilder("div");
 
-            return new MvcHtmlString(linkTagBuilder.ToString());
-        }
+			foreach (var parameter in parameters)
+			{
+				listTagBuilder.InnerHtml += Group(htmlHelper, parameter);
+			}
 
-        public static MvcHtmlString ListGroup(this HtmlHelper htmlHelper, IEnumerable<FileParameters> parameters)
-        {
-            var groupTagBuilder = new TagBuilder("div");
-            var headerLinkTagBuilder = new TagBuilder("a");
-            var spanTagBuilder = new TagBuilder("span");
-            var iconTagBuilder = new TagBuilder("i");
-            var scriptTagBuilder = new TagBuilder("script");
+			return new MvcHtmlString(listTagBuilder.ToString());
+		}
 
-            groupTagBuilder.AddCssClass("list-group");
-            headerLinkTagBuilder.AddCssClass("list-group-item active links");
-            headerLinkTagBuilder.MergeAttribute("href", "#");
-            spanTagBuilder.AddCssClass("pull-right");
-            iconTagBuilder.AddCssClass("glyphicon glyphicon-download-alt");
+		#endregion
 
-            spanTagBuilder.InnerHtml = iconTagBuilder.ToString();
-            headerLinkTagBuilder.InnerHtml = "Download all files" + spanTagBuilder.ToString();
-            groupTagBuilder.InnerHtml = headerLinkTagBuilder.ToString();
+		#region DownLoads
 
-            foreach (var parameter in parameters)
-            {
-                groupTagBuilder.InnerHtml += Group(htmlHelper, parameter);
-            }
+		public static MvcHtmlString Group(this HtmlHelper htmlHelper, FileParameters parameter)
+		{
+			if (parameter == null)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
 
-            scriptTagBuilder.InnerHtml = "$('a.links').click(function(e) { e.preventDefault();";
-            
-            foreach (var parameter in parameters)
-            {
-                scriptTagBuilder.InnerHtml += "window.open('" + parameter.Path + "');";
-            }
+			if (string.IsNullOrEmpty(parameter.Name) == true
+ 			  || string.IsNullOrEmpty(parameter.Path) == true)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
 
-            scriptTagBuilder.InnerHtml += "});";
+			var linkTagBuilder = new TagBuilder("a");
+			var spanTagBuilder = new TagBuilder("span");
+			var iconTagBuilder = new TagBuilder("i");
 
-            groupTagBuilder.InnerHtml += scriptTagBuilder.ToString();
+			linkTagBuilder.AddCssClass("list-group-item");
+			linkTagBuilder.MergeAttribute("href", parameter.Path);
 
-            return new MvcHtmlString(groupTagBuilder.ToString());
-        }
+			spanTagBuilder.AddCssClass("pull-left margin-right-ten");
 
-        #endregion
-        
-        private static string GetLink(int id, string lang)
-        {
-            if (string.IsNullOrEmpty(lang))
-            {
-                return "/ru/News/News?id=" + id;
-            }
+			iconTagBuilder.AddCssClass("glyphicon glyphicon-file");
 
-            return "/" + lang + "/News/News?id=" + id;
-        }
-    }
-}  
+			spanTagBuilder.InnerHtml = iconTagBuilder.ToString();
+			linkTagBuilder.InnerHtml = spanTagBuilder.ToString() + parameter.Name;
+
+			return new MvcHtmlString(linkTagBuilder.ToString());
+		}
+
+		public static MvcHtmlString ListGroup(this HtmlHelper htmlHelper, IEnumerable<FileParameters> parameters)
+		{
+
+			if (parameters == null || parameters.Count() == 0)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
+
+			var groupTagBuilder = new TagBuilder("div");
+			var headerLinkTagBuilder = new TagBuilder("a");
+			var spanTagBuilder = new TagBuilder("span");
+			var iconTagBuilder = new TagBuilder("i");
+			var scriptTagBuilder = new TagBuilder("script");
+
+			groupTagBuilder.AddCssClass("list-group");
+			headerLinkTagBuilder.AddCssClass("list-group-item active links");
+			headerLinkTagBuilder.MergeAttribute("href", "#");
+			spanTagBuilder.AddCssClass("pull-right");
+			iconTagBuilder.AddCssClass("glyphicon glyphicon-download-alt");
+
+			spanTagBuilder.InnerHtml = iconTagBuilder.ToString();
+			headerLinkTagBuilder.InnerHtml = "Download all files" + spanTagBuilder.ToString();
+			groupTagBuilder.InnerHtml = headerLinkTagBuilder.ToString();
+
+			foreach (var parameter in parameters)
+			{
+				groupTagBuilder.InnerHtml += Group(htmlHelper, parameter);
+			}
+
+			scriptTagBuilder.InnerHtml = "$('a.links').click(function(e) { e.preventDefault();";
+
+			foreach (var parameter in parameters)
+			{
+				scriptTagBuilder.InnerHtml += "window.open('" + parameter.Path + "');";
+			}
+
+			scriptTagBuilder.InnerHtml += "});";
+
+			groupTagBuilder.InnerHtml += scriptTagBuilder.ToString();
+
+			return new MvcHtmlString(groupTagBuilder.ToString());
+		}
+
+		#endregion
+
+		private static string GetLink(int id, string lang)
+		{
+			if (string.IsNullOrEmpty(lang))
+			{
+				return "/ru/News/News?id=" + id;
+			}
+
+			return "/" + lang + "/News/News?id=" + id;
+		}
+	}
+}
