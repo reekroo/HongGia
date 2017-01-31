@@ -96,6 +96,7 @@
     <Compile Include="Helpers\ListGroupHelperTest.cs" />
     <Compile Include="Helpers\MenuHelperTest.cs" />
     <Compile Include="Helpers\PagingHelperTest.cs" />
+    <Compile Include="Helpers\SliderHelperTest.cs" />
     <Compile Include="Moks\Moks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />

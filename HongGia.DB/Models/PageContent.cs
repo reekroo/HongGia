@@ -19,8 +19,8 @@ namespace HongGia.DB.Models
         {
             this.Files = new HashSet<File>();
             this.Images = new HashSet<Image>();
-            this.Topics = new HashSet<Topic>();
             this.Languages = new HashSet<Language>();
+            this.Topics = new HashSet<Topic>();
         }
     
         public int Id { get; set; }
@@ -34,8 +34,8 @@ namespace HongGia.DB.Models
         public virtual ICollection<Image> Images { get; set; }
         public virtual Page Page { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Topic> Topics { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Language> Languages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Topic> Topics { get; set; }
     }
 }
