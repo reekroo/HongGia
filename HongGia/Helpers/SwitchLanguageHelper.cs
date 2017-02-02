@@ -11,7 +11,14 @@ namespace HongGia.Helpers
     {
         public static MvcHtmlString Switcher(this UrlHelper url, SwitchLanguageParameters parameter)
         {
-            var liTagBuilder = new TagBuilder("li");
+
+			if (parameter == null ||
+			  parameter.RouteData == null ||
+			  string.IsNullOrEmpty(parameter.Name) == true)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
+			var liTagBuilder = new TagBuilder("li");
             var aTagBuilder = new TagBuilder("a");
 
             var routeValueDictionary = new RouteValueDictionary(parameter.RouteData.Values);
@@ -38,7 +45,12 @@ namespace HongGia.Helpers
 
         public static MvcHtmlString DropdownSwitcher(this UrlHelper url, string name, IEnumerable<SwitchLanguageParameters> parameters)
         {
-            var liTagBuilder = new TagBuilder("li");
+			if (parameters == null ||  parameters.Count()==0)
+			{
+				return new MvcHtmlString(string.Empty);
+			}
+
+			var liTagBuilder = new TagBuilder("li");
             liTagBuilder.AddCssClass("dropdown");
 
             var aTagBuilder = new TagBuilder("a");

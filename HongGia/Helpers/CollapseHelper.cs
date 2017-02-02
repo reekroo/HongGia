@@ -10,7 +10,7 @@ namespace HongGia.Helpers
 {
     public static class CollapseHelper
     {
-        #region Colllapsible Panel
+        #region Collapsible Panel
 
         public static MvcHtmlString CollapsiblePanel(this HtmlHelper htmlHelper, CollapsiblePanelParameters parameters)
         {
