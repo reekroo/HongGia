@@ -159,3 +159,4 @@ $RECYCLE.BIN/
 *.orig
 *.dll
 *.cache
+*.suo
