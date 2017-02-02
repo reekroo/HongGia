@@ -1,15 +1,12 @@
-﻿using System.Collections.Generic;
-
-using HongGia.Core.Models;
+﻿using HongGia.Core.Models.Views;
 
 namespace HongGia.Models
 {
-    public class AllNewsViewModel
+    public class AllNewsViewModel : AllNewsView
     {
-        public IEnumerable<NewsViewModel> AllNews { get; set; }
     }
 
-    public class NewsViewModel : News
+    public class NewsViewModel : NewsView
     {
     }
 }

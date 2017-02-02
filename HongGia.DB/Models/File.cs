@@ -14,6 +14,12 @@ namespace HongGia.DB.Models
     
     public partial class File
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public File()
+        {
+            this.Catigories = new HashSet<Catigory>();
+        }
+    
         public int Id { get; set; }
         public int PageContentId { get; set; }
         public string Name { get; set; }
@@ -22,5 +28,7 @@ namespace HongGia.DB.Models
         public Nullable<System.DateTime> Date { get; set; }
     
         public virtual PageContent PageContent { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Catigory> Catigories { get; set; }
     }
 }

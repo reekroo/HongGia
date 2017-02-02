@@ -29,5 +29,6 @@ namespace HongGia.DB.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Catigory> Catigories { get; set; }
+        public virtual Image Image { get; set; }
     }
 }

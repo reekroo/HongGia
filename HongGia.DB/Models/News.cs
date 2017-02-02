@@ -22,5 +22,6 @@ namespace HongGia.DB.Models
         public Nullable<System.DateTime> Date { get; set; }
     
         public virtual Language Language { get; set; }
+        public virtual Image Image { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using HongGia.Core.Models;
+using HongGia.Core.Models.Base;
 using HongGia.Core.Parameters.PartialElements;
 using HongGia.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

@@ -1,16 +1,12 @@
-﻿using System.Collections.Generic;
-
-using HongGia.Core.Models;
+﻿using HongGia.Core.Models.Views;
 
 namespace HongGia.Models
 {
-    public class VideoViewModel
+    public class VideoViewModel : VideoView
     {
-        public IEnumerable<Video> AllVideo { get; set; }
     }
 
-    public class BooksViewModel
+    public class BooksViewModel : BooksView
     {
-        public IEnumerable<Book> AllBooks { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using HongGia.Models;
 using HongGia.Core.Constants;
 using HongGia.Core.Controllers;
 using HongGia.Core.Models;
+using HongGia.Core.Models.Base;
 using HongGia.Core.Parameters.Base;
 
 namespace HongGia.Controllers

@@ -1,19 +1,12 @@
-﻿using System.Collections.Generic;
-
-using HongGia.Core.Models;
-using HongGia.Core.Parameters.Base;
+﻿using HongGia.Core.Models.Views;
 
 namespace HongGia.Models
 {
-    public class HomeViewModel
+    public class HomeViewModel : HomeView
     {
-        public IEnumerable<ImageParameters> SliderImages { get; set; }
-
-        public IEnumerable<NewsViewModel> TopNews { get; set; }
     }
     
-    public class FeedBackViewModel
+    public class FeedBackViewModel : FeedBackView
     {
-        public IEnumerable<FeedBack> FeedBacks { get; set; }
     }
 }

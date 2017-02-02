@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
 using HongGia.Core.Models;
+using HongGia.Core.Models.Base;
 using HongGia.Core.Parameters.PartialElements;
 
 namespace HongGia.Helpers

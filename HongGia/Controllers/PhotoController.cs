@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using HongGia.Core.Constants;
 using HongGia.Core.Controllers;
 using HongGia.Core.Models;
-
+using HongGia.Core.Models.Base;
 using HongGia.Models;
 
 namespace HongGia.Controllers

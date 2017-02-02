@@ -45,5 +45,6 @@ namespace HongGia.DB.Models
         public virtual DbSet<Firm> Firms { get; set; }
         public virtual DbSet<FirmAddress> FirmAddresses { get; set; }
         public virtual DbSet<FirmContact> FirmContacts { get; set; }
+        public virtual DbSet<Article> Articles { get; set; }
     }
 }

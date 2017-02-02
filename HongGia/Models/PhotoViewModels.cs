@@ -1,21 +1,12 @@
-﻿using System.Collections.Generic;
-
-using HongGia.Core.Models;
+﻿using HongGia.Core.Models.Views;
 
 namespace HongGia.Models
 {
-    public class AllPhotoViewModel
+    public class AllPhotoViewModel : AllPhotoView
     {
-        public IEnumerable<string> Categories { get; set; }
-
-        public IEnumerable<Photo> AllPhoto { get; set; }
     }
-
-
-    public class CategoryPhotoViewModel
+    
+    public class CategoryPhotoViewModel : CategoryPhotoView
     {
-        public string Category { get; set; }
-
-        public IEnumerable<Photo> CategoryPhoto { get; set; }
     }
 }

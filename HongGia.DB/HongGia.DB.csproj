@@ -74,6 +74,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Article.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AspNetRole.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -150,6 +153,12 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FeedbackService.cs" />
+    <Compile Include="Services\HomeService.cs" />
+    <Compile Include="Services\ArtircleService.cs" />
+    <Compile Include="Services\NewsServise.cs" />
+    <Compile Include="Services\MediaService.cs" />
+    <Compile Include="Services\PhotoService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -164,9 +173,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
@@ -193,6 +200,12 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HongGia.Core\HongGia.Core.csproj">
+      <Project>{b8ff1929-0075-42e4-92e7-da72ddc6ddf3}</Project>
+      <Name>HongGia.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

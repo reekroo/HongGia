@@ -14,6 +14,13 @@ namespace HongGia.DB.Models
     
     public partial class Image
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Image()
+        {
+            this.News = new HashSet<News>();
+            this.Videos = new HashSet<Video>();
+        }
+    
         public int Id { get; set; }
         public int PageContentId { get; set; }
         public string Name { get; set; }
@@ -22,5 +29,9 @@ namespace HongGia.DB.Models
         public Nullable<System.DateTime> Date { get; set; }
     
         public virtual PageContent PageContent { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<News> News { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Video> Videos { get; set; }
     }
 }

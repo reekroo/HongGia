@@ -1,6 +1,6 @@
 ﻿using HongGia.Core.Parameters.Base;
 
-namespace HongGia.Core.Models
+namespace HongGia.Core.Models.Base
 {
     public class Book : FileParameters
     {

@@ -12,24 +12,20 @@ namespace HongGia.DB.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Language
+    public partial class Article
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Language()
+        public Article()
         {
-            this.News = new HashSet<News>();
-            this.Feedbacks = new HashSet<Feedback>();
-            this.PageContents = new HashSet<PageContent>();
+            this.Catigories = new HashSet<Catigory>();
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Header { get; set; }
+        public string HTMLText { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<News> News { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Feedback> Feedbacks { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PageContent> PageContents { get; set; }
+        public virtual ICollection<Catigory> Catigories { get; set; }
     }
 }

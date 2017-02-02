@@ -1,18 +1,13 @@
-﻿using System.Collections.Generic;
-
-using HongGia.Core.Models;
+﻿using HongGia.Core.Models.Views;
 
 namespace HongGia.Models
 {
-    public class AllArticlesViewModel
+    public class AllArticlesViewModel : AllArticlesView
     {
-        public IEnumerable<string> Categories { get; set; }
-
-        public IEnumerable<Article> AllArticles { get; set; }
     }
 
 
-    public class ArticleViewModel : Article
+    public class ArticleViewModel : ArticleView
     {
     }
 }
