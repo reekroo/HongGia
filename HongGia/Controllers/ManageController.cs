@@ -2,11 +2,13 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using HongGia.Core.Controllers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+
 using HongGia.Models;
+
+using HongGia.Core.Controllers;
 
 namespace HongGia.Controllers
 {

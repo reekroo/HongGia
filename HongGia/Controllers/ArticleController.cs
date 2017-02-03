@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Web.Mvc;
 
-using HongGia.Core.Controllers;
-using HongGia.Core.Models;
-using HongGia.Core.Models.Base;
 using HongGia.Models;
+
+using HongGia.Core.Controllers;
+using HongGia.Core.Models.Base;
 
 namespace HongGia.Controllers
 {
