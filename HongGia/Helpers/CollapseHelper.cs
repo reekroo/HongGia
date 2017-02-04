@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
-
+using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Models.Base;
 using HongGia.Core.Parameters.PartialElements;
 
@@ -230,7 +230,7 @@ namespace HongGia.Helpers
         
         #region Colllapsible Links List Panel
 
-        public static MvcHtmlString ColllapsibleArticleLinkListPanel(this HtmlHelper htmlHelper, IEnumerable<Article> parameters, string header)
+        public static MvcHtmlString ColllapsibleArticleLinkListPanel(this HtmlHelper htmlHelper, IEnumerable<IArticle> parameters, string header)
         {
             if (parameters == null || parameters.Count() == 0)
             {
@@ -295,7 +295,7 @@ namespace HongGia.Helpers
             return new MvcHtmlString(groupTagBuilder.ToString());
         }
 
-        private static string ArticleLinkList(this HtmlHelper htmlHelper, IEnumerable<Article> parameters)
+        private static string ArticleLinkList(this HtmlHelper htmlHelper, IEnumerable<IArticle> parameters)
         {
             var listGroupTagBuilder = new TagBuilder("div");
             listGroupTagBuilder.AddCssClass("list-group margin-bottom-zero");

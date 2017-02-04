@@ -1,19 +1,29 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+using HongGia.Core.Interfaces.Base;
+using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Base;
-
+using HongGia.Core.Models.Views;
 using HongGia.DB.Models;
 
 namespace HongGia.DB.Services
 {
     public class FeedbackService
     {
-        public static IEnumerable<FeedBack> GetFeedbasks()
+        public static IFeedBackView GetFeedbasks()
         {
             using (var context = new EntitiesDB())
             {
-                var feedbacks = context.Feedbacks.Select(f => new HongGia.Core.Models.Base.FeedBack()
+                if (context.Feedbacks.Count() == 0)
+                {
+                    return new FeedBackView()
+                    {
+                        FeedBacks = new List<IFeedBack>()
+                    };
+                }
+
+                var feedbacks = context.Feedbacks.Select(f => new FeedBack()
                 {
                     Name = f.AuthorName,
                     Email = f.AuthorMail,
@@ -21,13 +31,16 @@ namespace HongGia.DB.Services
                     Text = f.Text,
                     Language = f.Language.Name,
                     Date = f.Date.GetValueOrDefault()
-                });
+                }).ToList();
 
-                return feedbacks;
+                return new FeedBackView()
+                {
+                    FeedBacks = feedbacks
+                };
             }
         }
 
-        public static IEnumerable<FeedBack> GetFeedbasksByLanguage(string lang)
+        public static IEnumerable<IFeedBack> GetFeedbasksByLanguage(string lang)
         {
             using (var context = new EntitiesDB())
             {
@@ -45,7 +58,7 @@ namespace HongGia.DB.Services
             }
         }
 
-        public static void SetFeedback(FeedBack feedback)
+        public static void SetFeedback(IFeedBack feedback)
         {
             using (var context = new EntitiesDB())
             {

@@ -1,5 +1,6 @@
-﻿using System.Linq;
-
+﻿using System.Collections.Generic;
+using System.Linq;
+using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
 using HongGia.DB.Models;
 
@@ -7,7 +8,7 @@ namespace HongGia.DB.Services
 {
     public class ArtircleService
     {
-        public static AllArticlesView GetArticles()
+        public static IArticlesView GetArticles()
         {
             using (var context = new EntitiesDB())
             {
@@ -31,13 +32,12 @@ namespace HongGia.DB.Services
             }
         }
 
-        public static ArticleView GetArticle(int articleId)
+        public static IArticleView GetArticle(int articleId)
         {
             using (var context = new EntitiesDB())
             {
                 var article = context.Articles.FirstOrDefault(x => x.Id == articleId);
-
-
+                
                 if (article == null)
                 {
                     return null;

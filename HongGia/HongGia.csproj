@@ -417,6 +417,10 @@
       <Project>{b8ff1929-0075-42e4-92e7-da72ddc6ddf3}</Project>
       <Name>HongGia.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HongGia.DB\HongGia.DB.csproj">
+      <Project>{464339e3-c6ca-4437-86c7-7bc3cd1acb1e}</Project>
+      <Name>HongGia.DB</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -72,6 +72,13 @@
     <Compile Include="Constants\PageConstants.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Interfaces\Base\IFeedBack.cs" />
+    <Compile Include="Interfaces\Base\IArticle.cs" />
+    <Compile Include="Interfaces\Models\FeedbackViewModels.cs" />
+    <Compile Include="Interfaces\Parameters\IFile.cs" />
+    <Compile Include="Interfaces\Parameters\IImage.cs" />
+    <Compile Include="Interfaces\Parameters\IText.cs" />
+    <Compile Include="Interfaces\Models\ArticleViewModels.cs" />
     <Compile Include="Models\Base\FeedBack.cs" />
     <Compile Include="Models\Base\News.cs" />
     <Compile Include="Models\Base\Book.cs" />
@@ -94,9 +101,7 @@
     <Compile Include="Parameters\Base\TextParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

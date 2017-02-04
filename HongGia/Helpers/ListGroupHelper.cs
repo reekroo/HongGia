@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-
+using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Models.Base;
 using HongGia.Core.Parameters.Base;
 
@@ -75,7 +75,7 @@ namespace HongGia.Helpers
 
 		#region FeedBacks
 
-		public static MvcHtmlString Group(this HtmlHelper htmlHelper, FeedBack parameter)
+		public static MvcHtmlString Group(this HtmlHelper htmlHelper, IFeedBack parameter)
 		{
 			if (parameter == null)
 			{
@@ -112,7 +112,7 @@ namespace HongGia.Helpers
 			return new MvcHtmlString(groupTagBuilder.ToString());
 		}
 
-		public static MvcHtmlString ListGroup(this HtmlHelper htmlHelper, IEnumerable<FeedBack> parameters)
+		public static MvcHtmlString ListGroup(this HtmlHelper htmlHelper, IEnumerable<IFeedBack> parameters)
 		{
 			if (parameters == null || parameters.Count() == 0)
 			{

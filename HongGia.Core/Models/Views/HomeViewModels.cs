@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 
+using HongGia.Core.Interfaces.Base;
+using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Base;
 using HongGia.Core.Parameters.Base;
 
@@ -12,8 +14,8 @@ namespace HongGia.Core.Models.Views
         public IEnumerable<News> TopNews { get; set; }
     }
     
-    public class FeedBackView
+    public class FeedBackView : IFeedBackView
     {
-        public IEnumerable<FeedBack> FeedBacks { get; set; }
+        public IEnumerable<IFeedBack> FeedBacks { get; set; }
     }
 }
