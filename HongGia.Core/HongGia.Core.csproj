@@ -83,6 +83,7 @@
     <Compile Include="Interfaces\Models\MediaViewModels.cs" />
     <Compile Include="Interfaces\Models\NewsViewModels.cs" />
     <Compile Include="Interfaces\Models\PhotoViewModels.cs" />
+    <Compile Include="Interfaces\Parameters\ICollapsiblePanel.cs" />
     <Compile Include="Interfaces\Parameters\IFile.cs" />
     <Compile Include="Interfaces\Parameters\IImage.cs" />
     <Compile Include="Interfaces\Parameters\IText.cs" />
@@ -100,13 +101,9 @@
     <Compile Include="Models\Views\MediaViewModels.cs" />
     <Compile Include="Models\Views\NewsViewModels.cs" />
     <Compile Include="Models\Views\PhotoViewModels.cs" />
-    <Compile Include="Parameters\PartialElements\CollapsiblePanelParameters.cs" />
-    <Compile Include="Parameters\Base\FileParameters.cs" />
-    <Compile Include="Parameters\Base\ImageParameters.cs" />
-    <Compile Include="Parameters\PartialElements\MenuSectionParameters.cs" />
-    <Compile Include="Parameters\PartialElements\SliderParameters.cs" />
-    <Compile Include="Parameters\PartialElements\SwitchLanguageParameters.cs" />
-    <Compile Include="Parameters\Base\TextParameters.cs" />
+    <Compile Include="Models\Base\Image.cs" />
+    <Compile Include="Parameters\MenuSectionParameters.cs" />
+    <Compile Include="Parameters\SwitchLanguageParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

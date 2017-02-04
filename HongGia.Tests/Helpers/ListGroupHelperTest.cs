@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using HongGia.Core.Models;
 using HongGia.Core.Models.Base;
-using HongGia.Core.Parameters.Base;
 using HongGia.Helpers;
 using HongGia.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -345,89 +344,89 @@ namespace HongGia.Tests.Helpers
 
 		#endregion
 		#region DownLoads
-		[TestMethod]
-		public void ListGroupHelperDownLoadsGroup()
-		{
-			var expectedResult = "<a class=\"list-group-item\" href=\"D\"><span class=\"pull-left margin-right-ten\"><i class=\"glyphicon glyphicon-file\"></i></span>testName</a>";
+		//[TestMethod]
+		//public void ListGroupHelperDownLoadsGroup()
+		//{
+		//	var expectedResult = "<a class=\"list-group-item\" href=\"D\"><span class=\"pull-left margin-right-ten\"><i class=\"glyphicon glyphicon-file\"></i></span>testName</a>";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<FileParameters>(true, true);
-			var FileParameters = new FileParameters()
-			{
-				Name = "testName",
-				Path = "D"
-			};
+		//	var htmlHelper = Moks.Moks.CreateHtmlHelper<FileParameters>(true, true);
+		//	var FileParameters = new FileParameters()
+		//	{
+		//		Name = "testName",
+		//		Path = "D"
+		//	};
 
-			string actualResult = ListGroupHelper.Group(htmlHelper, FileParameters).ToString();
-			Assert.AreEqual(expectedResult, actualResult, "Correct");
-		}
-		[TestMethod]
-		public void ListGroupHelperDownLoadsGroupEmptyName()
-		{
-			var expectedResult = "";
+		//	string actualResult = ListGroupHelper.Group(htmlHelper, FileParameters).ToString();
+		//	Assert.AreEqual(expectedResult, actualResult, "Correct");
+		//}
+		//[TestMethod]
+		//public void ListGroupHelperDownLoadsGroupEmptyName()
+		//{
+		//	var expectedResult = "";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<FileParameters>(true, true);
-			var FileParameters = new FileParameters()
-			{
-				Name = "",
-				Path = "D"
-			};
+		//	var htmlHelper = Moks.Moks.CreateHtmlHelper<FileParameters>(true, true);
+		//	var FileParameters = new FileParameters()
+		//	{
+		//		Name = "",
+		//		Path = "D"
+		//	};
 
-			string actualResult = ListGroupHelper.Group(htmlHelper, FileParameters).ToString();
-			Assert.AreEqual(expectedResult, actualResult, "Correct");
-		}
+		//	string actualResult = ListGroupHelper.Group(htmlHelper, FileParameters).ToString();
+		//	Assert.AreEqual(expectedResult, actualResult, "Correct");
+		//}
 
-		[TestMethod]
-		public void ListGroupHelperDownLoadsGroupEmptyPath()
-		{
-			var expectedResult = "";
+		//[TestMethod]
+		//public void ListGroupHelperDownLoadsGroupEmptyPath()
+		//{
+		//	var expectedResult = "";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<FileParameters>(true, true);
-			var FileParameters = new FileParameters()
-			{
-				Name = "TestName",
-				Path = ""
-			};
+		//	var htmlHelper = Moks.Moks.CreateHtmlHelper<FileParameters>(true, true);
+		//	var FileParameters = new FileParameters()
+		//	{
+		//		Name = "TestName",
+		//		Path = ""
+		//	};
 
-			string actualResult = ListGroupHelper.Group(htmlHelper, FileParameters).ToString();
-			Assert.AreEqual(expectedResult, actualResult, "Correct");
-		}
+		//	string actualResult = ListGroupHelper.Group(htmlHelper, FileParameters).ToString();
+		//	Assert.AreEqual(expectedResult, actualResult, "Correct");
+		//}
 
-		[TestMethod]
-		public void ListGroupHelperDownLoadsListGroup()
-		{
-			var expectedResult = "<div class=\"list-group\"><a class=\"list-group-item active links\" href=\"#\">Download all files<span class=\"pull-right\"><i class=\"glyphicon glyphicon-download-alt\"></i></span></a><a class=\"list-group-item\" href=\"D\"><span class=\"pull-left margin-right-ten\"><i class=\"glyphicon glyphicon-file\"></i></span>1</a><a class=\"list-group-item\" href=\"D\"><span class=\"pull-left margin-right-ten\"><i class=\"glyphicon glyphicon-file\"></i></span>2</a><script>$('a.links').click(function(e) { e.preventDefault();window.open('D');window.open('D');});</script></div>";
+		//[TestMethod]
+		//public void ListGroupHelperDownLoadsListGroup()
+		//{
+		//	var expectedResult = "<div class=\"list-group\"><a class=\"list-group-item active links\" href=\"#\">Download all files<span class=\"pull-right\"><i class=\"glyphicon glyphicon-download-alt\"></i></span></a><a class=\"list-group-item\" href=\"D\"><span class=\"pull-left margin-right-ten\"><i class=\"glyphicon glyphicon-file\"></i></span>1</a><a class=\"list-group-item\" href=\"D\"><span class=\"pull-left margin-right-ten\"><i class=\"glyphicon glyphicon-file\"></i></span>2</a><script>$('a.links').click(function(e) { e.preventDefault();window.open('D');window.open('D');});</script></div>";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<FileParameters>(true, true);
+		//	var htmlHelper = Moks.Moks.CreateHtmlHelper<FileParameters>(true, true);
 
-			var FileParameters = new List<FileParameters>();
-			FileParameters.Add(new FileParameters()
-			{
-				Name = "1",
-				Path = "D"
+		//	var FileParameters = new List<FileParameters>();
+		//	FileParameters.Add(new FileParameters()
+		//	{
+		//		Name = "1",
+		//		Path = "D"
 
-			});
-			FileParameters.Add(new FileParameters()
-			{
-				Name = "2",
-				Path = "D"
-			});
+		//	});
+		//	FileParameters.Add(new FileParameters()
+		//	{
+		//		Name = "2",
+		//		Path = "D"
+		//	});
 
-			string actualResult = ListGroupHelper.ListGroup(htmlHelper, FileParameters).ToString();
-			Assert.AreEqual(expectedResult, actualResult, "Correct");
-		}
+		//	string actualResult = ListGroupHelper.ListGroup(htmlHelper, FileParameters).ToString();
+		//	Assert.AreEqual(expectedResult, actualResult, "Correct");
+		//}
 
-		[TestMethod]
-		public void ListGroupHelperDownLoadsListGroupEmptyFileParameters()
-		{
-			var expectedResult = "";
+		//[TestMethod]
+		//public void ListGroupHelperDownLoadsListGroupEmptyFileParameters()
+		//{
+		//	var expectedResult = "";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<FeedBack>(true, true);
+		//	var htmlHelper = Moks.Moks.CreateHtmlHelper<FeedBack>(true, true);
 
-			var FileParameters = new List<FileParameters>();
+		//	var FileParameters = new List<FileParameters>();
 
-			string actualResult = ListGroupHelper.ListGroup(htmlHelper, FileParameters).ToString();
-			Assert.AreEqual(expectedResult, actualResult, "Correct");
-		}
+		//	string actualResult = ListGroupHelper.ListGroup(htmlHelper, FileParameters).ToString();
+		//	Assert.AreEqual(expectedResult, actualResult, "Correct");
+		//}
 
 		#endregion
 	}

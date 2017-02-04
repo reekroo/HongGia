@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Routing;
-using HongGia.Core.Parameters.PartialElements;
+using HongGia.Core.Parameters;
 using HongGia.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

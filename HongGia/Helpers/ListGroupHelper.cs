@@ -4,7 +4,6 @@ using System.Web.Mvc;
 
 using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Interfaces.Parameters;
-using HongGia.Core.Parameters.Base;
 
 namespace HongGia.Helpers
 {

@@ -3,7 +3,6 @@
 using HongGia.Core.Constants;
 using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
-using HongGia.Core.Parameters.PartialElements;
 
 using HongGia.DB.Models;
 
@@ -33,7 +32,7 @@ namespace HongGia.DB.Services
                 var home = new HomeView()
                 {
                     TopNews = NewsService.GetTopNews(PageConstants.PageIndexNewsSize),
-                    SliderImages = pageContent.Images.Select(i => new SliderParameters()
+                    SliderImages = pageContent.Images.Select(i => new HongGia.Core.Models.Base.Image()
                     {
                         Alt = i.Name,
                         Src = i.Path

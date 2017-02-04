@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using HongGia.Core.Parameters.PartialElements;
+using HongGia.Core.Parameters;
 using HongGia.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

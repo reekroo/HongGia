@@ -4,7 +4,6 @@ using System.Linq;
 using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
-using HongGia.Core.Parameters.Base;
 
 using HongGia.DB.Models;
 
@@ -33,7 +32,7 @@ namespace HongGia.DB.Services
 
                     Language = n.Language.Name,
 
-                    Image = new ImageParameters()
+                    Image = new HongGia.Core.Models.Base.Image()
                     {
                         Src = n.Image.Path,
                         Alt = n.Image.Name
@@ -71,7 +70,7 @@ namespace HongGia.DB.Services
 
                                 Language = n.Language.Name,
 
-                                Image = new ImageParameters()
+                                Image = new HongGia.Core.Models.Base.Image()
                                 {
                                     Src = n.Image.Path,
                                     Alt = n.Image.Name
@@ -90,7 +89,7 @@ namespace HongGia.DB.Services
 
                             Language = n.Language.Name,
 
-                            Image = new ImageParameters()
+                            Image = new HongGia.Core.Models.Base.Image()
                             {
                                 Src = n.Image.Path,
                                 Alt = n.Image.Name
@@ -126,7 +125,7 @@ namespace HongGia.DB.Services
 
                     Language = news.Language.Name,
 
-                    Image = new ImageParameters()
+                    Image = new HongGia.Core.Models.Base.Image()
                     {
                         Src = news.Image.Path,
                         Alt = news.Image.Name

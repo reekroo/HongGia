@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+
 using HongGia.Core.Interfaces.Base;
-using HongGia.Core.Models.Base;
-using HongGia.Core.Parameters.PartialElements;
+using HongGia.Core.Interfaces.Parameters;
 
 namespace HongGia.Helpers
 {
@@ -12,7 +12,7 @@ namespace HongGia.Helpers
     {
         #region Collapsible Panel
 
-        public static MvcHtmlString CollapsiblePanel(this HtmlHelper htmlHelper, CollapsiblePanelParameters parameters)
+        public static MvcHtmlString CollapsiblePanel(this HtmlHelper htmlHelper, ICollapsiblePanel parameters)
         {
             if (parameters == null)
             {

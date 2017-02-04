@@ -3,7 +3,6 @@ using System.Linq;
 
 using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
-using HongGia.Core.Parameters.Base;
 
 using HongGia.DB.Models;
 
@@ -20,7 +19,7 @@ namespace HongGia.DB.Services
                                 Id = video.Id,
                                 Name = video.Name,
                                 Path = video.Path,
-                                Screen = new ImageParameters()
+                                Screen = new HongGia.Core.Models.Base.Image()
                                 {
                                     Src = video.Image.Path,
                                     Alt = video.Image.Name
