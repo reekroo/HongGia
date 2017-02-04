@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 
 using HongGia.Core.Interfaces.Base;
+using HongGia.Core.Interfaces.Parameters;
 using HongGia.Core.Parameters.Base;
 
 namespace HongGia.Helpers
@@ -133,7 +134,7 @@ namespace HongGia.Helpers
 
 		#region DownLoads
 
-		public static MvcHtmlString Group(this HtmlHelper htmlHelper, FileParameters parameter)
+		public static MvcHtmlString Group(this HtmlHelper htmlHelper, IFile parameter)
 		{
 			if (parameter == null)
 			{
@@ -163,7 +164,7 @@ namespace HongGia.Helpers
 			return new MvcHtmlString(linkTagBuilder.ToString());
 		}
 
-		public static MvcHtmlString ListGroup(this HtmlHelper htmlHelper, IEnumerable<FileParameters> parameters)
+		public static MvcHtmlString ListGroup(this HtmlHelper htmlHelper, IEnumerable<IFile> parameters)
 		{
 
 			if (parameters == null || parameters.Count() == 0)

@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
 using HongGia.Core.Parameters.Base;
+
 using HongGia.DB.Models;
 
 namespace HongGia.DB.Services
 {
     public class MediaService
     {
-        public static VideoView GetAllVideo()
+        public static IVideoView GetAllVideo()
         {
             using (var context = new EntitiesDB())
             {
@@ -34,7 +36,7 @@ namespace HongGia.DB.Services
             }
         }
 
-        public static BooksView GetAllBookFiles()
+        public static IBooksView GetAllBookFiles()
         {
             using (var context = new EntitiesDB())
             {

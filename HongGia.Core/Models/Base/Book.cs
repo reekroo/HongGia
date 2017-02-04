@@ -1,11 +1,13 @@
-﻿using HongGia.Core.Parameters.Base;
+﻿using HongGia.Core.Interfaces.Base;
 
 namespace HongGia.Core.Models.Base
 {
-    public class Book : FileParameters
+    public class Book : IBook
     {
         public int Id { get; set; }
 
         public string Header { get; set; }
+        public string Name { get; set; }
+        public string Path { get; set; }
     }
 }

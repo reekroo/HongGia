@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
 
-using HongGia.Core.Models.Base;
+using HongGia.Core.Interfaces.Base;
+using HongGia.Core.Interfaces.Models;
 
 namespace HongGia.Core.Models.Views
 {
-    public class VideoView
+    public class VideoView : IVideoView
     {
-        public IEnumerable<Video> AllVideo { get; set; }
+        public IEnumerable<IVideo> AllVideo { get; set; }
     }
 
-    public class BooksView
+    public class BooksView : IBooksView
     {
-        public IEnumerable<Book> AllBooks { get; set; }
+        public IEnumerable<IBook> AllBooks { get; set; }
     }
 }

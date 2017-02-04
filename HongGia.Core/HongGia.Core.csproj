@@ -72,11 +72,14 @@
     <Compile Include="Constants\PageConstants.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Interfaces\Base\IBook.cs" />
     <Compile Include="Interfaces\Base\IFeedBack.cs" />
     <Compile Include="Interfaces\Base\IArticle.cs" />
     <Compile Include="Interfaces\Base\INews.cs" />
+    <Compile Include="Interfaces\Base\IVideo.cs" />
     <Compile Include="Interfaces\Models\FeedbackViewModels.cs" />
     <Compile Include="Interfaces\Models\HomeViewModels.cs" />
+    <Compile Include="Interfaces\Models\MediaViewModels.cs" />
     <Compile Include="Interfaces\Models\NewsViewModels.cs" />
     <Compile Include="Interfaces\Parameters\IFile.cs" />
     <Compile Include="Interfaces\Parameters\IImage.cs" />

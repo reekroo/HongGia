@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+
 using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
 using HongGia.DB.Models;
