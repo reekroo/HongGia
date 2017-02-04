@@ -1,5 +1,8 @@
-﻿using System.Linq;
-
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using HongGia.Core.Interfaces.Base;
+using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
 
 using HongGia.DB.Models;
@@ -8,7 +11,7 @@ namespace HongGia.DB.Services
 {
     public class PhotoService
     {
-        public static AllPhotoView GetAllPhoto()
+        public static IAllPhotoView GetAllPhoto()
         {
             using (var context = new EntitiesDB())
             {
@@ -31,17 +34,29 @@ namespace HongGia.DB.Services
             }
         }
 
-        public static CategoryPhotoView GetCategoryPhoto(string category)
+        public static ICategoryPhotoView GetCategoryPhoto(string category)
         {
             using (var context = new EntitiesDB())
             {
+                if (context.Photos.Count() == 0)
+                {
+                    return new CategoryPhotoView()
+                    {
+                        Category = category,
+                        CategoryPhoto = new List<IPhoto>()
+                    };
+                }
+
                 var photos = (
                     from photo 
                     in context.Photos
                     where photo.Catigories.Where(x => x.Name.Contains(category)).ToList().Count > 0
                     select new Core.Models.Base.Photo()
                     {
-                        Id = photo.Id, Name = photo.Name, Path = photo.Path, Categories = photo.Catigories.Select(x => x.Name)
+                        Id = photo.Id,
+                        Name = photo.Name,
+                        Path = photo.Path,
+                        Categories = photo.Catigories.Select(x => x.Name)
                     }).ToList();
 
                 var categoryPhotos = new CategoryPhotoView()

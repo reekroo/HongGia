@@ -77,10 +77,12 @@
     <Compile Include="Interfaces\Base\IArticle.cs" />
     <Compile Include="Interfaces\Base\INews.cs" />
     <Compile Include="Interfaces\Base\IVideo.cs" />
+    <Compile Include="Interfaces\Base\IPhoto.cs" />
     <Compile Include="Interfaces\Models\FeedbackViewModels.cs" />
     <Compile Include="Interfaces\Models\HomeViewModels.cs" />
     <Compile Include="Interfaces\Models\MediaViewModels.cs" />
     <Compile Include="Interfaces\Models\NewsViewModels.cs" />
+    <Compile Include="Interfaces\Models\PhotoViewModels.cs" />
     <Compile Include="Interfaces\Parameters\IFile.cs" />
     <Compile Include="Interfaces\Parameters\IImage.cs" />
     <Compile Include="Interfaces\Parameters\IText.cs" />

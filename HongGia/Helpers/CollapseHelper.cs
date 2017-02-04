@@ -91,7 +91,7 @@ namespace HongGia.Helpers
 
         #region Colllapsible Photo Panel
 
-        public static MvcHtmlString ColllapsiblePhotoPanel(this HtmlHelper htmlHelper, IEnumerable<Photo> parameters, string header)
+        public static MvcHtmlString ColllapsiblePhotoPanel(this HtmlHelper htmlHelper, IEnumerable<IPhoto> parameters, string header)
         {
             if (parameters == null || parameters.Count() == 0)
             {
@@ -164,7 +164,7 @@ namespace HongGia.Helpers
             return new MvcHtmlString(groupTagBuilder.ToString());
         }
 
-        private static string PhotoGroup(HtmlHelper htmlHelper, IEnumerable<Photo> parameters, string category = null)
+        private static string PhotoGroup(HtmlHelper htmlHelper, IEnumerable<IPhoto> parameters, string category = null)
         {
 
             var firstRowTagBuilder = new TagBuilder("div");
@@ -191,7 +191,7 @@ namespace HongGia.Helpers
             return firstRowTagBuilder.ToString() + secondRowTagBuilder.ToString();
         }
         
-        private static string GetPhoto(Photo parameter)
+        private static string GetPhoto(IPhoto parameter)
         {
             var col = new TagBuilder("div");
             var thumbnail = new TagBuilder("div");
