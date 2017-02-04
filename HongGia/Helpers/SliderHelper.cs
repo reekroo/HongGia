@@ -2,14 +2,13 @@
 using System.Linq;
 using System.Web.Mvc;
 
-using HongGia.Core.Parameters.Base;
-using HongGia.Core.Parameters.PartialElements;
+using HongGia.Core.Interfaces.Parameters;
 
 namespace HongGia.Helpers
 {
     public static class SliderHelper
     {
-        public static MvcHtmlString Slider(this HtmlHelper htmlHelper, IEnumerable<ImageParameters> parameters)
+        public static MvcHtmlString Slider(this HtmlHelper htmlHelper, IEnumerable<IImage> parameters)
         {
             if (parameters == null || !parameters.Any())
             {
@@ -61,20 +60,20 @@ namespace HongGia.Helpers
             return indicatorTagBuilder.ToString();
         }
 
-        private static string Slides(IEnumerable<ImageParameters> parameters)
+        private static string Slides(IEnumerable<IImage> parameters)
         {
             var wrapperTagBuilder = new TagBuilder("div");
             wrapperTagBuilder.AddCssClass("carousel-inner");
             wrapperTagBuilder.MergeAttribute("role", "listbox");
 
-            var sliderParameterses = parameters as SliderParameters[] ?? parameters.ToArray();
+            var enumerable = parameters as IList<IImage> ?? parameters.ToList();
 
-            for (var i = 0; i < sliderParameterses.Count(); i++)
+            for (var i = 0; i < enumerable.Count(); i++)
             {
                 var itemTagBuilder = new TagBuilder("div");
                 itemTagBuilder.AddCssClass("item");
 
-                itemTagBuilder.InnerHtml = Image(sliderParameterses[i]);
+                itemTagBuilder.InnerHtml = Image(enumerable[i]);
 
                 if (i == 0)
                 {
@@ -87,7 +86,7 @@ namespace HongGia.Helpers
             return wrapperTagBuilder.ToString();
         }
 
-        private static string Image(ImageParameters parameter)
+        private static string Image(IImage parameter)
         {
             var imageTagBuilder = new TagBuilder("img");
 

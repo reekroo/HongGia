@@ -2,16 +2,15 @@
 
 using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Interfaces.Models;
-using HongGia.Core.Models.Base;
-using HongGia.Core.Parameters.Base;
+using HongGia.Core.Interfaces.Parameters;
 
 namespace HongGia.Core.Models.Views
 {
-    public class HomeView
+    public class HomeView : IHomeView
     {
-        public IEnumerable<ImageParameters> SliderImages { get; set; }
+        public IEnumerable<IImage> SliderImages { get; set; }
 
-        public IEnumerable<News> TopNews { get; set; }
+        public IEnumerable<INews> TopNews { get; set; }
     }
     
     public class FeedBackView : IFeedBackView

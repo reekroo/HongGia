@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 
 using HongGia.Core.Constants;
+using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
 using HongGia.Core.Parameters.PartialElements;
 
@@ -10,7 +11,7 @@ namespace HongGia.DB.Services
 {
     public class HomeService
     {
-        public static HomeView GetHome(string lang)
+        public static IHomeView GetHome(string lang)
         {
             using (var context = new EntitiesDB())
             {

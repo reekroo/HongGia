@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+using HongGia.Core.Interfaces.Base;
+using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
 using HongGia.Core.Parameters.Base;
 
@@ -10,10 +12,18 @@ namespace HongGia.DB.Services
 {
     public class NewsService
     {
-        public static AllNewsView GetAllNews()
+        public static IAllNewsView GetAllNews()
         {
             using (var context = new EntitiesDB())
             {
+                if (context.News.Count() == 0)
+                {
+                    return new AllNewsView()
+                    {
+                        AllNews = new List<INews>()
+                    };
+                }
+
                 var news = context.News.Select(n => new Core.Models.Base.News()
                 {
                     Id = n.Id,
@@ -39,15 +49,20 @@ namespace HongGia.DB.Services
             }
         }
 
-        public static IEnumerable<Core.Models.Base.News> GetTopNews(int count)
+        public static IEnumerable<INews> GetTopNews(int count)
         {
             using (var context = new EntitiesDB())
             {
                 var news = new List<Core.Models.Base.News>();
+                
+                if (context.News.Count() == 0)
+                {
+                    return news;
+                }
 
                 if (context.News.Count() < count - 1)
                 {
-                    news = context.News.OrderBy(x => x.Date).Take(count).Select(n => new Core.Models.Base.News()
+                    news = context.News.OrderBy(x => x.Date).Select(n => new Core.Models.Base.News()
                             {
                                 Id = n.Id,
                                 Header = n.Header,
@@ -86,10 +101,15 @@ namespace HongGia.DB.Services
             }
         }
 
-        public static NewsView GetNews(int newsId)
+        public static INewsView GetNews(int newsId)
         {
             using (var context = new EntitiesDB())
             {
+                if (context.News.Count() == 0)
+                {
+                    return new NewsView();
+                }
+
                 var news = context.News.FirstOrDefault(x => x.Id == newsId);
 
                 if (news == null)

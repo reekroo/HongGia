@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+
 using HongGia.Core.Interfaces.Base;
-using HongGia.Core.Models.Base;
 using HongGia.Core.Parameters.Base;
 
 namespace HongGia.Helpers
@@ -11,7 +11,7 @@ namespace HongGia.Helpers
 	{
 		#region News
 
-		public static MvcHtmlString Group(this HtmlHelper htmlHelper, News parameter)
+		public static MvcHtmlString Group(this HtmlHelper htmlHelper, INews parameter)
 		{
 			if (parameter == null)
 			{
@@ -47,7 +47,7 @@ namespace HongGia.Helpers
 			return new MvcHtmlString(linkTagBuilder.ToString());
 		}
 
-		public static MvcHtmlString ListGroup(this HtmlHelper htmlHelper, IEnumerable<News> parameters)
+		public static MvcHtmlString ListGroup(this HtmlHelper htmlHelper, IEnumerable<INews> parameters)
 		{
 
 			if (parameters == null || parameters.Count() == 0)

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 
 using HongGia.Core.Constants;
@@ -8,7 +6,6 @@ using HongGia.Core.Controllers;
 using HongGia.Core.Interfaces.Base;
 
 using HongGia.DB.Services;
-using HongGia.Models;
 
 namespace HongGia.Controllers
 {
@@ -16,12 +13,9 @@ namespace HongGia.Controllers
     {
         public ActionResult Index()
         {
-            //var model = temp;
+            var model = HomeService.GetHome(CurrentLangCode);
             
-            //model.TopNews = model.TopNews.Where(x => x.Language == CurrentLangCode || string.IsNullOrEmpty(x.Language)).OrderBy(x => x.Date).Take(PageConstants.PageIndexNewsSize).ToList();
-
-            //return View(model);
-            return View();
+            return View(model);
         }
         
         [HttpGet]
