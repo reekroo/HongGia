@@ -72,10 +72,12 @@
     <Compile Include="Constants\PageConstants.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Interfaces\Base\IBasePage.cs" />
     <Compile Include="Interfaces\Base\IBook.cs" />
     <Compile Include="Interfaces\Base\IFeedBack.cs" />
     <Compile Include="Interfaces\Base\IArticle.cs" />
     <Compile Include="Interfaces\Base\INews.cs" />
+    <Compile Include="Interfaces\Base\ITopic.cs" />
     <Compile Include="Interfaces\Base\IVideo.cs" />
     <Compile Include="Interfaces\Base\IPhoto.cs" />
     <Compile Include="Interfaces\Models\FeedbackViewModels.cs" />
@@ -83,21 +85,22 @@
     <Compile Include="Interfaces\Models\MediaViewModels.cs" />
     <Compile Include="Interfaces\Models\NewsViewModels.cs" />
     <Compile Include="Interfaces\Models\PhotoViewModels.cs" />
-    <Compile Include="Interfaces\Parameters\ICollapsiblePanel.cs" />
-    <Compile Include="Interfaces\Parameters\IFile.cs" />
-    <Compile Include="Interfaces\Parameters\IImage.cs" />
-    <Compile Include="Interfaces\Parameters\IText.cs" />
+    <Compile Include="Interfaces\Base\ICollapsiblePanel.cs" />
+    <Compile Include="Interfaces\Base\IFile.cs" />
+    <Compile Include="Interfaces\Base\IImage.cs" />
+    <Compile Include="Interfaces\Base\IText.cs" />
     <Compile Include="Interfaces\Models\ArticleViewModels.cs" />
+    <Compile Include="Models\Base\File.cs" />
     <Compile Include="Models\Base\FeedBack.cs" />
+    <Compile Include="Models\Base\Topic.cs" />
     <Compile Include="Models\Base\News.cs" />
     <Compile Include="Models\Base\Book.cs" />
     <Compile Include="Models\Base\Article.cs" />
-    <Compile Include="Models\Base\Page.cs" />
+    <Compile Include="Models\Base\BasePage.cs" />
     <Compile Include="Models\Base\Photo.cs" />
     <Compile Include="Models\Base\Video.cs" />
     <Compile Include="Models\Views\ArticleViewModels.cs" />
     <Compile Include="Models\Views\HomeViewModels.cs" />
-    <Compile Include="Models\Views\HongGiaViewModels.cs" />
     <Compile Include="Models\Views\MediaViewModels.cs" />
     <Compile Include="Models\Views\NewsViewModels.cs" />
     <Compile Include="Models\Views\PhotoViewModels.cs" />
@@ -106,7 +109,9 @@
     <Compile Include="Parameters\SwitchLanguageParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Interfaces\Parameters\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

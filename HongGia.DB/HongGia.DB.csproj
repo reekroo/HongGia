@@ -158,6 +158,7 @@
     <Compile Include="Services\ArtircleService.cs" />
     <Compile Include="Services\NewsServise.cs" />
     <Compile Include="Services\MediaService.cs" />
+    <Compile Include="Services\PageService.cs" />
     <Compile Include="Services\PhotoService.cs" />
   </ItemGroup>
   <ItemGroup>

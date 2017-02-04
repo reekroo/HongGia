@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 
 using HongGia.Core.Interfaces.Base;
-using HongGia.Core.Interfaces.Parameters;
 
 namespace HongGia.Core.Interfaces.Models
 {

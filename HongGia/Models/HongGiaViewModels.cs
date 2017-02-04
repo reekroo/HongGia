@@ -2,23 +2,23 @@
 
 namespace HongGia.Models
 {
-    public class AboutViewModel : AboutView
+    public class AboutViewModel 
     {
     }
     
-    public class HistoryViewModel : HistoryView
+    public class HistoryViewModel
     {
     }
 
-    public class LevelsViewModel : LevelsView
+    public class LevelsViewModel
     {
     }
 
-    public class ProgramViewModel : ProgramView
+    public class ProgramViewModel 
     {
     }
 
-    public class ToBeginnerViewModel : ToBeginnerView
+    public class ToBeginnerViewModel 
     {
     }
 }

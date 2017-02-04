@@ -3,7 +3,6 @@ using System.Linq;
 using System.Web.Mvc;
 
 using HongGia.Core.Interfaces.Base;
-using HongGia.Core.Interfaces.Parameters;
 
 namespace HongGia.Helpers
 {

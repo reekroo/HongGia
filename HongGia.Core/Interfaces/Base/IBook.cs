@@ -1,6 +1,4 @@
-﻿using HongGia.Core.Interfaces.Parameters;
-
-namespace HongGia.Core.Interfaces.Base
+﻿namespace HongGia.Core.Interfaces.Base
 {
     public interface IBook : IFile
     {

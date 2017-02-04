@@ -1,7 +1,5 @@
 ﻿using System;
 
-using HongGia.Core.Interfaces.Parameters;
-
 namespace HongGia.Core.Interfaces.Base
 {
     public interface INews

@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-
-using HongGia.Core.Interfaces.Parameters;
+using HongGia.Core.Interfaces.Base;
 
 namespace HongGia.Helpers
 {

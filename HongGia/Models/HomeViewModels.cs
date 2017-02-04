@@ -2,7 +2,6 @@
 
 using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Interfaces.Models;
-using HongGia.Core.Interfaces.Parameters;
 
 namespace HongGia.Models
 {

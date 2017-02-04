@@ -1,4 +1,4 @@
-﻿using HongGia.Core.Interfaces.Parameters;
+﻿using HongGia.Core.Interfaces.Base;
 
 namespace HongGia.Core.Models.Base
 {

@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 
-using HongGia.Core.Interfaces.Parameters;
-
 namespace HongGia.Core.Interfaces.Base
 {
     public interface IArticle : IText

@@ -1,4 +1,4 @@
-﻿namespace HongGia.Core.Interfaces.Parameters
+﻿namespace HongGia.Core.Interfaces.Base
 {
     public interface IText
     {
