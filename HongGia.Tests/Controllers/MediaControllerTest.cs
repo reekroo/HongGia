@@ -21,30 +21,30 @@ namespace HongGia.Tests.Controllers
             Assert.IsNotNull(result);
         }
 
-        [TestMethod]
-        public void Books()
-        {
-            // Arrange
-            MediaController controller = new MediaController();
+        //[TestMethod]
+        //public void Books()
+        //{
+        //    // Arrange
+        //    MediaController controller = new MediaController();
 
-            // Act
-            ViewResult result = controller.Books() as ViewResult;
+        //    // Act
+        //    ViewResult result = controller.Books() as ViewResult;
 
-            // Assert
-            Assert.IsNotNull(result);
-        }
+        //    // Assert
+        //    Assert.IsNotNull(result);
+        //}
 
-        [TestMethod]
-        public void Video()
-        {
-            // Arrange
-            MediaController controller = new MediaController();
+        //[TestMethod]
+        //public void Video()
+        //{
+        //    // Arrange
+        //    MediaController controller = new MediaController();
 
-            // Act
-            ViewResult result = controller.Video() as ViewResult;
+        //    // Act
+        //    ViewResult result = controller.Video() as ViewResult;
 
-            // Assert
-            Assert.IsNotNull(result);
-        }
+        //    // Assert
+        //    Assert.IsNotNull(result);
+        //}
     }
 }

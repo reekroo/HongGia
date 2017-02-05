@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Models;
 using HongGia.Core.Models.Base;
 using HongGia.Helpers;
@@ -17,7 +18,7 @@ namespace HongGia.Tests.Helpers
 		{
 			var expectedResult = "<a class=\"list-group-item list-group-item-action\" href=\"/en/News/News?id=1\"><h4 class=\"list-group-item-heading text\">TestHeader</h4><p class=\"list-group-item-text\">12412412515125251435</p><p class=\"list-group-item-text text-right\">1/1/0001</p></a>";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<News>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<INews>(true, true);
 			var news = new News()
 			{
 				Id = 1,
@@ -36,7 +37,7 @@ namespace HongGia.Tests.Helpers
 		{
 			var expectedResult = "";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<News>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<INews>(true, true);
 			var news = new News()
 			{
 				Id = 1,
@@ -55,7 +56,7 @@ namespace HongGia.Tests.Helpers
 		{
 			var expectedResult = "";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<News>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<INews>(true, true);
 			var news = new News()
 			{
 				Id = 1,
@@ -74,7 +75,7 @@ namespace HongGia.Tests.Helpers
 		{
 			var expectedResult = "";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<News>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<INews>(true, true);
 			var news = new News()
 			{
 				Id = 1,
@@ -93,7 +94,7 @@ namespace HongGia.Tests.Helpers
 		{
 			var expectedResult = "";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<News>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<INews>(true, true);
 			var news = new News()
 			{
 				Id = 1,
@@ -111,7 +112,7 @@ namespace HongGia.Tests.Helpers
 		{
 			var expectedResult = "";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<News>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<INews>(true, true);
 			var news = new News()
 			{
 				Id = 1,
@@ -130,7 +131,7 @@ namespace HongGia.Tests.Helpers
 		{
 			var expectedResult = "";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<News>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<INews>(true, true);
 			var news = new News();
 
 			string actualResult = ListGroupHelper.Group(htmlHelper, news).ToString();
@@ -142,7 +143,7 @@ namespace HongGia.Tests.Helpers
 		{
 			var expectedResult = "<div class=\"thumbnail\"><div class=\"list-group margin-bottom-zero\"><a class=\"list-group-item list-group-item-action\" href=\"/en/News/News?id=1\"><h4 class=\"list-group-item-heading text\">TestHeader</h4><p class=\"list-group-item-text\">12412412515125251435</p><p class=\"list-group-item-text text-right\">1/1/0001</p></a><a class=\"list-group-item list-group-item-action\" href=\"/en/News/News?id=2\"><h4 class=\"list-group-item-heading text\">TestHeader</h4><p class=\"list-group-item-text\">12412412515125251435</p><p class=\"list-group-item-text text-right\">1/1/0001</p></a></div></div>";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<News>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<INews>(true, true);
 
 			var news = new List<News>();
 			news.Add(new News()
@@ -171,7 +172,7 @@ namespace HongGia.Tests.Helpers
 		{
 			var expectedResult = "";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<News>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<INews>(true, true);
 
 			var news = new List<News>();
 
@@ -185,7 +186,7 @@ namespace HongGia.Tests.Helpers
 		{
 			var expectedResult = "<div class=\"feetback\"><p class=\"text-justify\">12412412515125251435</p><p class=\"text-right\"><i class=\"glyphicon glyphicon-user\"></i> TestHeader / <i class=\"glyphicon glyphicon-calendar\"></i> 1/1/0001</p></div>";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<FeedBack>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<IFeedBack>(true, true);
 			var FeedBacks = new FeedBack()
 			{
 				Id = 1,
@@ -205,7 +206,7 @@ namespace HongGia.Tests.Helpers
 		{
 			var expectedResult = "";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<FeedBack>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<IFeedBack>(true, true);
 			var FeedBacks = new FeedBack()
 			{
 				Id = 1,
@@ -224,7 +225,7 @@ namespace HongGia.Tests.Helpers
 		{
 			var expectedResult = "";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<FeedBack>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<IFeedBack>(true, true);
 			var FeedBacks = new FeedBack()
 			{
 				Id = 1,
@@ -244,7 +245,7 @@ namespace HongGia.Tests.Helpers
 		{
 			var expectedResult = "";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<FeedBack>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<IFeedBack>(true, true);
 			var FeedBacks = new FeedBack()
 			{
 				Id = 1,
@@ -263,7 +264,7 @@ namespace HongGia.Tests.Helpers
 		{
 			var expectedResult = "";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<FeedBack>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<IFeedBack>(true, true);
 			var FeedBacks = new FeedBack()
 			{
 				Id = 1,
@@ -283,7 +284,7 @@ namespace HongGia.Tests.Helpers
 		//{
 		//	var expectedResult = "";
 
-		//	var htmlHelper = Moks.Moks.CreateHtmlHelper<FeedBack>(true, true);
+		//	var htmlHelper = Moks.Moks.CreateHtmlHelper<IFeedBack>(true, true);
 		//	var FeedBacks = new FeedBack()
 		//	{
 		//		Id = 1,
@@ -302,7 +303,7 @@ namespace HongGia.Tests.Helpers
 		{
 			var expectedResult = "<div><div class=\"feetback\"><p class=\"text-justify\">12412412515125251435</p><p class=\"text-right\"><i class=\"glyphicon glyphicon-user\"></i> TestHeader / <i class=\"glyphicon glyphicon-calendar\"></i> 1/1/0001</p></div><div class=\"feetback\"><p class=\"text-justify\">12412412515125251435</p><p class=\"text-right\"><i class=\"glyphicon glyphicon-user\"></i> TestHeader / <i class=\"glyphicon glyphicon-calendar\"></i> 1/1/0001</p></div></div>";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<FeedBack>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<IFeedBack>(true, true);
 
 			var FeedBack = new List<FeedBack>();
 			FeedBack.Add(new FeedBack()
@@ -334,7 +335,7 @@ namespace HongGia.Tests.Helpers
 		{
 			var expectedResult = "";
 
-			var htmlHelper = Moks.Moks.CreateHtmlHelper<FeedBack>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<IFeedBack>(true, true);
 
 			var FeedBack = new List<FeedBack>();
 
@@ -344,89 +345,89 @@ namespace HongGia.Tests.Helpers
 
 		#endregion
 		#region DownLoads
-		//[TestMethod]
-		//public void ListGroupHelperDownLoadsGroup()
-		//{
-		//	var expectedResult = "<a class=\"list-group-item\" href=\"D\"><span class=\"pull-left margin-right-ten\"><i class=\"glyphicon glyphicon-file\"></i></span>testName</a>";
+		[TestMethod]
+		public void ListGroupHelperDownLoadsGroup()
+		{
+			var expectedResult = "<a class=\"list-group-item\" href=\"D\"><span class=\"pull-left margin-right-ten\"><i class=\"glyphicon glyphicon-file\"></i></span>testName</a>";
 
-		//	var htmlHelper = Moks.Moks.CreateHtmlHelper<FileParameters>(true, true);
-		//	var FileParameters = new FileParameters()
-		//	{
-		//		Name = "testName",
-		//		Path = "D"
-		//	};
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<IFile>(true, true);
+			var FileParameters = new File()
+			{
+				Name = "testName",
+				Path = "D"
+			};
 
-		//	string actualResult = ListGroupHelper.Group(htmlHelper, FileParameters).ToString();
-		//	Assert.AreEqual(expectedResult, actualResult, "Correct");
-		//}
-		//[TestMethod]
-		//public void ListGroupHelperDownLoadsGroupEmptyName()
-		//{
-		//	var expectedResult = "";
+			string actualResult = ListGroupHelper.Group(htmlHelper, FileParameters).ToString();
+			Assert.AreEqual(expectedResult, actualResult, "Correct");
+		}
+		[TestMethod]
+		public void ListGroupHelperDownLoadsGroupEmptyName()
+		{
+			var expectedResult = "";
 
-		//	var htmlHelper = Moks.Moks.CreateHtmlHelper<FileParameters>(true, true);
-		//	var FileParameters = new FileParameters()
-		//	{
-		//		Name = "",
-		//		Path = "D"
-		//	};
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<IFile>(true, true);
+			var FileParameters = new File()
+			{
+				Name = "",
+				Path = "D"
+			};
 
-		//	string actualResult = ListGroupHelper.Group(htmlHelper, FileParameters).ToString();
-		//	Assert.AreEqual(expectedResult, actualResult, "Correct");
-		//}
+			string actualResult = ListGroupHelper.Group(htmlHelper, FileParameters).ToString();
+			Assert.AreEqual(expectedResult, actualResult, "Correct");
+		}
 
-		//[TestMethod]
-		//public void ListGroupHelperDownLoadsGroupEmptyPath()
-		//{
-		//	var expectedResult = "";
+		[TestMethod]
+		public void ListGroupHelperDownLoadsGroupEmptyPath()
+		{
+			var expectedResult = "";
 
-		//	var htmlHelper = Moks.Moks.CreateHtmlHelper<FileParameters>(true, true);
-		//	var FileParameters = new FileParameters()
-		//	{
-		//		Name = "TestName",
-		//		Path = ""
-		//	};
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<IFile>(true, true);
+			var FileParameters = new File()
+			{
+				Name = "TestName",
+				Path = ""
+			};
 
-		//	string actualResult = ListGroupHelper.Group(htmlHelper, FileParameters).ToString();
-		//	Assert.AreEqual(expectedResult, actualResult, "Correct");
-		//}
+			string actualResult = ListGroupHelper.Group(htmlHelper, FileParameters).ToString();
+			Assert.AreEqual(expectedResult, actualResult, "Correct");
+		}
 
-		//[TestMethod]
-		//public void ListGroupHelperDownLoadsListGroup()
-		//{
-		//	var expectedResult = "<div class=\"list-group\"><a class=\"list-group-item active links\" href=\"#\">Download all files<span class=\"pull-right\"><i class=\"glyphicon glyphicon-download-alt\"></i></span></a><a class=\"list-group-item\" href=\"D\"><span class=\"pull-left margin-right-ten\"><i class=\"glyphicon glyphicon-file\"></i></span>1</a><a class=\"list-group-item\" href=\"D\"><span class=\"pull-left margin-right-ten\"><i class=\"glyphicon glyphicon-file\"></i></span>2</a><script>$('a.links').click(function(e) { e.preventDefault();window.open('D');window.open('D');});</script></div>";
+		[TestMethod]
+		public void ListGroupHelperDownLoadsListGroup()
+		{
+			var expectedResult = "<div class=\"list-group\"><a class=\"list-group-item active links\" href=\"#\">Download all files<span class=\"pull-right\"><i class=\"glyphicon glyphicon-download-alt\"></i></span></a><a class=\"list-group-item\" href=\"D\"><span class=\"pull-left margin-right-ten\"><i class=\"glyphicon glyphicon-file\"></i></span>1</a><a class=\"list-group-item\" href=\"D\"><span class=\"pull-left margin-right-ten\"><i class=\"glyphicon glyphicon-file\"></i></span>2</a><script>$('a.links').click(function(e) { e.preventDefault();window.open('D');window.open('D');});</script></div>";
 
-		//	var htmlHelper = Moks.Moks.CreateHtmlHelper<FileParameters>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<IFile>(true, true);
 
-		//	var FileParameters = new List<FileParameters>();
-		//	FileParameters.Add(new FileParameters()
-		//	{
-		//		Name = "1",
-		//		Path = "D"
+			var FileParameters = new List<IFile>();
+			FileParameters.Add(new File()
+			{
+				Name = "1",
+				Path = "D"
 
-		//	});
-		//	FileParameters.Add(new FileParameters()
-		//	{
-		//		Name = "2",
-		//		Path = "D"
-		//	});
+			});
+			FileParameters.Add(new File()
+			{
+				Name = "2",
+				Path = "D"
+			});
 
-		//	string actualResult = ListGroupHelper.ListGroup(htmlHelper, FileParameters).ToString();
-		//	Assert.AreEqual(expectedResult, actualResult, "Correct");
-		//}
+			string actualResult = ListGroupHelper.ListGroup(htmlHelper, FileParameters).ToString();
+			Assert.AreEqual(expectedResult, actualResult, "Correct");
+		}
 
-		//[TestMethod]
-		//public void ListGroupHelperDownLoadsListGroupEmptyFileParameters()
-		//{
-		//	var expectedResult = "";
+		[TestMethod]
+		public void ListGroupHelperDownLoadsListGroupEmptyFileParameters()
+		{
+			var expectedResult = "";
 
-		//	var htmlHelper = Moks.Moks.CreateHtmlHelper<FeedBack>(true, true);
+			var htmlHelper = Moks.Moks.CreateHtmlHelper<FeedBack>(true, true);
 
-		//	var FileParameters = new List<FileParameters>();
+			var FileParameters = new List<IFile>();
 
-		//	string actualResult = ListGroupHelper.ListGroup(htmlHelper, FileParameters).ToString();
-		//	Assert.AreEqual(expectedResult, actualResult, "Correct");
-		//}
+			string actualResult = ListGroupHelper.ListGroup(htmlHelper, FileParameters).ToString();
+			Assert.AreEqual(expectedResult, actualResult, "Correct");
+		}
 
 		#endregion
 	}
