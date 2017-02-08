@@ -17,6 +17,11 @@ namespace HongGia.Controllers
         {
             var model = HomeService.GetHome(CurrentLangCode);
             
+            if (model == null)
+            {
+                return View(new HomeViewModel());
+            }
+
             return View(model);
         }
         

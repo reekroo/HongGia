@@ -15,12 +15,9 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
-                if (context.News.Count() == 0)
+                if (context.News == null || context.News.Any() == false)
                 {
-                    return new AllNewsView()
-                    {
-                        AllNews = new List<INews>()
-                    };
+                    return null;
                 }
 
                 var news = context.News.Select(n => new Core.Models.Base.News()
@@ -52,13 +49,13 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
-                var news = new List<Core.Models.Base.News>();
-                
-                if (context.News.Count() == 0)
+                if (context.News == null || context.News.Any() == false)
                 {
-                    return news;
+                    return null;
                 }
 
+                var news = new List<Core.Models.Base.News>();
+                
                 if (context.News.Count() < count - 1)
                 {
                     news = context.News.OrderBy(x => x.Date).Select(n => new Core.Models.Base.News()
@@ -104,9 +101,9 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
-                if (context.News.Count() == 0)
+                if (context.News == null || context.News.Any(x => x.Id == newsId) == false)
                 {
-                    return new NewsView();
+                    return null;
                 }
 
                 var news = context.News.FirstOrDefault(x => x.Id == newsId);
