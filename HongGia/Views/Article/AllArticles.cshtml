@@ -6,14 +6,16 @@
     ViewBag.Title = "All Articles";
 }
 
+@if (@Model.Categories != null && @Model.AllArticles != null)
+{
+    <div class="row row-margin">
+        <div class="col-md-12">
 
-<div class="row row-margin">
-    <div class="col-md-12">
+            @foreach (var category in @Model.Categories)
+            {
+                @Html.ColllapsibleArticleLinkListPanel(@Model.AllArticles.Where(x => x.Categories.Contains(category)), category)
+            }
 
-        @foreach (var category in @Model.Categories)
-        {
-            @Html.ColllapsibleArticleLinkListPanel(@Model.AllArticles.Where(x => x.Categories.Contains(category)), category)
-        }
-    
+        </div>
     </div>
-</div>
+}

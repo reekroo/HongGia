@@ -12,6 +12,12 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
+                if (context.Articles == null || context.Articles.Any() == false ||
+                    context.Catigories.Any(x => x.Type.ToLower() == "article") == false)
+                {
+                    return null;
+                }
+
                 var catigories = context.Catigories.Where(x => x.Type.ToLower() == "article").Select(y => y.Name).ToList();
                 var articles = context.Articles.Select(article => new Core.Models.Base.Article()
                             {
@@ -36,6 +42,13 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
+                if (context.Articles == null ||
+                    context.Articles.Any(a => a.Catigories.Any(x => x.Type.ToLower() == "article")) == false ||
+                    context.Catigories.Any(x => x.Type.ToLower() == "article") == false)
+                {
+                    return null;
+                }
+
                 var article = context.Articles.FirstOrDefault(x => x.Id == articleId);
                 
                 if (article == null)

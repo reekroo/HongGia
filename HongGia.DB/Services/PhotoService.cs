@@ -45,7 +45,7 @@ namespace HongGia.DB.Services
             using (var context = new EntitiesDB())
             {
                 if (context.Photos == null || 
-                    context.Photos.Any(photo => photo.Catigories.Any(x => x.Type == "photo")) == false ||
+                    context.Photos.Any(photo => photo.Catigories.Any(x => x.Type.ToLower() == "photo")) == false ||
                     context.Catigories.Any(x => x.Type.ToLower()== "photo") == false)
                 {
                     return null;
