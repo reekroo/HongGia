@@ -14,16 +14,21 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
+                if (context.Videos == null || context.Videos.Any() == false)
+                {
+                    return null;
+                }
+
                 var videos = context.Videos.Select(video => new Core.Models.Base.Video()
-                            {
-                                Id = video.Id,
-                                Name = video.Name,
-                                Path = video.Path,
-                                Screen = new HongGia.Core.Models.Base.Image()
-                                {
-                                    Src = video.Image.Path,
-                                    Alt = video.Image.Name
-                                }
+                {
+                    Id = video.Id,
+                    Name = video.Name,
+                    Path = video.Path,
+                    Screen = new HongGia.Core.Models.Base.Image()
+                    {
+                        Src = video.Image.Path,
+                        Alt = video.Image.Name
+                    }
                 }).ToList();
 
                 var allvideos = new VideoView()
@@ -39,6 +44,11 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
+                if (context.Files == null || context.Files.Any() == false ||
+                    context.Catigories.Any(x => x.Type == "book") == false)
+                {
+                    return null;
+                }
 
                 var books = new List<Core.Models.Base.Book>();
 
