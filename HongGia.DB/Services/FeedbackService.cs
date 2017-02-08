@@ -15,12 +15,9 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
-                if (context.Feedbacks.Count() == 0)
+                if (context.Feedbacks == null || context.Feedbacks.Any() == false)
                 {
-                    return new FeedBackView()
-                    {
-                        FeedBacks = new List<IFeedBack>()
-                    };
+                    return null;
                 }
 
                 var feedbacks = context.Feedbacks.Select(f => new FeedBack()
@@ -44,7 +41,12 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
-                var feedbacks = context.Feedbacks.Where(l => l.Language.Name.ToLower() == "lang").Select(f => new FeedBack()
+                if (context.Feedbacks == null || context.Feedbacks.Any(l => l.Language.Name.ToLower() == lang) == false)
+                {
+                    return null;
+                }
+
+                var feedbacks = context.Feedbacks.Where(l => l.Language.Name.ToLower() == lang).Select(f => new FeedBack()
                 {
                     Name = f.AuthorName,
                     Email = f.AuthorMail,
