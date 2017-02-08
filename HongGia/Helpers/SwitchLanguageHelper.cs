@@ -10,13 +10,13 @@ namespace HongGia.Helpers
     {
         public static MvcHtmlString Switcher(this UrlHelper url, SwitchLanguageParameters parameter)
         {
-
 			if (parameter == null ||
-			  parameter.RouteData == null ||
-			  string.IsNullOrEmpty(parameter.Name) == true)
+			    parameter.RouteData == null ||
+			    string.IsNullOrEmpty(parameter.Name) == true)
 			{
 				return new MvcHtmlString(string.Empty);
 			}
+
 			var liTagBuilder = new TagBuilder("li");
             var aTagBuilder = new TagBuilder("a");
 
