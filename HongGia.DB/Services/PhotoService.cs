@@ -15,6 +15,12 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
+                if (context.Photos == null || context.Photos.Any() == false ||
+                    context.Catigories.Any(x => x.Type.ToLower() == "photo") == false)
+                {
+                    return null;
+                }
+
                 var catigories = context.Catigories.Where(x => x.Type.ToLower() == "photo").Select(y => y.Name).ToList();
                 var photos = context.Photos.Select(photo => new Core.Models.Base.Photo()
                             {
@@ -38,13 +44,11 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
-                if (context.Photos.Count() == 0)
+                if (context.Photos == null || 
+                    context.Photos.Any(photo => photo.Catigories.Any(x => x.Type == "photo")) == false ||
+                    context.Catigories.Any(x => x.Type.ToLower()== "photo") == false)
                 {
-                    return new CategoryPhotoView()
-                    {
-                        Category = category,
-                        CategoryPhoto = new List<IPhoto>()
-                    };
+                    return null;
                 }
 
                 var photos = (

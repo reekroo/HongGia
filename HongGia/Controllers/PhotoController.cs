@@ -6,6 +6,8 @@ using HongGia.Core.Controllers;
 
 using HongGia.DB.Services;
 
+using HongGia.Models;
+
 namespace HongGia.Controllers
 {
     public class PhotoController : DefaultController
@@ -13,6 +15,11 @@ namespace HongGia.Controllers
         public ActionResult AllPhoto()
         {
             var result = PhotoService.GetAllPhoto();
+
+            if (result == null)
+            {
+                return View(new AllPhotoViewModel());
+            }
 
             return View(result);
         }
@@ -22,8 +29,13 @@ namespace HongGia.Controllers
             var result = PhotoService.GetCategoryPhoto(category);
 
             ViewData["PageNum"] = pageNum;
-            ViewData["ItemCount"] = result.CategoryPhoto.Count();
+            ViewData["ItemCount"] = result?.CategoryPhoto.Count() ?? 0;
             ViewData["PageSize"] = PageConstants.PageCategoriesPhotoSize;
+
+            if (result == null)
+            {
+                return View(new CategoryPhotoViewModel() {Category = category});
+            }
 
             result.CategoryPhoto = result.CategoryPhoto.OrderBy(p => p.Id).Skip(PageConstants.PageCategoriesPhotoSize * pageNum).Take(PageConstants.PageCategoriesPhotoSize).ToList();
 
