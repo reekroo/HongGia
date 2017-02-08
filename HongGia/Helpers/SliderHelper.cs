@@ -9,7 +9,7 @@ namespace HongGia.Helpers
     {
         public static MvcHtmlString Slider(this HtmlHelper htmlHelper, IEnumerable<IImage> parameters)
         {
-            if (parameters == null || !parameters.Any())
+            if (parameters == null || !parameters.Any() || parameters.Count() == 0)
             {
                 return new MvcHtmlString(string.Empty);
             }
