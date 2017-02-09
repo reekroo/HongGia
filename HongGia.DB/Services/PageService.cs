@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 
 using HongGia.Core.Interfaces.Base;
-using HongGia.Core.Models.Base;
+using HongGia.Core.Models.Views;
 
 using HongGia.DB.Models;
 
@@ -27,7 +27,7 @@ namespace HongGia.DB.Services
                     return null;
                 }
 
-                var result = new BasePage()
+                var result = new BasePageView()
                 {
                     Id = content.Id,
                     Header = content.Header,

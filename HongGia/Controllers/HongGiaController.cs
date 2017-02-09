@@ -1,6 +1,8 @@
 ﻿using System.Web.Mvc;
 
 using HongGia.Core.Controllers;
+using HongGia.DB.Services;
+using HongGia.Models;
 
 namespace HongGia.Controllers
 {
@@ -8,6 +10,13 @@ namespace HongGia.Controllers
     {
         public ActionResult About()
         {
+            var model = PageService.GetPageByName("HongGiaAbout",this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new AboutViewModel());
+            }
+
             return View();
         }
         public ActionResult History()
