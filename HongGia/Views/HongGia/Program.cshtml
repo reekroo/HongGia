@@ -1,7 +1,9 @@
-﻿
+﻿@using HongGia.Helpers
+
+@model HongGia.Core.Interfaces.Models.IBasePageView
+
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Program";
 }
 
-<h2>Hong Gia</h2>
-
+@Html.BasePage(@Model)

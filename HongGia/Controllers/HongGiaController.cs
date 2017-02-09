@@ -21,19 +21,47 @@ namespace HongGia.Controllers
         }
         public ActionResult History()
         {
-            return View();
+            var model = PageService.GetPageByName("HongGiaHistory", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new HistoryViewModel());
+            }
+
+            return View(model);
         }
         public ActionResult Levels()
         {
-            return View();
+            var model = PageService.GetPageByName("HongGiaLevels", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new LevelsViewModel());
+            }
+
+            return View(model);
         }
         public ActionResult ToBeginner()
         {
-            return View();
+            var model = PageService.GetPageByName("HongGiaToBeginner", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new ToBeginnerViewModel());
+            }
+
+            return View(model);
         }
         public ActionResult Program()
         {
-            return View();
+            var model = PageService.GetPageByName("HongGiaProgram", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new ProgramViewModel());
+            }
+
+            return View(model);
         }
     }
 }
