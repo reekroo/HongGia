@@ -17,7 +17,7 @@ namespace HongGia.Controllers
                 return View(new AboutViewModel());
             }
 
-            return View();
+            return View(model);
         }
         public ActionResult History()
         {

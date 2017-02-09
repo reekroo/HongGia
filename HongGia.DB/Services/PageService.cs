@@ -27,6 +27,16 @@ namespace HongGia.DB.Services
                     return null;
                 }
 
+                var a = content.Topics.Select(t => new HongGia.Core.Models.Base.Topic()
+                {
+                    Id = t.Id,
+                    Header = t.Header,
+                    Type = t.TopicType.Name,
+                    Position = t.Position ?? 0,
+                    HtmlText = t.HTMLText,
+                    Image = null
+                }).ToList();
+
                 var result = new BasePageView()
                 {
                     Id = content.Id,
@@ -35,12 +45,12 @@ namespace HongGia.DB.Services
                     {
                         Src = i.Name,
                         Alt = i.Path
-                    }),
-                    Files = content.Images.Select(f => new HongGia.Core.Models.Base.File()
+                    }).ToList(),
+                    Files = content.Files.Select(f => new HongGia.Core.Models.Base.File()
                     {
                         Name = f.Name,
                         Path = f.Path
-                    }),
+                    }).ToList(),
                     Topics = content.Topics.Select(t => new HongGia.Core.Models.Base.Topic()
                     {
                         Id = t.Id,
@@ -49,7 +59,7 @@ namespace HongGia.DB.Services
                         Position = t.Position ?? 0,
                         HtmlText = t.HTMLText,
                         Image = null
-                    })
+                    }).ToList()
                 };
 
                 return result;
