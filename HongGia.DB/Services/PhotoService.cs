@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+
 using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
@@ -23,12 +23,12 @@ namespace HongGia.DB.Services
 
                 var catigories = context.Catigories.Where(x => x.Type.ToLower() == "photo").Select(y => y.Name).ToList();
                 var photos = context.Photos.Select(photo => new Core.Models.Base.Photo()
-                            {
-                                Id = photo.Id,
-                                Name = photo.Name,
-                                Path = photo.Path,
-                                Categories = photo.Catigories.Select(x => x.Name)
-                            }).ToList();
+                {
+                    Id = photo.Id,
+                    Name = photo.Name,
+                    Path = photo.Path,
+                    Categories = photo.Catigories.Select(x => x.Name)
+                }).ToList();
 
                 var allPhoto = new AllPhotoView()
                 {
@@ -44,15 +44,15 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
-                if (context.Photos == null || 
+                if (context.Photos == null ||
                     context.Photos.Any(photo => photo.Catigories.Any(x => x.Type.ToLower() == "photo")) == false ||
-                    context.Catigories.Any(x => x.Type.ToLower()== "photo") == false)
+                    context.Catigories.Any(x => x.Type.ToLower() == "photo") == false)
                 {
                     return null;
                 }
 
                 var photos = (
-                    from photo 
+                    from photo
                     in context.Photos
                     where photo.Catigories.Where(x => x.Name.Contains(category)).ToList().Count > 0
                     select new Core.Models.Base.Photo()
@@ -72,5 +72,58 @@ namespace HongGia.DB.Services
                 return categoryPhotos;
             }
         }
+
+        public static bool AddPhoto(IPhoto photo)
+        {
+            using (var context = new EntitiesDB())
+            {
+                if (context.Photos == null || context.Photos.Count() < 0 ||
+                    context.Catigories.Any(x => x.Type.ToLower() == "photo") == false)
+                {
+                    return false;
+                }
+
+                var selectCatigories = CatigoryService.GetCatigoriesByNamesAndType(photo.Categories, "photo");
+
+                var save = new Photo()
+                {
+                    Name = photo.Name,
+                    Path = photo.Path,
+                    Date = DateTime.Now,
+                    Catigories = selectCatigories
+                };
+
+                context.Photos.Add(save);
+                context.SaveChanges();
+
+                return true;
+            }
+        }
+
+        public static bool RemovePhoto(int photoId)
+        {
+            using (var context = new EntitiesDB())
+            {
+                if (context.Photos == null || context.Photos.Any() == false)
+                {
+                    return false;
+                }
+                
+                var selectNews = context.News.FirstOrDefault(a => a.Id == photoId);
+
+                if (selectNews == null)
+                {
+                    return false;
+                }
+
+                context.News.Remove(selectNews);
+                context.SaveChanges();
+
+                return true;
+            }
+        }
+
+        //AddPhotoToCatigory
+        //RemovePhotoFromCatigory
     }
 }

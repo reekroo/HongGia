@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 
 using HongGia.Core.Interfaces.Base;
@@ -128,6 +130,104 @@ namespace HongGia.DB.Services
                         Alt = news.Image.Name
                     }
                 };
+            }
+        }
+
+        public static bool AddNews(INews news)
+        {
+            using (var context = new EntitiesDB())
+            {
+                if (context.News == null || context.News.Count() < 0)
+                {
+                    return false;
+                }
+
+                if (news.Image != null)
+                {
+                    ImageService.AddImage(news.Image);
+                }
+
+                var save = new News()
+                {
+                    Header = news.Header,
+                    HTMLText = news.Text,
+                    Date = DateTime.Now,
+                    
+                    Language = context.Languages.First(l => l.Name == news.Language),
+                    
+                    Image = news.Image != null ? context.Images.Last() : null
+                };
+
+                context.News.Add(save);
+                context.SaveChanges();
+
+                return true;
+            }
+        }
+
+        public static bool UpdateNews(INews news)
+        {
+            using (var context = new EntitiesDB())
+            {
+                if (context.News == null || context.News.Any() == false)
+                {
+                    return false;
+                }
+
+                var selectNews = context.News.FirstOrDefault(a => a.Id == news.Id);
+
+                if (selectNews == null)
+                {
+                    return false;
+                }
+
+                selectNews.Header = news.Header;
+                selectNews.HTMLText = news.Text;
+                selectNews.Date = DateTime.Now;
+                selectNews.Language = context.Languages.First(l => l.Name == news.Language);
+                
+                if (news.Image != null)
+                {
+                    ImageService.AddImage(news.Image);
+                    selectNews.Image = context.Images.Last();
+                }
+                else
+                {
+                    selectNews.Image = null;
+                }
+
+                context.News.AddOrUpdate(selectNews);
+                context.SaveChanges();
+
+                return true;
+            }
+        }
+
+        public static bool RemoveNews(int newsId)
+        {
+            using (var context = new EntitiesDB())
+            {
+                if (context.News == null || context.News.Any() == false)
+                {
+                    return false;
+                }
+
+                var selectNews = context.News.FirstOrDefault(a => a.Id == newsId);
+
+                if (selectNews == null)
+                {
+                    return false;
+                }
+
+                if (selectNews.Image != null)
+                {
+                    ImageService.RemoveImage(selectNews.Image.Id);
+                }
+
+                context.News.Remove(selectNews);
+                context.SaveChanges();
+                
+                return true;
             }
         }
     }

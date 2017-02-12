@@ -5,6 +5,7 @@ using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Base;
 using HongGia.Core.Models.Views;
+
 using HongGia.DB.Models;
 
 namespace HongGia.DB.Services
@@ -60,10 +61,15 @@ namespace HongGia.DB.Services
             }
         }
 
-        public static void SetFeedback(IFeedBack feedback)
+        public static bool SetFeedback(IFeedBack feedback)
         {
             using (var context = new EntitiesDB())
             {
+                if (context.Feedbacks == null || context.Feedbacks.Count() < 0)
+                {
+                    return false;
+                }
+
                 var save = new Feedback()
                 {
                     Id = feedback.Id,
@@ -76,6 +82,31 @@ namespace HongGia.DB.Services
 
                 context.Feedbacks.Add(save);
                 context.SaveChanges();
+
+                return true;
+            }
+        }
+
+        public static bool RemoveFeedback(int feedbackId)
+        {
+            using (var context = new EntitiesDB())
+            {
+                if (context.Feedbacks.Any() == false)
+                {
+                    return false;
+                }
+
+                var selectFeedback = context.Feedbacks.FirstOrDefault(f => f.Id == feedbackId);
+
+                if (selectFeedback == null)
+                {
+                    return false;
+                }
+
+                context.Feedbacks.Add(selectFeedback);
+                context.SaveChanges();
+
+                return true;
             }
         }
     }
