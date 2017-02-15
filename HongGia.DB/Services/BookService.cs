@@ -74,7 +74,7 @@ namespace HongGia.DB.Services
             }
         }
 
-        public static bool RemoveVideo(int bookId)
+        public static bool RemoveBook(int bookId)
         {
             using (var context = new EntitiesDB())
             {
@@ -83,7 +83,7 @@ namespace HongGia.DB.Services
                     return false;
                 }
 
-                var selectBook = context.Files.FirstOrDefault(v => v.Id == bookId);
+                var selectBook = context.Files.FirstOrDefault(f => f.Id == bookId);
 
                 if (selectBook == null)
                 {

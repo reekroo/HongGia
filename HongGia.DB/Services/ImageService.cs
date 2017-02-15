@@ -77,5 +77,7 @@ namespace HongGia.DB.Services
                 return true;
             }
         }
+
+        //add remove images
     }
 }
