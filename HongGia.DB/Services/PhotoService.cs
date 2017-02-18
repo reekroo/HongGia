@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 
 using HongGia.Core.Interfaces.Base;
@@ -37,6 +39,32 @@ namespace HongGia.DB.Services
                 };
 
                 return allPhoto;
+            }
+        }
+
+        public static IPhoto GetPhoto(int photoId)
+        {
+            using (var context = new EntitiesDB())
+            {
+                if (context.Photos == null || context.Photos.Any() == false)
+                {
+                    return null;
+                }
+
+                var photo = context.Photos.FirstOrDefault(p => p.Id == photoId);
+
+                if (photo == null)
+                {
+                    return null;
+                }
+
+                return new Core.Models.Base.Photo()
+                {
+                    Name = photo.Name,
+                    Path = photo.Path,
+                    Id = photo.Id,
+                    Categories = photo.Catigories.Select(x => x.Name)
+                };
             }
         }
 
@@ -109,21 +137,55 @@ namespace HongGia.DB.Services
                     return false;
                 }
                 
-                var selectNews = context.News.FirstOrDefault(a => a.Id == photoId);
+                var selectPhoto = context.Photos.FirstOrDefault(a => a.Id == photoId);
 
-                if (selectNews == null)
+                if (selectPhoto == null)
                 {
                     return false;
                 }
 
-                context.News.Remove(selectNews);
+                context.Photos.Remove(selectPhoto);
                 context.SaveChanges();
 
                 return true;
             }
         }
 
-        //AddPhotoToCatigory
-        //RemovePhotoFromCatigory
+        public static bool UpdateCatigories(int photoId, IEnumerable<string> categories)
+        {
+            using (var context = new EntitiesDB())
+            {
+                if (context.Photos == null || context.Photos.Any() == false)
+                {
+                    return false;
+                }
+
+                var selectPhoto = context.Photos.FirstOrDefault(a => a.Id == photoId);
+
+                if (selectPhoto == null)
+                {
+                    return false;
+                }
+                
+                var selectCatigories = new List<Catigory>();
+
+                foreach (var category in categories)
+                {
+                    var cat = context.Catigories.FirstOrDefault(c => c.Name == category && c.Type == "photo");
+
+                    if (cat != null)
+                    {
+                        selectCatigories.Add(cat);
+                    }
+                }
+
+                selectPhoto.Catigories = selectCatigories;
+
+                context.Photos.AddOrUpdate(selectPhoto);
+                context.SaveChanges();
+
+                return true;
+            }
+        }
     }
 }
