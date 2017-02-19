@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
+using HongGia.Core.Interfaces.Base;
 using HongGia.DB.Models;
 
 namespace HongGia.DB.Services
@@ -54,6 +54,21 @@ namespace HongGia.DB.Services
 
                 return result;
             }
-    }
+        }
+
+        public static IEnumerable<Catigory> GetCatigories()
+        {
+            using (var context = new EntitiesDB())
+            {
+                var result = context.Catigories?.Select(c => new Catigory()
+                {
+                    Name = c.Name,
+                    Id = c.Id,
+                    Type = c.Type
+                });
+                
+                return result;
+            }
+        }
     }
 }
