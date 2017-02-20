@@ -72,6 +72,9 @@
     <Compile Include="Constants\PageConstants.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Interfaces\Base\IFirmAddress.cs" />
+    <Compile Include="Interfaces\Base\IFirmContact.cs" />
+    <Compile Include="Interfaces\Base\IFirm.cs" />
     <Compile Include="Interfaces\Base\ICatigory.cs" />
     <Compile Include="Interfaces\Base\IBasePage.cs" />
     <Compile Include="Interfaces\Base\IBook.cs" />
@@ -93,6 +96,9 @@
     <Compile Include="Interfaces\Base\IText.cs" />
     <Compile Include="Interfaces\Models\ArticleViewModels.cs" />
     <Compile Include="Models\Base\Catigory.cs" />
+    <Compile Include="Models\Base\FirmContact.cs" />
+    <Compile Include="Models\Base\FirmAddress.cs" />
+    <Compile Include="Models\Base\Firm.cs" />
     <Compile Include="Models\Base\File.cs" />
     <Compile Include="Models\Base\FeedBack.cs" />
     <Compile Include="Models\Base\Topic.cs" />

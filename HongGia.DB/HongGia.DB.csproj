@@ -153,6 +153,7 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FirmService.cs" />
     <Compile Include="Services\TopicService.cs" />
     <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\ImageService.cs" />
