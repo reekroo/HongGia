@@ -1,8 +1,29 @@
-﻿@model dynamic
+﻿@model HongGia.Core.Interfaces.Models.INewsView
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "AddNews";
 }
 
-<h2>title</h2>
+<h2>Add News</h2>
+
+<div>
+    @using (Html.BeginForm("Add", "News", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label for="Header">Header</label>
+            <input type="text" class="form-control" id="Header" name="Header" />
+        </div>
+
+        <div class="form-group">
+            <label for="Text">Text</label>
+            <textarea type="text" class="form-control" id="Text" name="Text"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="Name">Image</label>
+            <input type="file" class="form-control" id="Name" placeholder="example" name="Image" />
+        </div>
+        
+        <button type="submit" class="btn btn-default">Add news</button>
+    }
+</div>

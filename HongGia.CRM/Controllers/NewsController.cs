@@ -1,10 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 
 using HongGia.CRM.Models;
 
 using HongGia.Core.Constants;
-using HongGia.Core.Interfaces.Base;
+using HongGia.Core.Models.Base;
 
 using HongGia.DB.Services;
 
@@ -30,7 +31,13 @@ namespace HongGia.CRM.Controllers
 
             return View(result);
         }
-        
+
+        [HttpGet]
+        public ActionResult Add(string lang)
+        {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Update(int newsId)
         {
@@ -44,43 +51,42 @@ namespace HongGia.CRM.Controllers
             return View(result);
         }
 
-        [HttpGet]
-        public ActionResult Add(string lang)
+        [HttpPost]
+        public ActionResult Add(News news)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                news.Date = DateTime.Now;
+                news.Language = "ru";
+
+                NewsService.AddNews(news);
+            }
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public ActionResult Update(INews news)
+        public ActionResult Update(News news)
         {
             if (ModelState.IsValid)
             {
                 NewsService.UpdateNews(news);
             }
 
-            return View("Update");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public ActionResult Add(INews news)
-        {
-            if (ModelState.IsValid)
-            {
-                NewsService.AddNews(news);
-            }
-
-            return View("Update");
-        }
-        
-        [HttpPost]
-        public ActionResult Remove(int newsId)
+        public bool Remove(int newsId)
         {
             if (ModelState.IsValid)
             {
                 NewsService.RemoveNews(newsId);
+
+                return true;
             }
 
-            return View("Index");
+            return false;
         }
     }
 }

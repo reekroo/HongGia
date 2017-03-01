@@ -27,11 +27,11 @@ namespace HongGia.DB.Services
                     Id = n.Id,
                     Header = n.Header,
                     Text = n.HTMLText,
-                    Date = n.Date.GetValueOrDefault(),
+                    Date = n.Date.Value,
 
                     Language = n.Language.Name,
 
-                    Image = new HongGia.Core.Models.Base.Image()
+                    Image = n.Image == null ? null : new HongGia.Core.Models.Base.Image()
                     {
                         Src = n.Image.Path,
                         Alt = n.Image.Name
@@ -120,11 +120,11 @@ namespace HongGia.DB.Services
                     Id = news.Id,
                     Header = news.Header,
                     Text = news.HTMLText,
-                    Date = news.Date.GetValueOrDefault(),
+                    Date = news.Date.Value,
 
                     Language = news.Language.Name,
 
-                    Image = new HongGia.Core.Models.Base.Image()
+                    Image = news.Image == null ? null : new HongGia.Core.Models.Base.Image()
                     {
                         Src = news.Image.Path,
                         Alt = news.Image.Name

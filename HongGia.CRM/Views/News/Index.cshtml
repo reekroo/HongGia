@@ -1,8 +1,54 @@
-﻿@model dynamic
+﻿@using HongGia.CRM.Helpers
+
+@model HongGia.Core.Interfaces.Models.IAllNewsView
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "News";
 }
 
-<h2>title</h2>
+@section scripts{
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
+
+<h2>News</h2>
+
+<div>
+    @Html.ActionLink("Create News", "Add", "News", null, new { @class = "btn rfloat clear" })
+</div>
+
+<div id="allNewsGrid">
+    @if (@Model.AllNews != null && @Model.AllNews.Any() == true)
+    {
+        <table class="table table-bordered">
+            <tr>
+                <th>#</th>
+                <th>Header</th>
+                <th>Date</th>
+                <th>Functional</th>
+            </tr>
+
+            @foreach (var news in Model.AllNews)
+            {
+                <tr>
+                    <td>@news.Id</td>
+                    <td>@news.Header</td>
+                    <td>@news.Date</td>
+
+                    <td>
+                        @Html.ActionLink("Update", "Update", "News", new { newsId = news.Id }, new {@class = "btn rfloat clear"})<br>
+                        @Ajax.ActionLink("Remove", "Remove", new { newsId = news.Id }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }, new { @class = "btn rfloat clear" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <div class="text-center">
+            @Html.PageLinks(
+            (int)Html.ViewData["PageNum"],
+            (int)Html.ViewData["ItemCount"],
+            (int)Html.ViewData["PageSize"],
+            x => Url.Action("Index", new { pageNum = x }))
+        </div>
+    }
+</div>
