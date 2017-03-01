@@ -28,7 +28,7 @@ namespace HongGia.DB.Services
                     Id = f.Id,
                     Text = f.Text,
                     Language = f.Language.Name,
-                    Date = f.Date.GetValueOrDefault()
+                    Date = f.Date.Value
                 }).ToList();
 
                 return new FeedBackView()
@@ -103,7 +103,7 @@ namespace HongGia.DB.Services
                     return false;
                 }
 
-                context.Feedbacks.Add(selectFeedback);
+                context.Feedbacks.Remove(selectFeedback);
                 context.SaveChanges();
 
                 return true;

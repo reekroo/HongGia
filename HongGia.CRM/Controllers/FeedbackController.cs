@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 
 using HongGia.Core.Constants;
-using HongGia.Core.Interfaces.Base;
+using HongGia.Core.Interfaces.Models;
+using HongGia.Core.Models.Base;
 
 using HongGia.CRM.Models;
 
@@ -23,40 +25,61 @@ namespace HongGia.CRM.Controllers
 
             if (result == null)
             {
-                return View(new AllNewsViewModel());
+                return View(new FeedBackViewModel());
             }
 
-            result.FeedBacks = result.FeedBacks.OrderBy(p => p.Date).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
+            result.FeedBacks = result.FeedBacks.OrderBy(p => p.Id).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
 
             return View(result);
         }
-
-        [HttpGet]
-        public ActionResult Add(string lang)
-        {
-            return View();
-        }
-
+        
         [HttpPost]
-        public ActionResult Add(IFeedBack feedback)
+        public ActionResult Add(FeedBack feedback)
         {
             if (ModelState.IsValid)
             {
+                feedback.Date = DateTime.Now;
+                feedback.Language = "ru";
+
                 FeedbackService.SetFeedback(feedback);
             }
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public ActionResult Remove(int feedbackId)
+        public IFeedBackView Remove(int feedbackId)
         {
             if (ModelState.IsValid)
             {
                 FeedbackService.RemoveFeedback(feedbackId);
             }
 
-            return View("Index");
+            var result = FeedbackService.GetFeedbasks();
+
+            var s = ViewData["PageNum"] ?? 0;
+            ViewData["ItemCount"] = result?.FeedBacks.Count() ?? 0;
+            ViewData["PageSize"] = 20;
+
+            if (result == null)
+            {
+                return new FeedBackViewModel();
+            }
+
+            result.FeedBacks = result.FeedBacks.OrderBy(p => p.Id).Skip(PageConstants.PageNewsSize * (int)s).Take(PageConstants.PageNewsSize).ToList();
+
+            return result;
         }
+
+        //[HttpPost]
+        //public ActionResult Remove(int feedbackId)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        FeedbackService.RemoveFeedback(feedbackId);
+        //    }
+            
+        //    return RedirectToAction("Index");
+        //}
     }
 }

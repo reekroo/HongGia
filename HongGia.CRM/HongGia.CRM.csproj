@@ -211,6 +211,7 @@
     <Compile Include="Helpers\MenuHelper.cs" />
     <Compile Include="Helpers\PagingHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FeedBackViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NewsViewModels.cs" />
@@ -240,6 +241,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -291,7 +294,6 @@
     <Content Include="Views\News\Update.cshtml" />
     <Content Include="Views\News\Add.cshtml" />
     <Content Include="Views\Feedback\Index.cshtml" />
-    <Content Include="Views\Feedback\Add.cshtml" />
     <Content Include="Views\Article\Add.cshtml" />
     <Content Include="Views\Article\Update.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />

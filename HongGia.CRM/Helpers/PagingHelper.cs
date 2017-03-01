@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Text;
 using System.Web.Mvc;
 
-namespace HongGia.Helpers
+namespace HongGia.CRM.Helpers
 {
     public static class PagingHelper
     {
