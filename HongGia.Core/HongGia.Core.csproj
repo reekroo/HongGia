@@ -115,6 +115,7 @@
     <Compile Include="Models\Views\PhotoViewModels.cs" />
     <Compile Include="Models\Base\Image.cs" />
     <Compile Include="Parameters\MenuSectionParameters.cs" />
+    <Compile Include="Parameters\SelectListItem.cs" />
     <Compile Include="Parameters\SwitchLanguageParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

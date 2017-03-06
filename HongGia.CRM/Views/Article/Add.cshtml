@@ -1,8 +1,60 @@
-﻿@model dynamic
+﻿@model HongGia.Core.Interfaces.Models.IArticleView
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "AddArticle";
 }
 
-<h2>title</h2>
+<h2>Add Article</h2>
+
+<div>
+    @using (Html.BeginForm("Add", "Article", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label for="Header">Header</label>
+            <input type="text" class="form-control" id="Header" name="Header" />
+        </div>
+
+        <div class="form-group">
+            <label for="summernote">Text</label>
+            <div id="summernote"></div>
+
+            <input type="hidden" name="HtmlText" id="ArticleHtmlText" value="" />
+        </div>
+        
+        if(Model != null)
+        {
+            <div class="form-group">
+                <label for="Categories">Catigories</label>
+                <select size="5" multiple id="Categories">
+                    @foreach (var catigory in Model.Categories)
+                    {
+                        <option>@catigory</option>
+                    }
+                </select>
+            </div>
+
+            <input type="hidden" name="Categories" id="ArticleCategories" value="" />
+        }
+
+        <button type="submit" class="btn btn-default" id="submitButton">Add Article</button>
+    }
+</div>
+
+
+
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            height: 500,
+            minHeight: 350,
+            maxHeight: 1500,
+            focus: true
+        });
+
+    });
+
+    $('#submitButton').click(function () {
+        $('#ArticleHtmlText').val($('#summernote').code());
+        $('#ArticleCategories').val($('#Categories').val());
+    });
+</script>

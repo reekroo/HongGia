@@ -1,8 +1,48 @@
-﻿@model dynamic
+﻿@model HongGia.Core.Interfaces.Models.IArticleView
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "UpdateArticle";
 }
 
-<h2>title</h2>
+<h2>Update Article</h2>
+
+<div>
+    @using (Html.BeginForm("Update", "Article", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label for="Header">Header</label>
+            <input type="text" class="form-control" id="Header" name="Header" />
+        </div>
+
+        <div class="form-group">
+            <label for="summernote">Text</label>
+            <div id="summernote"></div>
+        </div>
+
+        if (Model != null)
+        {
+            <div class="form-group">
+                <label for="Catigories">Catigories</label>
+                <select size="5" multiple id="Catigories" name="Catigories">
+                    @foreach (var catigory in Model.Categories)
+                    {
+                        <option>@catigory</option>
+                    }
+                </select>
+            </div>
+        }
+
+        <button type="submit" class="btn btn-default">Update Article</button>
+    }
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            height: 500,
+            minHeight: 350,
+            maxHeight: 1500,
+            focus: true
+        });
+    });
+</script>

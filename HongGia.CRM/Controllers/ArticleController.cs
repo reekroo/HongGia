@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 using HongGia.Core.Constants;
-using HongGia.Core.Interfaces.Base;
+using HongGia.Core.Models.Base;
+using HongGia.Core.Models.Views;
 
 using HongGia.CRM.Models;
 
@@ -23,7 +25,7 @@ namespace HongGia.CRM.Controllers
 
             if (result == null)
             {
-                return View(new AllNewsViewModel());
+                return View(new AllArticlesViewModel());
             }
 
             result.AllArticles = result.AllArticles.OrderBy(p => p.Id).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
@@ -34,7 +36,12 @@ namespace HongGia.CRM.Controllers
         [HttpGet]
         public ActionResult Add()
         {
-            return View();
+            var result = new ArticleView()
+            {
+                Categories = CatigoryService.GetCatigoriesListStringByType("article")
+            };
+
+            return View(result);
         }
         
         [HttpGet]
@@ -51,25 +58,30 @@ namespace HongGia.CRM.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(IArticle article)
+        [ValidateInput(false)]
+        public ActionResult Add(Article article)
         {
+            var str = article.Categories.FirstOrDefault();
+
+            article.Categories = string.IsNullOrEmpty(str) == false ? str.Split(',') : null;
+
             if (ModelState.IsValid)
             {
                 ArtircleService.AddArticle(article);
             }
 
-            return View("Update", article.Id);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public ActionResult Update(IArticle article)
+        public ActionResult Update(Article article)
         {
             if (ModelState.IsValid)
             {
                 ArtircleService.UpdateArticle(article);
             }
 
-            return View("Update");
+            return RedirectToAction("Update");
         }
         
         [HttpPost]
@@ -80,7 +92,7 @@ namespace HongGia.CRM.Controllers
                 ArtircleService.RemoveArticle(articleId);
             }
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
     }

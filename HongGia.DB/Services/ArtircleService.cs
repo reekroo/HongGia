@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
@@ -91,6 +92,14 @@ namespace HongGia.DB.Services
                 };
 
                 context.Articles.Add(save);
+
+                foreach (var cat in selectCatigories)
+                {
+                    cat.Articles = new Collection<Article> { save };
+
+                    context.Catigories.Attach(cat);
+                }
+
                 context.SaveChanges();
 
                 return true;

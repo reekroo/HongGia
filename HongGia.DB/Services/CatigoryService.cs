@@ -56,6 +56,26 @@ namespace HongGia.DB.Services
             }
         }
 
+        public static IEnumerable<string> GetCatigoriesListStringByType(string type)
+        {
+            using (var context = new EntitiesDB())
+            {
+                if (context.Catigories == null)
+                {
+                    return null;
+                }
+
+                var result = context.Catigories.Where(c => c.Type == type).ToList();
+
+                if (result.Any() == false)
+                {
+                    return null;
+                }
+
+                return result.Select(r => r.Name).ToList();
+            }
+        }
+
         public static IEnumerable<Catigory> GetCatigories()
         {
             using (var context = new EntitiesDB())
