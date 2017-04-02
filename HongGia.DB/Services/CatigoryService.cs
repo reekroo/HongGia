@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
+using HongGia.Core.Interfaces.Models;
+using HongGia.Core.Models.Views;
 using HongGia.DB.Models;
 
 namespace HongGia.DB.Services
@@ -108,19 +109,73 @@ namespace HongGia.DB.Services
             }
         }
 
-        public static IEnumerable<Catigory> GetCatigories()
-        {
-            using (var context = new EntitiesDB())
-            {
-                var result = context.Catigories?.Select(c => new Catigory()
-                {
-                    Name = c.Name,
-                    Id = c.Id,
-                    Type = c.Type
-                });
-                
-                return result;
-            }
-        }
-    }
+		public static ICatigoriesView GetCatigories()
+		{
+			using (var context = new EntitiesDB())
+			{
+				if (context.Catigories.Any() == false)
+				{
+					return null;
+				}
+
+				var result = new CatigoriesViewModels();
+
+				result.Categories = context.Catigories.Select(c => new Core.Models.Base.Catigory()
+				{
+					Name = c.Name,
+					Id = c.Id,
+					Type = c.Type
+				}).ToList();
+
+				return result;
+			}
+		}
+
+		public static bool AddCatigory(Core.Models.Base.Catigory catigory)
+		{
+			using (var context = new EntitiesDB())
+			{
+				if (catigory == null ||
+					string.IsNullOrEmpty(catigory.Name) ||
+					string.IsNullOrEmpty(catigory.Type))
+				{
+					return false;
+				}
+
+				var save = new Catigory()
+				{
+					Name = catigory.Name,
+					Type = catigory.Type
+				};
+
+				context.Catigories.Add(save);
+				context.SaveChanges();
+
+				return true;
+			}
+		}
+
+		public static bool RemoveCatigory(int catigoryId)
+		{
+			using (var context = new EntitiesDB())
+			{
+				if (context.Catigories.Any() == false)
+				{
+					return false;
+				}
+
+				var selectCatigory = context.Catigories.FirstOrDefault(x => x.Id == catigoryId);
+
+				if (selectCatigory == null)
+				{
+					return false;
+				}
+
+				context.Catigories.Remove(selectCatigory);
+				context.SaveChanges();
+
+				return true;
+			}
+		}
+	}
 }

@@ -84,6 +84,7 @@
     <Compile Include="Interfaces\Base\ITopic.cs" />
     <Compile Include="Interfaces\Base\IVideo.cs" />
     <Compile Include="Interfaces\Base\IPhoto.cs" />
+    <Compile Include="Interfaces\Models\CatigoryViewModels.cs" />
     <Compile Include="Interfaces\Models\BasePageViewModels.cs" />
     <Compile Include="Interfaces\Models\FeedbackViewModels.cs" />
     <Compile Include="Interfaces\Models\HomeViewModels.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Models\Base\Article.cs" />
     <Compile Include="Models\Base\Photo.cs" />
     <Compile Include="Models\Base\Video.cs" />
+    <Compile Include="Models\Views\CatigoryViewModels.cs" />
     <Compile Include="Models\Views\ArticleViewModels.cs" />
     <Compile Include="Models\Views\BasePageViewModels.cs" />
     <Compile Include="Models\Views\HomeViewModels.cs" />
