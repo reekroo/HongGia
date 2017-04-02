@@ -10,7 +10,7 @@
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
 }
 
-<h2>News</h2>
+<h2>Article</h2>
 
 <div>
     @Html.ActionLink("Create Article", "Add", "Article", null, new { @class = "btn rfloat clear" })
@@ -43,7 +43,7 @@
                     </td>
 
                     <td>
-                        @Html.ActionLink("Update", "Update", "News", new { articleId = article.Id }, new { @class = "btn rfloat clear" })<br>
+                        @Html.ActionLink("Update", "Update", "Article", new { articleId = article.Id }, new { @class = "btn rfloat clear" })<br>
                         @Ajax.ActionLink("Remove", "Remove", new { articleId = article.Id }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }, new { @class = "btn rfloat clear" })
                     </td>
                 </tr>

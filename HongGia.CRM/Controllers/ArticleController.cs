@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 
 using HongGia.Core.Constants;
@@ -74,14 +73,19 @@ namespace HongGia.CRM.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Update(Article article)
         {
+            var str = article.Categories.FirstOrDefault();
+
+            article.Categories = string.IsNullOrEmpty(str) == false ? str.Split(',') : null;
+
             if (ModelState.IsValid)
             {
                 ArtircleService.UpdateArticle(article);
             }
 
-            return RedirectToAction("Update");
+            return RedirectToAction("Index");
         }
         
         [HttpPost]

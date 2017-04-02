@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
@@ -63,6 +62,7 @@ namespace HongGia.DB.Services
 
                 return new ArticleView()
                 {
+                    Id = article.Id,
                     Header = article.Header,
                     HtmlText = article.HTMLText,
 
@@ -75,7 +75,8 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
-                if (context.Articles == null || context.Articles.Count() < 0 || 
+                if (context.Articles == null || 
+					context.Articles.Count() < 0 || 
                     context.Catigories.Any(x => x.Type.ToLower() == "article") == false)
                 {
                     return false;
@@ -88,19 +89,16 @@ namespace HongGia.DB.Services
                     Header = article.Header,
                     HTMLText = article.HtmlText,
                     Date = DateTime.Now,
-                    Catigories = selectCatigories
-                };
+				};
 
-                context.Articles.Add(save);
-
-                foreach (var cat in selectCatigories)
-                {
-                    cat.Articles = new Collection<Article> { save };
-
-                    context.Catigories.Attach(cat);
-                }
-
-                context.SaveChanges();
+				foreach (var cat in selectCatigories)
+				{
+					save.Catigories.Add(cat);
+					context.Catigories.Attach(cat);
+				}
+				context.Articles.Add(save);
+				
+				context.SaveChanges();
 
                 return true;
             }
@@ -110,7 +108,8 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
-                if (context.Articles.Any() == false || context.Catigories.Any(x => x.Type.ToLower() == "article") == false)
+                if (context.Articles.Any() == false || 
+					context.Catigories.Any(x => x.Type.ToLower() == "article") == false)
                 {
                     return false;
                 }
@@ -122,15 +121,25 @@ namespace HongGia.DB.Services
                     return false;
                 }
 
-                var selectCatigories = CatigoryService.GetCatigoriesByNamesAndType(article.Categories, "article");
+				var selectCatigories = CatigoryService.GetCatigoriesByNamesAndType(context, article.Categories, "article");
 
-                selectArticle.Header = article.Header;
-                selectArticle.HTMLText = article.HtmlText;
-                selectArticle.Date = DateTime.Now;
-                selectArticle.Catigories = selectCatigories;
+				selectArticle.Catigories.Clear();
 
-                context.Articles.AddOrUpdate(selectArticle);
-                context.SaveChanges();
+				selectArticle.Header = article.Header;
+				selectArticle.HTMLText = article.HtmlText;
+				selectArticle.Date = DateTime.Now;
+
+				if (selectCatigories != null)
+				{
+					foreach (var cat in selectCatigories)
+					{
+						selectArticle.Catigories.Add(cat);
+						context.Catigories.Attach(cat);
+					}
+				}
+				context.Articles.AddOrUpdate(selectArticle);
+
+				context.SaveChanges();
 
                 return true;
             }
@@ -140,7 +149,8 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
-                if (context.Articles.Any() == false || context.Catigories.Any(x => x.Type.ToLower() == "article") == false)
+                if (context.Articles.Any() == false || 
+					context.Catigories.Any(x => x.Type.ToLower() == "article") == false)
                 {
                     return false;
                 }

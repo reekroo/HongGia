@@ -1,17 +1,49 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using HongGia.Core.Interfaces.Base;
+
 using HongGia.DB.Models;
 
 namespace HongGia.DB.Services
 {
     public class CatigoryService
     {
-        public static ICollection<Catigory> GetCatigoriesByNamesAndType(IEnumerable<string> names, string type)
+	    public static ICollection<Catigory> GetCatigoriesByNamesAndType(EntitiesDB context, IEnumerable<string> names, string type)
+	    {
+			if (context.Catigories.Any(c => c.Type == type) == false ||
+					   names == null ||
+					   names.Any() == false ||
+					   string.IsNullOrEmpty(type))
+			{
+				return null;
+			}
+
+			var selectCatigories = new List<Catigory>();
+			foreach (var catigory in names)
+			{
+				var selectCatigory = context.Catigories.FirstOrDefault(c => c.Name.ToLower().Contains(catigory) && c.Type.ToLower() == type);
+
+				if (selectCatigory != null)
+				{
+					selectCatigories.Add(selectCatigory);
+				}
+			}
+
+			if (selectCatigories.Count == 0)
+			{
+				return null;
+			}
+
+			return selectCatigories;
+		}
+		
+	    public static ICollection<Catigory> GetCatigoriesByNamesAndType(IEnumerable<string> names, string type)
         {
             using (var context = new EntitiesDB())
             {
-                if (context.Catigories.Any(c => c.Type == type) == false)
+                if (context.Catigories.Any(c => c.Type == type) == false ||
+					names == null ||
+					names.Any() == false ||
+					string.IsNullOrEmpty(type))
                 {
                     return null;
                 }
