@@ -1,8 +1,67 @@
-﻿@model dynamic
+﻿@using HongGia.CRM.Helpers
+
+@model HongGia.Core.Interfaces.Models.IBooksView
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+	ViewBag.Title = "Books";
 }
 
-<h2>title</h2>
+@section scripts{
+	@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
+
+<h2>Books</h2>
+
+<div>
+	@using (Html.BeginForm("Add", "Book", FormMethod.Post))
+	{
+		<div class="form-group">
+			<label for="Name">Name</label>
+			<input type="text" class="form-control" id="Name" placeholder="example" name="Header" />
+		</div>
+
+		<div class="form-group">
+			<label for="Name">Book</label>
+			<input type="file" class="form-control" id="Name" placeholder="example" name="Path" />
+		</div>
+
+		<button type="submit" class="btn btn-default">Add Book</button>
+	}
+</div>
+
+<div id="allArticlesGrid">
+@if (@Model.AllBooks != null && @Model.AllBooks.Any() == true)
+{
+	<table class="table table-bordered">
+		<tr>
+			<th>#</th>
+			<th>Header</th>
+			<th>Name</th>
+			<th>Path</th>
+			<th>Functional</th>
+		</tr> 
+		
+		@foreach (var book in Model.AllBooks)
+		{
+			<tr>
+				<td>@book.Id</td>
+				<td>@book.Header</td>
+				<td>@book.Name</td>
+				<td>@book.Path</td>
+
+				<td>
+					@Ajax.ActionLink("Remove", "Remove", new { bookId = book.Id }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }, new { @class = "btn rfloat clear" })
+				</td>
+			</tr>
+		}
+	</table>
+
+	<div class="text-center">
+		@Html.PageLinks(
+		(int)Html.ViewData["PageNum"],
+		(int)Html.ViewData["ItemCount"],
+		(int)Html.ViewData["PageSize"],
+		x => Url.Action("Index", new { pageNum = x }))
+	</div>
+}
+</div>

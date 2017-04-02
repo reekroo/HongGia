@@ -16,7 +16,8 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
-                if (context.Files == null || context.Files.Any() == false ||
+                if (context.Files == null || 
+					context.Files.Any() == false ||
                     context.Catigories.Any(x => x.Type.ToLower() == "book") == false)
                 {
                     return null;
@@ -51,7 +52,8 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
-                if (context.Files == null || context.Files.Count() < 0 ||
+                if (context.Files == null || 
+					context.Files.Count() < 0 ||
                     context.Catigories.Any(x => x.Type.ToLower() == "book") == false)
                 {
                     return false;
@@ -63,12 +65,17 @@ namespace HongGia.DB.Services
                 {
                     Name = book.Name,
                     Path = book.Path,
-                    Date = DateTime.Now,
-                    Catigories = selectCatigories,
+                    Date = DateTime.Now
                 };
 
-                context.Files.Add(save);
-                context.SaveChanges();
+				foreach (var cat in selectCatigories)
+				{
+					save.Catigories.Add(cat);
+					context.Catigories.Attach(cat);
+				}
+				context.Files.Add(save);
+
+				context.SaveChanges();
 
                 return true;
             }

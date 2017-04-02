@@ -91,10 +91,13 @@ namespace HongGia.DB.Services
                     Date = DateTime.Now,
 				};
 
-				foreach (var cat in selectCatigories)
+				if (selectCatigories != null)
 				{
-					save.Catigories.Add(cat);
-					context.Catigories.Attach(cat);
+					foreach (var cat in selectCatigories)
+					{
+						save.Catigories.Add(cat);
+						context.Catigories.Attach(cat);
+					}
 				}
 				context.Articles.Add(save);
 				

@@ -1,35 +1,55 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 
-using HongGia.Core.Interfaces.Base;
+using HongGia.Core.Constants;
+using HongGia.Core.Models.Base;
+using HongGia.Core.Models.Views;
 
 using HongGia.DB.Services;
 
 namespace HongGia.CRM.Controllers
 {
-    public class BookController : Controller
-    {
-        [HttpGet]
-        public ActionResult Index()
-        {
-            var result = BookService.GetAllBookFiles();
+	public class BookController : Controller
+	{
+		[HttpGet]
+		public ActionResult Index(int pageNum = 0)
+		{
+			var result = BookService.GetAllBookFiles();
 
-            return View(result);
-        }
+			ViewData["PageNum"] = pageNum;
+			ViewData["ItemCount"] = result?.AllBooks.Count() ?? 0;
+			ViewData["PageSize"] = 20;
 
-        [HttpPost]
-        public ActionResult Add(IBook book)
-        {
-            var result = BookService.AddBook(book);
+			if (result == null)
+			{
+				return View(new BooksView());
+			}
 
-            return View("Index");
-        }
+			result.AllBooks = result.AllBooks.OrderBy(p => p.Id).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
 
-        [HttpPost]
-        public ActionResult Remove(int bookId)
-        {
-            var result = BookService.RemoveBook(bookId);
+			return View(result);
+		}
 
-            return View("Index");
-        }
-    }
+		[HttpPost]
+		public ActionResult Add(Book book)
+		{
+			if (ModelState.IsValid)
+			{
+				//fake
+				book.Name = book.Header;
+
+				BookService.AddBook(book);
+			}
+
+			return RedirectToAction("Index");
+		}
+
+		[HttpPost]
+		public ActionResult Remove(int bookId)
+		{
+			BookService.RemoveBook(bookId);
+
+			return RedirectToAction("Index");
+		}
+	}
 }
