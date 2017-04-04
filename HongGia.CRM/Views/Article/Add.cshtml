@@ -21,14 +21,14 @@
             <input type="hidden" name="HtmlText" id="ArticleHtmlText" value="" />
         </div>
         
-        if(Model != null)
+        if(Model != null && Model.Categories != null)
         {
             <div class="form-group">
                 <label for="Categories">Catigories</label>
                 <select size="5" multiple id="Categories">
-                    @foreach (var catigory in Model.Categories)
+                    @foreach (var categories in Model.Categories)
                     {
-                        <option>@catigory</option>
+                        <option>@categories</option>
                     }
                 </select>
             </div>
