@@ -488,7 +488,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhotoCatigories_Catigory">
-          <End Role="Catigory" Type="Self.Catigory" Multiplicity="1" />
+          <End Role="Catigory" Type="Self.Catigory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="PhotoCatigories" Type="Self.PhotoCatigories" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Catigory">
@@ -500,7 +502,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhotoCatigories_Photo">
-          <End Role="Photo" Type="Self.Photo" Multiplicity="1" />
+          <End Role="Photo" Type="Self.Photo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="PhotoCatigories" Type="Self.PhotoCatigories" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Photo">

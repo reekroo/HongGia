@@ -18,4 +18,12 @@ namespace HongGia.Core.Models.Views
 
         public IEnumerable<IPhoto> CategoryPhoto { get; set; }
     }
+
+	public class PhotoView : IPhoto
+	{
+		public int Id { get; set; }
+		public string Name { get; set; }
+		public string Path { get; set; }
+		public IEnumerable<string> Categories { get; set; }
+	}
 }

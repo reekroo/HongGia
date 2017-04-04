@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 
 using HongGia.Core.Constants;
-using HongGia.Core.Interfaces.Base;
-
-using HongGia.CRM.Models;
+using HongGia.Core.Models.Views;
 
 using HongGia.DB.Services;
 
@@ -24,7 +21,7 @@ namespace HongGia.CRM.Controllers
 
             if (result == null)
             {
-                return View(new AllNewsViewModel());
+                return View(new AllPhotoView());
             }
 
             result.AllPhoto = result.AllPhoto.OrderBy(p => p.Id).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
@@ -32,37 +29,70 @@ namespace HongGia.CRM.Controllers
             return View(result);
         }
 
-        [HttpGet]
-        public ActionResult Photo(int photoId)
-        {
-            var result = PhotoService.GetPhoto(photoId);
+		[HttpGet]
+		public ActionResult Add()
+		{
+			var result = new PhotoView()
+			{
+				Categories = CatigoryService.GetCatigoriesListStringByType("photo")
+			};
 
-            return View(result);
-        }
+			return View(result);
+		}
 
-        [HttpPost]
-        public ActionResult UpdateCatigories(int photoId, IEnumerable<string> catigory)
-        {
-            var result = PhotoService.UpdateCatigories(photoId, catigory);
+		[HttpGet]
+		public ActionResult Update(int photoId)
+		{
+			var result = PhotoService.GetPhoto(photoId);
 
-            return View("Photo");
-        }
-        
-        [HttpPost]
-        public ActionResult Add(IPhoto photo)
-        {
-            var result = PhotoService.AddPhoto(photo);
+			if (result == null)
+			{
+				return View("Add");
+			}
 
-            return View("Photo");
-        }
+			return View(result);
+		}
 
-        [HttpPost]
-        public ActionResult Remove(int photoId, IEnumerable<string> catigory)
-        {
-            var result = PhotoService.UpdateCatigories(photoId, catigory);
+		[HttpPost]
+		public ActionResult Add(PhotoView photo)
+		{
+			var str = photo.Categories.FirstOrDefault();
 
-            return View("Index");
-        }
+			photo.Categories = string.IsNullOrEmpty(str) == false ? str.Split(',') : null;
 
-    }
+			if (ModelState.IsValid)
+			{
+				var result = PhotoService.AddPhoto(photo);
+			}
+
+			return RedirectToAction("Index");
+		}
+
+		[HttpPost]
+		public ActionResult Update(PhotoView photo)
+		{
+			var str = photo.Categories.FirstOrDefault();
+
+			photo.Categories = string.IsNullOrEmpty(str) == false ? str.Split(',') : null;
+
+			if (ModelState.IsValid)
+			{
+				PhotoService.UpdatePhoto(photo);
+			}
+
+			return RedirectToAction("Index");
+		}
+
+		[HttpPost]
+		public ActionResult Remove(int photoId)
+		{
+			if (ModelState.IsValid)
+			{
+				var result = PhotoService.RemovePhoto(photoId);
+			}
+
+			return RedirectToAction("Index");
+		}
+
+	}
 }

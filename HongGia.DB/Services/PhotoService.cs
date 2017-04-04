@@ -101,34 +101,85 @@ namespace HongGia.DB.Services
             }
         }
 
-        public static bool AddPhoto(IPhoto photo)
-        {
-            using (var context = new EntitiesDB())
-            {
-                if (context.Photos == null || context.Photos.Count() < 0 ||
-                    context.Catigories.Any(x => x.Type.ToLower() == "photo") == false)
-                {
-                    return false;
-                }
+		public static bool AddPhoto(IPhoto photo)
+		{
+			using (var context = new EntitiesDB())
+			{
+				if (context.Photos == null ||
+					context.Photos.Count() < 0 ||
+					context.Catigories.Any(x => x.Type.ToLower() == "photo") == false)
+				{
+					return false;
+				}
 
-                var selectCatigories = CatigoryService.GetCatigoriesByNamesAndType(photo.Categories, "photo");
+				var selectCatigories = CatigoryService.GetCatigoriesByNamesAndType(photo.Categories, "photo");
 
-                var save = new Photo()
-                {
-                    Name = photo.Name,
-                    Path = photo.Path,
-                    Date = DateTime.Now,
-                    Catigories = selectCatigories
-                };
+				var save = new Photo()
+				{
+					Name = photo.Name,
+					Path = photo.Path,
+					Date = DateTime.Now
+				};
 
-                context.Photos.Add(save);
-                context.SaveChanges();
+				if (selectCatigories != null)
+				{
+					foreach (var cat in selectCatigories)
+					{
+						save.Catigories.Add(cat);
+						context.Catigories.Attach(cat);
+					}
+				}
+				context.Photos.Add(save);
 
-                return true;
-            }
-        }
+				context.SaveChanges();
 
-        public static bool RemovePhoto(int photoId)
+				return true;
+			}
+		}
+
+		public static bool UpdatePhoto(IPhoto photo)
+		{
+			using (var context = new EntitiesDB())
+			{
+				if (context.Photos == null ||
+					context.Photos.Count() < 0 ||
+					context.Catigories.Any(x => x.Type.ToLower() == "photo") == false)
+				{
+					return false;
+				}
+
+				var selectPhoto = context.Photos.FirstOrDefault(a => a.Id == photo.Id);
+
+				if (selectPhoto == null)
+				{
+					return false;
+				}
+
+				var selectCatigories = CatigoryService.GetCatigoriesByNamesAndType(context, photo.Categories, "photo");
+
+				selectPhoto.Catigories.Clear();
+
+				selectPhoto.Name = photo.Name;
+				selectPhoto.Path = photo.Path;
+				selectPhoto.Date = DateTime.Now;
+
+				if (selectCatigories != null)
+				{
+					foreach (var cat in selectCatigories)
+					{
+						selectPhoto.Catigories.Add(cat);
+						context.Catigories.Attach(cat);
+					}
+				}
+				context.Photos.AddOrUpdate(selectPhoto);
+
+				context.SaveChanges();
+
+				return true;
+			}
+		}
+		
+		public static bool RemovePhoto(int photoId)
         {
             using (var context = new EntitiesDB())
             {
