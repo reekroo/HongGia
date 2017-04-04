@@ -9,7 +9,7 @@
 
         <ul class="nav navbar-nav">
             @Html.MenuSection(new MenuSectionParameters() { LinkText = "Home", ActionName = "Index", ControllerName = "Home", RouteData = ViewContext.RouteData })
-            @Html.MenuSection(new MenuSectionParameters() { LinkText = "News", ActionName = "AllNews", ControllerName = "News", RouteData = ViewContext.RouteData })
+            @Html.MenuSection(new MenuSectionParameters() { LinkText = "News", ActionName = "Index", ControllerName = "News", RouteData = ViewContext.RouteData })
 
             @Html.DropdownMenuSection("HongGia", new List<MenuSectionParameters>()
                                             {
@@ -48,14 +48,14 @@
 
             @Html.DropdownMenuSection("Media", new List<MenuSectionParameters>()
                                             {
-                                                new MenuSectionParameters() {LinkText = "Articles", ActionName = "AllArticles", ControllerName = "Article", RouteData = ViewContext.RouteData},
-                                                new MenuSectionParameters() {LinkText = "Books", ActionName = "Books", ControllerName = "Media", RouteData = ViewContext.RouteData},
-                                                new MenuSectionParameters() {LinkText = "Photo", ActionName = "AllPhoto", ControllerName = "Photo", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = "Articles", ActionName = "Index", ControllerName = "Article", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = "Books", ActionName = "Index", ControllerName = "Book", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = "Photos", ActionName = "Index", ControllerName = "Photo", RouteData = ViewContext.RouteData},
                                                 new MenuSectionParameters() {LinkText = "Video", ActionName = "Video", ControllerName = "Media", RouteData = ViewContext.RouteData}
                                             })
 
-            @Html.MenuSection(new MenuSectionParameters() { LinkText = "FeedBacks", ActionName = "Feedback", ControllerName = "Home", RouteData = ViewContext.RouteData })
-            @Html.MenuSection(new MenuSectionParameters() { LinkText = "", ActionName = "Contacts", ControllerName = "Home", RouteData = ViewContext.RouteData })
+            @Html.MenuSection(new MenuSectionParameters() { LinkText = "FeedBacks", ActionName = "Index", ControllerName = "Feedback", RouteData = ViewContext.RouteData })
+            @Html.MenuSection(new MenuSectionParameters() { LinkText = "Catigories", ActionName = "Index", ControllerName = "Catigory", RouteData = ViewContext.RouteData })
         </ul>
     }
 @*}
