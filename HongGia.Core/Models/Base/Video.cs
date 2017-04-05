@@ -1,4 +1,6 @@
-﻿using HongGia.Core.Interfaces.Base;
+﻿using System.Collections.Generic;
+
+using HongGia.Core.Interfaces.Base;
 
 namespace HongGia.Core.Models.Base
 {
@@ -8,5 +10,6 @@ namespace HongGia.Core.Models.Base
         public string Path { get; set; }
         public int Id { get; set; }
         public IImage Screen { get; set; }
+	    public IEnumerable<string> Categories { get; set; }
     }
 }

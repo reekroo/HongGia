@@ -205,6 +205,7 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\CatigoryController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
+    <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -304,6 +305,9 @@
     <Content Include="Views\Photo\Add.cshtml" />
     <Content Include="Views\Catigory\Index.cshtml" />
     <Content Include="Views\Photo\Update.cshtml" />
+    <Content Include="Views\Video\Index.cshtml" />
+    <Content Include="Views\Video\Add.cshtml" />
+    <Content Include="Views\Video\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

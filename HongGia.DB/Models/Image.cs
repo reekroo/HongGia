@@ -22,7 +22,7 @@ namespace HongGia.DB.Models
         }
     
         public int Id { get; set; }
-        public int PageContentId { get; set; }
+        public Nullable<int> PageContentId { get; set; }
         public string Name { get; set; }
         public string Path { get; set; }
         public string Type { get; set; }
