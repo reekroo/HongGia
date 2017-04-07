@@ -15,4 +15,8 @@ namespace HongGia.Models
     {
         public IEnumerable<IFeedBack> FeedBacks { get; set; }
     }
+
+    public class MasterViewModel : BasePageViewModels
+    {
+    }
 }

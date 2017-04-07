@@ -1,24 +1,22 @@
-﻿using HongGia.Core.Models.Views;
-
-namespace HongGia.Models
+﻿namespace HongGia.Models
 {
-    public class AboutViewModel 
+    public class AboutViewModel : BasePageViewModels
     {
     }
     
-    public class HistoryViewModel
+    public class HistoryViewModel : BasePageViewModels
     {
     }
 
-    public class LevelsViewModel
+    public class LevelsViewModel : BasePageViewModels
     {
     }
 
-    public class ProgramViewModel 
+    public class ProgramViewModel : BasePageViewModels
     {
     }
 
-    public class ToBeginnerViewModel 
+    public class ToBeginnerViewModel : BasePageViewModels
     {
     }
 }

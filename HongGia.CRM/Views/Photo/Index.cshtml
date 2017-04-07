@@ -1,0 +1,70 @@
+﻿@using HongGia.CRM.Helpers
+
+@model HongGia.Core.Interfaces.Models.IAllPhotoView
+
+@{
+	ViewBag.Title = "Photos";
+}
+
+@section scripts{
+	@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
+
+<h2>Photos</h2>
+
+<div>
+	@Html.ActionLink("Create Article", "Add", "Photo", null, new { @class = "btn rfloat clear" })
+</div>
+
+<div id="allPhotosGrid">
+	@if (@Model.AllPhoto != null && @Model.AllPhoto.Any() == true)
+	{
+		<table class="table table-bordered">
+			<tr>
+				<th>#</th>
+				<th>Photo</th>
+				<th>Name</th>
+				<th>Path</th>
+				<th>Catigories</th>
+				@*<th>Date</th>*@
+				<th>Functional</th>
+			</tr>
+
+			@foreach (var photo in Model.AllPhoto)
+			{
+
+				<tr>
+					<td>@photo.Id</td>
+
+					<td>
+						<img src="@photo.Path" alt="@photo.Name" />
+					</td>
+
+					<td>@photo.Name</td>
+					<td>@photo.Path</td>
+
+					<td>
+						@foreach (var catigory in photo.Categories)
+						{
+							@catigory<br>
+						}
+					</td>
+
+
+					<td>
+						@Html.ActionLink("Update", "Update", "Photo", new { photoId = photo.Id }, new { @class = "btn rfloat clear" })<br>
+						@Ajax.ActionLink("Remove", "Remove", new { photoId = photo.Id }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }, new { @class = "btn rfloat clear" })
+					</td>
+				</tr>
+			}
+		</table>
+
+		<div class="text-center">
+			@Html.PageLinks(
+			(int)Html.ViewData["PageNum"],
+			(int)Html.ViewData["ItemCount"],
+			(int)Html.ViewData["PageSize"],
+			x => Url.Action("Index", new { pageNum = x }))
+		</div>
+	}
+</div>

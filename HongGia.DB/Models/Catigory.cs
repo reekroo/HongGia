@@ -17,10 +17,10 @@ namespace HongGia.DB.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Catigory()
         {
+            this.Articles = new HashSet<Article>();
+            this.Files = new HashSet<File>();
             this.Photos = new HashSet<Photo>();
             this.Videos = new HashSet<Video>();
-            this.Files = new HashSet<File>();
-            this.Articles = new HashSet<Article>();
         }
     
         public int Id { get; set; }
@@ -28,12 +28,12 @@ namespace HongGia.DB.Models
         public string Type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Photo> Photos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Video> Videos { get; set; }
+        public virtual ICollection<Article> Articles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<File> Files { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Article> Articles { get; set; }
+        public virtual ICollection<Photo> Photos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Video> Videos { get; set; }
     }
 }

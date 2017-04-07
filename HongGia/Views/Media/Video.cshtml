@@ -9,27 +9,30 @@
 <link href="~/Content/ekko-lightbox.min.css" rel="stylesheet" />
 <script src="~/Scripts/ekko-lightbox.min.js"></script>
 
-<div class="row row-margin">
-    <div class="list-group gallery">
+@if (@Model.AllVideo != null)
+{
+    <div class="row row-margin">
+        <div class="list-group gallery">
+     
+            @foreach (var video in @Model.AllVideo)
+            {
+                <div class="col-md-3">
+                    <a href="@video.Path" data-toggle="lightbox" data-gallery="example-gallery" class="thumbnail fancybox  margin-bottom-ten">
 
-        @foreach (var video in @Model.AllVideo)
-        {
-            <div class="col-md-3">
-                <a href="@video.Path" data-toggle="lightbox" data-gallery="example-gallery" class="thumbnail fancybox  margin-bottom-ten">
-                    @if (@video.Screen == null)
-                    {
-                        <img class="img-fluid" alt="" src="">
-                    }
-                    else
-                    {
-                        <img class="img-fluid" alt="@video.Screen.Alt" src="@video.Screen.Src">
-                    }
-                </a>
-            </div>
-        }
-
+                        @if (@video.Screen == null)
+                        {
+                            <img class="img-fluid" alt="" src="">
+                        }
+                        else
+                        {
+                            <img class="img-fluid" alt="@video.Screen.Alt" src="@video.Screen.Src">
+                        }
+                    </a>
+                </div>
+            }
+        </div>
     </div>
-</div>
+}
 
 <div class="row row-margin">
     <div class="col-md-12 text-center">
@@ -41,9 +44,12 @@
     </div>
 </div>
 
-<script>
-    $(document).on('click', '[data-toggle="lightbox"]', function (event) {
-        event.preventDefault();
-        $(this).ekkoLightbox();
-    });
-</script>
+@if (@Model.AllVideo != null)
+{
+    <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+    </script>
+}

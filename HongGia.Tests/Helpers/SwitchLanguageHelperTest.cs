@@ -43,7 +43,7 @@ namespace HongGia.Tests.Helpers
 
 			var switchPatameters = new SwitchLanguageParameters();
 	
-			var expectedResult = "";
+			var expectedResult = string.Empty;
 
 			string actualResult = SwitchLanguageHelper.Switcher(urlHelper, switchPatameters).ToString();
 

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HongGia.Core", "HongGia.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HongGia.DB", "HongGia.DB\HongGia.DB.csproj", "{464339E3-C6CA-4437-86C7-7BC3CD1ACB1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HongGia.CRM", "HongGia.CRM\HongGia.CRM.csproj", "{C0EC2559-E298-41A1-99F5-D39E04B5941C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{464339E3-C6CA-4437-86C7-7BC3CD1ACB1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{464339E3-C6CA-4437-86C7-7BC3CD1ACB1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{464339E3-C6CA-4437-86C7-7BC3CD1ACB1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0EC2559-E298-41A1-99F5-D39E04B5941C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0EC2559-E298-41A1-99F5-D39E04B5941C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0EC2559-E298-41A1-99F5-D39E04B5941C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0EC2559-E298-41A1-99F5-D39E04B5941C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

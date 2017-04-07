@@ -1,9 +1,11 @@
-﻿namespace HongGia.Core.Interfaces.Base
-{
-    public interface IVideo : IFile
-    {
-        int Id { get; set; }
+﻿using System.Collections.Generic;
 
-        IImage Screen { get; set; }
-    }
+namespace HongGia.Core.Interfaces.Base
+{
+	public interface IVideo : IFile
+	{
+		int Id { get; set; }
+		IImage Screen { get; set; }
+		IEnumerable<string> Categories { get; set; }
+	}
 }

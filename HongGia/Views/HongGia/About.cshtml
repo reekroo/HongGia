@@ -1,12 +1,16 @@
-﻿@*@using HongGia.Core.Parameters.PartialElements;
-@using HongGia.Core.Parameters.Base
-@using HongGia.Helpers
+﻿@using HongGia.Helpers
+
+@model HongGia.Core.Interfaces.Models.IBasePageView
 
 @{
     ViewBag.Title = "About";
 }
 
-<div class="row row-margin">
+@Html.BasePage(@Model)
+
+
+
+@*<div class="row row-margin">
     <div class="col-md-12">
         @Html.CollapsiblePanel(new CollapsiblePanelParameters()
    {

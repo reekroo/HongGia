@@ -7,13 +7,16 @@
 }
 
 
-<div class="row row-margin">
-    <div class="col-md-12">
-
+@if (@Model.Categories != null && @Model.AllPhoto != null)
+{
+    <div class="row row-margin">
+        <div class="col-md-12">
+        
         @foreach (var category in @Model.Categories)
-        {
-            @Html.ColllapsiblePhotoPanel(@Model.AllPhoto.Where(x => x.Categories.Contains(category)), category)
-        }
+            {
+                @Html.ColllapsiblePhotoPanel(@Model.AllPhoto.Where(x => x.Categories.Contains(category)), category)
+            }
 
+        </div>
     </div>
-</div>
+}

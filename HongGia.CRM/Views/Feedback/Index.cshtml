@@ -1,0 +1,69 @@
+﻿@using HongGia.CRM.Helpers
+
+@model HongGia.Core.Interfaces.Models.IFeedBackView
+
+@{
+    ViewBag.Title = "FeedBack";
+}
+
+
+@section scripts{
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
+
+<h2>FeedBacks</h2>
+
+<div>
+    @using (Html.BeginForm("Add", "Feedback", FormMethod.Post))
+    {
+        <textarea class="form-control" name="Text"></textarea>
+
+        <div class="form-group">
+            <label for="Name">Name</label>
+            <input type="text" class="form-control" id="Name" placeholder="example" name="Name" />
+        </div>
+
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="email" class="form-control" id="Email" placeholder="example@example.com" name="Email" />
+        </div>
+
+        <button type="submit" class="btn btn-default">Add feedback</button>
+    }
+</div>
+
+<div id="feedbacksGrid">
+    @if (@Model.FeedBacks != null && @Model.FeedBacks.Any() == true)
+    {
+        <table class="table table-bordered">
+            <tr>
+                <th>#</th>
+                <th>Comment</th>
+                <th>Author / E-Mail</th>
+                <th>Date</th>
+                <th>Functional</th>
+            </tr>
+
+            @foreach (var feedback in Model.FeedBacks)
+            {
+                <tr>
+                    <td>@feedback.Id</td>
+                    <td>@feedback.Text</td>
+                    <td>@feedback.Name / @feedback.Email</td>
+                    <td>@feedback.Date</td>
+
+                    <td>@Ajax.ActionLink("Remove", "Remove", new { feedbackId = feedback.Id }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" })</td>
+                </tr>
+            }
+
+        </table>
+
+        <div class="text-center">
+            @Html.PageLinks(
+            (int)Html.ViewData["PageNum"],
+            (int)Html.ViewData["ItemCount"],
+            (int)Html.ViewData["PageSize"],
+            x => Url.Action("Index", new { pageNum = x }))
+        </div>
+    }
+</div>

@@ -1,7 +1,9 @@
-﻿
+﻿@using HongGia.Helpers
+
+@model HongGia.Core.Interfaces.Models.IBasePageView
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Online";
 }
 
-<h2>Index</h2>
-
+@Html.BasePage(@Model)

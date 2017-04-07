@@ -3,7 +3,10 @@ using System.Web.Mvc;
 
 using HongGia.Core.Constants;
 using HongGia.Core.Controllers;
+
 using HongGia.DB.Services;
+
+using HongGia.Models;
 
 namespace HongGia.Controllers
 {
@@ -17,6 +20,11 @@ namespace HongGia.Controllers
         public ActionResult Books()
         {
             var result = MediaService.GetAllBookFiles();
+            
+            if (result == null)
+            {
+                return View(new BooksViewModel());
+            }
 
             return View(result);
         }
@@ -26,8 +34,13 @@ namespace HongGia.Controllers
             var result = MediaService.GetAllVideo();
 
             ViewData["PageNum"] = pageNum;
-            ViewData["ItemCount"] = result.AllVideo.Count();
+            ViewData["ItemCount"] = result?.AllVideo.Count() ?? 0;
             ViewData["PageSize"] = PageConstants.PageVideoSize;
+
+            if (result == null)
+            {
+                return View(new VideoViewModel());
+            }
 
             result.AllVideo = result.AllVideo.OrderBy(p => p.Id).Skip(PageConstants.PageCategoriesPhotoSize * pageNum).Take(PageConstants.PageVideoSize).ToList();
 

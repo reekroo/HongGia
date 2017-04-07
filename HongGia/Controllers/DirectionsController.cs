@@ -1,6 +1,9 @@
 ﻿using System.Web.Mvc;
 
 using HongGia.Core.Controllers;
+using HongGia.DB.Services;
+
+using HongGia.Models;
 
 namespace HongGia.Controllers
 {
@@ -8,55 +11,146 @@ namespace HongGia.Controllers
     {
         public ActionResult HongGiaVietnam()
         {
-            return View();
+            var model = PageService.GetPageByName("DirectionsHongGiaVietnam", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new HongGiaVietnamViewModel());
+            }
+
+            return View(model);
         }
         public ActionResult KungFu()
         {
-            return View();
+            var model = PageService.GetPageByName("DirectionsKungFu", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new KungFuViewModel());
+            }
+
+            return View(model);
         }
         public ActionResult ChiKong()
         {
-            return View();
+            var model = PageService.GetPageByName("DirectionsChiKong", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new ChiKongViewModel());
+            }
+
+            return View(model);
         }
         public ActionResult TaiChi()
         {
-            return View();
+            var model = PageService.GetPageByName("DirectionsTaiChi", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new TaiChiViewModel());
+            }
+
+            return View(model);
         }
         public ActionResult WuChi()
         {
-            return View();
+            var model = PageService.GetPageByName("DirectionsWuChi", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new WuChiViewModel());
+            }
+
+            return View(model);
         }
         public ActionResult NgaMi()
         {
-            return View();
+            var model = PageService.GetPageByName("DirectionsNgaMi", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new NgaMiViewModel());
+            }
+
+            return View(model);
         }
         public ActionResult VinChun()
         {
-            return View();
+            var model = PageService.GetPageByName("DirectionsVinChun", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new VinChunViewModel());
+            }
+
+            return View(model);
         }
         public ActionResult PaKua()
         {
-            return View();
+            var model = PageService.GetPageByName("DirectionsPaKua", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new PaKuaViewModel());
+            }
+
+            return View(model);
         }
         public ActionResult SinI()
         {
-            return View();
+            var model = PageService.GetPageByName("DirectionsSinI", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new SinIViewModel());
+            }
+
+            return View(model);
         }
         public ActionResult BaiMy()
         {
-            return View();
+            var model = PageService.GetPageByName("DirectionsBaiMy", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new BaiMyViewModel());
+            }
+
+            return View(model);
         }
         public ActionResult FiveEnimals()
         {
-            return View();
+            var model = PageService.GetPageByName("DirectionsFiveEnimals", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new FiveEnimalsViewModel());
+            }
+
+            return View(model);
         }
         public ActionResult Weapon()
         {
-            return View();
+            var model = PageService.GetPageByName("DirectionsWeapon", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new WeaponViewModel());
+            }
+
+            return View(model);
         }
         public ActionResult Meditation()
         {
-            return View();
+            var model = PageService.GetPageByName("DirectionsMeditation", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new MeditationViewModel());
+            }
+
+            return View(model);
         }
     }
 }

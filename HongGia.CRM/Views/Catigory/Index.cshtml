@@ -1,0 +1,55 @@
+﻿@model HongGia.Core.Interfaces.Models.ICatigoriesView
+	
+@{
+	ViewBag.Title = "Catigory";
+}
+
+@section scripts{
+	@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
+
+<h2>Catigories</h2>
+
+<div>
+	@using (Html.BeginForm("Add", "Catigory", FormMethod.Post))
+	{
+		<div class="form-group">
+			<label for="Name">Name</label>
+			<input type="text" class="form-control" id="Name" placeholder="example" name="Name" />
+		</div>
+
+		<div class="form-group">
+			<label for="Name">Type</label>
+			<input type="text" class="form-control" id="Name" placeholder="example" name="Type" />
+		</div>
+
+		<button type="submit" class="btn btn-default">Add Catigory</button>
+	}
+</div>
+
+<div id="allCatigoriesGrid">
+	@if (@Model.Categories != null && @Model.Categories.Any() == true)
+	{
+		<table class="table table-bordered">
+			<tr>
+				<th>#</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Functional</th>
+			</tr>
+
+				@foreach (var catigory in @Model.Categories.OrderBy(x => x.Type))
+				{
+					<tr>
+						<td>@catigory.Id</td>
+						<td>@catigory.Name</td>
+						<td>@catigory.Type</td>
+
+						<td>
+							@Ajax.ActionLink("Remove", "Remove", new { catigoryId = catigory.Id }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }, new { @class = "btn rfloat clear" })
+						</td>
+					</tr>
+				}
+		</table>
+	}
+</div>

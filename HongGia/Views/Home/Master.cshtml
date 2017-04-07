@@ -1,7 +1,9 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿@using HongGia.Helpers
 
-<p>Use this area to provide additional information.</p>
+@model HongGia.Core.Interfaces.Models.IBasePageView
+
+@{
+    ViewBag.Title = "Master";
+}
+
+@Html.BasePage(@Model)

@@ -7,6 +7,8 @@ using HongGia.Core.Interfaces.Base;
 
 using HongGia.DB.Services;
 
+using HongGia.Models;
+
 namespace HongGia.Controllers
 {
     public class HomeController : DefaultController
@@ -15,6 +17,11 @@ namespace HongGia.Controllers
         {
             var model = HomeService.GetHome(CurrentLangCode);
             
+            if (model == null)
+            {
+                return View(new HomeViewModel());
+            }
+
             return View(model);
         }
         
@@ -24,9 +31,14 @@ namespace HongGia.Controllers
             var feedbacks = FeedbackService.GetFeedbasks();
             
             ViewData["PageNum"] = pageNum;
-            ViewData["ItemCount"] = feedbacks.FeedBacks.Count();
+            ViewData["ItemCount"] = feedbacks?.FeedBacks.Count() ?? 0;
             ViewData["PageSize"] = PageConstants.PageFeedbackSize;
-            
+
+            if (feedbacks == null)
+            {
+                return View(new FeedBackViewModel());
+            }
+
             feedbacks.FeedBacks = feedbacks.FeedBacks.OrderBy(p => p.Date).Skip(PageConstants.PageFeedbackSize * pageNum).Take(PageConstants.PageFeedbackSize).ToList();
 
             return View(feedbacks);
@@ -50,7 +62,14 @@ namespace HongGia.Controllers
 
         public ActionResult Master()
         {
-            return View();
+            var model = PageService.GetPageByName("HomeMaster", this.CurrentLangCode);
+
+            if (model == null)
+            {
+                return View(new MasterViewModel());
+            }
+
+            return View(model);
         }
 
     }

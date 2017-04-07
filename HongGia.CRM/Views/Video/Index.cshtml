@@ -1,0 +1,70 @@
+﻿@using HongGia.CRM.Helpers
+
+@model HongGia.Core.Interfaces.Models.IVideoView
+
+@{
+	ViewBag.Title = "Video";
+}
+
+@section scripts{
+	@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
+
+<h2>Videos</h2>
+
+<div>
+	@Html.ActionLink("Create Video", "Add", "Video", null, new { @class = "btn rfloat clear" })
+</div>
+
+<div id="allPhotosGrid">
+	@if (@Model.AllVideo != null && @Model.AllVideo.Any() == true)
+	{
+		<table class="table table-bordered">
+			<tr>
+				<th>#</th>
+				<th>Screen</th>
+				<th>Name</th>
+				<th>Path</th>
+				<th>Catigories</th>
+				@*<th>Date</th>*@
+				<th>Functional</th>
+			</tr>
+
+			@foreach (var video in Model.AllVideo)
+			{
+
+				<tr>
+					<td>@video.Id</td>
+
+					<td>
+						<img src="@video.Screen.Src" alt="@video.Screen.Alt" />
+					</td>
+
+					<td>@video.Name</td>
+					<td>@video.Path</td>
+
+					<td>
+						@foreach (var catigory in video.Categories)
+						{
+							@catigory<br>
+						}
+					</td>
+
+
+					<td>
+						@Html.ActionLink("Update", "Update", "Video", new { videoId = video.Id }, new { @class = "btn rfloat clear" })<br>
+						@Ajax.ActionLink("Remove", "Remove", new { videoId = video.Id }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }, new { @class = "btn rfloat clear" })
+					</td>
+				</tr>
+			}
+		</table>
+
+		<div class="text-center">
+			@Html.PageLinks(
+			(int)Html.ViewData["PageNum"],
+			(int)Html.ViewData["ItemCount"],
+			(int)Html.ViewData["PageSize"],
+			x => Url.Action("Index", new { pageNum = x }))
+		</div>
+	}
+</div>

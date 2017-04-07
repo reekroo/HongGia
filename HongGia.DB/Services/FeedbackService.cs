@@ -5,6 +5,7 @@ using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Base;
 using HongGia.Core.Models.Views;
+
 using HongGia.DB.Models;
 
 namespace HongGia.DB.Services
@@ -15,12 +16,9 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
-                if (context.Feedbacks.Count() == 0)
+                if (context.Feedbacks == null || context.Feedbacks.Any() == false)
                 {
-                    return new FeedBackView()
-                    {
-                        FeedBacks = new List<IFeedBack>()
-                    };
+                    return null;
                 }
 
                 var feedbacks = context.Feedbacks.Select(f => new FeedBack()
@@ -30,7 +28,7 @@ namespace HongGia.DB.Services
                     Id = f.Id,
                     Text = f.Text,
                     Language = f.Language.Name,
-                    Date = f.Date.GetValueOrDefault()
+                    Date = f.Date.Value
                 }).ToList();
 
                 return new FeedBackView()
@@ -44,7 +42,12 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
-                var feedbacks = context.Feedbacks.Where(l => l.Language.Name.ToLower() == "lang").Select(f => new FeedBack()
+                if (context.Feedbacks == null || context.Feedbacks.Any(l => l.Language.Name.ToLower() == lang) == false)
+                {
+                    return null;
+                }
+
+                var feedbacks = context.Feedbacks.Where(l => l.Language.Name.ToLower() == lang).Select(f => new FeedBack()
                 {
                     Name = f.AuthorName,
                     Email = f.AuthorMail,
@@ -58,10 +61,15 @@ namespace HongGia.DB.Services
             }
         }
 
-        public static void SetFeedback(IFeedBack feedback)
+        public static bool SetFeedback(IFeedBack feedback)
         {
             using (var context = new EntitiesDB())
             {
+                if (context.Feedbacks == null || context.Feedbacks.Count() < 0)
+                {
+                    return false;
+                }
+
                 var save = new Feedback()
                 {
                     Id = feedback.Id,
@@ -74,6 +82,31 @@ namespace HongGia.DB.Services
 
                 context.Feedbacks.Add(save);
                 context.SaveChanges();
+
+                return true;
+            }
+        }
+
+        public static bool RemoveFeedback(int feedbackId)
+        {
+            using (var context = new EntitiesDB())
+            {
+                if (context.Feedbacks.Any() == false)
+                {
+                    return false;
+                }
+
+                var selectFeedback = context.Feedbacks.FirstOrDefault(f => f.Id == feedbackId);
+
+                if (selectFeedback == null)
+                {
+                    return false;
+                }
+
+                context.Feedbacks.Remove(selectFeedback);
+                context.SaveChanges();
+
+                return true;
             }
         }
     }

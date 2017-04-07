@@ -11,6 +11,11 @@ namespace HongGia.Helpers
         {
             var result = string.Empty;
 
+            if (parameters == null)
+            {
+                return new MvcHtmlString(result);
+            }
+
             if (parameters.Images != null && parameters.Images.Count() > 0)
             {
                 if (parameters.Images.Count() > 1)
@@ -52,7 +57,7 @@ namespace HongGia.Helpers
                 {
                     if (topic.Type.ToLower() == "collapse")
                     {
-                        result += htmlHelper.CollapsiblePanel(parameters as ICollapsiblePanel);
+                        result += htmlHelper.CollapsiblePanel(topic);
                     }
                     else
                     {
