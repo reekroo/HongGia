@@ -4,7 +4,7 @@ namespace HongGia.DB.Services
 {
     public class MediaService
     {
-        public static IVideoView GetAllVideo()
+        public static IVideosView GetAllVideo()
         {
             return VideoService.GetAllVideo();
          }

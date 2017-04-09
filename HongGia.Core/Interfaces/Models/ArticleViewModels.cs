@@ -7,7 +7,6 @@ namespace HongGia.Core.Interfaces.Models
     public interface IArticlesView
     {
         IEnumerable<string> Categories { get; set; }
-
         IEnumerable<IArticle> AllArticles { get; set; }
     }
     

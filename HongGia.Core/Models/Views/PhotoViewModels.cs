@@ -5,7 +5,7 @@ using HongGia.Core.Interfaces.Models;
 
 namespace HongGia.Core.Models.Views
 {
-    public class AllPhotoView : IAllPhotoView
+    public class PhotosView : IPhotosView
     {
         public IEnumerable<string> Categories { get; set; }
         public IEnumerable<IPhoto> AllPhoto { get; set; }
@@ -19,7 +19,7 @@ namespace HongGia.Core.Models.Views
         public IEnumerable<IPhoto> CategoryPhoto { get; set; }
     }
 
-	public class PhotoView : IPhoto
+	public class PhotoView : IPhotoView
 	{
 		public int Id { get; set; }
 		public string Name { get; set; }

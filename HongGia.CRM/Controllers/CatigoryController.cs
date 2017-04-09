@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+
 using HongGia.Core.Models.Base;
 using HongGia.Core.Models.Views;
 
@@ -15,7 +16,7 @@ namespace HongGia.CRM.Controllers
 
 			if (result == null)
 			{
-				return View(new CatigoriesViewModels());
+				return View(new CatigoriesView());
 			}
 
 			return View(result);

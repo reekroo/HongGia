@@ -5,8 +5,8 @@ using HongGia.Core.Interfaces.Models;
 
 namespace HongGia.Core.Models.Views
 {
-	public class CatigoriesView : ICatigoriesView
+	public class FeedBacksView : IFeedBacksView
 	{
-		public IEnumerable<ICatigory> Categories { get; set; }
+		public IEnumerable<IFeedBack> FeedBacks { get; set; }
 	}
 }

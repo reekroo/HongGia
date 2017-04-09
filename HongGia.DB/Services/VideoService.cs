@@ -14,7 +14,7 @@ namespace HongGia.DB.Services
 {
 	public class VideoService
 	{
-		public static IVideoView GetAllVideo()
+		public static IVideosView GetAllVideo()
 		{
 			using (var context = new EntitiesDB())
 			{
@@ -40,7 +40,7 @@ namespace HongGia.DB.Services
 					Categories = video.Catigories.Select(x => x.Name)
 				}).ToList();
 
-				var allvideos = new VideoView()
+				var allvideos = new VideosView()
 				{
 					AllVideo = videos,
 					Categories = catigories
@@ -68,7 +68,7 @@ namespace HongGia.DB.Services
 					return null;
 				}
 
-				return new Core.Models.Views.Video()
+				return new VideoView()
 				{
 					Id = video.Id,
 					Name = video.Name,

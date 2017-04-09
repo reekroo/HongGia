@@ -6,7 +6,6 @@ using HongGia.Core.Models.Base;
 using HongGia.Core.Models.Views;
 
 using HongGia.DB.Services;
-using Video = HongGia.Core.Models.Views.Video;
 
 namespace HongGia.CRM.Controllers
 {
@@ -23,7 +22,7 @@ namespace HongGia.CRM.Controllers
 
 			if (result == null)
 			{
-				return View(new VideoView());
+				return View(new VideosView());
 			}
 
 			result.AllVideo = result.AllVideo.OrderBy(p => p.Id).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
@@ -34,7 +33,7 @@ namespace HongGia.CRM.Controllers
 		[HttpGet]
 		public ActionResult Add()
 		{
-			var result = new Video()
+			var result = new VideoView()
 			{
 				Categories = CatigoryService.GetCatigoriesListStringByType("video")
 			};
@@ -56,7 +55,7 @@ namespace HongGia.CRM.Controllers
 		}
 		
 		[HttpPost]
-		public ActionResult Add(Video video)
+		public ActionResult Add(VideoView video)
 		{
 			var str = video.Categories.FirstOrDefault();
 
@@ -78,7 +77,7 @@ namespace HongGia.CRM.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Update(Video video)
+		public ActionResult Update(VideoView video)
 		{
 			var str = video.Categories.FirstOrDefault();
 

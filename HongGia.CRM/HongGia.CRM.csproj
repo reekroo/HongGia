@@ -213,11 +213,8 @@
     <Compile Include="Helpers\MenuHelper.cs" />
     <Compile Include="Helpers\PagingHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ArticleViewModels.cs" />
-    <Compile Include="Models\FeedBackViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\NewsViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

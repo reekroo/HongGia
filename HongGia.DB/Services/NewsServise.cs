@@ -56,7 +56,7 @@ namespace HongGia.DB.Services
                     return null;
                 }
 
-                var news = new List<Core.Models.Base.News>();
+                List<Core.Models.Base.News> news;
                 
                 if (context.News.Count() < count - 1)
                 {
@@ -65,11 +65,11 @@ namespace HongGia.DB.Services
                                 Id = n.Id,
                                 Header = n.Header,
                                 Text = n.HTMLText,
-                                Date = n.Date.GetValueOrDefault(),
+                                Date = n.Date.Value,
 
                                 Language = n.Language.Name,
 
-                                Image = new HongGia.Core.Models.Base.Image()
+                                Image = n.Image == null ? null : new HongGia.Core.Models.Base.Image()
                                 {
                                     Src = n.Image.Path,
                                     Alt = n.Image.Name
@@ -84,11 +84,11 @@ namespace HongGia.DB.Services
                             Id = n.Id,
                             Header = n.Header,
                             Text = n.HTMLText,
-                            Date = n.Date.GetValueOrDefault(),
+                            Date = n.Date.Value,
 
                             Language = n.Language.Name,
 
-                            Image = new HongGia.Core.Models.Base.Image()
+                            Image = n.Image == null ? null : new HongGia.Core.Models.Base.Image()
                             {
                                 Src = n.Image.Path,
                                 Alt = n.Image.Name

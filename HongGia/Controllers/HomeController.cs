@@ -4,73 +4,72 @@ using System.Web.Mvc;
 using HongGia.Core.Constants;
 using HongGia.Core.Controllers;
 using HongGia.Core.Interfaces.Base;
+using HongGia.Core.Models.Views;
 
 using HongGia.DB.Services;
 
-using HongGia.Models;
-
 namespace HongGia.Controllers
 {
-    public class HomeController : DefaultController
-    {
-        public ActionResult Index()
-        {
-            var model = HomeService.GetHome(CurrentLangCode);
-            
-            if (model == null)
-            {
-                return View(new HomeViewModel());
-            }
+	public class HomeController : DefaultController
+	{
+		public ActionResult Index()
+		{
+			var model = HomeService.GetHome(CurrentLangCode);
 
-            return View(model);
-        }
-        
-        [HttpGet]
-        public ActionResult FeedBack(int pageNum = 0)
-        {
-            var feedbacks = FeedbackService.GetFeedbasks();
-            
-            ViewData["PageNum"] = pageNum;
-            ViewData["ItemCount"] = feedbacks?.FeedBacks.Count() ?? 0;
-            ViewData["PageSize"] = PageConstants.PageFeedbackSize;
+			if (model == null)
+			{
+				return View(new HomeView());
+			}
 
-            if (feedbacks == null)
-            {
-                return View(new FeedBackViewModel());
-            }
+			return View(model);
+		}
 
-            feedbacks.FeedBacks = feedbacks.FeedBacks.OrderBy(p => p.Date).Skip(PageConstants.PageFeedbackSize * pageNum).Take(PageConstants.PageFeedbackSize).ToList();
+		[HttpGet]
+		public ActionResult FeedBack(int pageNum = 0)
+		{
+			var feedbacks = FeedbackService.GetFeedbasks();
 
-            return View(feedbacks);
-        }
+			ViewData["PageNum"] = pageNum;
+			ViewData["ItemCount"] = feedbacks?.FeedBacks.Count() ?? 0;
+			ViewData["PageSize"] = PageConstants.PageFeedbackSize;
 
-        [HttpPost]
-        public ActionResult FeedBack(IFeedBack feedback)
-        {
-            if (ModelState.IsValid)
-            {
-                FeedbackService.SetFeedback(feedback);
-            }
+			if (feedbacks == null)
+			{
+				return View(new FeedBacksView());
+			}
 
-            return View("FeedBack");
-        }
+			feedbacks.FeedBacks = feedbacks.FeedBacks.OrderBy(p => p.Date).Skip(PageConstants.PageFeedbackSize * pageNum).Take(PageConstants.PageFeedbackSize).ToList();
 
-        public ActionResult Contacts()
-        {
-            return View();
-        }
+			return View(feedbacks);
+		}
 
-        public ActionResult Master()
-        {
-            var model = PageService.GetPageByName("HomeMaster", this.CurrentLangCode);
+		[HttpPost]
+		public ActionResult FeedBack(IFeedBack feedback)
+		{
+			if (ModelState.IsValid)
+			{
+				FeedbackService.SetFeedback(feedback);
+			}
 
-            if (model == null)
-            {
-                return View(new MasterViewModel());
-            }
+			return View("FeedBack");
+		}
 
-            return View(model);
-        }
+		public ActionResult Contacts()
+		{
+			return View();
+		}
 
-    }
+		public ActionResult Master()
+		{
+			var model = PageService.GetPageByName("HomeMaster", this.CurrentLangCode);
+
+			if (model == null)
+			{
+				return View(new BasePageView());
+			}
+
+			return View(model);
+		}
+
+	}
 }

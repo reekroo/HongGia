@@ -5,7 +5,7 @@ using HongGia.Core.Interfaces.Models;
 
 namespace HongGia.Core.Models.Views
 {
-    public class AllArticlesView : IArticlesView
+    public class ArticlesView : IArticlesView
     {
         public IEnumerable<string> Categories { get; set; }
         public IEnumerable<IArticle> AllArticles { get; set; }

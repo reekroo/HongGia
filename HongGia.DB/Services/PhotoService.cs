@@ -13,7 +13,7 @@ namespace HongGia.DB.Services
 {
     public class PhotoService
     {
-        public static IAllPhotoView GetAllPhoto()
+        public static IPhotosView GetAllPhoto()
         {
             using (var context = new EntitiesDB())
             {
@@ -32,7 +32,7 @@ namespace HongGia.DB.Services
                     Categories = photo.Catigories.Select(x => x.Name)
                 }).ToList();
 
-                var allPhoto = new AllPhotoView()
+                var allPhoto = new PhotosView()
                 {
                     Categories = catigories,
                     AllPhoto = photos
@@ -42,7 +42,7 @@ namespace HongGia.DB.Services
             }
         }
 
-        public static IPhoto GetPhoto(int photoId)
+        public static IPhotoView GetPhoto(int photoId)
         {
             using (var context = new EntitiesDB())
             {
@@ -58,7 +58,7 @@ namespace HongGia.DB.Services
                     return null;
                 }
 
-                return new Core.Models.Base.Photo()
+                return new PhotoView()
                 {
                     Name = photo.Name,
                     Path = photo.Path,
@@ -101,7 +101,7 @@ namespace HongGia.DB.Services
             }
         }
 
-		public static bool AddPhoto(IPhoto photo)
+		public static bool AddPhoto(IPhotoView photo)
 		{
 			using (var context = new EntitiesDB())
 			{
@@ -137,7 +137,7 @@ namespace HongGia.DB.Services
 			}
 		}
 
-		public static bool UpdatePhoto(IPhoto photo)
+		public static bool UpdatePhoto(IPhotoView photo)
 		{
 			using (var context = new EntitiesDB())
 			{

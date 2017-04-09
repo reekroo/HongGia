@@ -5,99 +5,97 @@ using HongGia.Core.Constants;
 using HongGia.Core.Models.Base;
 using HongGia.Core.Models.Views;
 
-using HongGia.CRM.Models;
-
 using HongGia.DB.Services;
 
 namespace HongGia.CRM.Controllers
 {
-    public class ArticleController : Controller
-    {
-        [HttpGet]
-        public ActionResult Index(int pageNum = 0)
-        {
-            var result = ArtircleService.GetArticles();
+	public class ArticleController : Controller
+	{
+		[HttpGet]
+		public ActionResult Index(int pageNum = 0)
+		{
+			var result = ArtircleService.GetArticles();
 
-            ViewData["PageNum"] = pageNum;
-            ViewData["ItemCount"] = result?.AllArticles.Count() ?? 0;
-            ViewData["PageSize"] = 20;
+			ViewData["PageNum"] = pageNum;
+			ViewData["ItemCount"] = result?.AllArticles.Count() ?? 0;
+			ViewData["PageSize"] = 20;
 
-            if (result == null)
-            {
-                return View(new AllArticlesViewModel());
-            }
+			if (result == null)
+			{
+				return View(new ArticlesView());
+			}
 
-            result.AllArticles = result.AllArticles.OrderBy(p => p.Id).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
+			result.AllArticles = result.AllArticles.OrderBy(p => p.Id).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
 
-            return View(result);
-        }
+			return View(result);
+		}
 
-        [HttpGet]
-        public ActionResult Add()
-        {
-            var result = new ArticleView()
-            {
-                Categories = CatigoryService.GetCatigoriesListStringByType("article")
-            };
+		[HttpGet]
+		public ActionResult Add()
+		{
+			var result = new ArticleView()
+			{
+				Categories = CatigoryService.GetCatigoriesListStringByType("article")
+			};
 
-            return View(result);
-        }
-        
-        [HttpGet]
-        public ActionResult Update(int articleId)
-        {
-            var result = ArtircleService.GetArticle(articleId);
+			return View(result);
+		}
 
-            if (result == null)
-            {
-                return View("Add");
-            }
+		[HttpGet]
+		public ActionResult Update(int articleId)
+		{
+			var result = ArtircleService.GetArticle(articleId);
 
-            return View(result);
-        }
+			if (result == null)
+			{
+				return View("Add");
+			}
 
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult Add(Article article)
-        {
-            var str = article.Categories.FirstOrDefault();
+			return View(result);
+		}
 
-            article.Categories = string.IsNullOrEmpty(str) == false ? str.Split(',') : null;
+		[HttpPost]
+		[ValidateInput(false)]
+		public ActionResult Add(Article article)
+		{
+			var str = article.Categories.FirstOrDefault();
 
-            if (ModelState.IsValid)
-            {
-                ArtircleService.AddArticle(article);
-            }
+			article.Categories = string.IsNullOrEmpty(str) == false ? str.Split(',') : null;
 
-            return RedirectToAction("Index");
-        }
+			if (ModelState.IsValid)
+			{
+				ArtircleService.AddArticle(article);
+			}
 
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult Update(Article article)
-        {
-            var str = article.Categories.FirstOrDefault();
+			return RedirectToAction("Index");
+		}
 
-            article.Categories = string.IsNullOrEmpty(str) == false ? str.Split(',') : null;
+		[HttpPost]
+		[ValidateInput(false)]
+		public ActionResult Update(Article article)
+		{
+			var str = article.Categories.FirstOrDefault();
 
-            if (ModelState.IsValid)
-            {
-                ArtircleService.UpdateArticle(article);
-            }
+			article.Categories = string.IsNullOrEmpty(str) == false ? str.Split(',') : null;
 
-            return RedirectToAction("Index");
-        }
-        
-        [HttpPost]
-        public ActionResult Remove(int articleId)
-        {
-            if (ModelState.IsValid)
-            {
-                ArtircleService.RemoveArticle(articleId);
-            }
+			if (ModelState.IsValid)
+			{
+				ArtircleService.UpdateArticle(article);
+			}
 
-            return RedirectToAction("Index");
-        }
+			return RedirectToAction("Index");
+		}
 
-    }
+		[HttpPost]
+		public ActionResult Remove(int articleId)
+		{
+			if (ModelState.IsValid)
+			{
+				ArtircleService.RemoveArticle(articleId);
+			}
+
+			return RedirectToAction("Index");
+		}
+
+	}
 }

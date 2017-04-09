@@ -8,26 +8,26 @@ using HongGia.DB.Services;
 
 namespace HongGia.CRM.Controllers
 {
-    public class PhotoController : Controller
-    {
-        [HttpGet]
-        public ActionResult Index(int pageNum = 0)
-        {
-            var result = PhotoService.GetAllPhoto();
+	public class PhotoController : Controller
+	{
+		[HttpGet]
+		public ActionResult Index(int pageNum = 0)
+		{
+			var result = PhotoService.GetAllPhoto();
 
-            ViewData["PageNum"] = pageNum;
-            ViewData["ItemCount"] = result?.AllPhoto.Count() ?? 0;
-            ViewData["PageSize"] = 20;
+			ViewData["PageNum"] = pageNum;
+			ViewData["ItemCount"] = result?.AllPhoto.Count() ?? 0;
+			ViewData["PageSize"] = 20;
 
-            if (result == null)
-            {
-                return View(new AllPhotoView());
-            }
+			if (result == null)
+			{
+				return View(new PhotosView());
+			}
 
-            result.AllPhoto = result.AllPhoto.OrderBy(p => p.Id).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
+			result.AllPhoto = result.AllPhoto.OrderBy(p => p.Id).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
 
-            return View(result);
-        }
+			return View(result);
+		}
 
 		[HttpGet]
 		public ActionResult Add()

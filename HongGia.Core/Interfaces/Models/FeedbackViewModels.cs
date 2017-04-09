@@ -3,7 +3,7 @@ using HongGia.Core.Interfaces.Base;
 
 namespace HongGia.Core.Interfaces.Models
 {
-    public interface IFeedBackView
+    public interface IFeedBacksView
     {
         IEnumerable<IFeedBack> FeedBacks { get; set; }
     }

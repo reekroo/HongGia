@@ -32,13 +32,13 @@ namespace HongGia.DB.Services
                                 Categories = article.Catigories.Select(x => x.Name)
                 }).ToList();
 
-                var allvideos = new AllArticlesView()
+                var allArticles = new ArticlesView()
                 {
                     Categories = catigories,
                     AllArticles = articles
                 };
 
-                return allvideos;
+                return allArticles;
             }
         }
 

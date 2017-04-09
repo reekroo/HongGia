@@ -5,5 +5,4 @@ namespace HongGia.Core.Interfaces.Models
     public interface IBasePageView : IBasePage
     {
     }
-    
 }

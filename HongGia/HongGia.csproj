@@ -265,15 +265,6 @@
     <Compile Include="Helpers\MenuHelper.cs" />
     <Compile Include="Helpers\SwitchLanguageHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\DirectionsViewModels.cs" />
-    <Compile Include="Models\TrainingViewModels.cs" />
-    <Compile Include="Models\HomeViewModels.cs" />
-    <Compile Include="Models\HongGiaViewModels.cs" />
-    <Compile Include="Models\MediaViewModels.cs" />
-    <Compile Include="Models\ArticleViewModels.cs" />
-    <Compile Include="Models\BasePageViewModels.cs" />
-    <Compile Include="Models\PhotoViewModels.cs" />
-    <Compile Include="Models\NewsViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

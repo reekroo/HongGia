@@ -5,13 +5,13 @@ using HongGia.Core.Interfaces.Models;
 
 namespace HongGia.Core.Models.Views
 {
-    public class VideoView : IVideoView
+	public class VideosView : IVideosView
 	{
 		public IEnumerable<string> Categories { get; set; }
 		public IEnumerable<IVideo> AllVideo { get; set; }
-    }
+	}
 
-	public class Video : IVideo
+	public class VideoView : IVideoView
 	{
 		public string Name { get; set; }
 		public string Path { get; set; }
@@ -20,8 +20,8 @@ namespace HongGia.Core.Models.Views
 		public IEnumerable<string> Categories { get; set; }
 	}
 
-    public class BooksView : IBooksView
-    {
-        public IEnumerable<IBook> AllBooks { get; set; }
-    }
+	public class BooksView : IBooksView
+	{
+		public IEnumerable<IBook> AllBooks { get; set; }
+	}
 }

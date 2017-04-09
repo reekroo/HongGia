@@ -111,6 +111,7 @@
     <Compile Include="Models\Views\CatigoryViewModels.cs" />
     <Compile Include="Models\Views\ArticleViewModels.cs" />
     <Compile Include="Models\Views\BasePageViewModels.cs" />
+    <Compile Include="Models\Views\FeedBackViewModel.cs" />
     <Compile Include="Models\Views\HomeViewModels.cs" />
     <Compile Include="Models\Views\MediaViewModels.cs" />
     <Compile Include="Models\Views\NewsViewModels.cs" />

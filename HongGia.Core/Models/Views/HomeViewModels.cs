@@ -11,9 +11,9 @@ namespace HongGia.Core.Models.Views
 
         public IEnumerable<INews> TopNews { get; set; }
     }
-    
-    public class FeedBackView : IFeedBackView
-    {
-        public IEnumerable<IFeedBack> FeedBacks { get; set; }
-    }
+
+	//public class FeedBacksView : IFeedBacksView
+	//{
+	//    public IEnumerable<IFeedBack> FeedBacks { get; set; }
+	//}
 }

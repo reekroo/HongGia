@@ -2,91 +2,90 @@
 using System.Linq;
 using System.Web.Mvc;
 
-using HongGia.CRM.Models;
-
 using HongGia.Core.Constants;
 using HongGia.Core.Models.Base;
+using HongGia.Core.Models.Views;
 
 using HongGia.DB.Services;
 
 namespace HongGia.CRM.Controllers
 {
-    public class NewsController : Controller
-    {
-        [HttpGet]
-        public ActionResult Index(string lang, int pageNum = 0)
-        {
-            var result = NewsService.GetAllNews();
-            
-            ViewData["PageNum"] = pageNum;
-            ViewData["ItemCount"] = result?.AllNews.Count() ?? 0;
-            ViewData["PageSize"] = 20;
+	public class NewsController : Controller
+	{
+		[HttpGet]
+		public ActionResult Index(string lang, int pageNum = 0)
+		{
+			var result = NewsService.GetAllNews();
 
-            if (result == null)
-            {
-                return View(new AllNewsViewModel());
-            }
+			ViewData["PageNum"] = pageNum;
+			ViewData["ItemCount"] = result?.AllNews.Count() ?? 0;
+			ViewData["PageSize"] = 20;
 
-            result.AllNews = result.AllNews.OrderBy(p => p.Date).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
+			if (result == null)
+			{
+				return View(new AllNewsView());
+			}
 
-            return View(result);
-        }
+			result.AllNews = result.AllNews.OrderBy(p => p.Date).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
 
-        [HttpGet]
-        public ActionResult Add(string lang)
-        {
-            return View();
-        }
+			return View(result);
+		}
 
-        [HttpGet]
-        public ActionResult Update(int newsId)
-        {
-            var result = NewsService.GetNews(newsId);
-            
-            if (result == null)
-            {
-                return View("Add");
-            }
+		[HttpGet]
+		public ActionResult Add(string lang)
+		{
+			return View();
+		}
 
-            return View(result);
-        }
+		[HttpGet]
+		public ActionResult Update(int newsId)
+		{
+			var result = NewsService.GetNews(newsId);
 
-        [HttpPost]
-        public ActionResult Add(News news)
-        {
-            if (ModelState.IsValid)
-            {
-                news.Date = DateTime.Now;
-                news.Language = "ru";
+			if (result == null)
+			{
+				return View("Add");
+			}
 
-                NewsService.AddNews(news);
-            }
+			return View(result);
+		}
 
-            return RedirectToAction("Index");
-        }
+		[HttpPost]
+		public ActionResult Add(News news)
+		{
+			if (ModelState.IsValid)
+			{
+				news.Date = DateTime.Now;
+				news.Language = "ru";
 
-        [HttpPost]
-        public ActionResult Update(News news)
-        {
-            if (ModelState.IsValid)
-            {
-                NewsService.UpdateNews(news);
-            }
+				NewsService.AddNews(news);
+			}
 
-            return RedirectToAction("Index");
-        }
+			return RedirectToAction("Index");
+		}
 
-        [HttpPost]
-        public bool Remove(int newsId)
-        {
-            if (ModelState.IsValid)
-            {
-                NewsService.RemoveNews(newsId);
+		[HttpPost]
+		public ActionResult Update(News news)
+		{
+			if (ModelState.IsValid)
+			{
+				NewsService.UpdateNews(news);
+			}
 
-                return true;
-            }
+			return RedirectToAction("Index");
+		}
 
-            return false;
-        }
-    }
+		[HttpPost]
+		public bool Remove(int newsId)
+		{
+			if (ModelState.IsValid)
+			{
+				NewsService.RemoveNews(newsId);
+
+				return true;
+			}
+
+			return false;
+		}
+	}
 }

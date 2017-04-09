@@ -12,7 +12,7 @@ namespace HongGia.DB.Services
 {
     public class FeedbackService
     {
-        public static IFeedBackView GetFeedbasks()
+        public static IFeedBacksView GetFeedbasks()
         {
             using (var context = new EntitiesDB())
             {
@@ -31,7 +31,7 @@ namespace HongGia.DB.Services
                     Date = f.Date.Value
                 }).ToList();
 
-                return new FeedBackView()
+                return new FeedBacksView()
                 {
                     FeedBacks = feedbacks
                 };

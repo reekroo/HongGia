@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace HongGia.Core.Interfaces.Base
+﻿namespace HongGia.Core.Interfaces.Base
 {
     public interface ICatigory
     {

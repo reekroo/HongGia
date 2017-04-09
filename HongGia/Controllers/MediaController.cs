@@ -3,10 +3,9 @@ using System.Web.Mvc;
 
 using HongGia.Core.Constants;
 using HongGia.Core.Controllers;
+using HongGia.Core.Models.Views;
 
 using HongGia.DB.Services;
-
-using HongGia.Models;
 
 namespace HongGia.Controllers
 {
@@ -23,7 +22,7 @@ namespace HongGia.Controllers
             
             if (result == null)
             {
-                return View(new BooksViewModel());
+                return View(new BooksView());
             }
 
             return View(result);
@@ -39,7 +38,7 @@ namespace HongGia.Controllers
 
             if (result == null)
             {
-                return View(new VideoViewModel());
+                return View(new VideosView());
             }
 
             result.AllVideo = result.AllVideo.OrderBy(p => p.Id).Skip(PageConstants.PageCategoriesPhotoSize * pageNum).Take(PageConstants.PageVideoSize).ToList();

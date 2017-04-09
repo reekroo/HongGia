@@ -1,35 +1,36 @@
 ﻿using System.Web.Mvc;
 
 using HongGia.Core.Controllers;
+using HongGia.Core.Models.Views;
+
 using HongGia.DB.Services;
-using HongGia.Models;
 
 namespace HongGia.Controllers
 {
-    public class ArticleController : DefaultController
-    {
-        public ActionResult AllArticles()
-        {
-            var result = ArtircleService.GetArticles();
+	public class ArticleController : DefaultController
+	{
+		public ActionResult AllArticles()
+		{
+			var result = ArtircleService.GetArticles();
 
-            if (result == null)
-            {
-                return View(new AllArticlesViewModel());
-            }
+			if (result == null)
+			{
+				return View(new ArticlesView());
+			}
 
-            return View(result);
-        }
-        
-        public ActionResult Article(int id)
-        {
-            var result = ArtircleService.GetArticle(id);
+			return View(result);
+		}
 
-            if (result == null)
-            {
-                return View(new ArticleViewModel());
-            }
+		public ActionResult Article(int id)
+		{
+			var result = ArtircleService.GetArticle(id);
 
-            return View(result);
-        }
-    }
+			if (result == null)
+			{
+				return View(new ArticleView());
+			}
+
+			return View(result);
+		}
+	}
 }

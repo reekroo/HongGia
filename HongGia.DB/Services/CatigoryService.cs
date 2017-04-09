@@ -118,7 +118,7 @@ namespace HongGia.DB.Services
 					return null;
 				}
 
-				var result = new CatigoriesViewModels();
+				var result = new CatigoriesView();
 
 				result.Categories = context.Catigories.Select(c => new Core.Models.Base.Catigory()
 				{
