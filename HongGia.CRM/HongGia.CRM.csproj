@@ -205,6 +205,7 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\CatigoryController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
+    <Compile Include="Controllers\SliderController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -305,10 +306,12 @@
     <Content Include="Views\Video\Index.cshtml" />
     <Content Include="Views\Video\Add.cshtml" />
     <Content Include="Views\Video\Update.cshtml" />
+    <Content Include="Views\Slider\Index.cshtml" />
+    <Content Include="Views\Firm\Index.cshtml" />
+    <Content Include="Views\Firm\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Firm\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -90,12 +90,14 @@
     <Compile Include="Interfaces\Models\HomeViewModels.cs" />
     <Compile Include="Interfaces\Models\MediaViewModels.cs" />
     <Compile Include="Interfaces\Models\NewsViewModels.cs" />
+    <Compile Include="Interfaces\Models\FirmViewModels.cs" />
     <Compile Include="Interfaces\Models\PhotoViewModels.cs" />
     <Compile Include="Interfaces\Base\ICollapsiblePanel.cs" />
     <Compile Include="Interfaces\Base\IFile.cs" />
     <Compile Include="Interfaces\Base\IImage.cs" />
     <Compile Include="Interfaces\Base\IText.cs" />
     <Compile Include="Interfaces\Models\ArticleViewModels.cs" />
+    <Compile Include="Interfaces\Models\SliderViewModels.cs" />
     <Compile Include="Models\Base\Catigory.cs" />
     <Compile Include="Models\Base\FirmContact.cs" />
     <Compile Include="Models\Base\FirmAddress.cs" />
@@ -112,9 +114,11 @@
     <Compile Include="Models\Views\ArticleViewModels.cs" />
     <Compile Include="Models\Views\BasePageViewModels.cs" />
     <Compile Include="Models\Views\FeedBackViewModel.cs" />
+    <Compile Include="Models\Views\FirmViewModels.cs" />
     <Compile Include="Models\Views\HomeViewModels.cs" />
     <Compile Include="Models\Views\MediaViewModels.cs" />
     <Compile Include="Models\Views\NewsViewModels.cs" />
+    <Compile Include="Models\Views\SliderViewModels.cs" />
     <Compile Include="Models\Views\PhotoViewModels.cs" />
     <Compile Include="Models\Base\Image.cs" />
     <Compile Include="Parameters\MenuSectionParameters.cs" />

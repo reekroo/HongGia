@@ -1,0 +1,151 @@
+﻿@model HongGia.Core.Interfaces.Models.IFirmView
+
+@{
+	ViewBag.Title = "Add Firm";
+}
+
+<style>
+	input, select, textarea {
+		max-width: 100%;
+	}
+
+	.blocks {
+		padding-bottom: 20px;
+		margin-bottom: 20px;
+		border-bottom: 1px gainsboro solid;
+	}
+</style>
+
+<h2>Add Firm</h2>
+
+@using (Html.BeginForm("Add", "Firm", FormMethod.Post))
+{
+	//Firm
+	<div class="row blocks">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label for="Name">Name</label>
+				<input type="text" class="form-control" id="Name" name="Name" />
+			</div>
+		</div>
+	</div>
+
+	<div class="row blocks">
+		@*Adress*@
+		<div class="col-md-6">
+			<div class="form-group">
+				<label for="AddressesList">Addresses</label>
+				<select size="5" multiple id="AddressesList"></select>
+			</div>
+
+			<div class="form-group">
+				<label for="Country">Country</label>
+				<input type="text" class="form-control" id="Country" name="Country" />
+			</div>
+			<div class="form-group">
+				<label for="Country">City</label>
+				<input type="text" class="form-control" id="City" name="City" />
+			</div>
+			<div class="form-group">
+				<label for="Country">Street</label>
+				<input type="text" class="form-control" id="Street" name="Street" />
+			</div>
+			<div class="form-group">
+				<label for="Country">Home</label>
+				<input type="text" class="form-control" id="Home" name="Home" />
+			</div>
+			<div class="form-group">
+				<label for="Country">Zip</label>
+				<input type="number" class="form-control" id="Zip" name="Zip" />
+			</div>
+
+			<button type="button" class="btn btn-default" id="AddAddress">Add Address</button>
+			<button type="button" class="btn btn-default" id="RemoveAddress">Remove Select Addresses</button>
+		</div>
+
+		@*Contact*@
+		<div class="col-md-6">
+			<div>
+				<div class="form-group">
+					<label for="ContactsList">Contacts</label>
+					<select size="5" multiple id="ContactsList"></select>
+				</div>
+
+				<div class="form-group">
+					<label for="ContName">Name</label>
+					<input type="text" class="form-control" id="ContName" name="ContName" />
+				</div>
+				<div class="form-group">
+					<label for="ContPhone">Phone</label>
+					<input type="text" class="form-control" id="ContPhone" name="ContPhone" />
+				</div>
+				<div class="form-group">
+					<label for="ContMail">Mail</label>
+					<input type="text" class="form-control" id="ContMail" name="ContMail" />
+				</div>
+
+				<button type="button" class="btn btn-default" id="AddContact">Add Contact</button>
+				<button type="button" class="btn btn-default" id="RemoveContact">Remove Select Contacts</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div id="addingAddresses"></div>
+			<div id="addingContacts"></div>
+			
+			<button type="submit" class="btn btn-default" id="submitButton">Add Firm</button>
+		</div>
+	</div>
+}
+
+<script>
+	$('#submitButton').click(function () {
+		var list = $('#AddressesList option').each(function() {
+			$(this).val();
+		});
+
+		for (var i = 0; i < list.length; i++) {
+			var elements = list[i].value.split(',');
+			var index = 0;
+			
+			$("#addingAddresses").append("<input type=\"hidden\" name=\"Addresses[" + i + "].Country\" value=\"" + elements[index++] + "\"/>");
+			$("#addingAddresses").append("<input type=\"hidden\" name=\"Addresses[" + i + "].City\" value=\"" + elements[index++] + "\"/>");
+			$("#addingAddresses").append("<input type=\"hidden\" name=\"Addresses[" + i + "].Street\" value=\"" + elements[index++] + "\"/>");
+			$("#addingAddresses").append("<input type=\"hidden\" name=\"Addresses[" + i + "].Home\" value=\"" + elements[index++] + "\"/>");
+			$("#addingAddresses").append("<input type=\"hidden\" name=\"Addresses[" + i + "].Zip\" value=\"" + elements[index++] + "\"/>");
+		}
+
+		list = $('#ContactsList option').each(function () {
+			$(this).val();
+		 });
+
+		 for (var i = 0; i < list.length; i++) {
+		 	var elements = list[i].value.split(',');
+		 	var index = 0;
+
+		 	$("#addingContacts").append("<input type=\"hidden\" name=\"Contacts[" + i + "].Name\" value=\"" + elements[index++] + "\"/>");
+		 	$("#addingContacts").append("<input type=\"hidden\" name=\"Contacts[" + i + "].Phone\" value=\"" + elements[index++] + "\"/>");
+		 	$("#addingContacts").append("<input type=\"hidden\" name=\"Contacts[" + i + "].Mail\" value=\"" + elements[index++] + "\"/>");
+		 }
+	});
+
+	$('#AddAddress').click(function () {
+		var str = $("#Country").val() + ',' + $("#City").val() + ',' + $("#Street").val() + ',' + $("#Home").val() + ',' + $("#Zip").val();
+		$("#AddressesList").append($("<option></option>").text(str));
+	});
+
+	$('#RemoveAddress').click(function () {
+		$("#AddressesList option:selected").remove();
+	});
+
+	$('#AddContact').click(function () {
+		var str = $("#ContName").val() + ',' + $("#ContPhone").val() + ',' + $("#ContMail").val();
+		$("#ContactsList").append($("<option></option>").text(str));
+	});
+
+	$('#RemoveContactList').click(function () {
+		$("#Contacts option:selected").remove();
+	});
+</script>

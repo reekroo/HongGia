@@ -1,0 +1,56 @@
+﻿@model HongGia.Core.Interfaces.Models.IFirmsview
+
+@{
+	ViewBag.Title = "Firms";
+}
+
+@section scripts{
+	@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
+
+<h2>Firms</h2>
+
+<div>
+	@Html.ActionLink("Create Firm", "Add", "Firm", null, new { @class = "btn rfloat clear" })
+</div>
+
+<div id="allFirmsGrid">
+	@if (@Model.Firms != null && @Model.Firms.Any() == true)
+	{
+		<table class="table table-bordered">
+			<tr>
+				<th>#</th>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Contact</th>
+				<th>Functional</th>
+			</tr> 
+
+			@foreach (var firm in Model.Firms)
+			{
+				<tr>
+					<td>@firm.Id</td>
+					<td>@firm.Name</td>
+
+					<td>
+						@foreach (var adr in firm.Addresses)
+						{
+							@(adr.Country + ',' + adr.City + ',' + adr.Street + ',' + adr.Home + ',' + adr.Zip) <br>
+						}
+					</td>
+
+					<td>
+						@foreach (var cont in firm.Contacts)
+						{
+							@(cont.Name + ',' + cont.Phone + ',' + cont.Mail) <br>
+						}
+					</td>
+
+					<td>
+						@Ajax.ActionLink("Remove", "Remove", new { firmId = firm.Id }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }, new { @class = "btn rfloat clear" })
+					</td>
+				</tr>
+			}
+		</table>
+	}
+</div>
