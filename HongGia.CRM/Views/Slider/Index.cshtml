@@ -1,0 +1,57 @@
+﻿@model HongGia.Core.Interfaces.Models.ISliderView
+
+@{
+	ViewBag.Title = "SlederImages";
+}
+
+@section scripts{
+	@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
+
+<h2>Sleder Images</h2>
+
+<div>
+	@using (Html.BeginForm("Add", "Slider", FormMethod.Post))
+	{
+		<div class="form-group">
+			<label for="Name">Name</label>
+			<input type="text" class="form-control" id="Name" placeholder="example" name="Alt" />
+		</div>
+
+		<div class="form-group">
+			<label for="Src">Email</label>
+			<input type="file" class="form-control" id="Src" name="Src" />
+		</div>
+
+		<button type="submit" class="btn btn-default">Add Sleder Image</button>
+	}
+</div>
+
+<div id="allSliderImagesGrid">
+	@if (@Model.SliderImages != null && @Model.SliderImages.Any() == true)
+	{
+		<table class="table table-bordered">
+			<tr>
+				<th>#</th>
+				<th>Image</th>
+				<th>Name</th>
+				<th>Path</th>
+				@*<th>Date</th>*@
+				<th>Functional</th>
+			</tr>
+
+			@foreach (var image in Model.SliderImages)
+			{
+				<tr>
+					<td>@image.Id</td>
+					<td><img src="@image.Src" alt="@image.Alt" /></td>
+					<td>@image.Alt</td>
+					<td>@image.Src</td>
+					<td>
+						@Ajax.ActionLink("Remove", "Remove", new { imageId = image.Id }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }, new { @class = "btn rfloat clear" })
+					</td>
+				</tr>
+			}
+		</table>
+	}
+</div>

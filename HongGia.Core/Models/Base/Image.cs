@@ -4,7 +4,8 @@ namespace HongGia.Core.Models.Base
 {
     public class Image : IImage
     {
-        public string Src { get; set; }
+	    public int Id { get; set; }
+	    public string Src { get; set; }
         public string Alt { get; set; }
     }
 }
