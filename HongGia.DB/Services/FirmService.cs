@@ -87,8 +87,30 @@ namespace HongGia.DB.Services
 			return true;
 		}
 
+		public static bool RemoveFirm(int firmId)
+		{
+			using (var context = new EntitiesDB())
+			{
+				if (context.Firms.Any() == false)
+				{
+					return false;
+				}
+
+				var selectFirm = context.Firms.FirstOrDefault(a => a.Id == firmId);
+
+				if (selectFirm == null)
+				{
+					return false;
+				}
+
+				context.Firms.Remove(selectFirm);
+				context.SaveChanges();
+
+				return true;
+			}
+		}
+
 		//Update Firm
-		//Add and remove Firm
 
 		//Add and remove Address
 		//Add and remove Contact

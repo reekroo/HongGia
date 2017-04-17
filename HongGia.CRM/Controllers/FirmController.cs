@@ -30,8 +30,23 @@ namespace HongGia.CRM.Controllers
 		[HttpPost]
 		public ActionResult Add(FirmView firm)
 		{
-			FirmService.AddFirm(firm);
+			if (ModelState.IsValid)
+			{
+				FirmService.AddFirm(firm);
+			}
+
 			return RedirectToAction("Index");
+		}
+
+		[HttpPost]
+		public ActionResult Remove(int firmId)
+		{
+			if (ModelState.IsValid)
+			{
+				FirmService.RemoveFirm(firmId);
+			}
+
+			return RedirectToAction("index");
 		}
 	}
 }
