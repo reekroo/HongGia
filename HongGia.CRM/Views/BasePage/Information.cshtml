@@ -1,0 +1,83 @@
+﻿@model HongGia.Core.Interfaces.Models.IBasePageInformationView
+
+@{
+	ViewBag.Title = "BasePageInformation";
+}
+
+@section scripts{
+	@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
+
+<h2>Base Page Information</h2>
+
+<div class="row blocks" id="allFirmsGrid">
+	<div class="col-md-8">
+		@if (Model != null && Model.PageNames.Any() != false)
+		{
+			<table class="table table-bordered">
+				<tr>
+					<th>Page Name</th>
+				</tr>
+
+				@foreach (var name in Model.PageNames)
+				{
+					<tr>
+						<td>@name</td>
+					</tr>
+				}
+			</table>
+		}
+
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input type="text" class="form-control" id="name" name="name" />
+		</div>
+
+		@Ajax.ActionLink("Add Base Page Name", "AddBasePageName", "BasePage",
+						new { name = "__value__" },
+						new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" },
+						new { @class = "btn btn-default", id = "AddName" })
+	</div>
+
+	<div class="col-md-4">
+		@if (Model != null && Model.PageLangs.Any() != false)
+		{
+			<table class="table table-bordered">
+				<tr>
+					<th>Language</th>
+				</tr>
+
+				@foreach (var lang in Model.PageLangs)
+				{
+					<tr>
+						<td>@lang</td>
+					</tr>
+				}
+			</table>
+		}
+		
+		<div class="form-group">
+			<label for="lang">Language</label>
+			<input type="text" class="form-control" id="lang" name="lang" />
+		</div>
+
+		@Ajax.ActionLink("Add Language", "AddLang", "BasePage", 
+						new { lang = "__value__" }, 
+						new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }, 
+						new { @class = "btn btn-default", id = "AddLang" })
+	</div>
+</div>
+
+<script type="text/javascript">
+	$('#AddLang').click(function () {
+		$('#AddLang').attr('href', function () {
+			return this.href.replace('__value__', $('#lang').val());
+		});
+	});
+
+	$('#AddName').click(function () {
+		$('#AddName').attr('href', function () {
+			return this.href.replace('__value__', $('#name').val());
+		});
+	});
+</script>
