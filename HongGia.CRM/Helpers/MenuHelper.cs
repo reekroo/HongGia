@@ -103,7 +103,9 @@ namespace HongGia.CRM.Helpers
 
             if (routeValueDictionary.ContainsKey(param))
             {
-                if (menu.RouteData.Values[param] as string == menu.ActionName)
+                //if (menu.RouteData.Values[param] as string == menu.ActionName)
+				if (menu.RouteData.Values["controller"] as string == menu.ControllerName &&
+					menu.RouteData.Values["action"] as string == menu.ActionName)
                 {
                     return true;
                 }
