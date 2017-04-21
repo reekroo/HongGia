@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+
 using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
 
@@ -75,6 +76,62 @@ namespace HongGia.DB.Services
 				context.SaveChanges();
 
 				return true;
+			}
+		}
+
+		public static IBasePageView GetBasePage(string name, string lang)
+		{
+			if (string.IsNullOrEmpty(name) && 
+				string.IsNullOrEmpty(lang))
+			{
+				return null;
+			}
+			
+			using (var context = new EntitiesDB())
+			{
+				var selectPage = context.Pages.FirstOrDefault(x => x.Name.ToLower().Contains(name));
+
+				if (selectPage != null)
+				{
+					return null;
+				}
+
+				var pageContent = selectPage.PageContents.FirstOrDefault(x => x.Language.Name.ToLower().Contains(lang));
+
+				if (pageContent != null)
+				{
+					return null;
+				}
+
+				return new BasePageView()
+				{
+					Id = pageContent.Id,
+					Header = pageContent.Header,
+
+					Images = pageContent.Images?.Select(x => new HongGia.Core.Models.Base.Image()
+					{
+						Id = x.Id,
+						Alt = x.Name,
+						Src = x.Path
+					}).ToList(),
+					
+					Files = pageContent.Files?.Select(x => new HongGia.Core.Models.Base.File()
+					{
+						Name = x.Name,
+						Path = x.Path
+					}).ToList(),
+
+					Topics = pageContent.Topics?.Select(x => new HongGia.Core.Models.Base.Topic()
+					{
+						Id = x.Id,
+						Header = x.Header,
+						Position = x.Position ?? 0,
+						Type = x.TopicType.Name,
+
+						HtmlText = x.HTMLText,
+						Image = null
+					})
+				};
 			}
 		}
 	}
