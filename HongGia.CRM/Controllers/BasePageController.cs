@@ -6,7 +6,7 @@ namespace HongGia.CRM.Controllers
 	public class BasePageController : Controller
 	{
 		// GET: BasePage
-		public ActionResult Index()
+		public ActionResult Index(string name)
 		{
 			return View();
 		}

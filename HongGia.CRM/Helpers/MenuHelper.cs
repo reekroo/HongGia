@@ -27,7 +27,7 @@ namespace HongGia.CRM.Helpers
 
 			var liTagBuilder = new TagBuilder("li");
 
-            var link = htmlHelper.ActionLink(parameters.LinkText, parameters.ActionName, parameters.ControllerName);
+			var link = htmlHelper.ActionLink(parameters.LinkText, parameters.ActionName, parameters.ControllerName, new {name = parameters.QueryString}, null);
 
             if (IsActiveClass(parameters, "action"))
             {
