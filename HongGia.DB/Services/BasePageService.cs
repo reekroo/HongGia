@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
@@ -91,14 +92,9 @@ namespace HongGia.DB.Services
 			{
 				var selectPage = context.Pages.FirstOrDefault(x => x.Name.ToLower().Contains(name));
 
-				if (selectPage != null)
-				{
-					return null;
-				}
+				var pageContent = selectPage?.PageContents.FirstOrDefault(x => x.Language.Name.ToLower().Contains(lang));
 
-				var pageContent = selectPage.PageContents.FirstOrDefault(x => x.Language.Name.ToLower().Contains(lang));
-
-				if (pageContent != null)
+				if (pageContent == null)
 				{
 					return null;
 				}
@@ -133,6 +129,39 @@ namespace HongGia.DB.Services
 					})
 				};
 			}
+		}
+
+		public static bool AddBasePageContent(string name, string lang)
+		{
+			if (string.IsNullOrEmpty(name) &&
+				string.IsNullOrEmpty(lang))
+			{
+				return false;
+			}
+
+			using (var context = new EntitiesDB())
+			{
+				var selectPage = context.Pages.FirstOrDefault(x => x.Name.ToLower().Contains(name));
+
+				if (selectPage == null ||
+					context.Languages.Any(x => x.Name.ToLower().Contains(lang)) == false)
+				{
+					return false;
+				}
+
+				var save = new PageContent()
+				{
+					Date = DateTime.Now,
+					Header = selectPage.Name,
+					Page = selectPage,
+					Language = context.Languages.FirstOrDefault(x => x.Name.ToLower().Contains(lang))
+				};
+
+				context.PageContents.Add(save);
+				context.SaveChanges();
+			}
+
+			return true;
 		}
 	}
 }

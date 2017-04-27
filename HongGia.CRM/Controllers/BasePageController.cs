@@ -1,14 +1,34 @@
 ﻿using System.Web.Mvc;
+
 using HongGia.DB.Services;
 
 namespace HongGia.CRM.Controllers
 {
 	public class BasePageController : Controller
 	{
-		// GET: BasePage
-		public ActionResult Index(string name)
+		[HttpGet]
+		public ActionResult Index(string name, string lang = "ru")
 		{
-			return View();
+			ViewData["PageName"] = name;
+
+			var result = BasePageService.GetBasePage(name, lang);
+			
+			return View(result);
+		}
+
+		[HttpGet]
+		public ActionResult AddOrUpdate(string name, string lang)
+		{
+			ViewData["PageLang"] = lang;
+
+			if (BasePageService.GetBasePage(name, lang) == null)
+			{
+				BasePageService.AddBasePageContent(name, lang);
+			}
+
+			var result = BasePageService.GetBasePage(name, lang);
+
+			return View(result);
 		}
 
 		[HttpGet]

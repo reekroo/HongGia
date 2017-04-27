@@ -1,3 +1,34 @@
-﻿@{
-	ViewBag.Title = "Index PAse Page";
+﻿@model HongGia.Core.Interfaces.Models.IBasePageView
+
+@{
+	ViewBag.Title = "Index Base Page";
 }
+
+<style>
+	.blocks {
+		padding-bottom: 20px;
+		margin-bottom: 20px;
+		border-bottom: 1px gainsboro solid;
+	}
+</style>
+
+<h4>@ViewBag.Title</h4>
+
+<div class="blocks">
+	<select id="lang">
+		<option>ru</option>
+		<option>en</option>
+	</select>
+
+	@Html.ActionLink("Show Select By Language", "Index", "BasePage", new {name = Html.ViewData["PageName"], lang = "__value__" }, new {@class = "btn rfloat clear Select" })
+	@Html.ActionLink("Create Or Update By Select Language", "AddOrUpdate", "BasePage", new {name = Html.ViewData["PageName"], lang = "__value__" }, new {@class = "btn rfloat clear Select" })
+	@Html.ActionLink("Remove", "Remove", "BasePage", null, new {@class = "btn rfloat clear"})
+</div>
+
+<script type="text/javascript">
+	$('.Select').click(function () {
+		$('.Select').attr('href', function () {
+			return this.href.replace('__value__', $('#lang').val());
+		});
+	});
+</script>
