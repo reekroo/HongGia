@@ -1,0 +1,109 @@
+﻿@model HongGia.Core.Interfaces.Models.IBasePageView
+
+<style>
+	.blocks {
+		padding-bottom: 20px;
+		margin-bottom: 20px;
+		border-bottom: 1px gainsboro solid;
+	}
+</style>
+
+@section scripts{
+	@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
+
+
+<div class="col-md-12 blocks">
+	<div class="form-group">
+		<label for="PageHeader">Header</label>
+		<input type="text" class="form-control" id="PageHeader" name="Header" value="@Model.Header"/>
+	</div>
+
+	<div class="form-group">
+		<label for="PageLanguage">Language</label>
+		<input type="text" class="form-control" id="PageLanguage" name="Language" value="@Html.ViewData["PageLang"]"/>
+	</div>
+</div>
+
+<div class="col-md-12 blocks">
+	Images
+</div>
+
+<div class="col-md-12 blocks">
+	Topics
+
+	@Ajax.ActionLink("Add Topic", "Add", "Topic",
+		new
+		{
+			pageContentId = @Model.Id,
+			name = @Model.Header,
+			lang = @Html.ViewData["PageLang"]
+		},
+		new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" })
+
+	@if (@Model != null && @Model.Topics != null)
+	{
+		foreach (var topic in @Model.Topics)
+		{
+			<div class="form-group">
+				<label for="Header">Header</label>
+				<input type="text" class="form-control" id="Header" name="Header" value="@topic.Header"/>
+			</div>
+
+			<div class="form-group">
+				<label for="Position">Position</label>
+				<input type="number" class="form-control" id="Position" name="Position" value="@topic.Position"/>
+			</div>
+
+			<div class="form-group">
+				<label for="Type">Type</label>
+				<input type="text" class="form-control" id="Type" name="Type" value="@topic.Type"/>
+			</div>
+
+			<div class="form-group">
+				<label for="summernote">Text</label>
+				<div id="summernote"></div>
+
+				<input type="hidden" name="HtmlText" id="ArticleHtmlText" value="@topic.HtmlText"/>
+			</div>
+
+			@Ajax.ActionLink("Add Topic", "Update", "Topic",
+				new{
+					topic = @topic,
+					name = @Model.Header,
+					lang = @Html.ViewData["PageLang"]
+				},
+				new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" })
+
+			@Ajax.ActionLink("Add Topic", "Remove", "Topic",
+				new {
+					topicId = @topic.Id,
+					name = @Model.Header,
+					lang = @Html.ViewData["PageLang"]
+				},
+				new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" })
+		}
+	}
+</div>
+
+<div class="col-md-12 blocks">
+	Files
+</div>
+
+<script>
+	$(document).ready(function() {
+
+		$('#summernote').summernote({
+			height: 500,
+			minHeight: 350,
+			maxHeight: 1500,
+			focus: true
+		});
+
+		$('#summernote').code($('#ArticleHtmlText').val());
+	});
+
+	$('#submitButton').click(function () {
+		$('#ArticleHtmlText').val($('#summernote').code());
+	});
+</script>

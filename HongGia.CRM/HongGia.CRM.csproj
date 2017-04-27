@@ -197,6 +197,7 @@
     <Compile Include="Controllers\CatigoryController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\SliderController.cs" />
+    <Compile Include="Controllers\TopicController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -312,6 +313,7 @@
     <Content Include="Views\Firm\Add.cshtml" />
     <Content Include="Views\BasePage\Information.cshtml" />
     <Content Include="Views\BasePage\Index.cshtml" />
+    <Content Include="Views\BasePage\AddOrUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

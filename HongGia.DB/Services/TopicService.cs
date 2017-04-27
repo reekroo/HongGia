@@ -8,9 +8,34 @@ using HongGia.DB.Models;
 
 namespace HongGia.DB.Services
 {
-    public class TopicService
-    {
-        public static bool AddTopic(ITopic topic)
+	public class TopicService
+	{
+		public static bool AddNullableTopic(int basePageContentId)
+		{
+			using (var context = new EntitiesDB())
+			{
+				var pageContent = context.PageContents.FirstOrDefault(x => x.Id == basePageContentId);
+
+				if (pageContent == null)
+				{
+					return false;
+				}
+
+				var save = new Topic()
+				{
+					Date = DateTime.Now,
+					PageContent = pageContent
+				};
+
+				context.Topics.Add(save);
+				context.SaveChanges();
+
+				return true;
+			}
+		}
+
+
+		public static bool AddTopic(ITopic topic)
         {
             using (var context = new EntitiesDB())
             {
