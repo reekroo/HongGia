@@ -9,7 +9,7 @@ namespace HongGia.Controllers
 {
 	public class ArticleController : DefaultController
 	{
-		public ActionResult AllArticles()
+		public ActionResult Articles()
 		{
 			var result = ArtircleService.GetArticles();
 

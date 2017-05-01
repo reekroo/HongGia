@@ -11,7 +11,7 @@ namespace HongGia.Controllers
 	{
 		public ActionResult About()
 		{
-			var model = PageService.GetPageByName("HongGiaAbout", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("About", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -22,7 +22,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult History()
 		{
-			var model = PageService.GetPageByName("HongGiaHistory", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("HongGiaHistory", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -33,7 +33,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult Levels()
 		{
-			var model = PageService.GetPageByName("HongGiaLevels", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("HongGiaLevels", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -44,7 +44,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult ToBeginner()
 		{
-			var model = PageService.GetPageByName("HongGiaToBeginner", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("HongGiaToBeginner", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -55,7 +55,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult Program()
 		{
-			var model = PageService.GetPageByName("HongGiaProgram", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("HongGiaProgram", this.CurrentLangCode);
 
 			if (model == null)
 			{

@@ -248,18 +248,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\CollapseHelper.cs" />
-    <Compile Include="Helpers\BasePageHelper.cs" />
-    <Compile Include="Helpers\SliderHelper.cs" />
-    <Compile Include="Helpers\ListGroupHelper.cs" />
-    <Compile Include="Helpers\MenuHelper.cs" />
-    <Compile Include="Helpers\SwitchLanguageHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Helpers\PagingHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -369,7 +362,7 @@
     <Content Include="Views\News\News.cshtml" />
     <Content Include="Views\Photo\AllPhoto.cshtml" />
     <Content Include="Views\Photo\CategoryPhoto.cshtml" />
-    <Content Include="Views\Article\AllArticles.cshtml" />
+    <Content Include="Views\Article\Articles.cshtml" />
     <Content Include="Views\Article\Article.cshtml" />
   </ItemGroup>
   <ItemGroup>

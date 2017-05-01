@@ -79,6 +79,7 @@
     <Compile Include="Helpers\PagingHelper.cs" />
     <Compile Include="Helpers\SelectHelper.cs" />
     <Compile Include="Helpers\SliderHelper.cs" />
+    <Compile Include="Helpers\SwitchLanguageHelper.cs" />
     <Compile Include="Interfaces\Base\IFirmAddress.cs" />
     <Compile Include="Interfaces\Base\IFirmContact.cs" />
     <Compile Include="Interfaces\Base\IFirm.cs" />

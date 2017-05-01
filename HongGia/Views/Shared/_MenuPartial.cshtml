@@ -1,6 +1,6 @@
 ﻿@using HongGia.App_LocalResources
 @using HongGia.Core.Parameters
-@using HongGia.Helpers
+@using HongGia.Core.Helpers
 
 <ul class="nav navbar-nav">
     @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.Home, ActionName = "Index", ControllerName = "Home", RouteData = ViewContext.RouteData })
@@ -43,7 +43,7 @@
 
     @Html.DropdownMenuSection(@GlobalRes.Media, new List<MenuSectionParameters>()
                                             {
-                                                new MenuSectionParameters() {LinkText = @GlobalRes.Articles, ActionName = "AllArticles", ControllerName = "Article", RouteData = ViewContext.RouteData},
+                                                new MenuSectionParameters() {LinkText = @GlobalRes.Articles, ActionName = "Articles", ControllerName = "Article", RouteData = ViewContext.RouteData},
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Books, ActionName = "Books", ControllerName = "Media", RouteData = ViewContext.RouteData},
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Photo, ActionName = "AllPhoto", ControllerName = "Photo", RouteData = ViewContext.RouteData},
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Video, ActionName = "Video", ControllerName = "Media", RouteData = ViewContext.RouteData}

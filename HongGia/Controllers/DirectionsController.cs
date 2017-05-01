@@ -11,7 +11,7 @@ namespace HongGia.Controllers
 	{
 		public ActionResult HongGiaVietnam()
 		{
-			var model = PageService.GetPageByName("DirectionsHongGiaVietnam", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("DirectionsHongGiaVietnam", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -22,7 +22,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult KungFu()
 		{
-			var model = PageService.GetPageByName("DirectionsKungFu", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("DirectionsKungFu", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -33,7 +33,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult ChiKong()
 		{
-			var model = PageService.GetPageByName("DirectionsChiKong", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("DirectionsChiKong", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -44,7 +44,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult TaiChi()
 		{
-			var model = PageService.GetPageByName("DirectionsTaiChi", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("DirectionsTaiChi", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -55,7 +55,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult WuChi()
 		{
-			var model = PageService.GetPageByName("DirectionsWuChi", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("DirectionsWuChi", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -66,7 +66,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult NgaMi()
 		{
-			var model = PageService.GetPageByName("DirectionsNgaMi", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("DirectionsNgaMi", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -77,7 +77,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult VinChun()
 		{
-			var model = PageService.GetPageByName("DirectionsVinChun", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("DirectionsVinChun", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -88,7 +88,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult PaKua()
 		{
-			var model = PageService.GetPageByName("DirectionsPaKua", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("DirectionsPaKua", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -99,7 +99,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult SinI()
 		{
-			var model = PageService.GetPageByName("DirectionsSinI", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("DirectionsSinI", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -110,7 +110,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult BaiMy()
 		{
-			var model = PageService.GetPageByName("DirectionsBaiMy", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("DirectionsBaiMy", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -121,7 +121,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult FiveEnimals()
 		{
-			var model = PageService.GetPageByName("DirectionsFiveEnimals", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("DirectionsFiveEnimals", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -132,7 +132,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult Weapon()
 		{
-			var model = PageService.GetPageByName("DirectionsWeapon", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("DirectionsWeapon", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -143,7 +143,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult Meditation()
 		{
-			var model = PageService.GetPageByName("DirectionsMeditation", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("DirectionsMeditation", this.CurrentLangCode);
 
 			if (model == null)
 			{

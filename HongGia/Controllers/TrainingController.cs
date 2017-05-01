@@ -11,7 +11,7 @@ namespace HongGia.Controllers
 	{
 		public ActionResult Groups()
 		{
-			var model = PageService.GetPageByName("TrainingGroups", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("TrainingGroups", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -22,7 +22,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult Online()
 		{
-			var model = PageService.GetPageByName("TrainingOnline", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("TrainingOnline", this.CurrentLangCode);
 
 			if (model == null)
 			{
@@ -33,7 +33,7 @@ namespace HongGia.Controllers
 		}
 		public ActionResult Seminars()
 		{
-			var model = PageService.GetPageByName("TrainingSeminars", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("TrainingSeminars", this.CurrentLangCode);
 
 			if (model == null)
 			{

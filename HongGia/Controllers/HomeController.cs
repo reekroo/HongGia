@@ -61,7 +61,7 @@ namespace HongGia.Controllers
 
 		public ActionResult Master()
 		{
-			var model = PageService.GetPageByName("HomeMaster", this.CurrentLangCode);
+			var model = BasePageService.GetBasePageContent("HomeMaster", this.CurrentLangCode);
 
 			if (model == null)
 			{

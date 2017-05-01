@@ -1,48 +1,12 @@
-﻿@using HongGia.Helpers
+﻿@using HongGia.Core.Helpers
 
 @model HongGia.Core.Interfaces.Models.IBasePageView
 
 @{
-    ViewBag.Title = "About";
+	ViewBag.Title = "About";
 }
 
-@Html.BasePage(@Model)
-
-
-
-@*<div class="row row-margin">
-    <div class="col-md-12">
-        @Html.CollapsiblePanel(new CollapsiblePanelParameters()
-   {
-	   Header = "1111",
-	   HtmlText = "12412412515125251435"
-   })
-    </div>
-</div>
-
-<div class="row row-margin">
-    <div class="col-md-12">
-        @Html.CollapsiblePanel(new CollapsiblePanelParameters()
-   {
-	   Header = "3333",
-	   HtmlText = "qwqfgsadgwegwe",
-	   Image = new ImageParameters()
-	   {
-		   Alt = "333",
-		   Src = "/Content/Images/download.svg"
-	   }
-   })
-    </div>
-</div>
-
-
-<div class="row row-margin">
-    <div class="col-md-12">
-        @Html.ListGroup(new List<FileParameters>()
-        {
-            new FileParameters() {Name = "1", Path = "/1"},
-            new FileParameters() {Name = "2", Path = "/2"},
-            new FileParameters() {Name = "3", Path = "/3"}
-        })
-    </div>
-</div>*@
+@if (@Model != null)
+{
+	@Html.BasePage(@Model)
+}

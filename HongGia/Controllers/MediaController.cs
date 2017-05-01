@@ -11,11 +11,6 @@ namespace HongGia.Controllers
 {
     public class MediaController : DefaultController
     {
-        public ActionResult Articles()
-        {
-            return View();
-        }
-
         public ActionResult Books()
         {
             var result = MediaService.GetAllBookFiles();

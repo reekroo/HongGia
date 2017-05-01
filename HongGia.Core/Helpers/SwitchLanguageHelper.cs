@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using HongGia.Core.Parameters;
 
-namespace HongGia.Helpers
+namespace HongGia.Core.Helpers
 {
     public static class SwitchLanguageHelper
     {
