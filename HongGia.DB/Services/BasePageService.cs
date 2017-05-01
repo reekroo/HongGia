@@ -113,6 +113,7 @@ namespace HongGia.DB.Services
 					
 					Files = pageContent.Files?.Select(x => new HongGia.Core.Models.Base.File()
 					{
+						Id = x.Id,
 						Name = x.Name,
 						Path = x.Path
 					}).ToList(),

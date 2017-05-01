@@ -107,7 +107,7 @@ namespace HongGia.DB.Services
 
                     foreach (var file in page.Files)
                     {
-                        FileService.AddFile(file);
+                       // FileService.AddFile(file);
                         contect.Files.Add(context.Files.Last());
                     }
                 }
@@ -182,7 +182,7 @@ namespace HongGia.DB.Services
 
                     foreach (var file in page.Files)
                     {
-                        FileService.AddFile(file);
+                        //FileService.AddFile(file);
                         content.Files.Add(context.Files.Last());
                     }
                 }
@@ -200,7 +200,7 @@ namespace HongGia.DB.Services
 
                     foreach (var file in page.Files)
                     {
-                        FileService.AddFile(file);
+                        //FileService.AddFile(file);
                         content.Files.Add(context.Files.Last());
                     }
                 }
@@ -219,7 +219,7 @@ namespace HongGia.DB.Services
 
                     foreach (var file in page.Files)
                     {
-                        FileService.AddFile(file);
+                        //FileService.AddFile(file);
                         content.Files.Add(context.Files.Last());
                     }
                 }
