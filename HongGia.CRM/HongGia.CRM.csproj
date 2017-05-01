@@ -190,6 +190,7 @@
     <Compile Include="Controllers\BasePageController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FirmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

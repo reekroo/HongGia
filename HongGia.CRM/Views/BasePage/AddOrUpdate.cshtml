@@ -12,7 +12,6 @@
 	@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
 }
 
-
 <div class="col-md-12 blocks">
 	<h2>Base Information</h2>
 
@@ -29,6 +28,54 @@
 
 <div class="col-md-12 blocks">
 	<h2>Images</h2>
+
+	@using (Ajax.BeginForm("Add", "Image", new { pageContentId = @Model.Id, pageContentName = @Model.Header, pageContentLang = @Html.ViewData["PageLang"] }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }))
+	{
+		<div class="form-group">
+			<label for="ImageName">Name</label>
+			<input type="text" class="form-control" id="ImageName" placeholder="example" name="Alt" />
+		</div>
+
+		<div class="form-group">
+			<label for="ImagePath">Path</label>
+			<input type="file" class="form-control" id="ImagePath" name="Src" />
+		</div>
+
+		<button type="submit" class="btn btn-primary">Add Image</button>
+	}
+
+	@if (@Model.Images != null && @Model.Images.Any() == true)
+	{
+		<table class="table table-bordered">
+			<tr>
+				<th>#</th>
+				<th>Image</th>
+				<th>Name</th>
+				<th>Path</th>
+				<th>Functional</th>
+			</tr>
+
+			@foreach (var image in Model.Images)
+			{
+				<tr>
+					<td>@image.Id</td>
+					<td><img src="@image.Src" alt="@image.Alt" /></td>
+					<td>@image.Alt</td>
+					<td>@image.Src</td>
+					<td>
+						@Ajax.ActionLink("Remove", "Remove", "Image",
+							new {
+								imageId = image.Id,
+								pageContentName = @Model.Header,
+								pageContentLang = @Html.ViewData["PageLang"]
+							}, 
+							new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }, 
+							new { @class = "btn btn-primary" })
+					</td>
+				</tr>
+			}
+		</table>
+	}
 </div>
 
 <div class="col-md-12 blocks">

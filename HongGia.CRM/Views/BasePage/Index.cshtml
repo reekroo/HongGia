@@ -20,9 +20,9 @@
 		<option>en</option>
 	</select>
 
-	@Html.ActionLink("Show Select By Language", "Index", "BasePage", new {name = Html.ViewData["PageName"], lang = "__value__" }, new {@class = "btn rfloat clear Select" })
-	@Html.ActionLink("Create Or Update By Select Language", "AddOrUpdate", "BasePage", new {name = Html.ViewData["PageName"], lang = "__value__" }, new {@class = "btn rfloat clear Select" })
-	@Html.ActionLink("Remove", "Remove", "BasePage", null, new {@class = "btn rfloat clear"})
+	@Html.ActionLink("Show Select By Language", "Index", "BasePage", new {name = Html.ViewData["PageName"], lang = "__value__" }, new {@class = "btn btn-primary Select" })
+	@Html.ActionLink("Create Or Update By Select Language", "AddOrUpdate", "BasePage", new {name = Html.ViewData["PageName"], lang = "__value__" }, new {@class = "btn btn-primary Select" })
+	@Html.ActionLink("Remove", "Remove", "BasePage", new {basePageContentId = @Model?.Id}, new {@class = "btn btn-primary" })
 </div>
 
 <script type="text/javascript">

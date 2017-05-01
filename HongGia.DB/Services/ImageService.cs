@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Migrations;
 using System.Linq;
 
 using HongGia.Core.Interfaces.Base;
@@ -59,7 +60,37 @@ namespace HongGia.DB.Services
             }
         }
 
-        public static bool RemoveImage(int imageId)
+		public static bool AddImage(IImage image, int pageContentId)
+		{
+			if (image == null)
+			{
+				return false;
+			}
+
+			using (var context = new EntitiesDB())
+			{
+				var pageContent = context.PageContents.FirstOrDefault(x => x.Id == pageContentId);
+
+				if (pageContent == null)
+				{
+					return false;
+				}
+
+				pageContent.Images.Add(new Image()
+				{
+					Name = image.Alt,
+					Path = image.Src,
+					Date = DateTime.Now
+				});
+
+				context.PageContents.AddOrUpdate(pageContent);
+				context.SaveChanges();
+
+				return true;
+			}
+		}
+
+		public static bool RemoveImage(int imageId)
         {
             using (var context = new EntitiesDB())
             {
