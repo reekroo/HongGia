@@ -12,6 +12,10 @@
 	}
 </style>
 
+@section scripts{
+	@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
+
 <h4>@ViewBag.Title</h4>
 
 <div class="blocks">
@@ -22,7 +26,18 @@
 
 	@Html.ActionLink("Show Select By Language", "Index", "BasePage", new {name = Html.ViewData["PageName"], lang = "__value__" }, new {@class = "btn btn-primary Select" })
 	@Html.ActionLink("Create Or Update By Select Language", "AddOrUpdate", "BasePage", new {name = Html.ViewData["PageName"], lang = "__value__" }, new {@class = "btn btn-primary Select" })
-	@Html.ActionLink("Remove", "Remove", "BasePage", new {basePageContentId = @Model?.Id}, new {@class = "btn btn-primary" })
+
+	@if (Model != null)
+	{
+		@Ajax.ActionLink("Remove", "Remove", "BasePage",
+			new {
+				basePageContentId = @Model?.Id,
+				name = Html.ViewData["PageName"],
+				lang = "__value__"
+			},
+			new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" },
+			new { @class = "btn btn-primary Select" })
+	}
 </div>
 
 <script type="text/javascript">

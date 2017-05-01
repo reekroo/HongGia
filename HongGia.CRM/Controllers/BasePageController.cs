@@ -11,7 +11,7 @@ namespace HongGia.CRM.Controllers
 		{
 			ViewData["PageName"] = name;
 
-			var result = BasePageService.GetBasePage(name, lang);
+			var result = BasePageService.GetBasePageContent(name, lang);
 			
 			return View(result);
 		}
@@ -21,14 +21,22 @@ namespace HongGia.CRM.Controllers
 		{
 			ViewData["PageLang"] = lang;
 
-			if (BasePageService.GetBasePage(name, lang) == null)
+			if (BasePageService.GetBasePageContent(name, lang) == null)
 			{
 				BasePageService.AddBasePageContent(name, lang);
 			}
 
-			var result = BasePageService.GetBasePage(name, lang);
+			var result = BasePageService.GetBasePageContent(name, lang);
 
 			return View(result);
+		}
+
+		[HttpPost]
+		public ActionResult Remove(int basepageContentId, string name, string lang)
+		{
+			var result = BasePageService.RemoveBasePageContent(basepageContentId);
+
+			return RedirectToAction("Index", new { name, lang });
 		}
 
 		[HttpGet]

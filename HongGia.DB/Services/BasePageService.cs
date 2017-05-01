@@ -80,7 +80,7 @@ namespace HongGia.DB.Services
 			}
 		}
 
-		public static IBasePageView GetBasePage(string name, string lang)
+		public static IBasePageView GetBasePageContent(string name, string lang)
 		{
 			if (string.IsNullOrEmpty(name) && 
 				string.IsNullOrEmpty(lang))
@@ -163,6 +163,24 @@ namespace HongGia.DB.Services
 			}
 
 			return true;
+		}
+
+		public static bool RemoveBasePageContent(int basePageContentId)
+		{
+			using (var context = new EntitiesDB())
+			{
+				var select = context.PageContents.FirstOrDefault(x => x.Id == basePageContentId);
+
+				if (select == null)
+				{
+					return false;
+				}
+
+				context.PageContents.Remove(select);
+				context.SaveChanges();
+
+				return true;
+			}
 		}
 	}
 }
