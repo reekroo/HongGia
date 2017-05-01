@@ -2,9 +2,8 @@
 
 namespace HongGia.Core.Interfaces.Base
 {
-    public interface IPhoto : IFile
-    {
-        int Id { get; set; }
-        IEnumerable<string> Categories { get; set; }
-    }
+	public interface IPhoto : IFile
+	{
+		IEnumerable<string> Categories { get; set; }
+	}
 }
