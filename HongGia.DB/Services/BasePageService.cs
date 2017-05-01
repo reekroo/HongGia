@@ -122,7 +122,7 @@ namespace HongGia.DB.Services
 						Id = x.Id,
 						Header = x.Header,
 						Position = x.Position ?? 0,
-						Type = x.TopicType.Name,
+						Type = x.TopicType?.Name,
 
 						HtmlText = x.HTMLText,
 						Image = null

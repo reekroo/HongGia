@@ -230,14 +230,14 @@ namespace HongGia.DB.Services
                 {
                     foreach (var topic in page.Topics)
                     {
-                        TopicService.UpdateTopic(topic);
+                        //TopicService.UpdateTopic(topic);
                     }
                 }
                 else if (content.Topics != null && page.Topics == null)
                 {
                     foreach (var topic in content.Topics)
                     {
-                        TopicService.RemoveTopic(topic.Id);
+                        //TopicService.RemoveTopic(topic.Id);
                     }
 
                     content.Topics = null;
@@ -289,7 +289,7 @@ namespace HongGia.DB.Services
 
                 foreach (var topic in content.Topics)
                 {
-                    TopicService.RemoveTopic(topic.Id);
+                    //TopicService.RemoveTopic(topic.Id);
                 }
 
                 context.PageContents.Remove(content);

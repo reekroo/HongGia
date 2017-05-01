@@ -10,7 +10,7 @@ namespace HongGia.DB.Services
 {
 	public class TopicService
 	{
-		public static bool AddNullableTopic(int basePageContentId)
+		public static bool AddNullable(int basePageContentId)
 		{
 			using (var context = new EntitiesDB())
 			{
@@ -34,6 +34,61 @@ namespace HongGia.DB.Services
 			}
 		}
 
+		public static bool Remove(int topicId)
+		{
+			using (var context = new EntitiesDB())
+			{
+				if (context.Topics.Any() == false)
+				{
+					return false;
+				}
+
+				var selectTopic = context.Topics.FirstOrDefault(x => x.Id == topicId);
+
+				if (selectTopic == null)
+				{
+					return false;
+				}
+
+				context.Topics.Remove(selectTopic);
+				context.SaveChanges();
+
+				return true;
+			}
+		}
+
+		public static bool Update(ITopic topic)
+		{
+			using (var context = new EntitiesDB())
+			{
+				if (context.Topics.Any() == false)
+				{
+					return false;
+				}
+
+				var selectTopic = context.Topics.FirstOrDefault(x=> x.Id == topic.Id);
+
+				if (selectTopic == null)
+				{
+					return false;
+				}
+
+				var type = context.TopicTypes.FirstOrDefault(t => t.Name == topic.Type);
+
+				selectTopic.Header = topic.Header;
+				selectTopic.HTMLText = topic.HtmlText;
+				selectTopic.Position = topic.Position;
+				selectTopic.TopicType = type;
+				selectTopic.Date = DateTime.Now;
+
+				context.Topics.AddOrUpdate(selectTopic);
+				context.SaveChanges();
+
+				return true;
+			}
+		}
+
+		//????? ..... Oo ..... ?????
 
 		public static bool AddTopic(ITopic topic)
         {
@@ -84,60 +139,6 @@ namespace HongGia.DB.Services
                 }
 
                 context.Topics.Add(save);
-                context.SaveChanges();
-
-                return true;
-            }
-        }
-
-        public static bool UpdateTopic(ITopic topic)
-        {
-            using (var context = new EntitiesDB())
-            {
-                if (context.Topics.Any())
-                {
-                    return false;
-                }
-
-                var selectTopic = context.Topics.FirstOrDefault();
-
-                if (selectTopic == null)
-                {
-                    return false;
-                }
-                
-                var type = context.TopicTypes.FirstOrDefault(t => t.Name == topic.Type);
-
-                selectTopic.Header = topic.Header;
-                selectTopic.HTMLText = topic.HtmlText;
-                selectTopic.Position = topic.Position;
-                selectTopic.TopicType = type;
-                selectTopic.Date = DateTime.Now;
-
-                context.Topics.AddOrUpdate(selectTopic);
-                context.SaveChanges();
-
-                return true;
-            }
-        }
-
-        public static bool RemoveTopic(int fileId)
-        {
-            using (var context = new EntitiesDB())
-            {
-                if (context.Topics.Any())
-                {
-                    return false;
-                }
-
-                var selectTopic = context.Topics.FirstOrDefault();
-
-                if (selectTopic == null)
-                {
-                    return false;
-                }
-                
-                context.Topics.Remove(selectTopic);
                 context.SaveChanges();
 
                 return true;

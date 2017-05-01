@@ -30,7 +30,7 @@
 </div>
 
 <div class="col-md-12 blocks">
-	Topics
+	<h2>Topics</h2>
 
 	@Ajax.ActionLink("Add Topic", "Add", "Topic",
 		new
@@ -39,49 +39,73 @@
 			name = @Model.Header,
 			lang = @Html.ViewData["PageLang"]
 		},
-		new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" })
+		new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" },
+		new { @class = "btn btn-primary" })
 
 	@if (@Model != null && @Model.Topics != null)
 	{
 		foreach (var topic in @Model.Topics)
 		{
-			<div class="form-group">
-				<label for="Header">Header</label>
-				<input type="text" class="form-control" id="Header" name="Header" value="@topic.Header"/>
-			</div>
+			using (Ajax.BeginForm("Update", "Topic", new { name = @Model.Header, lang = @Html.ViewData["PageLang"] }, new AjaxOptions { UpdateTargetId = "result" }))
+			{
+				var topicIdentificator = string.Concat("summernote", @topic.Id);
+				var topicTextIdentificator = string.Concat("ArticleHtmlText", @topic.Id);
+				var submitIdentificator = string.Concat("submit", @topic.Id);
 
-			<div class="form-group">
-				<label for="Position">Position</label>
-				<input type="number" class="form-control" id="Position" name="Position" value="@topic.Position"/>
-			</div>
+				<input type="hidden" name="Id" value="@topic.Id" />
 
-			<div class="form-group">
-				<label for="Type">Type</label>
-				<input type="text" class="form-control" id="Type" name="Type" value="@topic.Type"/>
-			</div>
+				<div class="form-group">
+					<label for="Header">Header</label>
+					<input type="text" class="form-control" id="Header" name="Header" value="@topic.Header" />
+				</div>
 
-			<div class="form-group">
-				<label for="summernote">Text</label>
-				<div id="summernote"></div>
+				<div class="form-group">
+					<label for="Position">Position</label>
+					<input type="number" class="form-control" id="Position" name="Position" value="@topic.Position" />
+				</div>
 
-				<input type="hidden" name="HtmlText" id="ArticleHtmlText" value="@topic.HtmlText"/>
-			</div>
+				<div class="form-group">
+					<label for="Type">Type</label>
+					<input type="text" class="form-control" id="Type" name="Type" value="@topic.Type" />
+				</div>
 
-			@Ajax.ActionLink("Add Topic", "Update", "Topic",
-				new{
-					topic = @topic,
-					name = @Model.Header,
-					lang = @Html.ViewData["PageLang"]
-				},
-				new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" })
+				<div class="form-group">
+					<label for="summernote">Text</label>
+					<div id="summernote" class="@topicIdentificator"></div>
 
-			@Ajax.ActionLink("Add Topic", "Remove", "Topic",
-				new {
-					topicId = @topic.Id,
-					name = @Model.Header,
-					lang = @Html.ViewData["PageLang"]
-				},
-				new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" })
+					<input type="hidden" name="HtmlText" id="@topicTextIdentificator" value="@topic.HtmlText" />
+				</div>
+
+				<button type="submit" id="@submitIdentificator" class="btn btn-primary">Update</button>
+
+				@Ajax.ActionLink("Remove Topic", "Remove", "Topic",
+					new
+					{
+						topicId = @topic.Id,
+						name = @Model.Header,
+						lang = @Html.ViewData["PageLang"]
+					},
+					new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" },
+					new { @class = "btn btn-primary" })
+
+				<script>
+					$(document).ready(function() {
+
+						$('.@topicIdentificator').summernote({
+							height: 500,
+							minHeight: 350,
+							maxHeight: 1500,
+							focus: true
+						});
+
+						$('.@topicIdentificator').code($('#@topicTextIdentificator').val());
+					});
+
+					$('#@submitIdentificator').click(function () {
+						$('#@topicTextIdentificator').val($('.@topicIdentificator').code());
+					});
+				</script>
+			}
 		}
 	}
 </div>
@@ -89,21 +113,3 @@
 <div class="col-md-12 blocks">
 	Files
 </div>
-
-<script>
-	$(document).ready(function() {
-
-		$('#summernote').summernote({
-			height: 500,
-			minHeight: 350,
-			maxHeight: 1500,
-			focus: true
-		});
-
-		$('#summernote').code($('#ArticleHtmlText').val());
-	});
-
-	$('#submitButton').click(function () {
-		$('#ArticleHtmlText').val($('#summernote').code());
-	});
-</script>
