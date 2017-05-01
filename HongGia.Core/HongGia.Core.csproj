@@ -72,6 +72,13 @@
     <Compile Include="Constants\PageConstants.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Helpers\BasePageHelper.cs" />
+    <Compile Include="Helpers\CollapseHelper.cs" />
+    <Compile Include="Helpers\ListGroupHelper.cs" />
+    <Compile Include="Helpers\MenuHelper.cs" />
+    <Compile Include="Helpers\PagingHelper.cs" />
+    <Compile Include="Helpers\SelectHelper.cs" />
+    <Compile Include="Helpers\SliderHelper.cs" />
     <Compile Include="Interfaces\Base\IFirmAddress.cs" />
     <Compile Include="Interfaces\Base\IFirmContact.cs" />
     <Compile Include="Interfaces\Base\IFirm.cs" />

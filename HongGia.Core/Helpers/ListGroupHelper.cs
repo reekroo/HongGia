@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 using HongGia.Core.Interfaces.Base;
 
-namespace HongGia.CRM.Helpers
+namespace HongGia.Core.Helpers
 {
 	public static class ListGroupHelper
 	{
