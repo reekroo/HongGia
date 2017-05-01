@@ -1,5 +1,7 @@
 ﻿@model HongGia.Core.Interfaces.Models.IBasePageView
 
+@using HongGia.CRM.Helpers
+
 @{
 	ViewBag.Title = "Index Base Page";
 }
@@ -39,6 +41,11 @@
 			new { @class = "btn btn-primary Select" })
 	}
 </div>
+
+@if (Model != null)
+{
+	@Html.BasePage(@Model)
+}
 
 <script type="text/javascript">
 	$('.Select').click(function () {

@@ -11,6 +11,10 @@ namespace HongGia.CRM.Controllers
 		[HttpPost]
 		public ActionResult Add(Image image,int pageContentId, string pageContentName, string pageContentLang)
 		{
+			//!!! fake
+
+			image.Src = "aaaaa";
+
 			if (ModelState.IsValid)
 			{
 				ImageService.AddImage(image, pageContentId);

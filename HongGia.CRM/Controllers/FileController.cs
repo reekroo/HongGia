@@ -11,6 +11,10 @@ namespace HongGia.CRM.Controllers
 		[HttpPost]
 		public ActionResult Add(File file,int pageContentId, string pageContentName, string pageContentLang)
 		{
+			//!!! fake
+
+			file.Path = "aaaaa";
+
 			if (ModelState.IsValid)
 			{
 				FileService.Add(file, pageContentId);

@@ -127,7 +127,7 @@ namespace HongGia.DB.Services
 
 						HtmlText = x.HTMLText,
 						Image = null
-					})
+					}).ToList()
 				};
 			}
 		}
