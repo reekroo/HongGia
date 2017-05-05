@@ -1,10 +1,10 @@
 ﻿@model HongGia.Core.Interfaces.Models.IArticleView
 
 @{
-    ViewBag.Title = "Category Photo";
+    ViewBag.Title = "Article";
 }
 
 @if (@Model != null)
 {
-    @Model.HtmlText
+    @Html.Raw(@Model.HtmlText)
 }
