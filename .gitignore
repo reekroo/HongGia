@@ -157,6 +157,5 @@ $RECYCLE.BIN/
 
 # Ignore local solution files created from defaults
 *.orig
-*.dll
 *.cache
 *.suo
