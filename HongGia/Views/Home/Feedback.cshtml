@@ -3,44 +3,46 @@
 @model HongGia.Core.Interfaces.Models.IFeedBacksView
 
 @{
-    ViewBag.Title = "FeedBack";
+	ViewBag.Title = "FeedBack";
 }
 
 <div class="row row-margin">
 
-    <div class="col-md-4">
-        <div class="thumbnail">
-            
-            @using (Html.BeginForm("FeedBack", "Home", FormMethod.Post))
-            {
-                <textarea class="form-control" rows="6"></textarea>
+	<div class="col-md-4">
+		<div class="thumbnail">
 
-                <div class="form-group">
-                    <label for="InputName">Name</label>
-                    <input type="text" class="form-control" id="InputName" placeholder="example">
-                </div>
+			@using (Html.BeginForm("FeedBack", "Home", FormMethod.Post))
+			{
+				<textarea class="form-control" rows="6" name="Text"></textarea>
 
-                <div class="form-group">
-                    <label for="InputEmail">Email</label>
-                    <input type="email" class="form-control" id="InputEmail" placeholder="example@example.com">
-                </div>
+				<div class="form-group">
+					<label for="InputName">Name</label>
+					<input type="text" class="form-control" id="InputName" placeholder="example" name="Name">
+				</div>
 
-                <button type="submit" class="btn btn-default">Send</button>
-            }
+				<div class="form-group">
+					<label for="InputEmail">Email</label>
+					<input type="email" class="form-control" id="InputEmail" placeholder="example@example.com" name="Email">
+				</div>
 
-        </div>
-    </div>
+				<button type="submit" class="btn btn-default">Send</button>
+			}
 
-    <div class="col-md-8">        
-        @Html.ListGroup(@Model.FeedBacks)
+		</div>
+	</div>
 
-        <div class="text-center">
-            @Html.PageLinks(
-                (int)Html.ViewData["PageNum"],
-                (int)Html.ViewData["ItemCount"],
-                (int)Html.ViewData["PageSize"],
-                x => Url.Action("FeedBack", new { pageNum = x }))
-        </div>
+	@if (@Model != null)
+	{
+		<div class="col-md-8">
+			@Html.ListGroup(@Model.FeedBacks)
 
-    </div>
+			<div class="text-center">
+				@Html.PageLinks(
+				(int)Html.ViewData["PageNum"],
+				(int)Html.ViewData["ItemCount"],
+				(int)Html.ViewData["PageSize"],
+				x => Url.Action("FeedBack", new { pageNum = x }))
+			</div>
+		</div>
+	}
 </div>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using HongGia.Core.Interfaces.Base;
@@ -72,11 +73,11 @@ namespace HongGia.DB.Services
 
                 var save = new Feedback()
                 {
-                    Id = feedback.Id,
                     Text = feedback.Text,
                     AuthorName = feedback.Name,
                     AuthorMail = feedback.Email,
-                    Date = feedback.Date,
+
+					Date = DateTime.Now,
                     Language = context.Languages.FirstOrDefault(l => l.Name == feedback.Language)
                 };
 

@@ -37,6 +37,7 @@ namespace HongGia.CRM.Controllers
 		{
 			if (ModelState.IsValid)
 			{
+				//fake
 				feedback.Date = DateTime.Now;
 				feedback.Language = "ru";
 

@@ -1,9 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 
 using HongGia.Core.Constants;
 using HongGia.Core.Controllers;
-using HongGia.Core.Interfaces.Base;
+using HongGia.Core.Models.Base;
 using HongGia.Core.Models.Views;
 
 using HongGia.DB.Services;
@@ -44,14 +45,16 @@ namespace HongGia.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult FeedBack(IFeedBack feedback)
+		public ActionResult FeedBack(FeedBack feedback)
 		{
 			if (ModelState.IsValid)
 			{
+				feedback.Language =this.CurrentLangCode;
+
 				FeedbackService.SetFeedback(feedback);
 			}
 
-			return View("FeedBack");
+			return RedirectToAction("FeedBack");
 		}
 
 		public ActionResult Contacts()
