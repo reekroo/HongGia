@@ -1,58 +1,69 @@
 ﻿@using HongGia.App_LocalResources
 
 <style>
-    .row{
-        overflow: hidden; 
-    }
-    [class*="col-"]{
-        margin-bottom: -99999px;
-        padding-bottom: 99999px;
-    }
+	.row {
+		overflow: hidden;
+	}
 
-     .border-between > [class*='col-']:before {
-         background: #e3e3e3;
-         bottom: 0;
-         content: " ";
-         left: 0;
-         position: absolute;
-         width: 1px;
-         top: 0;
-     }
-    .border-between > [class*='col-']:first-child:before {
-        display: none;
-    }
+	[class*="col-"] {
+		margin-bottom: -99999px;
+		padding-bottom: 99999px;
+	}
+
+	.border-between > [class*='col-']:before {
+		background: #e3e3e3;
+		bottom: 0;
+		content: " ";
+		left: 0;
+		position: absolute;
+		width: 1px;
+		top: 0;
+	}
+
+	.border-between > [class*='col-']:first-child:before {
+		display: none;
+	}
 </style>
 
-<div class="navbar-inner">
-    <div class="container">
-        <div class="row border-between">
-            <div class="col-md-4">
-                <h4>@GlobalRes.Contacts :</h4>
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 footer-box">
+			<h4>@GlobalRes.Contacts :</h4>
 
-                <div>
-                    <p><i class="glyphicon glyphicon-phone"></i> +375 29 6 519 518</p>
-                    <p><i class="glyphicon glyphicon-phone"></i> +375 33 6 518 518</p>
-                    <p><i class="glyphicon glyphicon-phone"></i> +375 25 518 00 00</p>
-                    <p><i class="glyphicon glyphicon-envelope"></i> admin@hong-gia.by</p>
-                    <p><i class="glyphicon glyphicon-envelope"></i> eugene_sao@hong-gia.com</p>
-                    <p><i class="glyphicon glyphicon-home"></i> г.Минск, 220041, ул. Стариновская, 29</p>
-                </div>
-            </div>
+			<div class="col-md-6 footer-box-text footer-box-text-contact">
+				<p><span class="glyphicon glyphicon-phone"></span> +375 29 6 519 518</p>
+				<p><span class="glyphicon glyphicon-phone"></span> +375 33 6 518 518</p>
+				<p><span class="glyphicon glyphicon-phone"></span> +375 25 518 00 00</p>
+			</div>
 
-            <div class="col-md-4">
-                <h4>@GlobalRes.OurProjects :</h4>
-                
-                <a href="#">www.hong-gia.by</a>
-            </div>
-            
-            <div class="col-md-4">                
-                <h4>@GlobalRes.SeeMore :</h4>
+			<div class="col-md-6 footer-box-text footer-box-text-contact">
+				<p><span class="glyphicon glyphicon-envelope"></span> admin@hong-gia.by</p>
+				<p><span class="glyphicon glyphicon-envelope"></span> eugene_sao@hong-gia.com</p>
+				<p><span class="glyphicon glyphicon-map-marker"></span> г.Минск, 220041, ул. Стариновская, 29</p>
+			</div>
+		</div>
 
-                <p><a href="#"><i class="glyphicon glyphicon-phone"></i> youtube</a></p>
-                <p><a href="#"><i class="glyphicon glyphicon-phone"></i> instagram</a></p>
-                <p><a href="#"><i class="glyphicon glyphicon-phone"></i> twitter</a></p>
-                <p><a href="#"><i class="glyphicon glyphicon-phone"></i> vk</a></p>
-            </div>
-        </div>
-    </div>
+		<div class="col-md-4 footer-box">
+			<h4>@GlobalRes.SeeMore :</h4>
+
+			<div class="col-md-6 footer-box-text footer-box-text-contact">
+				<p><a href="#"><span class="glyphicon glyphicon-phone"></span> youtube</a></p>
+				<p><a href="#"><span class="glyphicon glyphicon-phone"></span> instagram</a></p>
+				<p><a href="#"><span class="glyphicon glyphicon-phone"></span> twitter</a></p>
+			</div>
+
+			<div class="col-md-6 footer-box-text footer-box-text-contact">
+				<p><a href="#"><span class="glyphicon glyphicon-phone"></span> vk</a></p>
+				<p><a href="#"><span class="glyphicon glyphicon-phone"></span> fb</a></p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row footer-border"></div>
+
+	<div class="row">
+		<div class="col-md-12 footer-box footer-box-text footer-box-text-contact">
+			<p>Hong-Gia Vietnam 2017</p>
+		</div>
+	</div>
 </div>

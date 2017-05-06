@@ -3,8 +3,8 @@
 @using HongGia.Core.Helpers
 
 <ul class="nav navbar-nav">
-    @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.Home, ActionName = "Index", ControllerName = "Home", RouteData = ViewContext.RouteData })
-    @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.News, ActionName = "AllNews", ControllerName = "News", RouteData = ViewContext.RouteData })
+    @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.Home, ActionName = "Index", ControllerName = "Home", RouteData = ViewContext.RouteData }, "<span class='glyphicon glyphicon-home'></span><br>")
+    @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.News, ActionName = "AllNews", ControllerName = "News", RouteData = ViewContext.RouteData }, "<span class='glyphicon glyphicon-list-alt'></span><br>")
 
     @Html.DropdownMenuSection(@GlobalRes.HongGia, new List<MenuSectionParameters>()
                                             {
@@ -15,7 +15,7 @@
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.ToBeginner, ActionName = "ToBeginner", ControllerName = "HongGia", RouteData = ViewContext.RouteData},
                                                 null,
                                                 new MenuSectionParameters() { LinkText = @GlobalRes.Master, ActionName = "Master", ControllerName = "Home", RouteData = ViewContext.RouteData}
-                                            })
+                                            }, "<span class='glyphicon glyphicon-globe'></span><br>")
 
     @Html.DropdownMenuSection(@GlobalRes.Directions, new List<MenuSectionParameters>()
                                             {
@@ -32,14 +32,14 @@
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.FiveEnimals, ActionName = "FiveEnimals", ControllerName = "Directions", RouteData = ViewContext.RouteData},
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Weapon, ActionName = "Weapon", ControllerName = "Directions", RouteData = ViewContext.RouteData},
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Meditation, ActionName = "Meditation", ControllerName = "Directions", RouteData = ViewContext.RouteData}
-                                            })
+                                            }, "<span class='glyphicon glyphicon-tree-deciduous'></span><br>")
 
     @Html.DropdownMenuSection(@GlobalRes.Training, new List<MenuSectionParameters>()
                                             {
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Groups, ActionName = "Groups", ControllerName = "Training", RouteData = ViewContext.RouteData},
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Online, ActionName = "Online", ControllerName = "Training", RouteData = ViewContext.RouteData},
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Seminars, ActionName = "Seminars", ControllerName = "Training", RouteData = ViewContext.RouteData}
-                                            })
+                                            }, "<span class='glyphicon glyphicon-eye-open'></span><br>")
 
     @Html.DropdownMenuSection(@GlobalRes.Media, new List<MenuSectionParameters>()
                                             {
@@ -47,8 +47,8 @@
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Books, ActionName = "Books", ControllerName = "Media", RouteData = ViewContext.RouteData},
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Photo, ActionName = "AllPhoto", ControllerName = "Photo", RouteData = ViewContext.RouteData},
                                                 new MenuSectionParameters() {LinkText = @GlobalRes.Video, ActionName = "Video", ControllerName = "Media", RouteData = ViewContext.RouteData}
-                                            })
+                                            }, "<span class='glyphicon glyphicon-folder-open'></span><br>")
 
-    @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.FeedBacks, ActionName = "Feedback", ControllerName = "Home", RouteData = ViewContext.RouteData })
-    @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.Contacts, ActionName = "Contacts", ControllerName = "Home", RouteData = ViewContext.RouteData })
+    @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.FeedBacks, ActionName = "Feedback", ControllerName = "Home", RouteData = ViewContext.RouteData }, "<span class='glyphicon glyphicon-pencil'></span><br>")
+    @Html.MenuSection(new MenuSectionParameters() { LinkText = @GlobalRes.Contacts, ActionName = "Contacts", ControllerName = "Home", RouteData = ViewContext.RouteData }, "<span class='glyphicon glyphicon-envelope'></span><br>")
 </ul>

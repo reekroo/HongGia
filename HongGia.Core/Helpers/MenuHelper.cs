@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
@@ -37,6 +38,18 @@ namespace HongGia.Core.Helpers
 			liTagBuilder.InnerHtml = link.ToHtmlString();
 
 			return new MvcHtmlString(liTagBuilder.ToString());
+		}
+
+		public static MvcHtmlString MenuSection(this HtmlHelper htmlHelper, MenuSectionParameters parameters, string prevHtmlCode)
+		{
+			var result = MenuSection(htmlHelper, parameters);
+
+			if (string.IsNullOrEmpty(prevHtmlCode) == true)
+			{
+				return result;
+			}
+
+			return new MvcHtmlString(result.ToString().Insert(result.ToString().IndexOf(parameters.LinkText + '<', StringComparison.Ordinal), prevHtmlCode));
 		}
 
 		public static MvcHtmlString DropdownMenuSection(this HtmlHelper htmlHelper, string dropdownName, IEnumerable<MenuSectionParameters> parameters)
@@ -81,6 +94,18 @@ namespace HongGia.Core.Helpers
 			liTagBuilder.InnerHtml = aTagBuilder.ToString() + ulTagBuilder.ToString();
 
 			return new MvcHtmlString(liTagBuilder.ToString());
+		}
+
+		public static MvcHtmlString DropdownMenuSection(this HtmlHelper htmlHelper, string dropdownName, IEnumerable<MenuSectionParameters> parameters, string prevHtmlCode)
+		{
+			var result = DropdownMenuSection(htmlHelper, dropdownName, parameters);
+
+			if (string.IsNullOrEmpty(prevHtmlCode) == true)
+			{
+				return result;
+			}
+
+			return new MvcHtmlString(result.ToString().Insert(result.ToString().IndexOf(dropdownName + '<', StringComparison.Ordinal), prevHtmlCode));
 		}
 
 		private static string AddSeporator()

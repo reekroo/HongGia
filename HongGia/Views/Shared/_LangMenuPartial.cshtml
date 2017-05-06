@@ -2,13 +2,13 @@
 @using HongGia.Core.Helpers
 
 <ul class="nav navbar-nav navbar-right">
-    @Url.DropdownSwitcher("Lang",new List<SwitchLanguageParameters>()
-    {
-       new SwitchLanguageParameters() {Lang = "ru", RouteData = ViewContext.RouteData, Name = "ru"},
-       new SwitchLanguageParameters() {Lang = "en", RouteData = ViewContext.RouteData, Name = "en"},
-       new SwitchLanguageParameters() {Lang = "de", RouteData = ViewContext.RouteData, Name = "de"},
-       new SwitchLanguageParameters() {Lang = "fr", RouteData = ViewContext.RouteData, Name = "fr"},
-       new SwitchLanguageParameters() {Lang = "lt", RouteData = ViewContext.RouteData, Name = "lt"},
-       new SwitchLanguageParameters() {Lang = "sv", RouteData = ViewContext.RouteData, Name = "sv"}
-    })
+	@Url.DropdownSwitcher(string.Empty, new List<SwitchLanguageParameters>()
+	{
+		new SwitchLanguageParameters() {Lang = "ru", RouteData = ViewContext.RouteData, Name = "ru"},
+		new SwitchLanguageParameters() {Lang = "en", RouteData = ViewContext.RouteData, Name = "en"},
+		new SwitchLanguageParameters() {Lang = "de", RouteData = ViewContext.RouteData, Name = "de"},
+		new SwitchLanguageParameters() {Lang = "fr", RouteData = ViewContext.RouteData, Name = "fr"},
+		new SwitchLanguageParameters() {Lang = "lt", RouteData = ViewContext.RouteData, Name = "lt"},
+		new SwitchLanguageParameters() {Lang = "sv", RouteData = ViewContext.RouteData, Name = "sv"}
+	}, "<span class='glyphicon glyphicon-refresh'></span><br>")
 </ul>

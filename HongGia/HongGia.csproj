@@ -262,6 +262,8 @@
     <Content Include="Content\ekko-lightbox.css" />
     <Content Include="Content\ekko-lightbox.min.css" />
     <Content Include="Content\Images\download.svg" />
+    <Content Include="Content\Images\HongGia_emblem.png" />
+    <Content Include="Content\Theme.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -400,6 +402,7 @@
     <EmbeddedResource Include="App_LocalResources\GlobalRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalRes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

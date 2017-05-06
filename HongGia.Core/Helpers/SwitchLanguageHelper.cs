@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -74,7 +75,19 @@ namespace HongGia.Core.Helpers
             return new MvcHtmlString(liTagBuilder.ToString());
         }
 
-        private static string CurrentLanguage(IEnumerable<SwitchLanguageParameters> parameters)
+	    public static MvcHtmlString DropdownSwitcher(this UrlHelper url, string name, IEnumerable<SwitchLanguageParameters> parameters, string prevHtmlCode)
+	    {
+		    var result = DropdownSwitcher(url, name, parameters);
+
+		    if (string.IsNullOrEmpty(prevHtmlCode) == true)
+		    {
+			    return result;
+		    }
+
+		    return new MvcHtmlString(result.ToString().Insert(result.ToString().IndexOf(name + CurrentLanguage(parameters) + '<', StringComparison.Ordinal), prevHtmlCode));
+	    }
+		
+		private static string CurrentLanguage(IEnumerable<SwitchLanguageParameters> parameters)
         {
             var result = parameters.FirstOrDefault(x => x.Lang == x.RouteData.Values["lang"] as string);
 
@@ -83,7 +96,7 @@ namespace HongGia.Core.Helpers
                 return string.Empty;
             }
 
-            return "(" + result.Lang + ")";
+            return result.Lang;
         }
     }
 }
