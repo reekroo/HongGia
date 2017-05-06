@@ -5,12 +5,12 @@ using HongGia.Core.Interfaces.Models;
 
 namespace HongGia.Core.Models.Views
 {
-    public class HomeView : IHomeView
-    {
-        public IEnumerable<IImage> SliderImages { get; set; }
-
-        public IEnumerable<INews> TopNews { get; set; }
-    }
+	public class HomeView : IHomeView
+	{
+		public IEnumerable<IImage> SliderImages { get; set; }
+		public IEnumerable<INews> TopNews { get; set; }
+		public IEnumerable<IPhoto> TopPhotos { get; set; }
+	}
 
 	//public class FeedBacksView : IFeedBacksView
 	//{

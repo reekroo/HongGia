@@ -310,7 +310,7 @@ ul.navbar-nav li.active .dropdown-menu > .active > a:focus { background: #fe503e
 .work {
 	position: relative;
 	margin-top: 40px;
-	padding-bottom: 20px;
+	/*padding-bottom: 20px;*/
 	background: #fff;
 	-moz-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
 	-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
@@ -346,7 +346,7 @@ ul.navbar-nav li.active .dropdown-menu > .active > a:focus { background: #fe503e
 }
 
 .testimonials-title h2 {
-	width: 180px;
+	/*width: 180px;*/
 }
 
 .testimonial-list {
@@ -368,7 +368,7 @@ ul.navbar-nav li.active .dropdown-menu > .active > a:focus { background: #fe503e
 
 .testimonial-list .testimonial-text {
 	float: left;
-	width: 83%;
+	/*width: 83%;*/
 	line-height: 30px;
 	font-style: italic;
 }

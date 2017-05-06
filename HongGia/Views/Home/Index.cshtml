@@ -3,43 +3,190 @@
 @model HongGia.Core.Interfaces.Models.IHomeView
 
 @{
-    ViewBag.Title = "Home Page";
+	ViewBag.Title = "Home Page";
 }
 
 <!-- carousel -->
-@Html.Slider(@Model.SliderImages)
+@if (Model?.SliderImages != null)
+{
+	@Html.Slider(@Model.SliderImages)
+}
 
-<!-- items -->
-<div class="row row-margin">
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="" alt="1" style="height: 200px; width: 100%; display: block;"> @*style*@
-            <div class="caption">
-                <h3>Getting started</h3>
-                <p>
-                    ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                    enables a clean separation of concerns and gives you full control over markup
-                    for enjoyable, agile development.
-                </p>
-                <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-            </div>
-        </div>
-    </div>
+<!-- presentation -->
+<div class="presentation-container container row">
+	<div class="col-md-12">
+		<h1>Клуб <span class="colored-text">Hong-Gia Vietnam</span> в Минске</h1>
+		<p>Терпение</p>
+	</div>
+</div>
 
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="" alt="1" style="height: 200px; width: 100%; display: block;"> @*style*@
-            <div class="caption">
-                <h3>Get more libraries</h3>
-                <p>
-                    NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-                </p>
-                <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-            </div>
-        </div>
-    </div>
+<!-- topics -->
+<div class="row">
+	<div class="col-md-6">
+		<div class="service">
+			<div class="service-icon">
+				<span class="glyphicon glyphicon-certificate"></span>
+			</div>
 
-    <div class="col-md-6">
-        @Html.ListGroup(@Model.TopNews)
-    </div>
+			<h3>Что такое кунг-фу</h3>
+
+			<p>
+				пы впы впыв пыв пывпіртоырпдывар ывар варпыв пылп вылп фывт пыт пв
+				ывполфы впот ыфтвп ывепіцул ецпе ыдввп дф выпыфв пд цыдфп фцыуп
+				цуфцуыпф дрпфук рпукр пудкпеыдв пыовпўцтуе ыьвп ывпржфы вплцукотыпцуфк
+				фывлрп ыв аружкднетулф рпфлвыарплуціыпеы.
+			</p>
+
+			<p><a class="big-link-1" href="#">Читать больше</a></p>
+		</div>
+	</div>
+
+	<div class="col-md-6">
+		<div class="service">
+			<div class="service-icon">
+				<span class="glyphicon glyphicon-bell"></span>
+			</div>
+
+			<h3>Почему это школа</h3>
+
+			<p>
+				пы впы впыв пыв пывпіртоырпдывар ывар варпыв пылп вылп фывт пыт пв
+				ывполфы впот ыфтвп ывепіцул ецпе ыдввп дф выпыфв пд цыдфп фцыуп
+				цуфцуыпф дрпфук рпукр пудкпеыдв пыовпўцтуе ыьвп ывпржфы вплцукотыпцуфк
+				фывлрп ыв аружкднетулф рпфлвыарплуціыпеы.
+			</p>
+
+			<p><a class="big-link-1" href="#">Читать больше</a></p>
+		</div>
+	</div>
+</div>
+
+<!-- Photos -->
+@if (Model?.TopPhotos != null)
+{
+	<div class="work-container">
+		<div class="row">
+			<div class="col-md-12 work-title">
+				<h2>Фото клуба</h2>
+			</div>
+		</div>
+
+		<div class="row">
+			@foreach (var photo in @Model.TopPhotos)
+			{
+				<div class="col-md-3">
+					<div class="work"><img src="@photo.Path" alt="@photo.Name" style="height: 200px; width: 100%; display: block;"></div>@*style*@
+				</div>
+			}
+			@*<div class="col-md-3">
+					<div class="work"><img src="" alt="1" style="height: 200px; width: 100%; display: block;"></div>
+				</div>
+				<div class="col-md-3">
+					<div class="work"><img src="" alt="1" style="height: 200px; width: 100%; display: block;"></div>
+				</div>
+				<div class="col-md-3">
+					<div class="work"><img src="" alt="1" style="height: 200px; width: 100%; display: block;"></div>
+				</div>
+				<div class="col-md-3">
+					<div class="work"><img src="" alt="1" style="height: 200px; width: 100%; display: block;"></div>
+				</div>*@
+		</div>
+	</div>
+}
+
+<!-- News -->
+@if (Model?.TopNews != null)
+{
+	<div class="work-container">
+		<div class="row">
+			<div class="col-md-12 work-title">
+				<h2>Новости клуба</h2>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				@Html.ListGroup(@Model.TopNews)
+			</div>
+		</div>
+	</div>
+}
+
+<!-- quotations -->
+<div class="testimonials-container">
+	<div class="row">
+		<div class="col-sm-12 testimonials-title">
+			<h2>Изречения великих</h2>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-10 testimonial-list">
+			<div role="tabpanel">
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane fade in active" id="tab1">
+						<div class="testimonial-text">
+							<p>
+								"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
+								Lorem ipsum dolor sit amet, consectetur..."<br>
+								<span class="colored-text">asdgsdgasdg</span>
+							</p>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane fade" id="tab2">
+						<div class="testimonial-text">
+							<p>
+								"Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
+								ex ea commodo consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+								lobortis nisl ut aliquip ex ea commodo consequat..."<br>
+								<span class="colored-text">12412412412412</span>
+							</p>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane fade" id="tab3">
+						<div class="testimonial-text">
+							<p>
+								"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
+								Lorem ipsum dolor sit amet, consectetur..."<br>
+								<a href="#">Lorem Ipsum, dolor.co.uk</a>
+							</p>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane fade" id="tab4">
+						<div class="testimonial-text">
+							<p>
+								"Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
+								ex ea commodo consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+								lobortis nisl ut aliquip ex ea commodo consequat..."<br>
+								<a href="#">Minim Veniam, nostrud.com</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active">
+						<a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab"></a>
+					</li>
+					<li role="presentation">
+						<a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab"></a>
+					</li>
+					<li role="presentation">
+						<a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab"></a>
+					</li>
+					<li role="presentation">
+						<a href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-sm-2 testimonial-icon">
+			<div>
+				<span aria-hidden="true" class="glyphicon glyphicon-leaf"></span>
+			</div>
+		</div>
+	</div>
 </div>
