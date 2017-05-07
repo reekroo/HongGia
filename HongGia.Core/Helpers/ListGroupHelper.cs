@@ -57,7 +57,7 @@ namespace HongGia.Core.Helpers
 			var thumbnailTagBuilder = new TagBuilder("div");
 			var listGroupTagBuilder = new TagBuilder("div");
 
-			thumbnailTagBuilder.AddCssClass("thumbnail");
+			thumbnailTagBuilder.AddCssClass("text-left");
 			listGroupTagBuilder.AddCssClass("list-group margin-bottom-zero");
 
 			foreach (var parameter in parameters)
