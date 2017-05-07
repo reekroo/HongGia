@@ -1,6 +1,7 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
+
+using HongGia.BL.Mailer;
 
 using HongGia.Core.Constants;
 using HongGia.Core.Controllers;
@@ -55,6 +56,18 @@ namespace HongGia.Controllers
 			}
 
 			return RedirectToAction("FeedBack");
+		}
+
+		[HttpPost]
+		public ActionResult Mail(Email email)
+		{
+			if (ModelState.IsValid)
+			{
+				var mailer = new Mailer(email);
+				mailer.Send();
+			}
+
+			return RedirectToAction("Contacts");
 		}
 
 		public ActionResult Contacts()

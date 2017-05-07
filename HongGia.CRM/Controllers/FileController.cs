@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
 
+using HongGia.BL.SmallFunctional;
+
 using HongGia.Core.Models.Base;
 
 using HongGia.DB.Services;
@@ -11,12 +13,10 @@ namespace HongGia.CRM.Controllers
 		[HttpPost]
 		public ActionResult Add(File file,int pageContentId, string pageContentName, string pageContentLang)
 		{
-			//!!! fake
-
-			file.Path = "aaaaa";
-
 			if (ModelState.IsValid)
 			{
+				file.Path = FilePathCreator.GetGooglePath(file.Path);
+
 				FileService.Add(file, pageContentId);
 			}
 

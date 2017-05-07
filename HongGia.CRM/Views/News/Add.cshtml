@@ -1,29 +1,36 @@
 ﻿@model HongGia.Core.Interfaces.Models.INewsView
 
 @{
-    ViewBag.Title = "AddNews";
+	ViewBag.Title = "AddNews";
 }
 
 <h2>Add News</h2>
 
 <div>
-    @using (Html.BeginForm("Add", "News", FormMethod.Post))
-    {
-        <div class="form-group">
-            <label for="Header">Header</label>
-            <input type="text" class="form-control" id="Header" name="Header" />
-        </div>
+	@using (Html.BeginForm("Add", "News", FormMethod.Post))
+	{
+		<div class="form-group">
+			<label for="Header">Header</label>
+			<input type="text" class="form-control" id="Header" name="Header" />
+		</div>
 
-        <div class="form-group">
-            <label for="Text">Text</label>
-            <textarea type="text" class="form-control" id="Text" name="Text"></textarea>
-        </div>
+		<div class="form-group">
+			<label for="Text">Text</label>
+			<textarea type="text" class="form-control" id="Text" name="Text"></textarea>
+		</div>
 
-        <div class="form-group">
-            <label for="Name">Image</label>
-            <input type="file" class="form-control" id="Name" placeholder="example" name="Image" />
-        </div>
-        
-        <button type="submit" class="btn btn-default">Add news</button>
-    }
+		<div class="form-group">
+			<label for="Name">Image File</label>
+			<input type="file" class="form-control" id="Name" placeholder="example" name="Image" />
+		</div>
+
+		<p>Or</p>
+
+		<div class="form-group">
+			<label for="ImagePath">Image Path</label>
+			<input type="text" class="form-control" id="ImagePath" name="Src" />
+		</div>
+
+		<button type="submit" class="btn btn-default">Add news</button>
+	}
 </div>

@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
 
+using HongGia.BL.SmallFunctional;
+
 using HongGia.Core.Models.Base;
 
 using HongGia.DB.Services;
@@ -11,12 +13,10 @@ namespace HongGia.CRM.Controllers
 		[HttpPost]
 		public ActionResult Add(Image image,int pageContentId, string pageContentName, string pageContentLang)
 		{
-			//!!! fake
-
-			image.Src = "aaaaa";
-
 			if (ModelState.IsValid)
 			{
+				image.Src = FilePathCreator.GetGooglePath(image.Src);
+
 				ImageService.AddImage(image, pageContentId);
 			}
 

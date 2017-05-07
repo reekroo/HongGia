@@ -37,8 +37,15 @@
 		</div>
 
 		<div class="form-group">
+			<label for="ImagePath">File</label>
+			<input type="file" class="form-control" id="ImagePath" name="Src" accept="image/*" />
+		</div>
+
+		<p>Or</p>
+
+		<div class="form-group">
 			<label for="ImagePath">Path</label>
-			<input type="file" class="form-control" id="ImagePath" name="Src" />
+			<input type="text" class="form-control" id="ImagePath" name="Src" />
 		</div>
 
 		<button type="submit" class="btn btn-primary">Add Image</button>
@@ -59,7 +66,7 @@
 			{
 				<tr>
 					<td>@image.Id</td>
-					<td><img src="@image.Src" alt="@image.Alt" /></td>
+					<td><img src="@image.Src" alt="@image.Alt" width="200" height="200"/></td>
 					<td>@image.Alt</td>
 					<td>@image.Src</td>
 					<td>
@@ -171,7 +178,14 @@
 
 		<div class="form-group">
 			<label for="FilePath">File</label>
-			<input type="file" class="form-control" id="FilePath" placeholder="example" name="Path" />
+			<input type="file" class="form-control" id="FilePath" placeholder="example" name="File" />
+		</div>
+
+		<p>Or</p>
+
+		<div class="form-group">
+			<label for="FilePath">Path</label>
+			<input type="text" class="form-control" id="FilePath" name="Path" />
 		</div>
 
 		<button type="submit" class="btn btn-primary">Add File</button>

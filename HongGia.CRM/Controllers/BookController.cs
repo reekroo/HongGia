@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 
+using HongGia.BL.SmallFunctional;
+
 using HongGia.Core.Constants;
 using HongGia.Core.Models.Base;
 using HongGia.Core.Models.Views;
@@ -35,8 +37,8 @@ namespace HongGia.CRM.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				//fake
 				book.Name = book.Header;
+				book.Path = FilePathCreator.GetGooglePath(book.Path);
 
 				BookService.AddBook(book);
 			}

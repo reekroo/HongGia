@@ -89,6 +89,7 @@
     <Compile Include="Interfaces\Base\IFeedBack.cs" />
     <Compile Include="Interfaces\Base\IArticle.cs" />
     <Compile Include="Interfaces\Base\INews.cs" />
+    <Compile Include="Interfaces\Base\IEmail.cs" />
     <Compile Include="Interfaces\Base\ITopic.cs" />
     <Compile Include="Interfaces\Base\IVideo.cs" />
     <Compile Include="Interfaces\Base\IPhoto.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Interfaces\Base\IText.cs" />
     <Compile Include="Interfaces\Models\ArticleViewModels.cs" />
     <Compile Include="Interfaces\Models\SliderViewModels.cs" />
+    <Compile Include="Models\Base\Email.cs" />
     <Compile Include="Models\Base\Catigory.cs" />
     <Compile Include="Models\Base\FirmContact.cs" />
     <Compile Include="Models\Base\FirmAddress.cs" />

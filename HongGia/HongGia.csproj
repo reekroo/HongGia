@@ -406,6 +406,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HongGia.BL\HongGia.BL.csproj">
+      <Project>{7dcc0c64-e784-414b-a676-a05fa4ab7424}</Project>
+      <Name>HongGia.BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HongGia.Core\HongGia.Core.csproj">
       <Project>{b8ff1929-0075-42e4-92e7-da72ddc6ddf3}</Project>
       <Name>HongGia.Core</Name>
