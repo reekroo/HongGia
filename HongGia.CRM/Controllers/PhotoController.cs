@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-
+using HongGia.BL.SmallFunctional;
 using HongGia.Core.Constants;
 using HongGia.Core.Models.Views;
 
@@ -56,12 +56,13 @@ namespace HongGia.CRM.Controllers
 		[HttpPost]
 		public ActionResult Add(PhotoView photo)
 		{
-			var str = photo.Categories.FirstOrDefault();
-
-			photo.Categories = string.IsNullOrEmpty(str) == false ? str.Split(',') : null;
-
 			if (ModelState.IsValid)
 			{
+				var str = photo.Categories.FirstOrDefault();
+
+				photo.Categories = string.IsNullOrEmpty(str) == false ? str.Split(',') : null;
+				photo.Path = FilePathCreator.GetGooglePath(photo.Path);
+
 				var result = PhotoService.AddPhoto(photo);
 			}
 
@@ -71,12 +72,12 @@ namespace HongGia.CRM.Controllers
 		[HttpPost]
 		public ActionResult Update(PhotoView photo)
 		{
-			var str = photo.Categories.FirstOrDefault();
-
-			photo.Categories = string.IsNullOrEmpty(str) == false ? str.Split(',') : null;
-
 			if (ModelState.IsValid)
 			{
+				var str = photo.Categories.FirstOrDefault();
+
+				photo.Categories = string.IsNullOrEmpty(str) == false ? str.Split(',') : null;
+
 				PhotoService.UpdatePhoto(photo);
 			}
 

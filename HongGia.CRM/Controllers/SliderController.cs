@@ -1,7 +1,5 @@
-﻿using System.Web;
-using System.Web.Mvc;
-
-//using HongGia.BL.FileSaver;
+﻿using System.Web.Mvc;
+using HongGia.BL.SmallFunctional;
 
 using HongGia.Core.Models.Base;
 using HongGia.Core.Models.Views;
@@ -43,10 +41,9 @@ namespace HongGia.CRM.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				//var save = new Saver(filePhoto, image);
-				//save.Save();
-
+				image.Src = FilePathCreator.GetGooglePath(image.Src);
 				image.Type = "slider";
+
 				ImageService.AddImage(image);
 			}
 
@@ -58,7 +55,9 @@ namespace HongGia.CRM.Controllers
 		{
 			if (ModelState.IsValid)
 			{
+				image.Src = FilePathCreator.GetGooglePath(image.Src);
 				image.Type = "top";
+
 				ImageService.AddImage(image);
 			}
 

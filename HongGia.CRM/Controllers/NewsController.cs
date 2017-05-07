@@ -55,6 +55,8 @@ namespace HongGia.CRM.Controllers
 		{
 			if (ModelState.IsValid)
 			{
+				//fake
+
 				news.Date = DateTime.Now;
 				news.Language = "ru";
 

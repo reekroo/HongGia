@@ -13,7 +13,7 @@
 <h2>Photos</h2>
 
 <div>
-	@Html.ActionLink("Create Article", "Add", "Photo", null, new { @class = "btn rfloat clear" })
+	@Html.ActionLink("Add Photo", "Add", "Photo", null, new { @class = "btn rfloat clear" })
 </div>
 
 <div id="allPhotosGrid">
@@ -37,7 +37,7 @@
 					<td>@photo.Id</td>
 
 					<td>
-						<img src="@photo.Path" alt="@photo.Name" />
+						<img src="@photo.Path" alt="@photo.Name"  height="200" width="200"/>
 					</td>
 
 					<td>@photo.Name</td>
