@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HongGia", "HongGia\HongGia.csproj", "{110836EE-D8A6-4782-8F3E-B158FE333C86}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HongGia.DB", "HongGia.DB\HongGia.DB.csproj", "{464339E3-C6CA-4437-86C7-7BC3CD1ACB1E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HongGia.CRM", "HongGia.CRM\HongGia.CRM.csproj", "{C0EC2559-E298-41A1-99F5-D39E04B5941C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HongGia.BL", "HongGia.BL\HongGia.BL.csproj", "{7DCC0C64-E784-414B-A676-A05FA4AB7424}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{C0EC2559-E298-41A1-99F5-D39E04B5941C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0EC2559-E298-41A1-99F5-D39E04B5941C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0EC2559-E298-41A1-99F5-D39E04B5941C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DCC0C64-E784-414B-A676-A05FA4AB7424}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DCC0C64-E784-414B-A676-A05FA4AB7424}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DCC0C64-E784-414B-A676-A05FA4AB7424}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DCC0C64-E784-414B-A676-A05FA4AB7424}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
