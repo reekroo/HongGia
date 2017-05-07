@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
@@ -16,8 +17,8 @@ namespace HongGia.DB.Services
 		{
 			using (var context = new EntitiesDB())
 			{
-				if (context.Images == null || 
-					context.Images.Count() < 0 || 
+				if (context.Images == null ||
+					context.Images.Count() < 0 ||
 					context.Images.Any(image => image.Type == "slider") == false)
 				{
 					return null;
@@ -37,28 +38,51 @@ namespace HongGia.DB.Services
 			}
 		}
 
+		public static IEnumerable<IImage> GetTopSliderImages()
+		{
+			using (var context = new EntitiesDB())
+			{
+				if (context.Images == null ||
+					context.Images.Count() < 0 ||
+					context.Images.Any(image => image.Type == "slider") == false)
+				{
+					return null;
+				}
+
+				var sliderImages = context.Images.Where(image => image.Type == "slider").Select(x => new Core.Models.Base.Image()
+				{
+					Id = x.Id,
+					Alt = x.Name,
+					Src = x.Path
+				}).ToList();
+
+				return sliderImages;
+			}
+		}
+
 		public static bool AddImage(IImage image)
-        {
-            using (var context = new EntitiesDB())
-            {
-                if (context.Images == null || context.Images.Count() < 0)
-                {
-                    return false;
-                }
+		{
+			using (var context = new EntitiesDB())
+			{
+				if (context.Images == null || context.Images.Count() < 0)
+				{
+					return false;
+				}
 
-                var save = new Image()
-                {
-                    Name = image.Alt,
-                    Path = image.Src,
-                    Date = DateTime.Now
-                };
+				var save = new Image()
+				{
+					Name = image.Alt,
+					Path = image.Src,
+					Type = image.Type,
+					Date = DateTime.Now
+				};
 
-                context.Images.Add(save);
-                context.SaveChanges();
+				context.Images.Add(save);
+				context.SaveChanges();
 
-                return true;
-            }
-        }
+				return true;
+			}
+		}
 
 		public static bool AddImage(IImage image, int pageContentId)
 		{
@@ -80,6 +104,7 @@ namespace HongGia.DB.Services
 				{
 					Name = image.Alt,
 					Path = image.Src,
+					Type = image.Type,
 					Date = DateTime.Now
 				});
 
@@ -91,50 +116,50 @@ namespace HongGia.DB.Services
 		}
 
 		public static bool RemoveImage(int imageId)
-        {
-            using (var context = new EntitiesDB())
-            {
-                if (context.Images == null || context.Images.Count() < 0)
-                {
-                    return false;
-                }
+		{
+			using (var context = new EntitiesDB())
+			{
+				if (context.Images == null || context.Images.Count() < 0)
+				{
+					return false;
+				}
 
-                var selectImage = context.Images.FirstOrDefault(i => i.Id == imageId);
+				var selectImage = context.Images.FirstOrDefault(i => i.Id == imageId);
 
-                if (selectImage == null)
-                {
-                    return false;
-                }
+				if (selectImage == null)
+				{
+					return false;
+				}
 
-                context.Images.Remove(selectImage);
-                context.SaveChanges();
+				context.Images.Remove(selectImage);
+				context.SaveChanges();
 
-                return true;
-            }
-        }
+				return true;
+			}
+		}
 
-        public static bool RemoveImage(IImage image)
-        {
-            using (var context = new EntitiesDB())
-            {
-                if (context.Images == null || context.Images.Count() < 0)
-                {
-                    return false;
-                }
+		public static bool RemoveImage(IImage image)
+		{
+			using (var context = new EntitiesDB())
+			{
+				if (context.Images == null || context.Images.Count() < 0)
+				{
+					return false;
+				}
 
-                var selectImage = context.Images.FirstOrDefault(i => i.Name == image.Alt && i.Path == image.Src);
+				var selectImage = context.Images.FirstOrDefault(i => i.Name == image.Alt && i.Path == image.Src);
 
-                if (selectImage == null)
-                {
-                    return false;
-                }
+				if (selectImage == null)
+				{
+					return false;
+				}
 
-                context.Images.Remove(selectImage);
-                context.SaveChanges();
+				context.Images.Remove(selectImage);
+				context.SaveChanges();
 
-                return true;
-            }
-        }
+				return true;
+			}
+		}
 
-    }
+	}
 }

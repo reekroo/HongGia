@@ -86,3 +86,9 @@ textarea {
     display: inline-block;
     margin-top: 20px;
 }
+
+
+.glyphicon-chevron-left:before,
+.glyphicon-chevron-right:before {
+	color: #fe503e
+}

@@ -8,39 +8,35 @@ using HongGia.DB.Models;
 
 namespace HongGia.DB.Services
 {
-    public class HomeService
-    {
-        public static IHomeView GetHome(string lang)
-        {
-            using (var context = new EntitiesDB())
-            {
-                var pageContent = new PageContent();
+	public class HomeService
+	{
+		public static IHomeView GetHome(string lang)
+		{
+			using (var context = new EntitiesDB())
+			{
+				var pageContent = new PageContent();
 
-                var pages = context.Pages.Where(p => p.Name.ToLower() == "home").ToList();
+				var pages = context.Pages.Where(p => p.Name.ToLower() == "home").ToList();
 
-                foreach (var page in pages)
-                {
-                    foreach (var content in page.PageContents)
-                    {
-                        if (content.Language.Name == lang)
-                        {
-                            pageContent = content;
-                        }
-                    }
-                }
-                
-                var home = new HomeView()
-                {
-                    TopNews = NewsService.GetTopNews(PageConstants.PageIndexNewsSize),
-                    SliderImages = pageContent.Images.Select(i => new HongGia.Core.Models.Base.Image()
-                    {
-                        Alt = i.Name,
-                        Src = i.Path
-                    })
-            };
+				foreach (var page in pages)
+				{
+					foreach (var content in page.PageContents)
+					{
+						if (content.Language.Name == lang)
+						{
+							pageContent = content;
+						}
+					}
+				}
 
-                return home;
-            }
-        }
-    }
+				var home = new HomeView()
+				{
+					TopNews = NewsService.GetTopNews(PageConstants.PageIndexNewsSize),
+					SliderImages = ImageService.GetTopSliderImages()
+				};
+
+				return home;
+			}
+		}
+	}
 }

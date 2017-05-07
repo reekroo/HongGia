@@ -1,4 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
+
+//using HongGia.BL.FileSaver;
+
 using HongGia.Core.Models.Base;
 using HongGia.Core.Models.Views;
 
@@ -22,10 +26,14 @@ namespace HongGia.CRM.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Add(Image image)
+		public ActionResult Add(Image image, HttpPostedFileBase filePhoto)
 		{
 			if (ModelState.IsValid)
 			{
+				//var save = new Saver(filePhoto, image);
+				//save.Save();
+
+				image.Type = "slider";
 				ImageService.AddImage(image);
 			}
 
