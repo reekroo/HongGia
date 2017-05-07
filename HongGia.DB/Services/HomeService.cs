@@ -32,7 +32,8 @@ namespace HongGia.DB.Services
 				var home = new HomeView()
 				{
 					TopNews = NewsService.GetTopNews(PageConstants.PageIndexNewsSize),
-					SliderImages = ImageService.GetTopSliderImages()
+					SliderImages = ImageService.GetTopSliderImages(),
+					TopPhotos = ImageService.GetImages("top")
 				};
 
 				return home;

@@ -38,6 +38,36 @@ namespace HongGia.DB.Services
 			}
 		}
 
+		public static ISliderView GetSliderImages(string type)
+		{
+			if (string.IsNullOrEmpty(type))
+			{
+				return null;
+			}
+
+			using (var context = new EntitiesDB())
+			{
+				if (context.Images == null ||
+					context.Images.Count() < 0 ||
+					context.Images.Any(image => image.Type == type) == false)
+				{
+					return null;
+				}
+
+				var sliderImages = new SliderView()
+				{
+					SliderImages = context.Images.Where(image => image.Type == type).Select(x => new Core.Models.Base.Image()
+					{
+						Id = x.Id,
+						Alt = x.Name,
+						Src = x.Path
+					}).ToList()
+				};
+
+				return sliderImages;
+			}
+		}
+
 		public static IEnumerable<IImage> GetTopSliderImages()
 		{
 			using (var context = new EntitiesDB())
@@ -50,6 +80,33 @@ namespace HongGia.DB.Services
 				}
 
 				var sliderImages = context.Images.Where(image => image.Type == "slider").Select(x => new Core.Models.Base.Image()
+				{
+					Id = x.Id,
+					Alt = x.Name,
+					Src = x.Path
+				}).ToList();
+
+				return sliderImages;
+			}
+		}
+
+		public static IEnumerable<IImage> GetImages(string type)
+		{
+			if (string.IsNullOrEmpty(type))
+			{
+				return null;
+			}
+
+			using (var context = new EntitiesDB())
+			{
+				if (context.Images == null ||
+					context.Images.Count() < 0 ||
+					context.Images.Any(image => image.Type == type) == false)
+				{
+					return null;
+				}
+
+				var sliderImages = context.Images.Where(image => image.Type == type).Select(x => new Core.Models.Base.Image()
 				{
 					Id = x.Id,
 					Alt = x.Name,

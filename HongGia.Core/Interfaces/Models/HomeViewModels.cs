@@ -8,6 +8,6 @@ namespace HongGia.Core.Interfaces.Models
     {
         IEnumerable<IImage> SliderImages { get; set; }
         IEnumerable<INews> TopNews { get; set; }
-	    IEnumerable<IPhoto> TopPhotos { get; set; }
+	    IEnumerable<IImage> TopPhotos { get; set; }
 	}
 }

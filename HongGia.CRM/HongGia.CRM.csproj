@@ -313,6 +313,7 @@
     <Content Include="Views\BasePage\Information.cshtml" />
     <Content Include="Views\BasePage\Index.cshtml" />
     <Content Include="Views\BasePage\AddOrUpdate.cshtml" />
+    <Content Include="Views\Slider\TopImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

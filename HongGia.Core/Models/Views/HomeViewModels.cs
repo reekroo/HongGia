@@ -9,7 +9,7 @@ namespace HongGia.Core.Models.Views
 	{
 		public IEnumerable<IImage> SliderImages { get; set; }
 		public IEnumerable<INews> TopNews { get; set; }
-		public IEnumerable<IPhoto> TopPhotos { get; set; }
+		public IEnumerable<IImage> TopPhotos { get; set; }
 	}
 
 	//public class FeedBacksView : IFeedBacksView

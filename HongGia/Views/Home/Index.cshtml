@@ -75,21 +75,9 @@
 			@foreach (var photo in @Model.TopPhotos)
 			{
 				<div class="col-md-3">
-					<div class="work"><img src="@photo.Path" alt="@photo.Name" style="height: 200px; width: 100%; display: block;"></div>@*style*@
+					<div class="work"><img src="@photo.Src" alt="@photo.Alt" style="height: 200px; width: 100%; display: block;"></div>@*style*@
 				</div>
 			}
-			@*<div class="col-md-3">
-					<div class="work"><img src="" alt="1" style="height: 200px; width: 100%; display: block;"></div>
-				</div>
-				<div class="col-md-3">
-					<div class="work"><img src="" alt="1" style="height: 200px; width: 100%; display: block;"></div>
-				</div>
-				<div class="col-md-3">
-					<div class="work"><img src="" alt="1" style="height: 200px; width: 100%; display: block;"></div>
-				</div>
-				<div class="col-md-3">
-					<div class="work"><img src="" alt="1" style="height: 200px; width: 100%; display: block;"></div>
-				</div>*@
 		</div>
 	</div>
 }
