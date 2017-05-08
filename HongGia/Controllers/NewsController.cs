@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 
+using HongGia.BL.SmallFunctional;
+
 using HongGia.Core.Constants;
 using HongGia.Core.Controllers;
 using HongGia.Core.Models.Views;
@@ -24,7 +26,9 @@ namespace HongGia.Controllers
 				return View(new AllNewsView());
 			}
 
-			allNews.AllNews = allNews.AllNews.OrderBy(p => p.Date).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
+            allNews.AllNews.ToList().ForEach(x => x.Text = StringTruncater.Truncate(x.Text));
+
+            allNews.AllNews = allNews.AllNews.OrderBy(p => p.Date).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
 
 			return View(allNews);
 		}

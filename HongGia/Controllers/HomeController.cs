@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 
 using HongGia.BL.Mailer;
+using HongGia.BL.SmallFunctional;
 
 using HongGia.Core.Constants;
 using HongGia.Core.Controllers;
@@ -23,7 +24,9 @@ namespace HongGia.Controllers
 				return View(new HomeView());
 			}
 
-			return View(model);
+            model.TopNews.ToList().ForEach(x => x.Text = StringTruncater.Truncate(x.Text));
+            
+            return View(model);
 		}
 
 		[HttpGet]

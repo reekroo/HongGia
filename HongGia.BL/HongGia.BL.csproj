@@ -87,6 +87,7 @@
     <Compile Include="Mailer\Mailer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmallFunctional\FilePathCreator.cs" />
+    <Compile Include="SmallFunctional\StringTruncater.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HongGia.Core\HongGia.Core.csproj">
