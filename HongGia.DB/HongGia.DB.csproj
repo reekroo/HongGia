@@ -164,7 +164,6 @@
     <Compile Include="Services\ArtircleService.cs" />
     <Compile Include="Services\NewsServise.cs" />
     <Compile Include="Services\MediaService.cs" />
-    <Compile Include="Services\PageService.cs" />
     <Compile Include="Services\PhotoService.cs" />
     <Compile Include="Services\BookService.cs" />
     <Compile Include="Services\VideoService.cs" />

@@ -109,10 +109,5 @@ namespace HongGia.DB.Services
 				return true;
 			}
 		}
-
-		//Update Firm
-
-		//Add and remove Address
-		//Add and remove Contact
 	}
 }

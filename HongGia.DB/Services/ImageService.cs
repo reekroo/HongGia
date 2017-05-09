@@ -217,6 +217,5 @@ namespace HongGia.DB.Services
 				return true;
 			}
 		}
-
 	}
 }

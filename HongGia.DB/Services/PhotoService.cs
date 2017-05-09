@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
-using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
 
@@ -196,43 +194,6 @@ namespace HongGia.DB.Services
                 }
 
                 context.Photos.Remove(selectPhoto);
-                context.SaveChanges();
-
-                return true;
-            }
-        }
-
-        public static bool UpdateCatigories(int photoId, IEnumerable<string> categories)
-        {
-            using (var context = new EntitiesDB())
-            {
-                if (context.Photos == null || context.Photos.Any() == false)
-                {
-                    return false;
-                }
-
-                var selectPhoto = context.Photos.FirstOrDefault(a => a.Id == photoId);
-
-                if (selectPhoto == null)
-                {
-                    return false;
-                }
-                
-                var selectCatigories = new List<Catigory>();
-
-                foreach (var category in categories)
-                {
-                    var cat = context.Catigories.FirstOrDefault(c => c.Name == category && c.Type == "photo");
-
-                    if (cat != null)
-                    {
-                        selectCatigories.Add(cat);
-                    }
-                }
-
-                selectPhoto.Catigories = selectCatigories;
-
-                context.Photos.AddOrUpdate(selectPhoto);
                 context.SaveChanges();
 
                 return true;

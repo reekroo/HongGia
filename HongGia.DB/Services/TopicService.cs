@@ -66,7 +66,7 @@ namespace HongGia.DB.Services
 					return false;
 				}
 
-				var selectTopic = context.Topics.FirstOrDefault(x=> x.Id == topic.Id);
+				var selectTopic = context.Topics.FirstOrDefault(x => x.Id == topic.Id);
 
 				if (selectTopic == null)
 				{
@@ -87,62 +87,5 @@ namespace HongGia.DB.Services
 				return true;
 			}
 		}
-
-		//????? ..... Oo ..... ?????
-
-		public static bool AddTopic(ITopic topic)
-        {
-            using (var context = new EntitiesDB())
-            {
-                var save = new Topic()
-                {
-                    Header = topic.Header,
-                    HTMLText = topic.HtmlText,
-                    Position = topic.Position,
-                    Date = DateTime.Now
-                };
-
-                if (topic.Type != null)
-                {
-                    var type = context.TopicTypes.FirstOrDefault(t => t.Name == topic.Type);
-
-                    save.TopicType = type;
-                }
-
-                context.Topics.Add(save);
-                context.SaveChanges();
-
-                return true;
-            }
-        }
-
-        public static bool AddTopic(ITopic topic, int contentId)
-        {
-            using (var context = new EntitiesDB())
-            {
-                var content = context.PageContents.FirstOrDefault(c => c.Id == contentId);
-                
-                var save = new Topic()
-                {
-                    Header = topic.Header,
-                    HTMLText = topic.HtmlText,
-                    Position = topic.Position,
-                    Date = DateTime.Now,
-                    PageContent = content
-                };
-
-                if (topic.Type != null)
-                {
-                    var type = context.TopicTypes.FirstOrDefault(t => t.Name == topic.Type);
-
-                    save.TopicType = type;
-                }
-
-                context.Topics.Add(save);
-                context.SaveChanges();
-
-                return true;
-            }
-        }
-    }
+	}
 }
