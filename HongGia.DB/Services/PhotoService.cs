@@ -27,6 +27,9 @@ namespace HongGia.DB.Services
                     Id = photo.Id,
                     Name = photo.Name,
                     Path = photo.Path,
+					Date = photo.Date.Value,
+					UpdateDate = photo.UpdateDate,
+
                     Categories = photo.Catigories.Select(x => x.Name)
                 }).ToList();
 
@@ -61,7 +64,9 @@ namespace HongGia.DB.Services
                     Name = photo.Name,
                     Path = photo.Path,
                     Id = photo.Id,
-                    Categories = photo.Catigories.Select(x => x.Name)
+	                Date = photo.Date.Value,
+	                UpdateDate = photo.UpdateDate,
+					Categories = photo.Catigories.Select(x => x.Name)
                 };
             }
         }
@@ -86,7 +91,10 @@ namespace HongGia.DB.Services
                         Id = photo.Id,
                         Name = photo.Name,
                         Path = photo.Path,
-                        Categories = photo.Catigories.Select(x => x.Name)
+	                    Date = photo.Date.Value,
+	                    UpdateDate = photo.UpdateDate,
+
+						Categories = photo.Catigories.Select(x => x.Name)
                     }).ToList();
 
                 var categoryPhotos = new CategoryPhotoView()
@@ -127,8 +135,8 @@ namespace HongGia.DB.Services
 						context.Catigories.Attach(cat);
 					}
 				}
-				context.Photos.Add(save);
 
+				context.Photos.Add(save);
 				context.SaveChanges();
 
 				return true;

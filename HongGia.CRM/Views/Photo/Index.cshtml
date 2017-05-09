@@ -25,8 +25,9 @@
 				<th>Photo</th>
 				<th>Name</th>
 				<th>Path</th>
+				<th>Date</th>
+				<th>Last Update Date</th>
 				<th>Catigories</th>
-				@*<th>Date</th>*@
 				<th>Functional</th>
 			</tr>
 
@@ -42,6 +43,8 @@
 
 					<td>@photo.Name</td>
 					<td>@photo.Path</td>
+					<td>@photo.Date</td>
+					<td>@photo.UpdateDate</td>
 
 					<td>
 						@foreach (var catigory in photo.Categories)

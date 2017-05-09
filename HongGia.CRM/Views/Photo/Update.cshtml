@@ -33,7 +33,13 @@
 			<input type="hidden" name="Categories" id="PhotoCategories" value="" />
 		}
 
+		<p name="Date">Creating Date: @Model.Date</p>
+		<p name="Date">Last Updating Date: @Model.UpdateDate</p>
+
 		<input type="hidden" name="Id" value="@Model.Id" />
+		<input type="hidden" name="Path" value="@Model.Path" />
+		<input type="hidden" name="Date" value="@Model.Date" />
+		<input type="hidden" name="UpdateDate" value="@Model.UpdateDate" />
 
 		<button type="submit" class="btn btn-default" id="submitButton">Update Photo</button>
 	}
