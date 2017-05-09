@@ -18,15 +18,7 @@
             {
                 <div class="col-md-3">
                     <a href="@video.Path" data-toggle="lightbox" data-gallery="example-gallery" class="thumbnail fancybox  margin-bottom-ten">
-
-                        @if (@video.Screen == null)
-                        {
-                            <img class="img-fluid" alt="" src="">
-                        }
-                        else
-                        {
-                            <img class="img-fluid" alt="@video.Screen.Alt" src="@video.Screen.Src">
-                        }
+						<img class="img-fluid" alt="@video.Screen.Alt" src="@video.Screen.Src">
                     </a>
                 </div>
             }

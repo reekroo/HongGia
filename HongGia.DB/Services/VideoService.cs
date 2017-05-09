@@ -94,20 +94,13 @@ namespace HongGia.DB.Services
 					return false;
 				}
 
-				if (video.Screen != null)
-				{
-					ImageService.AddImage(video.Screen);
-				}
-
 				var selectCatigories = CatigoryService.GetCatigoriesByNamesAndType(video.Categories, "video");
-				var selectImage = context.Images.ToList().OrderBy(x => x.Id).LastOrDefault();
 
 				var save = new Video()
 				{
 					Name = video.Name,
 					Path = video.Path,
-					Date = DateTime.Now,
-					Image = selectImage
+					Date = DateTime.Now
 				};
 
 				if (selectCatigories != null)
@@ -146,16 +139,6 @@ namespace HongGia.DB.Services
 
 				var selectCatigories = CatigoryService.GetCatigoriesByNamesAndType(context, video.Categories, "video");
 
-				//if (video.Screen != null)
-				//{
-				//	ImageService.AddImage(video.Screen);
-				//	selectVideo.Image = context.Images.Last();
-				//}
-				//else
-				//{
-				//	selectVideo.Image = null;
-				//}
-
 				selectVideo.Catigories.Clear();
 
 				selectVideo.Name = video.Name;
@@ -170,8 +153,8 @@ namespace HongGia.DB.Services
 						context.Catigories.Attach(cat);
 					}
 				}
-				context.Videos.AddOrUpdate(selectVideo);
 
+				context.Videos.AddOrUpdate(selectVideo);
 				context.SaveChanges();
 
 				return true;
@@ -194,15 +177,8 @@ namespace HongGia.DB.Services
 					return false;
 				}
 
-				var id = selectVideo.Image?.Id;
-
 				context.Videos.Remove(selectVideo);
 				context.SaveChanges();
-
-				if (id != null)
-				{
-					ImageService.RemoveImage((int)id);
-				}
 
 				return true;
 			}

@@ -13,7 +13,7 @@
 <h2>Videos</h2>
 
 <div>
-	@Html.ActionLink("Create Video", "Add", "Video", null, new { @class = "btn rfloat clear" })
+	@Html.ActionLink("Add Video", "Add", "Video", null, new { @class = "btn rfloat clear" })
 </div>
 
 <div id="allPhotosGrid">
@@ -22,7 +22,7 @@
 		<table class="table table-bordered">
 			<tr>
 				<th>#</th>
-				<th>Screen</th>
+				<th>Video Img</th>
 				<th>Name</th>
 				<th>Path</th>
 				<th>Catigories</th>
@@ -49,7 +49,6 @@
 							@catigory<br>
 						}
 					</td>
-
 
 					<td>
 						@Html.ActionLink("Update", "Update", "Video", new { videoId = video.Id }, new { @class = "btn rfloat clear" })<br>

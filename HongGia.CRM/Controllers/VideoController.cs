@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 
+using HongGia.BL.SmallFunctional;
+
 using HongGia.Core.Constants;
 using HongGia.Core.Models.Base;
 using HongGia.Core.Models.Views;
@@ -23,6 +25,15 @@ namespace HongGia.CRM.Controllers
 			if (result == null)
 			{
 				return View(new VideosView());
+			}
+
+			foreach (var video in result.AllVideo)
+			{
+				video.Screen = new Image()
+				{
+					Src = FilePathCreator.GetYouTubeImagePath(video.Path),
+					Alt = video.Name
+				};
 			}
 
 			result.AllVideo = result.AllVideo.OrderBy(p => p.Id).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
@@ -57,19 +68,13 @@ namespace HongGia.CRM.Controllers
 		[HttpPost]
 		public ActionResult Add(VideoView video)
 		{
-			var str = video.Categories.FirstOrDefault();
-
-			video.Categories = string.IsNullOrEmpty(str) == false ? str.Split(',') : null;
-
-			//FAKE
-			video.Screen = new Image()
-			{
-				Src = video.Path,
-				Alt = video.Name
-			};
-
 			if (ModelState.IsValid)
 			{
+				var str = video.Categories.FirstOrDefault();
+
+				video.Categories = string.IsNullOrEmpty(str) == false ? str.Split(',') : null;
+				video.Path = FilePathCreator.GetYouTubePath(video.Path);
+
 				var result = VideoService.AddVideo(video);
 			}
 
@@ -79,19 +84,12 @@ namespace HongGia.CRM.Controllers
 		[HttpPost]
 		public ActionResult Update(VideoView video)
 		{
-			var str = video.Categories.FirstOrDefault();
-
-			video.Categories = string.IsNullOrEmpty(str) == false ? str.Split(',') : null;
-			
-			//FAKE
-			video.Screen = new Image()
-			{
-				Src = video.Path,
-				Alt = video.Name
-			};
-
 			if (ModelState.IsValid)
 			{
+				var str = video.Categories.FirstOrDefault();
+
+				video.Categories = string.IsNullOrEmpty(str) == false ? str.Split(',') : null;
+
 				VideoService.UpdateVideo(video);
 			}
 
