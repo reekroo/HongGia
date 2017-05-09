@@ -124,6 +124,8 @@ namespace HongGia.DB.Services
 						Header = x.Header,
 						Position = x.Position ?? 0,
 						Type = x.TopicType?.Name,
+						Date = x.Date.Value,
+						UpdateDate = x.UpdateDate,
 
 						HtmlText = x.HTMLText,
 						Image = null

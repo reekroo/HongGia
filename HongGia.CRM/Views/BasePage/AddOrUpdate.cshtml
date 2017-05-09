@@ -109,6 +109,8 @@
 				var submitIdentificator = string.Concat("submit", @topic.Id);
 
 				<input type="hidden" name="Id" value="@topic.Id" />
+				<input type="hidden" name="Date" value="@topic.Date" />
+				<input type="hidden" name="UpdateDate" value="@topic.UpdateDate" />
 
 				<div class="form-group">
 					<label for="Header">Header</label>
@@ -131,6 +133,9 @@
 
 					<input type="hidden" name="HtmlText" id="@topicTextIdentificator" value="@topic.HtmlText" />
 				</div>
+
+				<p>Creating Date: @topic.Date</p>
+				<p>Last Updating Date: @topic.UpdateDate</p>
 
 				<button type="submit" id="@submitIdentificator" class="btn btn-primary">Update</button>
 
