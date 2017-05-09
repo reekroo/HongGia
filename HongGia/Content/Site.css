@@ -125,7 +125,9 @@ textarea {
 	.pagination > li > a {
 		color: black;
 	}
-
+	.pagination > li > a:hover {
+		color: black;
+	}
 	.pagination > .active > a:hover {
 		background-color: #eee;
 		border-color: #ddd;
