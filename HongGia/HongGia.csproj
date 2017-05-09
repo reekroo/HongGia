@@ -238,6 +238,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\DirectionsController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HongGiaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -263,6 +264,7 @@
     <Content Include="Content\ekko-lightbox.min.css" />
     <Content Include="Content\Images\download.svg" />
     <Content Include="Content\Images\HongGia_emblem.png" />
+    <Content Include="Content\Images\monkey.png" />
     <Content Include="Content\Theme.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -366,6 +368,10 @@
     <Content Include="Views\Photo\CategoryPhoto.cshtml" />
     <Content Include="Views\Article\Articles.cshtml" />
     <Content Include="Views\Article\Article.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\Forbidden.cshtml" />
+    <Content Include="Views\Error\Server.cshtml" />
+    <Content Include="Views\Error\BadRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
