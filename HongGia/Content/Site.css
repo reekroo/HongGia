@@ -125,9 +125,25 @@ textarea {
 	.pagination > li > a {
 		color: black;
 	}
-
+	.pagination > li > a:hover {
+		color: black;
+	}
 	.pagination > .active > a:hover {
 		background-color: #eee;
 		border-color: #ddd;
 		color:black;
+	}
+.carousel-indicators .active {
+	background-color: #fe503e;
+}
+.carousel-indicators li {
+	background-color: #ddd;
+}
+.carousel-indicators li {
+	border: none;
+	border-radius: 0;
+	opacity: .7;
+}
+	.carousel-indicators li:hover {
+		opacity: 1;
 	}
