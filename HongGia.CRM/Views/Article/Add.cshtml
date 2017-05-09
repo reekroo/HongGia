@@ -1,60 +1,60 @@
 ﻿@model HongGia.Core.Interfaces.Models.IArticleView
 
 @{
-    ViewBag.Title = "AddArticle";
+	ViewBag.Title = "AddArticle";
 }
 
 <h2>Add Article</h2>
 
 <div>
-    @using (Html.BeginForm("Add", "Article", FormMethod.Post))
-    {
-        <div class="form-group">
-            <label for="Header">Header</label>
-            <input type="text" class="form-control" id="Header" name="Header" />
-        </div>
+	@using (Html.BeginForm("Add", "Article", FormMethod.Post))
+	{
+		<div class="form-group">
+			<label for="Header">Header</label>
+			<input type="text" class="form-control" id="Header" name="Header" />
+		</div>
 
-        <div class="form-group">
-            <label for="summernote">Text</label>
-            <div id="summernote"></div>
+		<div class="form-group">
+			<label for="summernote">Text</label>
+			<div id="summernote"></div>
 
-            <input type="hidden" name="HtmlText" id="ArticleHtmlText" value="" />
-        </div>
-        
-        if(Model != null && Model.Categories != null)
-        {
-            <div class="form-group">
-                <label for="Categories">Catigories</label>
-                <select size="5" multiple id="Categories">
-                    @foreach (var categories in Model.Categories)
-                    {
-                        <option>@categories</option>
-                    }
-                </select>
-            </div>
+			<input type="hidden" name="HtmlText" id="ArticleHtmlText" value="" />
+		</div>
 
-            <input type="hidden" name="Categories" id="ArticleCategories" value="" />
-        }
+		if (Model != null && Model.Categories != null)
+		{
+			<div class="form-group">
+				<label for="Categories">Catigories</label>
+				<select size="5" multiple id="Categories">
+					@foreach (var categories in Model.Categories)
+					{
+						<option>@categories</option>
+					}
+				</select>
+			</div>
 
-        <button type="submit" class="btn btn-default" id="submitButton">Add Article</button>
-    }
+			<input type="hidden" name="Categories" id="ArticleCategories" value="" />
+		}
+
+		<button type="submit" class="btn btn-default" id="submitButton">Add Article</button>
+	}
 </div>
 
 
 
 <script>
-    $(document).ready(function() {
-        $('#summernote').summernote({
-            height: 500,
-            minHeight: 350,
-            maxHeight: 1500,
-            focus: true
-        });
+	$(document).ready(function () {
+		$('#summernote').summernote({
+			height: 500,
+			minHeight: 350,
+			maxHeight: 1500,
+			focus: true
+		});
 
-    });
+	});
 
-    $('#submitButton').click(function () {
-        $('#ArticleHtmlText').val($('#summernote').code());
-        $('#ArticleCategories').val($('#Categories').val());
-    });
+	$('#submitButton').click(function () {
+		$('#ArticleHtmlText').val($('#summernote').code());
+		$('#ArticleCategories').val($('#Categories').val());
+	});
 </script>

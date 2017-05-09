@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Interfaces.Models;
@@ -17,5 +18,7 @@ namespace HongGia.Core.Models.Views
         public string Header { get; set; }
         public string HtmlText { get; set; }
         public IEnumerable<string> Categories { get; set; }
+	    public DateTime Date { get; set; }
+	    public DateTime? UpdateDate { get; set; }
     }
 }

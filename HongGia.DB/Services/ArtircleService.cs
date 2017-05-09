@@ -28,7 +28,9 @@ namespace HongGia.DB.Services
                                 Id = article.Id,
                                 Header = article.Header,
                                 HtmlText = article.HTMLText,
-                                
+								Date = article.Date.Value,
+								UpdateDate = article.UpdateDate,
+
                                 Categories = article.Catigories.Select(x => x.Name)
                 }).ToList();
 
@@ -65,8 +67,10 @@ namespace HongGia.DB.Services
                     Id = article.Id,
                     Header = article.Header,
                     HtmlText = article.HTMLText,
+	                Date = article.Date.Value,
+	                UpdateDate = article.UpdateDate,
 
-                    Categories = article.Catigories.Select(x => x.Name)
+					Categories = article.Catigories.Select(x => x.Name)
                 };
             }
         }
