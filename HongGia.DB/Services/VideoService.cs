@@ -32,6 +32,9 @@ namespace HongGia.DB.Services
 					Id = video.Id,
 					Name = video.Name,
 					Path = video.Path,
+					Date = video.Date.Value,
+					UpdateDate = video.UpdateDate,
+
 					Screen = new HongGia.Core.Models.Base.Image()
 					{
 						Src = video.Image.Path,
@@ -73,6 +76,9 @@ namespace HongGia.DB.Services
 					Id = video.Id,
 					Name = video.Name,
 					Path = video.Path,
+					Date = video.Date.Value,
+					UpdateDate = video.UpdateDate,
+
 					Screen = new HongGia.Core.Models.Base.Image()
 					{
 						Src = video.Image.Path,
@@ -118,7 +124,7 @@ namespace HongGia.DB.Services
 				return true;
 			}
 		}
-		
+
 		public static bool UpdateVideo(IVideo video)
 		{
 			using (var context = new EntitiesDB())
