@@ -1,6 +1,7 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
+
+using HongGia.BL.SmallFunctional;
 
 using HongGia.Core.Constants;
 using HongGia.Core.Models.Base;
@@ -55,10 +56,11 @@ namespace HongGia.CRM.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				//fake
-
-				news.Date = DateTime.Now;
-				news.Language = "ru";
+				news.Image = new Image()
+				{
+					Src = FilePathCreator.GetGooglePath(news.ImagePAth),
+					Alt = news.Header
+				};
 
 				NewsService.AddNews(news);
 			}

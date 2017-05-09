@@ -142,11 +142,6 @@ namespace HongGia.DB.Services
                     return false;
                 }
 
-                if (news.Image != null)
-                {
-                    ImageService.AddImage(news.Image);
-                }
-
                 var save = new News()
                 {
                     Header = news.Header,
@@ -155,7 +150,11 @@ namespace HongGia.DB.Services
                     
                     Language = context.Languages.First(l => l.Name == news.Language),
                     
-                    Image = news.Image != null ? context.Images.Last() : null
+                    Image = new Image()
+                    {
+	                    Name = news.Image.Alt,
+						Path = news.Image.Src
+					}
                 };
 
                 context.News.Add(save);
@@ -185,16 +184,7 @@ namespace HongGia.DB.Services
                 selectNews.HTMLText = news.Text;
                 selectNews.Date = DateTime.Now;
                 selectNews.Language = context.Languages.First(l => l.Name == news.Language);
-                
-                if (news.Image != null)
-                {
-                    ImageService.AddImage(news.Image);
-                    selectNews.Image = context.Images.Last();
-                }
-                else
-                {
-                    selectNews.Image = null;
-                }
+
 
                 context.News.AddOrUpdate(selectNews);
                 context.SaveChanges();
@@ -217,11 +207,6 @@ namespace HongGia.DB.Services
                 if (selectNews == null)
                 {
                     return false;
-                }
-
-                if (selectNews.Image != null)
-                {
-                    ImageService.RemoveImage(selectNews.Image.Id);
                 }
 
                 context.News.Remove(selectNews);

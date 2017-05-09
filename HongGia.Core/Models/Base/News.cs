@@ -12,5 +12,6 @@ namespace HongGia.Core.Models.Base
         public DateTime Date { get; set; }
         public IImage Image { get; set; }
         public string Language { get; set; }
+	    public string ImagePAth { get; set; }
     }
 }

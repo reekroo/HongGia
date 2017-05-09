@@ -9,6 +9,10 @@
 <div>
 	@using (Html.BeginForm("Update", "News", FormMethod.Post))
 	{
+		<p name="Date">@Model.Language</p>
+
+		<img width="200" height="200" alt="@Model.Image.Alt" src="@Model.Image.Src"/>
+
 		<div class="form-group">
 			<label for="Header">Header</label>
 			<input type="text" class="form-control" id="Header" value="@Model.Header" name="Header" />
@@ -19,19 +23,21 @@
 			<textarea type="text" class="form-control" id="Text" name="Text">@Model.Text</textarea>
 		</div>
 
+		@*<p>Chenge the image</p>
+
 		<div class="form-group">
-			<label for="Name">Image</label>
-			<input type="file" class="form-control" id="Name" placeholder="example" name="Image" />
+		<label for="ImageFile">Image File</label>
+		<input type="file" class="form-control" id="ImageFile" placeholder="example" name="Image" />
 		</div>
 
 		<p>Or</p>
 
 		<div class="form-group">
 			<label for="ImagePath">Image Path</label>
-			<input type="text" class="form-control" id="ImagePath" name="Src" />
-		</div>
+			<input type="text" class="form-control" id="ImagePath" value="@Model.ImagePAth" name="ImagePAth" />
+		</div>*@
 
-		<p name="Date">@Model.Date</p>
+		<p name="Date">Creating Date: @Model.Date</p>
 
 		<input type="hidden" value="@Model.Id" name="Id" />
 		<input type="hidden" value="@Model.Language" name="Language" />

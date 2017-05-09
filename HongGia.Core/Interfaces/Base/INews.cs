@@ -10,5 +10,6 @@ namespace HongGia.Core.Interfaces.Base
         DateTime Date { get; set; }
         IImage Image { get; set; }
         string Language { get; set; }
-    }
+	    string ImagePAth { get; set; }
+	}
 }
