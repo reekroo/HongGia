@@ -9,7 +9,7 @@
 <div>
 	@using (Html.BeginForm("Update", "News", FormMethod.Post))
 	{
-		<p name="Date">@Model.Language</p>
+		<p>@Model.Language</p>
 
 		<img width="200" height="200" alt="@Model.Image.Alt" src="@Model.Image.Src"/>
 
@@ -38,9 +38,12 @@
 		</div>*@
 
 		<p name="Date">Creating Date: @Model.Date</p>
+		<p name="Date">Last Updating Date: @Model.UpdateDate</p>
 
-		<input type="hidden" value="@Model.Id" name="Id" />
-		<input type="hidden" value="@Model.Language" name="Language" />
+		<input type="hidden" name="Id" value="@Model.Id" />
+		<input type="hidden" name="Language" value="@Model.Language" />
+		<input type="hidden" name="Date" value="@Model.Date" />
+		<input type="hidden" name="UpdateDate" value="@Model.UpdateDate" />
 
 		<button type="submit" class="btn btn-default">Update news</button>
 	}

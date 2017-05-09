@@ -25,6 +25,7 @@
                 <th>Header</th>
 				<th>Language</th>
                 <th>Date</th>
+	            <th>Last Update Date</th>
                 <th>Functional</th>
             </tr>
 
@@ -35,6 +36,7 @@
                     <td>@news.Header</td>
 	                <td>@news.Language</td>
                     <td>@news.Date</td>
+	                <td>@news.UpdateDate</td>
 
                     <td>
                         @Html.ActionLink("Update", "Update", "News", new { newsId = news.Id }, new {@class = "btn rfloat clear"})<br>

@@ -28,8 +28,9 @@ namespace HongGia.DB.Services
                     Header = n.Header,
                     Text = n.HTMLText,
                     Date = n.Date.Value,
+	                UpdateDate = n.UpdateDate,
 
-                    Language = n.Language.Name,
+					Language = n.Language.Name,
 
                     Image = n.Image == null ? null : new HongGia.Core.Models.Base.Image()
                     {
@@ -66,8 +67,9 @@ namespace HongGia.DB.Services
                                 Header = n.Header,
                                 Text = n.HTMLText,
                                 Date = n.Date.Value,
+	                            UpdateDate = n.UpdateDate,
 
-                                Language = n.Language.Name,
+								Language = n.Language.Name,
 
                                 Image = n.Image == null ? null : new HongGia.Core.Models.Base.Image()
                                 {
@@ -121,8 +123,9 @@ namespace HongGia.DB.Services
                     Header = news.Header,
                     Text = news.HTMLText,
                     Date = news.Date.Value,
+	                UpdateDate = news.UpdateDate,
 
-                    Language = news.Language.Name,
+					Language = news.Language.Name,
 
                     Image = news.Image == null ? null : new HongGia.Core.Models.Base.Image()
                     {
