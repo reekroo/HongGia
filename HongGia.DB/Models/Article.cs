@@ -24,6 +24,7 @@ namespace HongGia.DB.Models
         public string Header { get; set; }
         public string HTMLText { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<System.DateTime> UpdateDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Catigory> Catigories { get; set; }

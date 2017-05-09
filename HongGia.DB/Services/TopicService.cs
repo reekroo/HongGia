@@ -79,7 +79,7 @@ namespace HongGia.DB.Services
 				selectTopic.HTMLText = topic.HtmlText;
 				selectTopic.Position = topic.Position;
 				selectTopic.TopicType = type;
-				selectTopic.Date = DateTime.Now;
+				selectTopic.UpdateDate = DateTime.Now;
 
 				context.Topics.AddOrUpdate(selectTopic);
 				context.SaveChanges();

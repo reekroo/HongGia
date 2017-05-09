@@ -21,6 +21,7 @@ namespace HongGia.DB.Models
         public string HTMLText { get; set; }
         public Nullable<int> Position { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<System.DateTime> UpdateDate { get; set; }
     
         public virtual PageContent PageContent { get; set; }
         public virtual TopicType TopicType { get; set; }

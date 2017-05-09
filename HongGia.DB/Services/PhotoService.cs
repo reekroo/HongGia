@@ -161,7 +161,7 @@ namespace HongGia.DB.Services
 
 				selectPhoto.Name = photo.Name;
 				selectPhoto.Path = photo.Path;
-				selectPhoto.Date = DateTime.Now;
+				selectPhoto.UpdateDate = DateTime.Now;
 
 				if (selectCatigories != null)
 				{
@@ -178,7 +178,7 @@ namespace HongGia.DB.Services
 				return true;
 			}
 		}
-		
+
 		public static bool RemovePhoto(int photoId)
         {
             using (var context = new EntitiesDB())

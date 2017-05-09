@@ -130,7 +130,7 @@ namespace HongGia.DB.Services
 
 				selectArticle.Header = article.Header;
 				selectArticle.HTMLText = article.HtmlText;
-				selectArticle.Date = DateTime.Now;
+				selectArticle.UpdateDate = DateTime.Now;
 
 				if (selectCatigories != null)
 				{

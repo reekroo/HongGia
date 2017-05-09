@@ -13,6 +13,7 @@
           <Property Name="Header" Type="nvarchar(max)" />
           <Property Name="HTMLText" Type="text" />
           <Property Name="Date" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
         <EntityType Name="ArticleCatigories">
           <Key>
@@ -179,6 +180,7 @@
           <Property Name="Header" Type="nvarchar" MaxLength="1000" />
           <Property Name="HTMLText" Type="text" />
           <Property Name="Date" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Page">
           <Key>
@@ -198,6 +200,7 @@
           <Property Name="LanguageId" Type="int" Nullable="false" />
           <Property Name="Header" Type="nvarchar(max)" />
           <Property Name="Date" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Photo">
           <Key>
@@ -208,6 +211,7 @@
           <Property Name="Path" Type="nvarchar(max)" />
           <Property Name="Type" Type="nvarchar" MaxLength="10" />
           <Property Name="Date" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
         <EntityType Name="PhotoCatigories">
           <Key>
@@ -228,6 +232,7 @@
           <Property Name="HTMLText" Type="text" />
           <Property Name="Position" Type="int" />
           <Property Name="Date" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
         <EntityType Name="TopicType">
           <Key>
@@ -246,6 +251,7 @@
           <Property Name="Path" Type="nvarchar(max)" />
           <Property Name="Type" Type="nvarchar" MaxLength="10" />
           <Property Name="Date" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
         <EntityType Name="VideoCatigory">
           <Key>
@@ -474,9 +480,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PageContents_Page">
-          <End Role="Page" Type="Self.Page" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Page" Type="Self.Page" Multiplicity="1" />
           <End Role="PageContent" Type="Self.PageContent" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Page">
@@ -516,7 +520,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Topic_PageContent">
-          <End Role="PageContent" Type="Self.PageContent" Multiplicity="1" />
+          <End Role="PageContent" Type="Self.PageContent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Topic" Type="Self.Topic" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PageContent">
@@ -819,6 +825,7 @@
           <Property Name="HTMLText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Catigories" Relationship="Model.ArticleCatigories" FromRole="Article" ToRole="Catigory" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
@@ -986,6 +993,7 @@
           <Property Name="Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Image" Relationship="Model.FK_News_ImageId" FromRole="News" ToRole="Image" />
           <NavigationProperty Name="Language" Relationship="Model.FK_News_LanguageId" FromRole="News" ToRole="Language" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Page">
           <Key>
@@ -1011,6 +1019,7 @@
           <NavigationProperty Name="Language" Relationship="Model.FK_PageContents_Language" FromRole="PageContent" ToRole="Language" />
           <NavigationProperty Name="Page" Relationship="Model.FK_PageContents_Page" FromRole="PageContent" ToRole="Page" />
           <NavigationProperty Name="Topics" Relationship="Model.FK_Topic_PageContent" FromRole="PageContent" ToRole="Topic" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Photo">
           <Key>
@@ -1022,6 +1031,7 @@
           <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Catigories" Relationship="Model.PhotoCatigories" FromRole="Photo" ToRole="Catigory" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Topic">
           <Key>
@@ -1036,6 +1046,7 @@
           <Property Name="Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="PageContent" Relationship="Model.FK_Topic_PageContent" FromRole="Topic" ToRole="PageContent" />
           <NavigationProperty Name="TopicType" Relationship="Model.FK_Topic_TopicType" FromRole="Topic" ToRole="TopicType" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="TopicType">
           <Key>
@@ -1057,6 +1068,7 @@
           <Property Name="Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Image" Relationship="Model.FK_Videos_ImageId" FromRole="Video" ToRole="Image" />
           <NavigationProperty Name="Catigories" Relationship="Model.VideoCatigory" FromRole="Video" ToRole="Catigory" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
@@ -1279,6 +1291,7 @@
           <EntitySetMapping Name="Articles">
             <EntityTypeMapping TypeName="Model.Article">
               <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="HTMLText" ColumnName="HTMLText" />
                 <ScalarProperty Name="Header" ColumnName="Header" />
@@ -1430,6 +1443,7 @@
           <EntitySetMapping Name="News">
             <EntityTypeMapping TypeName="Model.News">
               <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="HTMLText" ColumnName="HTMLText" />
                 <ScalarProperty Name="Header" ColumnName="Header" />
@@ -1452,6 +1466,7 @@
           <EntitySetMapping Name="PageContents">
             <EntityTypeMapping TypeName="Model.PageContent">
               <MappingFragment StoreEntitySet="PageContent">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Header" ColumnName="Header" />
                 <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
@@ -1463,6 +1478,7 @@
           <EntitySetMapping Name="Photos">
             <EntityTypeMapping TypeName="Model.Photo">
               <MappingFragment StoreEntitySet="Photo">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Path" ColumnName="Path" />
@@ -1474,6 +1490,7 @@
           <EntitySetMapping Name="Topics">
             <EntityTypeMapping TypeName="Model.Topic">
               <MappingFragment StoreEntitySet="Topic">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Position" ColumnName="Position" />
                 <ScalarProperty Name="HTMLText" ColumnName="HTMLText" />
@@ -1495,6 +1512,7 @@
           <EntitySetMapping Name="Videos">
             <EntityTypeMapping TypeName="Model.Video">
               <MappingFragment StoreEntitySet="Video">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Path" ColumnName="Path" />

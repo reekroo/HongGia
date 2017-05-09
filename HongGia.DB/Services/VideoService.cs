@@ -143,7 +143,7 @@ namespace HongGia.DB.Services
 
 				selectVideo.Name = video.Name;
 				selectVideo.Path = video.Path;
-				selectVideo.Date = DateTime.Now;
+				selectVideo.UpdateDate = DateTime.Now;
 
 				if (selectCatigories != null)
 				{

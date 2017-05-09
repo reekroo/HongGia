@@ -182,7 +182,7 @@ namespace HongGia.DB.Services
 
                 selectNews.Header = news.Header;
                 selectNews.HTMLText = news.Text;
-                selectNews.Date = DateTime.Now;
+                selectNews.UpdateDate = DateTime.Now;
                 selectNews.Language = context.Languages.First(l => l.Name == news.Language);
 
 
