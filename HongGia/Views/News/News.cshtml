@@ -8,7 +8,7 @@
 {
     <div class="row row-margin">
         <div class="col-md-12 text-center">
-            <h3>@Model.Header <small>@Model.Date</small></h3>
+            <h3>@Model.Header</h3>
         </div>
     </div>
 
@@ -24,6 +24,8 @@
     <div class="row row-margin">
         <div class="col-md-12 text-justify">
             <p>@Model.Text</p>
+
+            <i class="right" style="float:right; margin-top: 10px">@Model.Date.ToString("d")</i>
         </div>
     </div>
 }
