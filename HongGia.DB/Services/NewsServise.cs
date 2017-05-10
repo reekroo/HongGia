@@ -61,7 +61,7 @@ namespace HongGia.DB.Services
                 
                 if (context.News.Count() < count - 1)
                 {
-                    news = context.News.OrderBy(x => x.Date).Select(n => new Core.Models.Base.News()
+                    news = context.News.OrderByDescending(x => x.Date).Select(n => new Core.Models.Base.News()
                             {
                                 Id = n.Id,
                                 Header = n.Header,
@@ -81,7 +81,7 @@ namespace HongGia.DB.Services
                     return news;
                 }
 
-                news = context.News.OrderBy(x => x.Date).Take(count).Select(n => new Core.Models.Base.News()
+                news = context.News.OrderByDescending(x => x.Date).Take(count).Select(n => new Core.Models.Base.News()
                         {
                             Id = n.Id,
                             Header = n.Header,

@@ -43,7 +43,7 @@ namespace HongGia.Controllers
 				return View(new FeedBacksView());
 			}
 
-			feedbacks.FeedBacks = feedbacks.FeedBacks.OrderBy(p => p.Date).Skip(PageConstants.PageFeedbackSize * pageNum).Take(PageConstants.PageFeedbackSize).ToList();
+			feedbacks.FeedBacks = feedbacks.FeedBacks.OrderByDescending(p => p.Date).Skip(PageConstants.PageFeedbackSize * pageNum).Take(PageConstants.PageFeedbackSize).ToList();
 
 			return View(feedbacks);
 		}
