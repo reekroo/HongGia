@@ -1,24 +1,29 @@
 ﻿namespace HongGia.BL.SmallFunctional
 {
-    public class StringTruncater
-    {
-        private const int stringLangth = 500;
+	public class StringTruncater
+	{
+		private const int StringLangth = 500;
 
-        public static string Truncate(string str)
-        {
-            if (string.IsNullOrEmpty(str))
-            {
-                return string.Empty;
-            }
+		public static string Truncate(string str)
+		{
+			if (string.IsNullOrEmpty(str))
+			{
+				return string.Empty;
+			}
 
-            if (str.Length <= stringLangth)
-            {
-                return str;
-            }
+			if (str.Length <= StringLangth)
+			{
+				return str;
+			}
 
-            int endIndex = str.Substring(0, stringLangth).LastIndexOf(' ');
+			int endIndex = str.Substring(0, StringLangth).LastIndexOf(' ');
 
-            return str.Substring(0, endIndex) + "...";
-        }
-    }
+			if (endIndex <= 0)
+			{
+				return str;
+			}
+
+			return str.Substring(0, endIndex) + "...";
+		}
+	}
 }

@@ -20,14 +20,14 @@ namespace HongGia.CRM.Controllers
 
 			ViewData["PageNum"] = pageNum;
 			ViewData["ItemCount"] = result?.AllBooks.Count() ?? 0;
-			ViewData["PageSize"] = 20;
+			ViewData["PageSize"] = PageSizeConstants.UnicSize;
 
 			if (result == null)
 			{
 				return View(new BooksView());
 			}
 
-			result.AllBooks = result.AllBooks.OrderBy(p => p.Id).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
+			result.AllBooks = result.AllBooks.OrderBy(p => p.Id).Skip(PageSizeConstants.UnicSize * pageNum).Take(PageSizeConstants.UnicSize).ToList();
 
 			return View(result);
 		}

@@ -15,6 +15,7 @@ namespace HongGia.Controllers
 {
 	public class HomeController : DefaultController
 	{
+		[HttpGet]
 		public ActionResult Index()
 		{
 			var model = HomeService.GetHome(CurrentLangCode);
@@ -24,9 +25,9 @@ namespace HongGia.Controllers
 				return View(new HomeView());
 			}
 
-            model.TopNews.ToList().ForEach(x => x.Text = StringTruncater.Truncate(x.Text));
-            
-            return View(model);
+			model.TopNews.ToList().ForEach(x => x.Text = StringTruncater.Truncate(x.Text));
+
+			return View(model);
 		}
 
 		[HttpGet]
@@ -36,14 +37,14 @@ namespace HongGia.Controllers
 
 			ViewData["PageNum"] = pageNum;
 			ViewData["ItemCount"] = feedbacks?.FeedBacks.Count() ?? 0;
-			ViewData["PageSize"] = PageConstants.PageFeedbackSize;
+			ViewData["PageSize"] = PageSizeConstants.Feedbacks;
 
 			if (feedbacks == null)
 			{
 				return View(new FeedBacksView());
 			}
 
-			feedbacks.FeedBacks = feedbacks.FeedBacks.OrderByDescending(p => p.Date).Skip(PageConstants.PageFeedbackSize * pageNum).Take(PageConstants.PageFeedbackSize).ToList();
+			feedbacks.FeedBacks = feedbacks.FeedBacks.OrderByDescending(p => p.Date).Skip(PageSizeConstants.Feedbacks * pageNum).Take(PageSizeConstants.Feedbacks).ToList();
 
 			return View(feedbacks);
 		}
@@ -53,7 +54,7 @@ namespace HongGia.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				feedback.Language =this.CurrentLangCode;
+				feedback.Language = this.CurrentLangCode;
 
 				FeedbackService.SetFeedback(feedback);
 			}
@@ -73,11 +74,13 @@ namespace HongGia.Controllers
 			return RedirectToAction("Contacts");
 		}
 
+		[HttpGet]
 		public ActionResult Contacts()
 		{
 			return View();
 		}
 
+		[HttpGet]
 		public ActionResult Master()
 		{
 			var model = BasePageService.GetBasePageContent("HomeMaster", this.CurrentLangCode);

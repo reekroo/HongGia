@@ -32,7 +32,7 @@ namespace HongGia.Controllers
 
 			ViewData["PageNum"] = pageNum;
 			ViewData["ItemCount"] = result?.AllVideo.Count() ?? 0;
-			ViewData["PageSize"] = PageConstants.PageVideoSize;
+			ViewData["PageSize"] = PageSizeConstants.Video;
 
 			if (result == null)
 			{
@@ -48,7 +48,7 @@ namespace HongGia.Controllers
 				};
 			}
 
-			result.AllVideo = result.AllVideo.OrderBy(p => p.Id).Skip(PageConstants.PageCategoriesPhotoSize * pageNum).Take(PageConstants.PageVideoSize).ToList();
+			result.AllVideo = result.AllVideo.OrderBy(p => p.Id).Skip(PageSizeConstants.Video * pageNum).Take(PageSizeConstants.Video).ToList();
 
 			return View(result);
 		}

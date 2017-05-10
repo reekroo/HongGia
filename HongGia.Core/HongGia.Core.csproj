@@ -69,7 +69,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants\PageConstants.cs" />
+    <Compile Include="Constants\PageSearchConstants.cs" />
+    <Compile Include="Constants\PageSizeConstants.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Helpers\BasePageHelper.cs" />

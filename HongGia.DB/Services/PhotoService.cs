@@ -2,6 +2,7 @@
 using System.Data.Entity.Migrations;
 using System.Linq;
 
+using HongGia.Core.Constants;
 using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
 
@@ -16,12 +17,12 @@ namespace HongGia.DB.Services
             using (var context = new EntitiesDB())
             {
                 if (context.Photos == null || context.Photos.Any() == false ||
-                    context.Catigories.Any(x => x.Type.ToLower() == "photo") == false)
+                    context.Catigories.Any(x => x.Type.ToLower() == PageSearchConstants.Photo) == false)
                 {
                     return null;
                 }
 
-                var catigories = context.Catigories.Where(x => x.Type.ToLower() == "photo").Select(y => y.Name).ToList();
+                var catigories = context.Catigories.Where(x => x.Type.ToLower() == PageSearchConstants.Photo).Select(y => y.Name).ToList();
                 var photos = context.Photos.Select(photo => new Core.Models.Base.Photo()
                 {
                     Id = photo.Id,
@@ -76,8 +77,8 @@ namespace HongGia.DB.Services
             using (var context = new EntitiesDB())
             {
                 if (context.Photos == null ||
-                    context.Photos.Any(photo => photo.Catigories.Any(x => x.Type.ToLower() == "photo")) == false ||
-                    context.Catigories.Any(x => x.Type.ToLower() == "photo") == false)
+                    context.Photos.Any(photo => photo.Catigories.Any(x => x.Type.ToLower() == PageSearchConstants.Photo)) == false ||
+                    context.Catigories.Any(x => x.Type.ToLower() == PageSearchConstants.Photo) == false)
                 {
                     return null;
                 }
@@ -113,12 +114,12 @@ namespace HongGia.DB.Services
 			{
 				if (context.Photos == null ||
 					context.Photos.Count() < 0 ||
-					context.Catigories.Any(x => x.Type.ToLower() == "photo") == false)
+					context.Catigories.Any(x => x.Type.ToLower() == PageSearchConstants.Photo) == false)
 				{
 					return false;
 				}
 
-				var selectCatigories = CatigoryService.GetCatigoriesByNamesAndType(photo.Categories, "photo");
+				var selectCatigories = CatigoryService.GetCatigoriesByNamesAndType(photo.Categories, PageSearchConstants.Photo);
 
 				var save = new Photo()
 				{
@@ -149,7 +150,7 @@ namespace HongGia.DB.Services
 			{
 				if (context.Photos == null ||
 					context.Photos.Count() < 0 ||
-					context.Catigories.Any(x => x.Type.ToLower() == "photo") == false)
+					context.Catigories.Any(x => x.Type.ToLower() == PageSearchConstants.Photo) == false)
 				{
 					return false;
 				}
@@ -161,7 +162,7 @@ namespace HongGia.DB.Services
 					return false;
 				}
 
-				var selectCatigories = CatigoryService.GetCatigoriesByNamesAndType(context, photo.Categories, "photo");
+				var selectCatigories = CatigoryService.GetCatigoriesByNamesAndType(context, photo.Categories, PageSearchConstants.Photo);
 
 				selectPhoto.Catigories.Clear();
 

@@ -20,14 +20,14 @@ namespace HongGia.CRM.Controllers
 
 			ViewData["PageNum"] = pageNum;
 			ViewData["ItemCount"] = result?.FeedBacks.Count() ?? 0;
-			ViewData["PageSize"] = 20;
+			ViewData["PageSize"] = PageSizeConstants.UnicSize;
 
 			if (result == null)
 			{
 				return View(new FeedBacksView());
 			}
 
-			result.FeedBacks = result.FeedBacks.OrderBy(p => p.Id).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
+			result.FeedBacks = result.FeedBacks.OrderBy(p => p.Id).Skip(PageSizeConstants.UnicSize * pageNum).Take(PageSizeConstants.UnicSize).ToList();
 
 			return View(result);
 		}
@@ -59,14 +59,14 @@ namespace HongGia.CRM.Controllers
 
 			var s = ViewData["PageNum"] ?? 0;
 			ViewData["ItemCount"] = result?.FeedBacks.Count() ?? 0;
-			ViewData["PageSize"] = 20;
+			ViewData["PageSize"] = PageSizeConstants.UnicSize;
 
 			if (result == null)
 			{
 				return new FeedBacksView();
 			}
 
-			result.FeedBacks = result.FeedBacks.OrderBy(p => p.Id).Skip(PageConstants.PageNewsSize * (int)s).Take(PageConstants.PageNewsSize).ToList();
+			result.FeedBacks = result.FeedBacks.OrderBy(p => p.Id).Skip(PageSizeConstants.UnicSize * (int)s).Take(PageSizeConstants.UnicSize).ToList();
 
 			return result;
 		}

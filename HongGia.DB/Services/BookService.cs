@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using HongGia.Core.Constants;
 using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
@@ -18,7 +19,7 @@ namespace HongGia.DB.Services
             {
                 if (context.Files == null || 
 					context.Files.Any() == false ||
-                    context.Catigories.Any(x => x.Type.ToLower() == "book") == false)
+                    context.Catigories.Any(x => x.Type.ToLower() == PageSearchConstants.Book) == false)
                 {
                     return null;
                 }
@@ -27,7 +28,7 @@ namespace HongGia.DB.Services
 
                 foreach (var book in context.Files)
                 {
-                    if (book.Catigories.Any(x => x.Type == "book"))
+                    if (book.Catigories.Any(x => x.Type.ToLower() == PageSearchConstants.Book))
                     {
                         books.Add(new Core.Models.Base.Book()
                         {
@@ -54,12 +55,12 @@ namespace HongGia.DB.Services
             {
                 if (context.Files == null || 
 					context.Files.Count() < 0 ||
-                    context.Catigories.Any(x => x.Type.ToLower() == "book") == false)
+                    context.Catigories.Any(x => x.Type.ToLower() == PageSearchConstants.Book) == false)
                 {
                     return false;
                 }
                 
-                var selectCatigories = CatigoryService.GetCatigoriesByType("book");
+                var selectCatigories = CatigoryService.GetCatigoriesByType(PageSearchConstants.Book);
 
                 var save = new File()
                 {

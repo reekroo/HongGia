@@ -34,7 +34,7 @@ namespace HongGia.DB.Services
 			{
 				return false;
 			}
-			
+
 			using (var context = new EntitiesDB())
 			{
 				var pageContent = context.PageContents.FirstOrDefault(x => x.Id == pageContentId);
@@ -80,5 +80,5 @@ namespace HongGia.DB.Services
 				return true;
 			}
 		}
-    }
+	}
 }

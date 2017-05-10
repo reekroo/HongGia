@@ -2,6 +2,7 @@
 using System.Data.Entity.Migrations;
 using System.Linq;
 
+using HongGia.Core.Constants;
 using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
@@ -20,12 +21,12 @@ namespace HongGia.DB.Services
 			{
 				if (context.Videos == null ||
 					context.Videos.Any() == false ||
-					context.Catigories.Any(x => x.Type.ToLower() == "video") == false)
+					context.Catigories.Any(x => x.Type.ToLower() == PageSearchConstants.Video) == false)
 				{
 					return null;
 				}
 
-				var catigories = context.Catigories.Where(x => x.Type.ToLower() == "video").Select(y => y.Name).ToList();
+				var catigories = context.Catigories.Where(x => x.Type.ToLower() == PageSearchConstants.Video).Select(y => y.Name).ToList();
 
 				var videos = context.Videos.Select(video => new Core.Models.Base.Video()
 				{
@@ -59,7 +60,7 @@ namespace HongGia.DB.Services
 			{
 				if (context.Videos == null ||
 					context.Videos.Any() == false ||
-					context.Catigories.Any(x => x.Type.ToLower() == "video") == false)
+					context.Catigories.Any(x => x.Type.ToLower() == PageSearchConstants.Video) == false)
 				{
 					return null;
 				}
@@ -95,12 +96,12 @@ namespace HongGia.DB.Services
 			{
 				if (context.Videos == null || 
 					context.Videos.Count() < 0 ||
-					context.Catigories.Any(x => x.Type.ToLower() == "video") == false)
+					context.Catigories.Any(x => x.Type.ToLower() == PageSearchConstants.Video) == false)
 				{
 					return false;
 				}
 
-				var selectCatigories = CatigoryService.GetCatigoriesByNamesAndType(video.Categories, "video");
+				var selectCatigories = CatigoryService.GetCatigoriesByNamesAndType(video.Categories, PageSearchConstants.Video);
 
 				var save = new Video()
 				{
@@ -131,7 +132,7 @@ namespace HongGia.DB.Services
 			{
 				if (context.Videos == null ||
 					context.Videos.Count() < 0 ||
-					context.Catigories.Any(x => x.Type.ToLower() == "video") == false)
+					context.Catigories.Any(x => x.Type.ToLower() == PageSearchConstants.Video) == false)
 				{
 					return false;
 				}
@@ -143,7 +144,7 @@ namespace HongGia.DB.Services
 					return false;
 				}
 
-				var selectCatigories = CatigoryService.GetCatigoriesByNamesAndType(context, video.Categories, "video");
+				var selectCatigories = CatigoryService.GetCatigoriesByNamesAndType(context, video.Categories, PageSearchConstants.Video);
 
 				selectVideo.Catigories.Clear();
 

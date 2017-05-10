@@ -36,7 +36,7 @@
 		{
 			var index = str.LastIndexOf(sumble);
 
-			if (index == 0)
+			if (index <= 0)
 			{
 				return str;
 			}

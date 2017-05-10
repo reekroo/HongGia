@@ -17,14 +17,14 @@ namespace HongGia.CRM.Controllers
 
 			ViewData["PageNum"] = pageNum;
 			ViewData["ItemCount"] = result?.AllPhoto.Count() ?? 0;
-			ViewData["PageSize"] = 20;
+			ViewData["PageSize"] = PageSizeConstants.UnicSize;
 
 			if (result == null)
 			{
 				return View(new PhotosView());
 			}
 
-			result.AllPhoto = result.AllPhoto.OrderBy(p => p.Id).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
+			result.AllPhoto = result.AllPhoto.OrderBy(p => p.Id).Skip(PageSizeConstants.UnicSize * pageNum).Take(PageSizeConstants.UnicSize).ToList();
 
 			return View(result);
 		}
@@ -34,7 +34,7 @@ namespace HongGia.CRM.Controllers
 		{
 			var result = new PhotoView()
 			{
-				Categories = CatigoryService.GetCatigoriesListStringByType("photo")
+				Categories = CatigoryService.GetCatigoriesListStringByType(PageSearchConstants.Photo)
 			};
 
 			return View(result);

@@ -20,7 +20,7 @@ namespace HongGia.CRM.Controllers
 
 			ViewData["PageNum"] = pageNum;
 			ViewData["ItemCount"] = result?.AllVideo.Count() ?? 0;
-			ViewData["PageSize"] = 20;
+			ViewData["PageSize"] = PageSizeConstants.UnicSize;
 
 			if (result == null)
 			{
@@ -36,7 +36,7 @@ namespace HongGia.CRM.Controllers
 				};
 			}
 
-			result.AllVideo = result.AllVideo.OrderBy(p => p.Id).Skip(PageConstants.PageNewsSize * pageNum).Take(PageConstants.PageNewsSize).ToList();
+			result.AllVideo = result.AllVideo.OrderBy(p => p.Id).Skip(PageSizeConstants.UnicSize * pageNum).Take(PageSizeConstants.UnicSize).ToList();
 
 			return View(result);
 		}
@@ -46,7 +46,7 @@ namespace HongGia.CRM.Controllers
 		{
 			var result = new VideoView()
 			{
-				Categories = CatigoryService.GetCatigoriesListStringByType("video")
+				Categories = CatigoryService.GetCatigoriesListStringByType(PageSearchConstants.Video)
 			};
 
 			return View(result);

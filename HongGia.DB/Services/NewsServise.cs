@@ -17,7 +17,8 @@ namespace HongGia.DB.Services
         {
             using (var context = new EntitiesDB())
             {
-                if (context.News == null || context.News.Any() == false)
+                if (context.News == null || 
+					context.News.Any() == false)
                 {
                     return null;
                 }

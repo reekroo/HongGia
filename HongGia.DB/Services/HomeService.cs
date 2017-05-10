@@ -10,9 +10,9 @@ namespace HongGia.DB.Services
 		{
 			var home = new HomeView()
 			{
-				TopNews = NewsService.GetTopNews(PageConstants.PageIndexNewsSize),
+				TopNews = NewsService.GetTopNews(PageSizeConstants.TopNews),
 				SliderImages = ImageService.GetTopSliderImages(),
-				TopPhotos = ImageService.GetImages("top")
+				TopPhotos = ImageService.GetImages(PageSearchConstants.TopImage)
 			};
 
 			return home;

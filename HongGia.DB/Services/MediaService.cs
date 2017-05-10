@@ -2,16 +2,16 @@
 
 namespace HongGia.DB.Services
 {
-    public class MediaService
-    {
-        public static IVideosView GetAllVideo()
-        {
-            return VideoService.GetAllVideo();
-         }
+	public class MediaService
+	{
+		public static IVideosView GetAllVideo()
+		{
+			return VideoService.GetAllVideo();
+		}
 
-        public static IBooksView GetAllBookFiles()
-        {
-            return BookService.GetAllBookFiles();
-        }
-    }
+		public static IBooksView GetAllBookFiles()
+		{
+			return BookService.GetAllBookFiles();
+		}
+	}
 }

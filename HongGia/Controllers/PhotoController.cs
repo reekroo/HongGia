@@ -11,6 +11,7 @@ namespace HongGia.Controllers
 {
 	public class PhotoController : DefaultController
 	{
+		[HttpGet]
 		public ActionResult AllPhoto()
 		{
 			var result = PhotoService.GetAllPhoto();
@@ -23,20 +24,21 @@ namespace HongGia.Controllers
 			return View(result);
 		}
 
+		[HttpGet]
 		public ActionResult CategoryPhoto(string category, int pageNum = 0)
 		{
 			var result = PhotoService.GetCategoryPhoto(category);
 
 			ViewData["PageNum"] = pageNum;
 			ViewData["ItemCount"] = result?.CategoryPhoto.Count() ?? 0;
-			ViewData["PageSize"] = PageConstants.PageCategoriesPhotoSize;
+			ViewData["PageSize"] = PageSizeConstants.CategoriesPhoto;
 
 			if (result == null)
 			{
 				return View(new CategoryPhotoView() { Category = category });
 			}
 
-			result.CategoryPhoto = result.CategoryPhoto.OrderBy(p => p.Id).Skip(PageConstants.PageCategoriesPhotoSize * pageNum).Take(PageConstants.PageCategoriesPhotoSize).ToList();
+			result.CategoryPhoto = result.CategoryPhoto.OrderBy(p => p.Id).Skip(PageSizeConstants.CategoriesPhoto * pageNum).Take(PageSizeConstants.CategoriesPhoto).ToList();
 
 			return View(result);
 		}

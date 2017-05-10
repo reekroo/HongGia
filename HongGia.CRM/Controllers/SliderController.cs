@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using HongGia.BL.SmallFunctional;
-
+using HongGia.Core.Constants;
 using HongGia.Core.Models.Base;
 using HongGia.Core.Models.Views;
 
@@ -42,7 +42,7 @@ namespace HongGia.CRM.Controllers
 			if (ModelState.IsValid)
 			{
 				image.Src = FilePathCreator.GetGooglePath(image.Src);
-				image.Type = "slider";
+				image.Type = PageSearchConstants.Slider;
 
 				ImageService.AddImage(image);
 			}
@@ -56,7 +56,7 @@ namespace HongGia.CRM.Controllers
 			if (ModelState.IsValid)
 			{
 				image.Src = FilePathCreator.GetGooglePath(image.Src);
-				image.Type = "top";
+				image.Type = PageSearchConstants.TopImage;
 
 				ImageService.AddImage(image);
 			}

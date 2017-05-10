@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
+using HongGia.Core.Constants;
 using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
@@ -19,14 +20,14 @@ namespace HongGia.DB.Services
 			{
 				if (context.Images == null ||
 					context.Images.Count() < 0 ||
-					context.Images.Any(image => image.Type == "slider") == false)
+					context.Images.Any(image => image.Type == PageSearchConstants.Slider) == false)
 				{
 					return null;
 				}
 
 				var sliderImages = new SliderView()
 				{
-					SliderImages = context.Images.Where(image => image.Type == "slider").Select(x => new Core.Models.Base.Image()
+					SliderImages = context.Images.Where(image => image.Type == PageSearchConstants.Slider).Select(x => new Core.Models.Base.Image()
 					{
 						Id = x.Id,
 						Alt = x.Name,
@@ -74,12 +75,12 @@ namespace HongGia.DB.Services
 			{
 				if (context.Images == null ||
 					context.Images.Count() < 0 ||
-					context.Images.Any(image => image.Type == "slider") == false)
+					context.Images.Any(image => image.Type == PageSearchConstants.Slider) == false)
 				{
 					return null;
 				}
 
-				var sliderImages = context.Images.Where(image => image.Type == "slider").Select(x => new Core.Models.Base.Image()
+				var sliderImages = context.Images.Where(image => image.Type == PageSearchConstants.Slider).Select(x => new Core.Models.Base.Image()
 				{
 					Id = x.Id,
 					Alt = x.Name,

@@ -36,7 +36,7 @@ namespace HongGia.DB.Services
 
 			return selectCatigories;
 		}
-		
+
 	    public static ICollection<Catigory> GetCatigoriesByNamesAndType(IEnumerable<string> names, string type)
         {
             using (var context = new EntitiesDB())
