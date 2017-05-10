@@ -96,6 +96,7 @@ textarea {
 	margin-bottom: 0;
 	border: none;
 	border-bottom: 1px solid #ddd;
+	text-align: left;
 }
 
 	.list-group-item:first-child {
@@ -109,10 +110,6 @@ textarea {
 		border-bottom: none;
 	}
 
-.text-left {
-	text-align: left;
-}
-
 .pagination {
 	border-radius: 0;
 }
@@ -125,25 +122,40 @@ textarea {
 	.pagination > li > a {
 		color: black;
 	}
-	.pagination > li > a:hover {
-		color: black;
-	}
+
+		.pagination > li > a:hover {
+			color: black;
+		}
+
 	.pagination > .active > a:hover {
 		background-color: #eee;
 		border-color: #ddd;
-		color:black;
+		color: black;
 	}
+
 .carousel-indicators .active {
 	background-color: #fe503e;
 }
+
 .carousel-indicators li {
 	background-color: #ddd;
 }
+
 .carousel-indicators li {
 	border: none;
 	border-radius: 0;
 	opacity: .7;
 }
+
 	.carousel-indicators li:hover {
 		opacity: 1;
 	}
+
+.list-group-item > .active > .links {/*проверить*/
+	text-align: center;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+	background-color: #fe503e;
+	border: none;
+}
