@@ -16,7 +16,8 @@ namespace HongGia.DB.Services
 		{
 			using (var context = new EntitiesDB())
 			{
-				if (context.Feedbacks == null || context.Feedbacks.Any() == false)
+				if (context.Feedbacks == null || 
+                    context.Feedbacks.Any() == false)
 				{
 					return null;
 				}
@@ -44,7 +45,7 @@ namespace HongGia.DB.Services
 			{
 				if (context.Feedbacks == null ||
 					context.Languages == null ||
-					context.Languages.Any(x => x.Name.ToLower().Contains(lang) == false) ||
+					context.Languages.Any(x => x.Name.ToLower().Contains(lang)) == false ||
 					context.Feedbacks.Any(x => x.Language.Name.ToLower() == lang) == false)
 				{
 					return null;
@@ -71,7 +72,9 @@ namespace HongGia.DB.Services
 		{
 			using (var context = new EntitiesDB())
 			{
-				if (context.Feedbacks == null || context.Feedbacks.Count() < 0)
+				if (context.Feedbacks == null || 
+                    context.Feedbacks.Count() < 0 ||
+                    context.Languages.Any(x => x.Name.ToLower().Contains(feedback.Language)) == false)
 				{
 					return false;
 				}

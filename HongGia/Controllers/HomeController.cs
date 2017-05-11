@@ -33,7 +33,7 @@ namespace HongGia.Controllers
 		[HttpGet]
 		public ActionResult FeedBack(int pageNum = 0)
 		{
-			var feedbacks = FeedbackService.GetFeedbasks();
+			var feedbacks = FeedbackService.GetFeedbasks(this.CurrentLangCode);
 
 			ViewData["PageNum"] = pageNum;
 			ViewData["ItemCount"] = feedbacks?.FeedBacks.Count() ?? 0;
