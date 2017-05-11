@@ -11,7 +11,8 @@ using HongGia.DB.Services;
 
 namespace HongGia.CRM.Controllers
 {
-	public class NewsController : Controller
+    [Authorize(Roles = "admin")]
+    public class NewsController : Controller
 	{
 		[HttpGet]
 		public ActionResult Index(string lang, int pageNum = 0)

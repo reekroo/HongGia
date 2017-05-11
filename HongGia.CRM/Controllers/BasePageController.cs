@@ -4,7 +4,8 @@ using HongGia.DB.Services;
 
 namespace HongGia.CRM.Controllers
 {
-	public class BasePageController : Controller
+    [Authorize(Roles = "admin")]
+    public class BasePageController : Controller
 	{
 		[HttpGet]
 		public ActionResult Index(string name, string lang = "ru")

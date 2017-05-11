@@ -8,7 +8,8 @@ using HongGia.DB.Services;
 
 namespace HongGia.CRM.Controllers
 {
-	public class PhotoController : Controller
+    [Authorize(Roles = "admin")]
+    public class PhotoController : Controller
 	{
 		[HttpGet]
 		public ActionResult Index(int pageNum = 0)

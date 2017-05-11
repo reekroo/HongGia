@@ -6,7 +6,8 @@ using HongGia.DB.Services;
 
 namespace HongGia.CRM.Controllers
 {
-	public class FirmController : Controller
+    [Authorize(Roles = "admin")]
+    public class FirmController : Controller
 	{
 		[HttpGet]
 		public ActionResult Index()

@@ -43,10 +43,12 @@
     </head>
 
     <body>
-
-        @Html.Partial("_LoginPartial")
-
         <div class="container body-content">
+
+            <div class="row">
+                @Html.Partial("_LoginPartial")
+            </div>
+
             <div class="row">
                 <div class="navbar navbar-inverse navbar-fixed-left col-md-2">
                     @Html.Partial("_MenuPartial")

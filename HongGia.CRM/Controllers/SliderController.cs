@@ -8,7 +8,8 @@ using HongGia.DB.Services;
 
 namespace HongGia.CRM.Controllers
 {
-	public class SliderController : Controller
+    [Authorize(Roles = "admin")]
+    public class SliderController : Controller
 	{
 		[HttpGet]
 		public ActionResult Index()

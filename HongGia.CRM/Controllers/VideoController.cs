@@ -11,7 +11,8 @@ using HongGia.DB.Services;
 
 namespace HongGia.CRM.Controllers
 {
-	public class VideoController : Controller
+    [Authorize(Roles = "admin")]
+    public class VideoController : Controller
 	{
 		[HttpGet]
 		public ActionResult Index(int pageNum = 0)

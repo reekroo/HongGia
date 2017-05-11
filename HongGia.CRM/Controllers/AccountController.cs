@@ -76,6 +76,7 @@ namespace HongGia.CRM.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            
             switch (result)
             {
                 case SignInStatus.Success:
@@ -88,6 +89,36 @@ namespace HongGia.CRM.Controllers
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
+            }
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> AdminLogin(LoginViewModel model, string returnUrl)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    var user = await UserManager.FindByNameAsync(model.Email);
+
+                    if (await UserManager.IsInRoleAsync(user.Id, "Admin"))
+                    {
+                        return RedirectToLocal(returnUrl);
+                    }
+
+                    ModelState.AddModelError("", "User is mot Admin.");
+                    return View("Login", model);
+                default:
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View("Login", model);
             }
         }
 

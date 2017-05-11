@@ -9,7 +9,8 @@ using HongGia.DB.Services;
 
 namespace HongGia.CRM.Controllers
 {
-	public class FeedbackController : Controller
+    [Authorize(Roles = "admin")]
+    public class FeedbackController : Controller
 	{
 		[HttpGet]
 		public ActionResult Index(int pageNum = 0)

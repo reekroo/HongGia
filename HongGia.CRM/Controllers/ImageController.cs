@@ -8,7 +8,8 @@ using HongGia.DB.Services;
 
 namespace HongGia.CRM.Controllers
 {
-	public class ImageController : Controller
+    [Authorize(Roles = "admin")]
+    public class ImageController : Controller
 	{
 		[HttpPost]
 		public ActionResult Add(Image image,int pageContentId, string pageContentName, string pageContentLang)

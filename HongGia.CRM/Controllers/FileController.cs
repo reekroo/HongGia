@@ -8,7 +8,8 @@ using HongGia.DB.Services;
 
 namespace HongGia.CRM.Controllers
 {
-	public class FileController : Controller
+    [Authorize(Roles = "admin")]
+    public class FileController : Controller
 	{
 		[HttpPost]
 		public ActionResult Add(File file,int pageContentId, string pageContentName, string pageContentLang)

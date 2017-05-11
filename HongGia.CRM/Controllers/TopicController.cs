@@ -4,7 +4,8 @@ using HongGia.DB.Services;
 
 namespace HongGia.CRM.Controllers
 {
-	public class TopicController : Controller
+    [Authorize(Roles = "admin")]
+    public class TopicController : Controller
 	{
 
 		[HttpPost]
