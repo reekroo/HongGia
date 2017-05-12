@@ -14,22 +14,27 @@
 
 <div class="col-md-12 blocks">
 	<h2>Base Information</h2>
+	
+	@using (Ajax.BeginForm("UpdateBasePageContentName", "BasePage", new { basepageContentId = @Model.Id, name = @Html.ViewData["PageName"], lang = @Html.ViewData["PageLang"]}, new AjaxOptions {HttpMethod = "POST", OnSuccess = "window.location.reload()"}))
+	{
+		<div class="form-group">
+			<label for="PageHeader">Header</label>
+			<input type="text" class="form-control" id="PageHeader" name="Header" value="@Model.Header"/>
+		</div>
 
-	<div class="form-group">
-		<label for="PageHeader">Header</label>
-		<input type="text" class="form-control" id="PageHeader" name="Header" value="@Model.Header"/>
-	</div>
+		<div class="form-group">
+			<label for="PageLanguage">Language</label>
+			<input type="text" class="form-control" id="PageLanguage" name="Language" value="@Html.ViewData["PageLang"]"/>
+		</div>
 
-	<div class="form-group">
-		<label for="PageLanguage">Language</label>
-		<input type="text" class="form-control" id="PageLanguage" name="Language" value="@Html.ViewData["PageLang"]"/>
-	</div>
+		<button type="submit" class="btn btn-primary">Update Header Name</button>
+	}
 </div>
 
 <div class="col-md-12 blocks">
 	<h2>Images</h2>
 
-	@using (Ajax.BeginForm("Add", "Image", new { pageContentId = @Model.Id, pageContentName = @Model.Header, pageContentLang = @Html.ViewData["PageLang"] }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }))
+	@using (Ajax.BeginForm("Add", "Image", new { pageContentId = @Model.Id, pageContentName = @Html.ViewData["PageName"], pageContentLang = @Html.ViewData["PageLang"] }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }))
 	{
 		<div class="form-group">
 			<label for="ImageName">Name</label>
@@ -73,7 +78,7 @@
 						@Ajax.ActionLink("Remove", "Remove", "Image",
 							new {
 								imageId = image.Id,
-								pageContentName = @Model.Header,
+								pageContentName = @Html.ViewData["PageName"],
 								pageContentLang = @Html.ViewData["PageLang"]
 							}, 
 							new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }, 
@@ -92,89 +97,102 @@
 		new
 		{
 			pageContentId = @Model.Id,
-			name = @Model.Header,
+			name = @Html.ViewData["PageName"],
 			lang = @Html.ViewData["PageLang"]
 		},
 		new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" },
 		new { @class = "btn btn-primary" })
 
+	<div class="panel-group" id="accordion">
+
 	@if (@Model != null && @Model.Topics.Any() == true)
 	{
 		foreach (var topic in @Model.Topics)
 		{
-			using (Ajax.BeginForm("Update", "Topic", new { name = @Model.Header, lang = @Html.ViewData["PageLang"] }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }))
-			{
-				var topicIdentificator = string.Concat("summernote", @topic.Id);
-				var topicTextIdentificator = string.Concat("ArticleHtmlText", @topic.Id);
-				var submitIdentificator = string.Concat("submit", @topic.Id);
-
-				<input type="hidden" name="Id" value="@topic.Id" />
-				<input type="hidden" name="Date" value="@topic.Date" />
-				<input type="hidden" name="UpdateDate" value="@topic.UpdateDate" />
-
-				<div class="form-group">
-					<label for="Header">Header</label>
-					<input type="text" class="form-control" id="Header" name="Header" value="@topic.Header" />
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#@string.CompareOrdinal("collapse", topic.Id.ToString())">@topic.Position - @topic.Header - @topic.Type/</a>
+					</h4>
 				</div>
+				<div id="@string.CompareOrdinal("collapse", topic.Id.ToString())" class="panel-collapse collapse">
 
-				<div class="form-group">
-					<label for="Position">Position</label>
-					<input type="number" class="form-control" id="Position" name="Position" value="@topic.Position" />
-				</div>
-
-				<div class="form-group">
-					<label for="Type">Type</label>
-					<input type="text" class="form-control" id="Type" name="Type" value="@topic.Type" />
-				</div>
-
-				<div class="form-group">
-					<label for="summernote">Text</label>
-					<div id="summernote" class="@topicIdentificator"></div>
-
-					<input type="hidden" name="HtmlText" id="@topicTextIdentificator" value="@topic.HtmlText" />
-				</div>
-
-				<p>Creating Date: @topic.Date</p>
-				<p>Last Updating Date: @topic.UpdateDate</p>
-
-				<button type="submit" id="@submitIdentificator" class="btn btn-primary">Update</button>
-
-				@Ajax.ActionLink("Remove Topic", "Remove", "Topic",
-					new
+					@using (Ajax.BeginForm("Update", "Topic", new {name = @Html.ViewData["PageName"], lang = @Html.ViewData["PageLang"]}, new AjaxOptions {HttpMethod = "POST", OnSuccess = "window.location.reload()"}))
 					{
-						topicId = @topic.Id,
-						name = @Model.Header,
-						lang = @Html.ViewData["PageLang"]
-					},
-					new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" },
-					new { @class = "btn btn-primary" })
+						var topicIdentificator = string.Concat("summernote", @topic.Id);
+						var topicTextIdentificator = string.Concat("ArticleHtmlText", @topic.Id);
+						var submitIdentificator = string.Concat("submit", @topic.Id);
 
-				<script>
-					$(document).ready(function() {
+						<input type="hidden" name="Id" value="@topic.Id"/>
+						<input type="hidden" name="Date" value="@topic.Date"/>
+						<input type="hidden" name="UpdateDate" value="@topic.UpdateDate"/>
 
-						$('.@topicIdentificator').summernote({
-							height: 500,
-							minHeight: 350,
-							maxHeight: 1500,
-							focus: true
-						});
+						<div class="form-group">
+							<label for="Header">Header</label>
+							<input type="text" class="form-control" id="Header" name="Header" value="@topic.Header"/>
+						</div>
 
-						$('.@topicIdentificator').code($('#@topicTextIdentificator').val());
-					});
+						<div class="form-group">
+							<label for="Position">Position</label>
+							<input type="number" class="form-control" id="Position" name="Position" value="@topic.Position"/>
+						</div>
 
-					$('#@submitIdentificator').click(function () {
-						$('#@topicTextIdentificator').val($('.@topicIdentificator').code());
-					});
-				</script>
-			}
+						<div class="form-group">
+							<label for="Type">Type</label>
+							<input type="text" class="form-control" id="Type" name="Type" value="@topic.Type"/>
+						</div>
+
+						<div class="form-group">
+							<label for="summernote">Text</label>
+							<div id="summernote" class="@topicIdentificator"></div>
+
+							<input type="hidden" name="HtmlText" id="@topicTextIdentificator" value="@topic.HtmlText"/>
+						</div>
+
+						<p>Creating Date: @topic.Date</p>
+						<p>Last Updating Date: @topic.UpdateDate</p>
+
+						<button type="submit" id="@submitIdentificator" class="btn btn-primary">Update</button>
+
+						@Ajax.ActionLink("Remove Topic", "Remove", "Topic",
+							new
+							{
+								topicId = @topic.Id,
+								name = @Html.ViewData["PageName"],
+								lang = @Html.ViewData["PageLang"]
+							},
+							new AjaxOptions {HttpMethod = "POST", OnSuccess = "window.location.reload()"},
+							new {@class = "btn btn-primary"})
+
+						<script>
+							$(document).ready(function() {
+
+								$('.@topicIdentificator').summernote({
+									height: 500,
+									minHeight: 350,
+									maxHeight: 1500,
+									focus: true
+								});
+
+								$('.@topicIdentificator').code($('#@topicTextIdentificator').val());
+							});
+
+							$('#@submitIdentificator').click(function() {
+								$('#@topicTextIdentificator').val($('.@topicIdentificator').code());
+							});
+						</script>
+					}
+				</div>
+			</div>
 		}
 	}
+	</div>
 </div>
 
 <div class="col-md-12 blocks">
 	<h2>Files</h2>
 
-	@using (Ajax.BeginForm("Add", "File", new { pageContentId = @Model.Id, pageContentName = @Model.Header, pageContentLang = @Html.ViewData["PageLang"] }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }))
+	@using (Ajax.BeginForm("Add", "File", new { pageContentId = @Model.Id, pageContentName = @Html.ViewData["PageName"], pageContentLang = @Html.ViewData["PageLang"] }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }))
 	{
 		<div class="form-group">
 			<label for="FileName">Name</label>
@@ -218,7 +236,7 @@
 							new
 							{
 								fileId = file.Id,
-								pageContentName = @Model.Header,
+								pageContentName = @Html.ViewData["PageName"],
 								pageContentLang = @Html.ViewData["PageLang"]
 							}, 
 							new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload()" }, 

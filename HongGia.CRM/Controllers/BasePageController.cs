@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-
+using HongGia.Core.Interfaces.Base;
 using HongGia.DB.Services;
 
 namespace HongGia.CRM.Controllers
@@ -20,6 +20,7 @@ namespace HongGia.CRM.Controllers
 		[HttpGet]
 		public ActionResult AddOrUpdate(string name, string lang)
 		{
+			ViewData["PageName"] = name;
 			ViewData["PageLang"] = lang;
 
 			if (BasePageService.GetBasePageContent(name, lang) == null)
@@ -38,6 +39,14 @@ namespace HongGia.CRM.Controllers
 			var result = BasePageService.RemoveBasePageContent(basepageContentId);
 
 			return RedirectToAction("Index", new { name, lang });
+		}
+
+		[HttpPost]
+		public ActionResult UpdateBasePageContentName(int basepageContentId, string header, string name, string lang)
+		{
+			var result = BasePageService.UpdateBasePageContentName(basepageContentId, header, lang);
+
+			return RedirectToAction("AddOrUpdate", new { name, lang });
 		}
 
 		[HttpGet]

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Data.Entity.Migrations;
 using System.Linq;
 
+using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
 
@@ -137,7 +139,7 @@ namespace HongGia.DB.Services
 		public static bool AddBasePageContent(string name, string lang)
 		{
 			if (string.IsNullOrEmpty(name) &&
-				string.IsNullOrEmpty(lang))
+			    string.IsNullOrEmpty(lang))
 			{
 				return false;
 			}
@@ -147,7 +149,7 @@ namespace HongGia.DB.Services
 				var selectPage = context.Pages.FirstOrDefault(x => x.Name.ToLower().Contains(name));
 
 				if (selectPage == null ||
-					context.Languages.Any(x => x.Name.ToLower().Contains(lang)) == false)
+				    context.Languages.Any(x => x.Name.ToLower().Contains(lang)) == false)
 				{
 					return false;
 				}
@@ -161,6 +163,38 @@ namespace HongGia.DB.Services
 				};
 
 				context.PageContents.Add(save);
+				context.SaveChanges();
+			}
+
+			return true;
+		}
+
+		public static bool UpdateBasePageContentName(int basepageContentId, string name, string lang)
+		{
+			if (string.IsNullOrEmpty(name) &&
+				string.IsNullOrEmpty(lang))
+			{
+				return false;
+			}
+
+			using (var context = new EntitiesDB())
+			{
+				if (context.Languages.Any(x => x.Name.ToLower().Contains(lang)) == false ||
+					context.PageContents.Any() == false)
+				{
+					return false;
+				}
+
+				var selectPageContent = context.PageContents.FirstOrDefault(x => x.Id == basepageContentId && x.Language.Name.ToLower().Contains(lang));
+
+				if (selectPageContent == null)
+				{
+					return false;
+				}
+
+				selectPageContent.Header = name;
+
+				context.PageContents.AddOrUpdate(selectPageContent);
 				context.SaveChanges();
 			}
 
