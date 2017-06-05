@@ -49,13 +49,17 @@ textarea {
 	border-bottom: 1px solid #dddddd;
 }
 
-	.feetback:last-child {
-		border-bottom: none;
-	}
+.feetback:last-child {
+	border-bottom: none;
+}
 
-	.feetback .text-right {
-		color: #dddddd;
-	}
+.feetback .text-right {
+	color: #dddddd;
+}
+
+.feetback-form {
+    text-align:left;
+}
 
 /* --- responsive google map for bootstrap --- */
 
@@ -164,5 +168,11 @@ textarea {
 
 .pagination > li:first-child > a, .pagination > li:first-child > span,
 .pagination > li:last-child > a, .pagination > li:last-child > span {
+    border-radius: 0;
+}
+
+/* ---  --- */
+
+.thumbnail {
     border-radius: 0;
 }
