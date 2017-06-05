@@ -176,3 +176,10 @@ textarea {
 .thumbnail {
     border-radius: 0;
 }
+
+/* ---  --- */
+
+.panel-group .panel,
+.panel-heading {
+    border-radius: 0;
+}
