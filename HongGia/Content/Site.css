@@ -217,3 +217,13 @@ textarea {
 		background: #5d5d5d;
 	}
 }
+
+/* ---  --- */
+
+a.thumbnail:hover {
+    border: 1px solid #ddd;
+}
+
+.modal-dialog .modal-content{
+    border-radius: 0;
+}
