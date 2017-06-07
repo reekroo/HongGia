@@ -818,7 +818,7 @@ footer {
 
 @media (min-width: 768px) and (max-width: 991px) {
 	
-	ul.navbar-nav li a { padding-left: 15px; padding-right: 15px; }
+	ul.navbar-nav li a { padding-left: 20px; padding-right: 20px; }
 	
 	.flex-caption { bottom: 20px; }
 	
@@ -1024,3 +1024,9 @@ button.btn:focus {
 	border: 0;
 	color: #fff;
 }
+
+ul.navbar-nav li a span.header-span {
+	color: #5d5d5d;
+	line-height:0;
+}
+

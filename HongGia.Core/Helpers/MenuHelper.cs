@@ -11,7 +11,7 @@ namespace HongGia.Core.Helpers
 {
 	public static class MenuHelper
 	{
-		public static MvcHtmlString MenuSection(this HtmlHelper htmlHelper, MenuSectionParameters parameters)
+		public static MvcHtmlString MenuSection(this HtmlHelper htmlHelper, MenuSectionParameters parameters, string prevCssClass = "")
 		{
 			if (parameters == null)
 			{
@@ -27,38 +27,41 @@ namespace HongGia.Core.Helpers
 			}
 
 			var liTagBuilder = new TagBuilder("li");
-
-			var link = htmlHelper.ActionLink(parameters.LinkText, parameters.ActionName, parameters.ControllerName, new { name = parameters.QueryString }, null);
+			var linkText= new TagBuilder("span");
+			linkText.AddCssClass("header-span");
+			linkText.InnerHtml = parameters.LinkText;
 
 			if (IsActiveClass(parameters, "action"))
 			{
 				liTagBuilder.AddCssClass("active");
 			}
-
+			var link = htmlHelper.ActionLink(parameters.LinkText, parameters.ActionName, parameters.ControllerName, new { name = parameters.QueryString }, null);
 			liTagBuilder.InnerHtml = link.ToHtmlString();
+
+			if (!string.IsNullOrEmpty(prevCssClass) == true)
+			{
+				var spanImageTagBuilder = new TagBuilder("span");
+				spanImageTagBuilder.AddCssClass(prevCssClass);
+
+				link = htmlHelper.ActionLink(" ", parameters.ActionName, parameters.ControllerName, new { name = parameters.QueryString }, null);
+
+				var result = spanImageTagBuilder.ToString() +"<br>"+ linkText.ToString();
+
+				var linkWithNameContainer = link.ToString().Insert((link.ToString().IndexOf("</a>", StringComparison.Ordinal)-1), result);
+				liTagBuilder.InnerHtml = linkWithNameContainer.ToString();
+			}
+
 
 			return new MvcHtmlString(liTagBuilder.ToString());
 		}
 
-		public static MvcHtmlString MenuSection(this HtmlHelper htmlHelper, MenuSectionParameters parameters, string prevHtmlCode)
-		{
-			var result = MenuSection(htmlHelper, parameters);
-
-			if (string.IsNullOrEmpty(prevHtmlCode) == true)
-			{
-				return result;
-			}
-
-			return new MvcHtmlString(result.ToString().Insert(result.ToString().IndexOf(parameters.LinkText + '<', StringComparison.Ordinal), prevHtmlCode));
-		}
-
-		public static MvcHtmlString DropdownMenuSection(this HtmlHelper htmlHelper, string dropdownName, IEnumerable<MenuSectionParameters> parameters)
+		public static MvcHtmlString DropdownMenuSection(this HtmlHelper htmlHelper, string dropdownName, IEnumerable<MenuSectionParameters> parameters, string prevCssClass = "")
 		{
 			if (parameters == null || parameters.Count() == 0)
 			{
 				return new MvcHtmlString(string.Empty);
 			}
-
+			
 			var liTagBuilder = new TagBuilder("li");
 			liTagBuilder.AddCssClass("dropdown");
 
@@ -66,6 +69,11 @@ namespace HongGia.Core.Helpers
 			aTagBuilder.AddCssClass("dropdown-toggle");
 			aTagBuilder.MergeAttribute("data-toggle", "dropdown");
 			aTagBuilder.MergeAttribute("href", "#");
+			//	"<span class='glyphicon glyphicon-tree-deciduous'></span><br>")
+		
+			var spanTagBuilder = new TagBuilder("span");
+			spanTagBuilder.AddCssClass("header-span");
+
 
 			var bTagBuilder = new TagBuilder("b");
 			bTagBuilder.AddCssClass("caret");
@@ -90,22 +98,22 @@ namespace HongGia.Core.Helpers
 				liTagBuilder.AddCssClass("active");
 			}
 
-			aTagBuilder.InnerHtml = dropdownName + bTagBuilder.ToString();
+			spanTagBuilder.InnerHtml = dropdownName;
+
+			if (!string.IsNullOrEmpty(prevCssClass) == true)
+			{
+				var spanImageTagBuilder = new TagBuilder("span");
+				spanImageTagBuilder.AddCssClass(prevCssClass);
+
+				aTagBuilder.InnerHtml = spanImageTagBuilder.ToString() + "<br>" + spanTagBuilder.ToString() + bTagBuilder.ToString();
+			}else{
+				aTagBuilder.InnerHtml = spanTagBuilder.ToString() + bTagBuilder.ToString();
+			}
+			
+			
 			liTagBuilder.InnerHtml = aTagBuilder.ToString() + ulTagBuilder.ToString();
 
 			return new MvcHtmlString(liTagBuilder.ToString());
-		}
-
-		public static MvcHtmlString DropdownMenuSection(this HtmlHelper htmlHelper, string dropdownName, IEnumerable<MenuSectionParameters> parameters, string prevHtmlCode)
-		{
-			var result = DropdownMenuSection(htmlHelper, dropdownName, parameters);
-
-			if (string.IsNullOrEmpty(prevHtmlCode) == true)
-			{
-				return result;
-			}
-
-			return new MvcHtmlString(result.ToString().Insert(result.ToString().IndexOf(dropdownName + '<', StringComparison.Ordinal), prevHtmlCode));
 		}
 
 		private static string AddSeporator()

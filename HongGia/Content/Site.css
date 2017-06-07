@@ -151,11 +151,44 @@ textarea {
 		opacity: 1;
 	}
 
-.list-group-item > .active > .links {/*проверить*/
+.list-group-item.active.links {/*проверить*/
 	text-align: center;
 }
 
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
 	background-color: #fe503e;
 	border: none;
+}
+.header-span {
+	color: #5d5d5d;
+}
+.list-group-item-text {
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+@media (max-width: 1200px) and (min-width: 768px) { /* это будет показано при разрешении монитора от 765 до 1200 пикселей */
+	.header-span {
+		display: none;
+	}
+	a span.nav-icon {
+		font-size: 1.7em;
+		
+	}
+	ul.navbar-nav li a {
+		height:inherit;
+	}
+.navbar-nav > li {
+		height: 106px;
+	}
+}
+@media (max-width: 768px) {
+	.navbar > .container .navbar-brand {
+		margin-left: 15px;
+	}
+	.navbar-toggle {
+		margin-top: 16px;
+	}
+	.navbar-toggle .icon-bar {
+		background: #5d5d5d;
+	}
 }
