@@ -121,6 +121,7 @@ textarea {
 	.pagination > .active > a {
 		background-color: #fe503e;
 		border-color: white;
+		pointer-events: none;
 	}
 
 	.pagination > li > a {
@@ -131,7 +132,7 @@ textarea {
 			color: black;
 		}
 
-	.pagination > .active > a:hover {
+	.pagination > .active > a:hover:focus {
 		background-color: #eee;
 		border-color: #ddd;
 		color: black;
@@ -151,7 +152,7 @@ textarea {
 	opacity: .7;
 }
 
-	.carousel-indicators li:hover {
+	.carousel-indicators li:hover:focus {
 		opacity: 1;
 	}
 
