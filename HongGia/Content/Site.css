@@ -227,3 +227,9 @@ a.thumbnail:hover {
 .modal-dialog .modal-content{
     border-radius: 0;
 }
+
+/* ---  --- */
+
+.body-content {
+    min-height: calc(100vh - 373px);
+}
