@@ -234,3 +234,34 @@ a.thumbnail:hover {
 .body-content {
     min-height: calc(100vh - 373px);
 }
+
+/* --- base page --- */
+
+.base-page-container{
+    margin: 20px 0;
+    padding: 0;
+}
+
+.base-page-container .text-center{
+    margin: 0 0 20px 0;
+}
+
+.base-page-container .img-responsive {
+    margin: 0 0 20px 0;
+}
+
+.base-page-container .carousel .slide {
+    margin: 0 0 20px 0;
+}
+
+.base-page-container .panel-group {
+    margin: 0 0 20px 0;
+}
+
+.base-page-container .list-group {
+    margin: 0 0 20px 0;
+}
+
+.base-page-container .text-group {
+    margin: 0 0 20px 0;
+}

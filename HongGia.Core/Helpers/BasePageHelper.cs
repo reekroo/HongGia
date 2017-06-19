@@ -15,8 +15,8 @@ namespace HongGia.Core.Helpers
 			{
 				return new MvcHtmlString(result);
 			}
-
-			if (parameters.Images != null && parameters.Images.Count() > 0)
+            
+            if (parameters.Images != null && parameters.Images.Count() > 0)
 			{
 				if (parameters.Images.Count() > 1)
 				{
@@ -50,7 +50,6 @@ namespace HongGia.Core.Helpers
 				}
 			}
 
-
 			if (parameters.Topics != null && parameters.Topics.Count() > 0)
 			{
 				foreach (var topic in parameters.Topics.OrderBy(x => x.Position))
@@ -63,7 +62,9 @@ namespace HongGia.Core.Helpers
 					{
 						var topicTagBuider = new TagBuilder("div") { InnerHtml = topic.HtmlText };
 
-						result += topicTagBuider.ToString();
+                        topicTagBuider.AddCssClass("text-group");
+
+                        result += topicTagBuider.ToString();
 					}
 				}
 			}
@@ -72,8 +73,13 @@ namespace HongGia.Core.Helpers
 			{
 				result += htmlHelper.ListGroup(parameters.Files);
 			}
+            
+            var container = new TagBuilder("div");
+            container.AddCssClass("base-page-container");
 
-			return new MvcHtmlString(result);
+            container.InnerHtml += result;
+
+            return new MvcHtmlString(container.ToString());
 		}
 	}
 }
