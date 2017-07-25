@@ -115,6 +115,24 @@ namespace HongGia.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Новости клуба.
+        /// </summary>
+        public static string ClubNews {
+            get {
+                return ResourceManager.GetString("ClubNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Фото клуба.
+        /// </summary>
+        public static string ClubPhotos {
+            get {
+                return ResourceManager.GetString("ClubPhotos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Контакты.
         /// </summary>
         public static string Contacts {
@@ -129,6 +147,15 @@ namespace HongGia.App_LocalResources {
         public static string Directions {
             get {
                 return ResourceManager.GetString("Directions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Скачать все файлы.
+        /// </summary>
+        public static string DownloadAllFiles {
+            get {
+                return ResourceManager.GetString("DownloadAllFiles", resourceCulture);
             }
         }
         
@@ -156,6 +183,15 @@ namespace HongGia.App_LocalResources {
         public static string FiveEnimals {
             get {
                 return ResourceManager.GetString("FiveEnimals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изречения великих.
+        /// </summary>
+        public static string GreatSaid {
+            get {
+                return ResourceManager.GetString("GreatSaid", resourceCulture);
             }
         }
         
@@ -295,6 +331,15 @@ namespace HongGia.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Терпение.
+        /// </summary>
+        public static string Patience {
+            get {
+                return ResourceManager.GetString("Patience", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Телефоны.
         /// </summary>
         public static string Phones {
@@ -322,6 +367,15 @@ namespace HongGia.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Читать больше.
+        /// </summary>
+        public static string ReadMore {
+            get {
+                return ResourceManager.GetString("ReadMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Смотрите также.
         /// </summary>
         public static string SeeMore {
@@ -336,6 +390,15 @@ namespace HongGia.App_LocalResources {
         public static string Seminars {
             get {
                 return ResourceManager.GetString("Seminars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отправить.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
             }
         }
         
@@ -403,11 +466,74 @@ namespace HongGia.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Мы здесь.
+        /// </summary>
+        public static string WeAreHere {
+            get {
+                return ResourceManager.GetString("WeAreHere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Написать нам.
+        /// </summary>
+        public static string WriteUs {
+            get {
+                return ResourceManager.GetString("WriteUs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ву-Чи.
         /// </summary>
         public static string WuChi {
             get {
                 return ResourceManager.GetString("WuChi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ваш е-mail.
+        /// </summary>
+        public static string YourEmail {
+            get {
+                return ResourceManager.GetString("YourEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ваш отзыв.
+        /// </summary>
+        public static string YourFeedback {
+            get {
+                return ResourceManager.GetString("YourFeedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ваше сообщение.
+        /// </summary>
+        public static string YourMessage {
+            get {
+                return ResourceManager.GetString("YourMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ваше имя.
+        /// </summary>
+        public static string YourName {
+            get {
+                return ResourceManager.GetString("YourName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ваш вопрос.
+        /// </summary>
+        public static string YourSubject {
+            get {
+                return ResourceManager.GetString("YourSubject", resourceCulture);
             }
         }
     }
