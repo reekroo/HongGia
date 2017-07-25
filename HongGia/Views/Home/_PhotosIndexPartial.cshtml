@@ -1,0 +1,23 @@
+﻿@using HongGia.App_LocalResources
+
+@model HongGia.Core.Interfaces.Models.IHomeView
+
+
+@if (Model?.TopPhotos != null)
+{
+    <div class="work-container">
+        <div class="row">
+            <div class="col-md-12 work-title">
+                <h2>@GlobalRes.ClubPhotos</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach (var photo in @Model.TopPhotos)
+            {
+                <div class="col-md-3">
+                    <div class="work"><img src="@photo.Src" alt="@photo.Alt" style="height: 200px; width: 100%; display: block;"></div>@*style*@
+                </div>}
+        </div>
+    </div>
+}

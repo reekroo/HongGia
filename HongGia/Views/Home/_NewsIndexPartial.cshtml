@@ -1,0 +1,22 @@
+﻿@using HongGia.App_LocalResources
+@using HongGia.Core.Helpers
+
+@model HongGia.Core.Interfaces.Models.IHomeView
+
+
+@if (Model?.TopNews != null)
+{
+    <div class="work-container">
+        <div class="row">
+            <div class="col-md-12 work-title">
+                <h2>@GlobalRes.ClubNews</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                @Html.ListGroup(@Model.TopNews)
+            </div>
+        </div>
+    </div>
+}

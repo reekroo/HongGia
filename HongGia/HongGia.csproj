@@ -372,6 +372,10 @@
     <Content Include="Views\Error\Forbidden.cshtml" />
     <Content Include="Views\Error\Server.cshtml" />
     <Content Include="Views\Error\BadRequest.cshtml" />
+    <Content Include="Views\Home\_PhotosIndexPartial.cshtml" />
+    <Content Include="Views\Home\_TopicsIndexPartial.cshtml" />
+    <Content Include="Views\Home\_NewsIndexPartial.cshtml" />
+    <Content Include="Views\Home\_QuotationsIndexPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
