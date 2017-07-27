@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HongGia.App_LocalResources {
+namespace HongGia.Core.App_LocalResources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace HongGia.App_LocalResources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HongGia.App_LocalResources.GlobalRes", typeof(GlobalRes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HongGia.Core.App_LocalResources.GlobalRes", typeof(GlobalRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -165,6 +165,15 @@ namespace HongGia.App_LocalResources {
         public static string Emails {
             get {
                 return ResourceManager.GetString("Emails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Войти.
+        /// </summary>
+        public static string Enter {
+            get {
+                return ResourceManager.GetString("Enter", resourceCulture);
             }
         }
         
@@ -372,6 +381,15 @@ namespace HongGia.App_LocalResources {
         public static string ReadMore {
             get {
                 return ResourceManager.GetString("ReadMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Зарегистрироваться.
+        /// </summary>
+        public static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
             }
         }
         
