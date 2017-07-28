@@ -288,6 +288,12 @@
   <data name="ErrorEmailValid" xml:space="preserve">
     <value>Неверный e-mail </value>
   </data>
+  <data name="ErrorFeedback" xml:space="preserve">
+    <value>Необходимо ввести отзыв</value>
+  </data>
+  <data name="ErrorFeedbackLength" xml:space="preserve">
+    <value>Отзыв не может быть менее 20 и более 5000 символов</value>
+  </data>
   <data name="ErrorMessage" xml:space="preserve">
     <value>Необходимо ввести сообщение</value>
   </data>

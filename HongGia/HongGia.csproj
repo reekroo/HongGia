@@ -328,6 +328,7 @@
     <Content Include="Views\Home\_QuotationsIndexPartial.cshtml" />
     <Content Include="Views\Home\_InfoContactsPartial.cshtml" />
     <Content Include="Views\Home\_MessageContactsPartial.cshtml" />
+    <Content Include="Views\Home\_MessageFeedbackPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,5 +1,4 @@
-﻿@using HongGia.Core.App_LocalResources
-@using HongGia.Core.Helpers
+﻿@using HongGia.Core.Helpers
 
 @model HongGia.Core.Interfaces.Models.IFeedBacksView
 
@@ -9,31 +8,7 @@
 
 <div class="row row-margin">
 
-	<div class="col-md-4">
-		<div class="thumbnail feetback-form">
-
-			@using (Html.BeginForm("FeedBack", "Home", FormMethod.Post))
-			{
-				<div class="form-group">
-					<label for="InputText">@GlobalRes.YourFeedback</label>
-					<textarea class="form-control" rows="6" id="InputText" name="Text" style="resize: vertical;"></textarea>
-				</div>
-
-				<div class="form-group">
-					<label for="InputName">@GlobalRes.YourName</label>
-					<input type="text" class="form-control" id="InputName" placeholder="example" name="Name">
-				</div>
-
-				<div class="form-group">
-					<label for="InputEmail">@GlobalRes.YourEmail</label>
-					<input type="email" class="form-control" id="InputEmail" placeholder="example@example.com" name="Email">
-				</div>
-
-				<button type="submit" class="btn">@GlobalRes.Send</button>
-			}
-
-		</div>
-	</div>
+    @Html.Partial("_MessageFeedbackPartial", new HongGia.Core.Models.Base.FeedBack())
 
 	@if (@Model != null)
 	{

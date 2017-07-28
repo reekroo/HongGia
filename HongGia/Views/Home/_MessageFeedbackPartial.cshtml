@@ -1,0 +1,36 @@
+﻿@using HongGia.Core.App_LocalResources
+
+@model HongGia.Core.Models.Base.FeedBack
+
+<div class="col-md-4">
+    <div class="thumbnail feetback-form">
+
+        @using (Html.BeginForm("FeedBack", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div>
+                @Html.LabelFor(m => m.Text)
+                @Html.TextAreaFor(m => m.Text, new { @class = "form-control", rows = "6", style = "resize: vertical;" })
+                @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+
+            <button type="submit" class="btn">@GlobalRes.Send</button>
+        }
+
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jqueryval")

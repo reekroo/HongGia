@@ -288,6 +288,12 @@
   <data name="ErrorEmailValid" xml:space="preserve">
     <value>*ErrorEmailValid</value>
   </data>
+  <data name="ErrorFeedback" xml:space="preserve">
+    <value>*ErrorFeedback</value>
+  </data>
+  <data name="ErrorFeedbackLength" xml:space="preserve">
+    <value>*ErrorFeedbackLength</value>
+  </data>
   <data name="ErrorMessage" xml:space="preserve">
     <value>*ErrorMessage</value>
   </data>

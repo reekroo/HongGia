@@ -196,6 +196,24 @@ namespace HongGia.Core.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Необходимо ввести отзыв.
+        /// </summary>
+        public static string ErrorFeedback {
+            get {
+                return ResourceManager.GetString("ErrorFeedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отзыв не может быть менее 20 и более 5000 символов.
+        /// </summary>
+        public static string ErrorFeedbackLength {
+            get {
+                return ResourceManager.GetString("ErrorFeedbackLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Необходимо ввести сообщение.
         /// </summary>
         public static string ErrorMessage {
