@@ -282,4 +282,28 @@
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
+  <data name="ErrorEmail" xml:space="preserve">
+    <value>*ErrorEmail</value>
+  </data>
+  <data name="ErrorEmailValid" xml:space="preserve">
+    <value>*ErrorEmailValid</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>*ErrorMessage</value>
+  </data>
+  <data name="ErrorMessageLength" xml:space="preserve">
+    <value>*ErrorMessageLength</value>
+  </data>
+  <data name="ErrorName" xml:space="preserve">
+    <value>*ErrorName</value>
+  </data>
+  <data name="ErrorNameLength" xml:space="preserve">
+    <value>*ErrorNameLength</value>
+  </data>
+  <data name="ErrorSubject" xml:space="preserve">
+    <value>*ErrorSubject</value>
+  </data>
+  <data name="ErrorSubjectLength" xml:space="preserve">
+    <value>*ErrorSubjectLength</value>
+  </data>
 </root>

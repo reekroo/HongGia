@@ -265,3 +265,11 @@ a.thumbnail:hover {
 .base-page-container .text-group {
     margin: 0 0 20px 0;
 }
+
+/* --- errors --- */
+
+.text-danger {
+    color: #fe503e;
+    font-style: italic;
+    margin: 10px 0 0 10px;
+}

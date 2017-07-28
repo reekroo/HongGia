@@ -282,4 +282,28 @@
   <data name="Register" xml:space="preserve">
     <value>Зарегистрироваться</value>
   </data>
+  <data name="ErrorEmail" xml:space="preserve">
+    <value>Необходимо ввести e-mail</value>
+  </data>
+  <data name="ErrorEmailValid" xml:space="preserve">
+    <value>Неверный e-mail </value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>Необходимо ввести сообщение</value>
+  </data>
+  <data name="ErrorMessageLength" xml:space="preserve">
+    <value>Тема не может быть менее 20 и более 5000 символов</value>
+  </data>
+  <data name="ErrorName" xml:space="preserve">
+    <value>Необходимо ввести имя</value>
+  </data>
+  <data name="ErrorNameLength" xml:space="preserve">
+    <value>Имя не может быть менее 2 и более 50 символов</value>
+  </data>
+  <data name="ErrorSubject" xml:space="preserve">
+    <value>Необходимо ввести тему</value>
+  </data>
+  <data name="ErrorSubjectLength" xml:space="preserve">
+    <value>Тема не может быть менее 5 и более 50 символов</value>
+  </data>
 </root>

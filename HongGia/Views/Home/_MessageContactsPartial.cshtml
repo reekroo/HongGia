@@ -1,0 +1,48 @@
+﻿@using HongGia.Core.App_LocalResources
+
+@model HongGia.Core.Models.Base.Email
+
+<div class="row">
+    <h3>@GlobalRes.WriteUs</h3>
+
+    <div class="col-md-12 ">
+        <div class="contact-us-container">
+            
+            @using (Html.BeginForm("Mail", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name)
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Mail)
+                    @Html.TextBoxFor(m => m.Mail, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Mail, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Subject)
+                    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Message)
+                    @Html.TextAreaFor(m => m.Message, new { @class = "form-control", rows = "6", style = "resize: vertical;" })
+                    @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
+                </div>
+
+                <button type="submit" class="btn">@GlobalRes.Send</button>
+            }
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -178,6 +178,78 @@ namespace HongGia.Core.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Необходимо ввести e-mail.
+        /// </summary>
+        public static string ErrorEmail {
+            get {
+                return ResourceManager.GetString("ErrorEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Неверный e-mail .
+        /// </summary>
+        public static string ErrorEmailValid {
+            get {
+                return ResourceManager.GetString("ErrorEmailValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Необходимо ввести сообщение.
+        /// </summary>
+        public static string ErrorMessage {
+            get {
+                return ResourceManager.GetString("ErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Тема не может быть менее 20 и более 5000 символов.
+        /// </summary>
+        public static string ErrorMessageLength {
+            get {
+                return ResourceManager.GetString("ErrorMessageLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Необходимо ввести имя.
+        /// </summary>
+        public static string ErrorName {
+            get {
+                return ResourceManager.GetString("ErrorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Имя не может быть менее 2 и более 50 символов.
+        /// </summary>
+        public static string ErrorNameLength {
+            get {
+                return ResourceManager.GetString("ErrorNameLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Необходимо ввести тему.
+        /// </summary>
+        public static string ErrorSubject {
+            get {
+                return ResourceManager.GetString("ErrorSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Тема не может быть менее 5 и более 50 символов.
+        /// </summary>
+        public static string ErrorSubjectLength {
+            get {
+                return ResourceManager.GetString("ErrorSubjectLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Отзывы.
         /// </summary>
         public static string FeedBacks {

@@ -13,7 +13,7 @@ using HongGia.DB.Services;
 
 namespace HongGia.Controllers
 {
-	public class HomeController : DefaultController
+    public class HomeController : DefaultController
 	{
 		[HttpGet]
 		public ActionResult Index()
@@ -63,7 +63,7 @@ namespace HongGia.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Mail(Email email)
+        public ActionResult Mail(Email email)
 		{
 			if (ModelState.IsValid)
 			{
@@ -71,11 +71,11 @@ namespace HongGia.Controllers
 				mailer.Send();
 			}
 
-			return RedirectToAction("Contacts");
+			return RedirectToAction("Contacts", email);
 		}
 
 		[HttpGet]
-		public ActionResult Contacts()
+		public ActionResult Contacts(Email email)
 		{
 			return View();
 		}
