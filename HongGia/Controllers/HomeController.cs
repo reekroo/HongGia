@@ -35,7 +35,10 @@ namespace HongGia.Controllers
 		{
 			var feedbacks = FeedbackService.GetFeedbasks(this.CurrentLangCode);
 
-			ViewData["PageNum"] = pageNum;
+            //maybe it will be removed into the service.
+            feedbacks.FeedBacks = feedbacks.FeedBacks.Where(f => !string.IsNullOrEmpty(f.Name) || !string.IsNullOrEmpty(f.Text) || !string.IsNullOrEmpty(f.Email)).ToList();
+            
+            ViewData["PageNum"] = pageNum;
 			ViewData["ItemCount"] = feedbacks?.FeedBacks.Count() ?? 0;
 			ViewData["PageSize"] = PageSizeConstants.Feedbacks;
 
