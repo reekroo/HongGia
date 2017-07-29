@@ -2,7 +2,6 @@
 using System.Data.Entity.Migrations;
 using System.Linq;
 
-using HongGia.Core.Interfaces.Base;
 using HongGia.Core.Interfaces.Models;
 using HongGia.Core.Models.Views;
 
@@ -16,7 +15,7 @@ namespace HongGia.DB.Services
 		{
 			using (var context = new EntitiesDB())
 			{
-				if (context.Pages.Any() == false &&
+				if (context.Pages.Any() == false ||
 					context.Languages.Any() == false)
 				{
 					return null;
@@ -84,8 +83,8 @@ namespace HongGia.DB.Services
 
 		public static IBasePageView GetBasePageContent(string name, string lang)
 		{
-			if (string.IsNullOrEmpty(name) && 
-				string.IsNullOrEmpty(lang))
+			if (string.IsNullOrEmpty(name) ||
+                string.IsNullOrEmpty(lang))
 			{
 				return null;
 			}
@@ -138,8 +137,8 @@ namespace HongGia.DB.Services
 
 		public static bool AddBasePageContent(string name, string lang)
 		{
-			if (string.IsNullOrEmpty(name) &&
-			    string.IsNullOrEmpty(lang))
+			if (string.IsNullOrEmpty(name) ||
+                string.IsNullOrEmpty(lang))
 			{
 				return false;
 			}
@@ -171,8 +170,8 @@ namespace HongGia.DB.Services
 
 		public static bool UpdateBasePageContentName(int basepageContentId, string name, string lang)
 		{
-			if (string.IsNullOrEmpty(name) &&
-				string.IsNullOrEmpty(lang))
+			if (string.IsNullOrEmpty(name) ||
+                string.IsNullOrEmpty(lang))
 			{
 				return false;
 			}
