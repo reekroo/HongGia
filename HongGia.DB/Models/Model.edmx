@@ -5,23 +5,23 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Article">
+        <EntityType Name="ArticleCatigories">
+          <Key>
+            <PropertyRef Name="ArticleId" />
+            <PropertyRef Name="CatigoryId" />
+          </Key>
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+          <Property Name="CatigoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Articles">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Header" Type="nvarchar(max)" />
-          <Property Name="HTMLText" Type="text" />
+          <Property Name="HTMLText" Type="varchar(max)" />
           <Property Name="Date" Type="datetime" />
           <Property Name="UpdateDate" Type="datetime" />
-        </EntityType>
-        <EntityType Name="ArticleCatigories">
-          <Key>
-            <PropertyRef Name="ArticleId" />
-            <PropertyRef Name="CatigotyId" />
-          </Key>
-          <Property Name="ArticleId" Type="int" Nullable="false" />
-          <Property Name="CatigotyId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
@@ -51,11 +51,11 @@
         </EntityType>
         <EntityType Name="AspNetUserRoles">
           <Key>
-            <PropertyRef Name="AspNetRoles_Id" />
-            <PropertyRef Name="AspNetUsers_Id" />
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="AspNetRoles_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="AspNetUsers_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetUsers">
           <Key>
@@ -84,7 +84,7 @@
           <Property Name="Model" Type="varbinary(max)" Nullable="false" />
           <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Catigory">
+        <EntityType Name="Catigories">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -92,7 +92,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Type" Type="nvarchar" MaxLength="10" />
         </EntityType>
-        <EntityType Name="Feedback">
+        <EntityType Name="Feedbacks">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -103,7 +103,15 @@
           <Property Name="AuthorMail" Type="nvarchar" MaxLength="150" />
           <Property Name="Date" Type="datetime" />
         </EntityType>
-        <EntityType Name="File">
+        <EntityType Name="FileCatigories">
+          <Key>
+            <PropertyRef Name="CatigoriesId" />
+            <PropertyRef Name="FilesId" />
+          </Key>
+          <Property Name="CatigoriesId" Type="int" Nullable="false" />
+          <Property Name="FilesId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Files">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -114,23 +122,7 @@
           <Property Name="Type" Type="nvarchar" MaxLength="10" />
           <Property Name="Date" Type="datetime" />
         </EntityType>
-        <EntityType Name="FileCatigories">
-          <Key>
-            <PropertyRef Name="FileId" />
-            <PropertyRef Name="CatigotyId" />
-          </Key>
-          <Property Name="FileId" Type="int" Nullable="false" />
-          <Property Name="CatigotyId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Firm">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" />
-          <Property Name="Date" Type="datetime" />
-        </EntityType>
-        <EntityType Name="FirmAddress">
+        <EntityType Name="FirmAddresses">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -142,7 +134,7 @@
           <Property Name="Home" Type="nvarchar" MaxLength="150" />
           <Property Name="Zip" Type="nvarchar" MaxLength="150" />
         </EntityType>
-        <EntityType Name="FirmContact">
+        <EntityType Name="FirmContacts">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -152,7 +144,15 @@
           <Property Name="Mail" Type="nvarchar" MaxLength="20" />
           <Property Name="Name" Type="nvarchar" MaxLength="150" />
         </EntityType>
-        <EntityType Name="Image">
+        <EntityType Name="Firms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Images">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -163,7 +163,7 @@
           <Property Name="Type" Type="nvarchar" MaxLength="10" />
           <Property Name="Date" Type="datetime" />
         </EntityType>
-        <EntityType Name="Language">
+        <EntityType Name="Languages">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -178,20 +178,11 @@
           <Property Name="ImageId" Type="int" />
           <Property Name="LanguageId" Type="int" Nullable="false" />
           <Property Name="Header" Type="nvarchar" MaxLength="1000" />
-          <Property Name="HTMLText" Type="text" />
+          <Property Name="HTMLText" Type="varchar(max)" />
           <Property Name="Date" Type="datetime" />
           <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="Page">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" />
-          <Property Name="Url" Type="nvarchar(max)" />
-          <Property Name="Info" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="PageContent">
+        <EntityType Name="PageContents">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -202,7 +193,24 @@
           <Property Name="Date" Type="datetime" />
           <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="Photo">
+        <EntityType Name="Pages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Url" Type="nvarchar(max)" />
+          <Property Name="Info" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PhotoCatigories">
+          <Key>
+            <PropertyRef Name="CatigoriesId" />
+            <PropertyRef Name="PhotosId" />
+          </Key>
+          <Property Name="CatigoriesId" Type="int" Nullable="false" />
+          <Property Name="PhotosId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Photos">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -213,15 +221,7 @@
           <Property Name="Date" Type="datetime" />
           <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="PhotoCatigories">
-          <Key>
-            <PropertyRef Name="PhotoId" />
-            <PropertyRef Name="CatigotyId" />
-          </Key>
-          <Property Name="PhotoId" Type="int" Nullable="false" />
-          <Property Name="CatigotyId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Topic">
+        <EntityType Name="Topics">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -229,19 +229,27 @@
           <Property Name="PageContentId" Type="int" Nullable="false" />
           <Property Name="TypeId" Type="int" />
           <Property Name="Header" Type="nvarchar(max)" />
-          <Property Name="HTMLText" Type="text" />
+          <Property Name="HTMLText" Type="varchar(max)" />
           <Property Name="Position" Type="int" />
           <Property Name="Date" Type="datetime" />
           <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="TopicType">
+        <EntityType Name="TopicTypes">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="10" />
         </EntityType>
-        <EntityType Name="Video">
+        <EntityType Name="VideoCatigories">
+          <Key>
+            <PropertyRef Name="CatigoriesId" />
+            <PropertyRef Name="VideosId" />
+          </Key>
+          <Property Name="CatigoriesId" Type="int" Nullable="false" />
+          <Property Name="VideosId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Videos">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -253,21 +261,11 @@
           <Property Name="Date" Type="datetime" />
           <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="VideoCatigory">
-          <Key>
-            <PropertyRef Name="VideoId" />
-            <PropertyRef Name="CatigotyId" />
-          </Key>
-          <Property Name="VideoId" Type="int" Nullable="false" />
-          <Property Name="CatigotyId" Type="int" Nullable="false" />
-        </EntityType>
         <Association Name="FK_ArticleCatigories_Article">
-          <End Role="Article" Type="Self.Article" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Articles" Type="Self.Articles" Multiplicity="1" />
           <End Role="ArticleCatigories" Type="Self.ArticleCatigories" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Article">
+            <Principal Role="Articles">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ArticleCatigories">
@@ -276,20 +274,18 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ArticleCatigories_Catigory">
-          <End Role="Catigory" Type="Self.Catigory" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Catigories" Type="Self.Catigories" Multiplicity="1" />
           <End Role="ArticleCatigories" Type="Self.ArticleCatigories" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Catigory">
+            <Principal Role="Catigories">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ArticleCatigories">
-              <PropertyRef Name="CatigotyId" />
+              <PropertyRef Name="CatigoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_AspNetUserRoles_AspNetRoles">
+        <Association Name="FK_AspNetUserRoles_AspNetRole">
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
           <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
           <ReferentialConstraint>
@@ -297,11 +293,11 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AspNetUserRoles">
-              <PropertyRef Name="AspNetRoles_Id" />
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_AspNetUserRoles_AspNetUsers">
+        <Association Name="FK_AspNetUserRoles_AspNetUser">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
           <ReferentialConstraint>
@@ -309,7 +305,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AspNetUserRoles">
-              <PropertyRef Name="AspNetUsers_Id" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -342,110 +338,106 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Feedback_LanguageId">
-          <End Role="Language" Type="Self.Language" Multiplicity="1">
+          <End Role="Languages" Type="Self.Languages" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Language">
+            <Principal Role="Languages">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Feedback">
+            <Dependent Role="Feedbacks">
               <PropertyRef Name="LanguageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FileCatigories_Catigory">
-          <End Role="Catigory" Type="Self.Catigory" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Catigories" Type="Self.Catigories" Multiplicity="1" />
           <End Role="FileCatigories" Type="Self.FileCatigories" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Catigory">
+            <Principal Role="Catigories">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FileCatigories">
-              <PropertyRef Name="CatigotyId" />
+              <PropertyRef Name="CatigoriesId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FileCatigories_File">
-          <End Role="File" Type="Self.File" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Files" Type="Self.Files" Multiplicity="1" />
           <End Role="FileCatigories" Type="Self.FileCatigories" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="File">
+            <Principal Role="Files">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="FileCatigories">
-              <PropertyRef Name="FileId" />
+              <PropertyRef Name="FilesId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Files_PageContent">
-          <End Role="PageContent" Type="Self.PageContent" Multiplicity="0..1">
+          <End Role="PageContents" Type="Self.PageContents" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="File" Type="Self.File" Multiplicity="*" />
+          <End Role="Files" Type="Self.Files" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PageContent">
+            <Principal Role="PageContents">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="File">
+            <Dependent Role="Files">
               <PropertyRef Name="PageContentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FirmAddresses_Firm">
-          <End Role="Firm" Type="Self.Firm" Multiplicity="1">
+          <End Role="Firms" Type="Self.Firms" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="FirmAddress" Type="Self.FirmAddress" Multiplicity="*" />
+          <End Role="FirmAddresses" Type="Self.FirmAddresses" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Firm">
+            <Principal Role="Firms">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="FirmAddress">
+            <Dependent Role="FirmAddresses">
               <PropertyRef Name="FirmId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FirmContacts_Firm">
-          <End Role="Firm" Type="Self.Firm" Multiplicity="1">
+          <End Role="Firms" Type="Self.Firms" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="FirmContact" Type="Self.FirmContact" Multiplicity="*" />
+          <End Role="FirmContacts" Type="Self.FirmContacts" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Firm">
+            <Principal Role="Firms">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="FirmContact">
+            <Dependent Role="FirmContacts">
               <PropertyRef Name="FirmId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Images_PageContent">
-          <End Role="PageContent" Type="Self.PageContent" Multiplicity="0..1">
+          <End Role="PageContents" Type="Self.PageContents" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Image" Type="Self.Image" Multiplicity="*" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PageContent">
+            <Principal Role="PageContents">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Image">
+            <Dependent Role="Images">
               <PropertyRef Name="PageContentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_News_ImageId">
-          <End Role="Image" Type="Self.Image" Multiplicity="0..1">
+          <End Role="Images" Type="Self.Images" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="News" Type="Self.News" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Image">
+            <Principal Role="Images">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="News">
@@ -454,12 +446,12 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_News_LanguageId">
-          <End Role="Language" Type="Self.Language" Multiplicity="1">
+          <End Role="Languages" Type="Self.Languages" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="News" Type="Self.News" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Language">
+            <Principal Role="Languages">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="News">
@@ -468,167 +460,159 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PageContents_Language">
-          <End Role="Language" Type="Self.Language" Multiplicity="1" />
-          <End Role="PageContent" Type="Self.PageContent" Multiplicity="*" />
+          <End Role="Languages" Type="Self.Languages" Multiplicity="1" />
+          <End Role="PageContents" Type="Self.PageContents" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Language">
+            <Principal Role="Languages">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PageContent">
+            <Dependent Role="PageContents">
               <PropertyRef Name="LanguageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PageContents_Page">
-          <End Role="Page" Type="Self.Page" Multiplicity="1" />
-          <End Role="PageContent" Type="Self.PageContent" Multiplicity="*" />
+          <End Role="Pages" Type="Self.Pages" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PageContents" Type="Self.PageContents" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Page">
+            <Principal Role="Pages">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PageContent">
+            <Dependent Role="PageContents">
               <PropertyRef Name="PageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhotoCatigories_Catigory">
-          <End Role="Catigory" Type="Self.Catigory" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Catigories" Type="Self.Catigories" Multiplicity="1" />
           <End Role="PhotoCatigories" Type="Self.PhotoCatigories" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Catigory">
+            <Principal Role="Catigories">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="PhotoCatigories">
-              <PropertyRef Name="CatigotyId" />
+              <PropertyRef Name="CatigoriesId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhotoCatigories_Photo">
-          <End Role="Photo" Type="Self.Photo" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Photos" Type="Self.Photos" Multiplicity="1" />
           <End Role="PhotoCatigories" Type="Self.PhotoCatigories" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Photo">
+            <Principal Role="Photos">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="PhotoCatigories">
-              <PropertyRef Name="PhotoId" />
+              <PropertyRef Name="PhotosId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Topic_PageContent">
-          <End Role="PageContent" Type="Self.PageContent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Topic" Type="Self.Topic" Multiplicity="*" />
+          <End Role="PageContents" Type="Self.PageContents" Multiplicity="1" />
+          <End Role="Topics" Type="Self.Topics" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PageContent">
+            <Principal Role="PageContents">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Topic">
+            <Dependent Role="Topics">
               <PropertyRef Name="PageContentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Topic_TopicType">
-          <End Role="TopicType" Type="Self.TopicType" Multiplicity="0..1">
+          <End Role="TopicTypes" Type="Self.TopicTypes" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Topic" Type="Self.Topic" Multiplicity="*" />
+          <End Role="Topics" Type="Self.Topics" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TopicType">
+            <Principal Role="TopicTypes">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Topic">
+            <Dependent Role="Topics">
               <PropertyRef Name="TypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VideoCatigories_Catigory">
-          <End Role="Catigory" Type="Self.Catigory" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="VideoCatigory" Type="Self.VideoCatigory" Multiplicity="*" />
+        <Association Name="FK_VideoCatigory_Catigory">
+          <End Role="Catigories" Type="Self.Catigories" Multiplicity="1" />
+          <End Role="VideoCatigories" Type="Self.VideoCatigories" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Catigory">
+            <Principal Role="Catigories">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="VideoCatigory">
-              <PropertyRef Name="CatigotyId" />
+            <Dependent Role="VideoCatigories">
+              <PropertyRef Name="CatigoriesId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VideoCatigories_Video">
-          <End Role="Video" Type="Self.Video" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="VideoCatigory" Type="Self.VideoCatigory" Multiplicity="*" />
+        <Association Name="FK_VideoCatigory_Video">
+          <End Role="Videos" Type="Self.Videos" Multiplicity="1" />
+          <End Role="VideoCatigories" Type="Self.VideoCatigories" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Video">
+            <Principal Role="Videos">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="VideoCatigory">
-              <PropertyRef Name="VideoId" />
+            <Dependent Role="VideoCatigories">
+              <PropertyRef Name="VideosId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Videos_ImageId">
-          <End Role="Image" Type="Self.Image" Multiplicity="0..1">
+          <End Role="Images" Type="Self.Images" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Video" Type="Self.Video" Multiplicity="*" />
+          <End Role="Videos" Type="Self.Videos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Image">
+            <Principal Role="Images">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Video">
+            <Dependent Role="Videos">
               <PropertyRef Name="ImageId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ModelStoreContainer">
-          <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ArticleCatigories" EntityType="Self.ArticleCatigories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Catigory" EntityType="Self.Catigory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="File" EntityType="Self.File" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Catigories" EntityType="Self.Catigories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedbacks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FileCatigories" EntityType="Self.FileCatigories" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Firm" EntityType="Self.Firm" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FirmAddress" EntityType="Self.FirmAddress" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FirmContact" EntityType="Self.FirmContact" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Files" EntityType="Self.Files" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FirmAddresses" EntityType="Self.FirmAddresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FirmContacts" EntityType="Self.FirmContacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Firms" EntityType="Self.Firms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PageContent" EntityType="Self.PageContent" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Photo" EntityType="Self.Photo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PageContents" EntityType="Self.PageContents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pages" EntityType="Self.Pages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhotoCatigories" EntityType="Self.PhotoCatigories" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Topic" EntityType="Self.Topic" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TopicType" EntityType="Self.TopicType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="VideoCatigory" EntityType="Self.VideoCatigory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Photos" EntityType="Self.Photos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Topics" EntityType="Self.Topics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TopicTypes" EntityType="Self.TopicTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VideoCatigories" EntityType="Self.VideoCatigories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Videos" EntityType="Self.Videos" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ArticleCatigories_Article" Association="Self.FK_ArticleCatigories_Article">
-            <End Role="Article" EntitySet="Article" />
+            <End Role="Articles" EntitySet="Articles" />
             <End Role="ArticleCatigories" EntitySet="ArticleCatigories" />
           </AssociationSet>
           <AssociationSet Name="FK_ArticleCatigories_Catigory" Association="Self.FK_ArticleCatigories_Catigory">
-            <End Role="Catigory" EntitySet="Catigory" />
+            <End Role="Catigories" EntitySet="Catigories" />
             <End Role="ArticleCatigories" EntitySet="ArticleCatigories" />
           </AssociationSet>
-          <AssociationSet Name="FK_AspNetUserRoles_AspNetRoles" Association="Self.FK_AspNetUserRoles_AspNetRoles">
+          <AssociationSet Name="FK_AspNetUserRoles_AspNetRole" Association="Self.FK_AspNetUserRoles_AspNetRole">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers" Association="Self.FK_AspNetUserRoles_AspNetUsers">
+          <AssociationSet Name="FK_AspNetUserRoles_AspNetUser" Association="Self.FK_AspNetUserRoles_AspNetUser">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
@@ -641,76 +625,76 @@
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
           </AssociationSet>
           <AssociationSet Name="FK_Feedback_LanguageId" Association="Self.FK_Feedback_LanguageId">
-            <End Role="Language" EntitySet="Language" />
-            <End Role="Feedback" EntitySet="Feedback" />
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="Feedbacks" EntitySet="Feedbacks" />
           </AssociationSet>
           <AssociationSet Name="FK_FileCatigories_Catigory" Association="Self.FK_FileCatigories_Catigory">
-            <End Role="Catigory" EntitySet="Catigory" />
+            <End Role="Catigories" EntitySet="Catigories" />
             <End Role="FileCatigories" EntitySet="FileCatigories" />
           </AssociationSet>
           <AssociationSet Name="FK_FileCatigories_File" Association="Self.FK_FileCatigories_File">
-            <End Role="File" EntitySet="File" />
+            <End Role="Files" EntitySet="Files" />
             <End Role="FileCatigories" EntitySet="FileCatigories" />
           </AssociationSet>
           <AssociationSet Name="FK_Files_PageContent" Association="Self.FK_Files_PageContent">
-            <End Role="PageContent" EntitySet="PageContent" />
-            <End Role="File" EntitySet="File" />
+            <End Role="PageContents" EntitySet="PageContents" />
+            <End Role="Files" EntitySet="Files" />
           </AssociationSet>
           <AssociationSet Name="FK_FirmAddresses_Firm" Association="Self.FK_FirmAddresses_Firm">
-            <End Role="Firm" EntitySet="Firm" />
-            <End Role="FirmAddress" EntitySet="FirmAddress" />
+            <End Role="Firms" EntitySet="Firms" />
+            <End Role="FirmAddresses" EntitySet="FirmAddresses" />
           </AssociationSet>
           <AssociationSet Name="FK_FirmContacts_Firm" Association="Self.FK_FirmContacts_Firm">
-            <End Role="Firm" EntitySet="Firm" />
-            <End Role="FirmContact" EntitySet="FirmContact" />
+            <End Role="Firms" EntitySet="Firms" />
+            <End Role="FirmContacts" EntitySet="FirmContacts" />
           </AssociationSet>
           <AssociationSet Name="FK_Images_PageContent" Association="Self.FK_Images_PageContent">
-            <End Role="PageContent" EntitySet="PageContent" />
-            <End Role="Image" EntitySet="Image" />
+            <End Role="PageContents" EntitySet="PageContents" />
+            <End Role="Images" EntitySet="Images" />
           </AssociationSet>
           <AssociationSet Name="FK_News_ImageId" Association="Self.FK_News_ImageId">
-            <End Role="Image" EntitySet="Image" />
+            <End Role="Images" EntitySet="Images" />
             <End Role="News" EntitySet="News" />
           </AssociationSet>
           <AssociationSet Name="FK_News_LanguageId" Association="Self.FK_News_LanguageId">
-            <End Role="Language" EntitySet="Language" />
+            <End Role="Languages" EntitySet="Languages" />
             <End Role="News" EntitySet="News" />
           </AssociationSet>
           <AssociationSet Name="FK_PageContents_Language" Association="Self.FK_PageContents_Language">
-            <End Role="Language" EntitySet="Language" />
-            <End Role="PageContent" EntitySet="PageContent" />
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="PageContents" EntitySet="PageContents" />
           </AssociationSet>
           <AssociationSet Name="FK_PageContents_Page" Association="Self.FK_PageContents_Page">
-            <End Role="Page" EntitySet="Page" />
-            <End Role="PageContent" EntitySet="PageContent" />
+            <End Role="Pages" EntitySet="Pages" />
+            <End Role="PageContents" EntitySet="PageContents" />
           </AssociationSet>
           <AssociationSet Name="FK_PhotoCatigories_Catigory" Association="Self.FK_PhotoCatigories_Catigory">
-            <End Role="Catigory" EntitySet="Catigory" />
+            <End Role="Catigories" EntitySet="Catigories" />
             <End Role="PhotoCatigories" EntitySet="PhotoCatigories" />
           </AssociationSet>
           <AssociationSet Name="FK_PhotoCatigories_Photo" Association="Self.FK_PhotoCatigories_Photo">
-            <End Role="Photo" EntitySet="Photo" />
+            <End Role="Photos" EntitySet="Photos" />
             <End Role="PhotoCatigories" EntitySet="PhotoCatigories" />
           </AssociationSet>
           <AssociationSet Name="FK_Topic_PageContent" Association="Self.FK_Topic_PageContent">
-            <End Role="PageContent" EntitySet="PageContent" />
-            <End Role="Topic" EntitySet="Topic" />
+            <End Role="PageContents" EntitySet="PageContents" />
+            <End Role="Topics" EntitySet="Topics" />
           </AssociationSet>
           <AssociationSet Name="FK_Topic_TopicType" Association="Self.FK_Topic_TopicType">
-            <End Role="TopicType" EntitySet="TopicType" />
-            <End Role="Topic" EntitySet="Topic" />
+            <End Role="TopicTypes" EntitySet="TopicTypes" />
+            <End Role="Topics" EntitySet="Topics" />
           </AssociationSet>
-          <AssociationSet Name="FK_VideoCatigories_Catigory" Association="Self.FK_VideoCatigories_Catigory">
-            <End Role="Catigory" EntitySet="Catigory" />
-            <End Role="VideoCatigory" EntitySet="VideoCatigory" />
+          <AssociationSet Name="FK_VideoCatigory_Catigory" Association="Self.FK_VideoCatigory_Catigory">
+            <End Role="Catigories" EntitySet="Catigories" />
+            <End Role="VideoCatigories" EntitySet="VideoCatigories" />
           </AssociationSet>
-          <AssociationSet Name="FK_VideoCatigories_Video" Association="Self.FK_VideoCatigories_Video">
-            <End Role="Video" EntitySet="Video" />
-            <End Role="VideoCatigory" EntitySet="VideoCatigory" />
+          <AssociationSet Name="FK_VideoCatigory_Video" Association="Self.FK_VideoCatigory_Video">
+            <End Role="Videos" EntitySet="Videos" />
+            <End Role="VideoCatigories" EntitySet="VideoCatigories" />
           </AssociationSet>
           <AssociationSet Name="FK_Videos_ImageId" Association="Self.FK_Videos_ImageId">
-            <End Role="Image" EntitySet="Image" />
-            <End Role="Video" EntitySet="Video" />
+            <End Role="Images" EntitySet="Images" />
+            <End Role="Videos" EntitySet="Videos" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -727,14 +711,14 @@
           <EntitySet Name="Catigories" EntityType="Model.Catigory" />
           <EntitySet Name="Feedbacks" EntityType="Model.Feedback" />
           <EntitySet Name="Files" EntityType="Model.File" />
-          <EntitySet Name="Firms" EntityType="Model.Firm" />
           <EntitySet Name="FirmAddresses" EntityType="Model.FirmAddress" />
           <EntitySet Name="FirmContacts" EntityType="Model.FirmContact" />
+          <EntitySet Name="Firms" EntityType="Model.Firm" />
           <EntitySet Name="Images" EntityType="Model.Image" />
           <EntitySet Name="Languages" EntityType="Model.Language" />
           <EntitySet Name="News" EntityType="Model.News" />
-          <EntitySet Name="Pages" EntityType="Model.Page" />
           <EntitySet Name="PageContents" EntityType="Model.PageContent" />
+          <EntitySet Name="Pages" EntityType="Model.Page" />
           <EntitySet Name="Photos" EntityType="Model.Photo" />
           <EntitySet Name="Topics" EntityType="Model.Topic" />
           <EntitySet Name="TopicTypes" EntityType="Model.TopicType" />
@@ -811,7 +795,7 @@
             <End Role="Catigory" EntitySet="Catigories" />
             <End Role="Photo" EntitySet="Photos" />
           </AssociationSet>
-          <AssociationSet Name="VideoCatigory" Association="Model.VideoCatigory">
+          <AssociationSet Name="VideoCatigories" Association="Model.VideoCatigories">
             <End Role="Catigory" EntitySet="Catigories" />
             <End Role="Video" EntitySet="Videos" />
           </AssociationSet>
@@ -824,8 +808,8 @@
           <Property Name="Header" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="HTMLText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Catigories" Relationship="Model.ArticleCatigories" FromRole="Article" ToRole="Catigory" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Catigories" Relationship="Model.ArticleCatigories" FromRole="Article" ToRole="Catigory" />
         </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
@@ -896,7 +880,7 @@
           <NavigationProperty Name="Articles" Relationship="Model.ArticleCatigories" FromRole="Catigory" ToRole="Article" />
           <NavigationProperty Name="Files" Relationship="Model.FileCatigories" FromRole="Catigory" ToRole="File" />
           <NavigationProperty Name="Photos" Relationship="Model.PhotoCatigories" FromRole="Catigory" ToRole="Photo" />
-          <NavigationProperty Name="Videos" Relationship="Model.VideoCatigory" FromRole="Catigory" ToRole="Video" />
+          <NavigationProperty Name="Videos" Relationship="Model.VideoCatigories" FromRole="Catigory" ToRole="Video" />
         </EntityType>
         <EntityType Name="Feedback">
           <Key>
@@ -923,16 +907,6 @@
           <NavigationProperty Name="PageContent" Relationship="Model.FK_Files_PageContent" FromRole="File" ToRole="PageContent" />
           <NavigationProperty Name="Catigories" Relationship="Model.FileCatigories" FromRole="File" ToRole="Catigory" />
         </EntityType>
-        <EntityType Name="Firm">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="FirmAddresses" Relationship="Model.FK_FirmAddresses_Firm" FromRole="Firm" ToRole="FirmAddress" />
-          <NavigationProperty Name="FirmContacts" Relationship="Model.FK_FirmContacts_Firm" FromRole="Firm" ToRole="FirmContact" />
-        </EntityType>
         <EntityType Name="FirmAddress">
           <Key>
             <PropertyRef Name="Id" />
@@ -956,6 +930,16 @@
           <Property Name="Mail" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Firm" Relationship="Model.FK_FirmContacts_Firm" FromRole="FirmContact" ToRole="Firm" />
+        </EntityType>
+        <EntityType Name="Firm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FirmAddresses" Relationship="Model.FK_FirmAddresses_Firm" FromRole="Firm" ToRole="FirmAddress" />
+          <NavigationProperty Name="FirmContacts" Relationship="Model.FK_FirmContacts_Firm" FromRole="Firm" ToRole="FirmContact" />
         </EntityType>
         <EntityType Name="Image">
           <Key>
@@ -991,9 +975,25 @@
           <Property Name="Header" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="HTMLText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Image" Relationship="Model.FK_News_ImageId" FromRole="News" ToRole="Image" />
           <NavigationProperty Name="Language" Relationship="Model.FK_News_LanguageId" FromRole="News" ToRole="Language" />
+        </EntityType>
+        <EntityType Name="PageContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+          <Property Name="Header" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Files" Relationship="Model.FK_Files_PageContent" FromRole="PageContent" ToRole="File" />
+          <NavigationProperty Name="Images" Relationship="Model.FK_Images_PageContent" FromRole="PageContent" ToRole="Image" />
+          <NavigationProperty Name="Language" Relationship="Model.FK_PageContents_Language" FromRole="PageContent" ToRole="Language" />
+          <NavigationProperty Name="Page" Relationship="Model.FK_PageContents_Page" FromRole="PageContent" ToRole="Page" />
+          <NavigationProperty Name="Topics" Relationship="Model.FK_Topic_PageContent" FromRole="PageContent" ToRole="Topic" />
         </EntityType>
         <EntityType Name="Page">
           <Key>
@@ -1005,22 +1005,6 @@
           <Property Name="Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PageContents" Relationship="Model.FK_PageContents_Page" FromRole="Page" ToRole="PageContent" />
         </EntityType>
-        <EntityType Name="PageContent">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PageId" Type="Int32" Nullable="false" />
-          <Property Name="LanguageId" Type="Int32" Nullable="false" />
-          <Property Name="Header" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Files" Relationship="Model.FK_Files_PageContent" FromRole="PageContent" ToRole="File" />
-          <NavigationProperty Name="Images" Relationship="Model.FK_Images_PageContent" FromRole="PageContent" ToRole="Image" />
-          <NavigationProperty Name="Language" Relationship="Model.FK_PageContents_Language" FromRole="PageContent" ToRole="Language" />
-          <NavigationProperty Name="Page" Relationship="Model.FK_PageContents_Page" FromRole="PageContent" ToRole="Page" />
-          <NavigationProperty Name="Topics" Relationship="Model.FK_Topic_PageContent" FromRole="PageContent" ToRole="Topic" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="Photo">
           <Key>
             <PropertyRef Name="Id" />
@@ -1030,8 +1014,8 @@
           <Property Name="Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Catigories" Relationship="Model.PhotoCatigories" FromRole="Photo" ToRole="Catigory" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Catigories" Relationship="Model.PhotoCatigories" FromRole="Photo" ToRole="Catigory" />
         </EntityType>
         <EntityType Name="Topic">
           <Key>
@@ -1044,9 +1028,9 @@
           <Property Name="HTMLText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Position" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="PageContent" Relationship="Model.FK_Topic_PageContent" FromRole="Topic" ToRole="PageContent" />
           <NavigationProperty Name="TopicType" Relationship="Model.FK_Topic_TopicType" FromRole="Topic" ToRole="TopicType" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="TopicType">
           <Key>
@@ -1066,9 +1050,9 @@
           <Property Name="Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Image" Relationship="Model.FK_Videos_ImageId" FromRole="Video" ToRole="Image" />
-          <NavigationProperty Name="Catigories" Relationship="Model.VideoCatigory" FromRole="Video" ToRole="Catigory" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Image" Relationship="Model.FK_Videos_ImageId" FromRole="Video" ToRole="Image" />
+          <NavigationProperty Name="Catigories" Relationship="Model.VideoCatigories" FromRole="Video" ToRole="Catigory" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
@@ -1278,7 +1262,7 @@
           <End Type="Model.Catigory" Role="Catigory" Multiplicity="*" />
           <End Type="Model.Photo" Role="Photo" Multiplicity="*" />
         </Association>
-        <Association Name="VideoCatigory">
+        <Association Name="VideoCatigories">
           <End Type="Model.Catigory" Role="Catigory" Multiplicity="*" />
           <End Type="Model.Video" Role="Video" Multiplicity="*" />
         </Association>
@@ -1290,7 +1274,7 @@
         <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="EntitiesDB">
           <EntitySetMapping Name="Articles">
             <EntityTypeMapping TypeName="Model.Article">
-              <MappingFragment StoreEntitySet="Article">
+              <MappingFragment StoreEntitySet="Articles">
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="HTMLText" ColumnName="HTMLText" />
@@ -1356,7 +1340,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="Catigories">
             <EntityTypeMapping TypeName="Model.Catigory">
-              <MappingFragment StoreEntitySet="Catigory">
+              <MappingFragment StoreEntitySet="Catigories">
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1365,7 +1349,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="Feedbacks">
             <EntityTypeMapping TypeName="Model.Feedback">
-              <MappingFragment StoreEntitySet="Feedback">
+              <MappingFragment StoreEntitySet="Feedbacks">
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="AuthorMail" ColumnName="AuthorMail" />
                 <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
@@ -1377,7 +1361,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="Files">
             <EntityTypeMapping TypeName="Model.File">
-              <MappingFragment StoreEntitySet="File">
+              <MappingFragment StoreEntitySet="Files">
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Path" ColumnName="Path" />
@@ -1387,18 +1371,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Firms">
-            <EntityTypeMapping TypeName="Model.Firm">
-              <MappingFragment StoreEntitySet="Firm">
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="FirmAddresses">
             <EntityTypeMapping TypeName="Model.FirmAddress">
-              <MappingFragment StoreEntitySet="FirmAddress">
+              <MappingFragment StoreEntitySet="FirmAddresses">
                 <ScalarProperty Name="Zip" ColumnName="Zip" />
                 <ScalarProperty Name="Home" ColumnName="Home" />
                 <ScalarProperty Name="Street" ColumnName="Street" />
@@ -1411,7 +1386,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="FirmContacts">
             <EntityTypeMapping TypeName="Model.FirmContact">
-              <MappingFragment StoreEntitySet="FirmContact">
+              <MappingFragment StoreEntitySet="FirmContacts">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Mail" ColumnName="Mail" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
@@ -1420,9 +1395,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Firms">
+            <EntityTypeMapping TypeName="Model.Firm">
+              <MappingFragment StoreEntitySet="Firms">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Images">
             <EntityTypeMapping TypeName="Model.Image">
-              <MappingFragment StoreEntitySet="Image">
+              <MappingFragment StoreEntitySet="Images">
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Path" ColumnName="Path" />
@@ -1434,7 +1418,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="Languages">
             <EntityTypeMapping TypeName="Model.Language">
-              <MappingFragment StoreEntitySet="Language">
+              <MappingFragment StoreEntitySet="Languages">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1453,19 +1437,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Pages">
-            <EntityTypeMapping TypeName="Model.Page">
-              <MappingFragment StoreEntitySet="Page">
-                <ScalarProperty Name="Info" ColumnName="Info" />
-                <ScalarProperty Name="Url" ColumnName="Url" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PageContents">
             <EntityTypeMapping TypeName="Model.PageContent">
-              <MappingFragment StoreEntitySet="PageContent">
+              <MappingFragment StoreEntitySet="PageContents">
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Header" ColumnName="Header" />
@@ -1475,9 +1449,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Pages">
+            <EntityTypeMapping TypeName="Model.Page">
+              <MappingFragment StoreEntitySet="Pages">
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Photos">
             <EntityTypeMapping TypeName="Model.Photo">
-              <MappingFragment StoreEntitySet="Photo">
+              <MappingFragment StoreEntitySet="Photos">
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
@@ -1489,7 +1473,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="Topics">
             <EntityTypeMapping TypeName="Model.Topic">
-              <MappingFragment StoreEntitySet="Topic">
+              <MappingFragment StoreEntitySet="Topics">
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Position" ColumnName="Position" />
@@ -1503,7 +1487,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="TopicTypes">
             <EntityTypeMapping TypeName="Model.TopicType">
-              <MappingFragment StoreEntitySet="TopicType">
+              <MappingFragment StoreEntitySet="TopicTypes">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1511,7 +1495,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="Videos">
             <EntityTypeMapping TypeName="Model.Video">
-              <MappingFragment StoreEntitySet="Video">
+              <MappingFragment StoreEntitySet="Videos">
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
@@ -1524,7 +1508,7 @@
           </EntitySetMapping>
           <AssociationSetMapping Name="ArticleCatigories" TypeName="Model.ArticleCatigories" StoreEntitySet="ArticleCatigories">
             <EndProperty Name="Catigory">
-              <ScalarProperty Name="Id" ColumnName="CatigotyId" />
+              <ScalarProperty Name="Id" ColumnName="CatigoryId" />
             </EndProperty>
             <EndProperty Name="Article">
               <ScalarProperty Name="Id" ColumnName="ArticleId" />
@@ -1532,34 +1516,34 @@
           </AssociationSetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetUser">
-              <ScalarProperty Name="Id" ColumnName="AspNetUsers_Id" />
+              <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
             <EndProperty Name="AspNetRole">
-              <ScalarProperty Name="Id" ColumnName="AspNetRoles_Id" />
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="FileCatigories" TypeName="Model.FileCatigories" StoreEntitySet="FileCatigories">
             <EndProperty Name="File">
-              <ScalarProperty Name="Id" ColumnName="FileId" />
+              <ScalarProperty Name="Id" ColumnName="FilesId" />
             </EndProperty>
             <EndProperty Name="Catigory">
-              <ScalarProperty Name="Id" ColumnName="CatigotyId" />
+              <ScalarProperty Name="Id" ColumnName="CatigoriesId" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="PhotoCatigories" TypeName="Model.PhotoCatigories" StoreEntitySet="PhotoCatigories">
             <EndProperty Name="Photo">
-              <ScalarProperty Name="Id" ColumnName="PhotoId" />
+              <ScalarProperty Name="Id" ColumnName="PhotosId" />
             </EndProperty>
             <EndProperty Name="Catigory">
-              <ScalarProperty Name="Id" ColumnName="CatigotyId" />
+              <ScalarProperty Name="Id" ColumnName="CatigoriesId" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="VideoCatigory" TypeName="Model.VideoCatigory" StoreEntitySet="VideoCatigory">
+          <AssociationSetMapping Name="VideoCatigories" TypeName="Model.VideoCatigories" StoreEntitySet="VideoCatigories">
             <EndProperty Name="Video">
-              <ScalarProperty Name="Id" ColumnName="VideoId" />
+              <ScalarProperty Name="Id" ColumnName="VideosId" />
             </EndProperty>
             <EndProperty Name="Catigory">
-              <ScalarProperty Name="Id" ColumnName="CatigotyId" />
+              <ScalarProperty Name="Id" ColumnName="CatigoriesId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

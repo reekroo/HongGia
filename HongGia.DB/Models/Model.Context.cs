@@ -34,14 +34,14 @@ namespace HongGia.DB.Models
         public virtual DbSet<Catigory> Catigories { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<File> Files { get; set; }
-        public virtual DbSet<Firm> Firms { get; set; }
         public virtual DbSet<FirmAddress> FirmAddresses { get; set; }
         public virtual DbSet<FirmContact> FirmContacts { get; set; }
+        public virtual DbSet<Firm> Firms { get; set; }
         public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<News> News { get; set; }
-        public virtual DbSet<Page> Pages { get; set; }
         public virtual DbSet<PageContent> PageContents { get; set; }
+        public virtual DbSet<Page> Pages { get; set; }
         public virtual DbSet<Photo> Photos { get; set; }
         public virtual DbSet<Topic> Topics { get; set; }
         public virtual DbSet<TopicType> TopicTypes { get; set; }
