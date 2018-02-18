@@ -139,8 +139,8 @@ namespace HongGia.Core.Helpers
 			{
 				//if (menu.RouteData.Values[param] as string == menu.ActionName)
 				if (routeValueDictionary["controller"] as string == menu.ControllerName &&
-					routeValueDictionary["action"] as string == menu.ActionName &&
-                    (routeValueDictionary["id"] != null && routeValueDictionary["id"] as string == menu.QueryString))
+					routeValueDictionary["action"] as string == menu.ActionName && 
+                    routeValueDictionary["id"] as string == menu.QueryString)
 				{
 					return true;
 				}
