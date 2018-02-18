@@ -1,6 +1,8 @@
 ﻿@using HongGia.Core.Parameters
 @using HongGia.Core.Helpers
 
+@{ViewContext.RouteData.Values["id"] = HttpContext.Current.Request.QueryString["name"];}
+
 @if (Request.IsAuthenticated == true && User.IsInRole("admin") == true)
 {
     <ul class="nav navbar-nav">
@@ -8,47 +10,47 @@
         @Html.MenuSection(new MenuSectionParameters() { LinkText = "News", ActionName = "Index", ControllerName = "News", RouteData = ViewContext.RouteData })
 
         @Html.DropdownMenuSection("HongGia", new List<MenuSectionParameters>()
-                                                {
-                                                    new MenuSectionParameters() {LinkText = "About", ActionName = "Index", ControllerName = "BasePage",QueryString = "About", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "History", ActionName = "Index", ControllerName = "BasePage",QueryString = "History", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Levels", ActionName = "Index", ControllerName = "BasePage",QueryString = "Levels", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Program", ActionName = "Index", ControllerName = "BasePage",QueryString = "Program", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "To Beginner", ActionName = "Index", ControllerName = "BasePage",QueryString = "ToBeginner", RouteData = ViewContext.RouteData},
-                                                    null,
-                                                    new MenuSectionParameters() {LinkText = "Master", ActionName = "Index", ControllerName = "BasePage",QueryString = "Master", RouteData = ViewContext.RouteData}
-                                                })
+                                        {
+                                            new MenuSectionParameters() {LinkText = "About", ActionName = "Index", ControllerName = "BasePage",QueryString = "About", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "History", ActionName = "Index", ControllerName = "BasePage",QueryString = "History", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Levels", ActionName = "Index", ControllerName = "BasePage",QueryString = "Levels", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Program", ActionName = "Index", ControllerName = "BasePage",QueryString = "Program", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "To Beginner", ActionName = "Index", ControllerName = "BasePage",QueryString = "ToBeginner", RouteData = ViewContext.RouteData},
+                                            null,
+                                            new MenuSectionParameters() {LinkText = "Master", ActionName = "Index", ControllerName = "BasePage",QueryString = "Master", RouteData = ViewContext.RouteData}
+                                        })
 
         @Html.DropdownMenuSection("Directions", new List<MenuSectionParameters>()
-                                                {
-                                                    new MenuSectionParameters() {LinkText = "HongGia Vietnam", ActionName = "Index", ControllerName = "BasePage",QueryString = "HongGiaVietnam", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Kung Fu", ActionName = "Index", ControllerName = "BasePage",QueryString = "KungFu", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Chi Kong", ActionName = "Index", ControllerName = "BasePage",QueryString = "ChiKong", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Tai Chi", ActionName = "Index", ControllerName = "BasePage",QueryString = "TaiChi", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Wu Chi", ActionName = "Index", ControllerName = "BasePage",QueryString = "WuChi", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Nga Mi", ActionName = "Index", ControllerName = "BasePage",QueryString = "NgaMi", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Vin Chun", ActionName = "Index", ControllerName = "BasePage",QueryString = "VinChun", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Pa Kua", ActionName = "Index", ControllerName = "BasePage",QueryString = "PaKua", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Sin I", ActionName = "Index", ControllerName = "BasePage",QueryString = "SinI", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Bai My", ActionName = "Index", ControllerName = "BasePage",QueryString = "BaiMy", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Five Enimals", ActionName = "Index", ControllerName = "BasePage",QueryString = "FiveEnimals", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Weapon", ActionName = "Index", ControllerName = "BasePage",QueryString = "Weapon", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Meditation", ActionName = "Index", ControllerName = "BasePage",QueryString = "Meditation", RouteData = ViewContext.RouteData}
-                                                })
+                                        {
+                                            new MenuSectionParameters() {LinkText = "HongGia Vietnam", ActionName = "Index", ControllerName = "BasePage",QueryString = "HongGiaVietnam", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Kung Fu", ActionName = "Index", ControllerName = "BasePage",QueryString = "KungFu", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Chi Kong", ActionName = "Index", ControllerName = "BasePage",QueryString = "ChiKong", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Tai Chi", ActionName = "Index", ControllerName = "BasePage",QueryString = "TaiChi", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Wu Chi", ActionName = "Index", ControllerName = "BasePage",QueryString = "WuChi", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Nga Mi", ActionName = "Index", ControllerName = "BasePage",QueryString = "NgaMi", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Vin Chun", ActionName = "Index", ControllerName = "BasePage",QueryString = "VinChun", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Pa Kua", ActionName = "Index", ControllerName = "BasePage",QueryString = "PaKua", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Sin I", ActionName = "Index", ControllerName = "BasePage",QueryString = "SinI", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Bai My", ActionName = "Index", ControllerName = "BasePage",QueryString = "BaiMy", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Five Enimals", ActionName = "Index", ControllerName = "BasePage",QueryString = "FiveEnimals", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Weapon", ActionName = "Index", ControllerName = "BasePage",QueryString = "Weapon", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Meditation", ActionName = "Index", ControllerName = "BasePage",QueryString = "Meditation", RouteData = ViewContext.RouteData}
+                                        })
 
         @Html.DropdownMenuSection("Training", new List<MenuSectionParameters>()
-                                                {
-                                                    new MenuSectionParameters() {LinkText = "Groups", ActionName = "Index", ControllerName = "BasePage",QueryString = "Groups", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Online", ActionName = "Index", ControllerName = "BasePage",QueryString = "Online", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Seminars", ActionName = "Index", ControllerName = "BasePage",QueryString = "Seminars", RouteData = ViewContext.RouteData}
-                                                })
+                                        {
+                                            new MenuSectionParameters() {LinkText = "Groups", ActionName = "Index", ControllerName = "BasePage",QueryString = "Groups", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Online", ActionName = "Index", ControllerName = "BasePage",QueryString = "Online", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Seminars", ActionName = "Index", ControllerName = "BasePage",QueryString = "Seminars", RouteData = ViewContext.RouteData}
+                                        })
 
         @Html.DropdownMenuSection("Media", new List<MenuSectionParameters>()
-                                                {
-                                                    new MenuSectionParameters() {LinkText = "Articles", ActionName = "Index", ControllerName = "Article", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Books", ActionName = "Index", ControllerName = "Book", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Photos", ActionName = "Index", ControllerName = "Photo", RouteData = ViewContext.RouteData},
-                                                    new MenuSectionParameters() {LinkText = "Video", ActionName = "Index", ControllerName = "Video", RouteData = ViewContext.RouteData}
-                                                })
+                                        {
+                                            new MenuSectionParameters() {LinkText = "Articles", ActionName = "Index", ControllerName = "Article", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Books", ActionName = "Index", ControllerName = "Book", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Photos", ActionName = "Index", ControllerName = "Photo", RouteData = ViewContext.RouteData},
+                                            new MenuSectionParameters() {LinkText = "Video", ActionName = "Index", ControllerName = "Video", RouteData = ViewContext.RouteData}
+                                        })
 
         @Html.MenuSection(new MenuSectionParameters() { LinkText = "FeedBacks", ActionName = "Index", ControllerName = "Feedback", RouteData = ViewContext.RouteData })
         @Html.MenuSection(new MenuSectionParameters() { LinkText = "Catigories", ActionName = "Index", ControllerName = "Catigory", RouteData = ViewContext.RouteData })

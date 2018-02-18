@@ -91,7 +91,7 @@ namespace HongGia.DB.Services
 			
 			using (var context = new EntitiesDB())
 			{
-				var selectPage = context.Pages.FirstOrDefault(x => x.Name.ToLower().Contains(name));
+				var selectPage = context.Pages.FirstOrDefault(x => x.Name.ToLower().Contains(name.ToLower()));
 
 				var pageContent = selectPage?.PageContents.FirstOrDefault(x => x.Language.Name.ToLower().Contains(lang));
 

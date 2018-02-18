@@ -35,6 +35,7 @@ namespace HongGia.Core.Helpers
 			{
 				liTagBuilder.AddCssClass("active");
 			}
+
 			var link = htmlHelper.ActionLink(parameters.LinkText, parameters.ActionName, parameters.ControllerName, new { name = parameters.QueryString }, null);
 			liTagBuilder.InnerHtml = link.ToHtmlString();
 
@@ -137,12 +138,13 @@ namespace HongGia.Core.Helpers
 			if (routeValueDictionary.ContainsKey(param))
 			{
 				//if (menu.RouteData.Values[param] as string == menu.ActionName)
-				if (menu.RouteData.Values["controller"] as string == menu.ControllerName &&
-					menu.RouteData.Values["action"] as string == menu.ActionName)
+				if (routeValueDictionary["controller"] as string == menu.ControllerName &&
+					routeValueDictionary["action"] as string == menu.ActionName &&
+                    (routeValueDictionary["id"] != null && routeValueDictionary["id"] as string == menu.QueryString))
 				{
 					return true;
 				}
-			}
+            }
 
 			return false;
 		}
