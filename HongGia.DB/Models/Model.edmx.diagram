@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="Model.AspNetUserLogin" Width="1.5" PointX="7.75" PointY="2.75" />
         <EntityTypeShape EntityType="Model.AspNetUser" Width="1.5" PointX="5" PointY="0.5" />
         <EntityTypeShape EntityType="Model.C__MigrationHistory" Width="1.5" PointX="0.5" PointY="0.5" />
-        <EntityTypeShape EntityType="Model.Catigory" Width="1.5" PointX="12.125" PointY="6.5" />
+        <EntityTypeShape EntityType="Model.Catigory" Width="1.5" PointX="12.125" PointY="6.25" />
         <EntityTypeShape EntityType="Model.Feedback" Width="1.5" PointX="2.25" PointY="12.25" />
         <EntityTypeShape EntityType="Model.File" Width="1.5" PointX="10.125" PointY="10.125" />
         <EntityTypeShape EntityType="Model.FirmAddress" Width="1.5" PointX="12.25" PointY="0.5" />
@@ -23,16 +23,28 @@
         <EntityTypeShape EntityType="Model.PageContent" Width="1.5" PointX="5" PointY="6.5" />
         <EntityTypeShape EntityType="Model.Page" Width="1.5" PointX="2" PointY="6.5" />
         <EntityTypeShape EntityType="Model.Photo" Width="1.5" PointX="14.25" PointY="10.125" />
-        <EntityTypeShape EntityType="Model.Topic" Width="1.5" PointX="7.75" PointY="6.5" />
-        <EntityTypeShape EntityType="Model.TopicType" Width="1.5" PointX="9.75" PointY="6.5" />
+        <EntityTypeShape EntityType="Model.Topic" Width="1.5" PointX="7.75" PointY="6.25" />
+        <EntityTypeShape EntityType="Model.TopicType" Width="1.5" PointX="9.75" PointY="6.25" />
         <EntityTypeShape EntityType="Model.Video" Width="1.5" PointX="12.25" PointY="10.125" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="Model.FK_Feedback_LanguageId" />
-        <AssociationConnector Association="Model.FK_Files_PageContent" />
+        <AssociationConnector Association="Model.FK_Files_PageContent" ManuallyRouted="true" >
+          <ConnectorPoint PointX="6.5" PointY="9.5691943359375" />
+          <ConnectorPoint PointX="9.3229166666666661" PointY="9.5691943359375" />
+          <ConnectorPoint PointX="9.4895833333333339" PointY="9.5691943359375" />
+          <ConnectorPoint PointX="11.46875" PointY="9.5691943359375" />
+          <ConnectorPoint PointX="11.46875" PointY="10.125" />
+        </AssociationConnector>
         <AssociationConnector Association="Model.FK_FirmAddresses_Firm" />
         <AssociationConnector Association="Model.FK_FirmContacts_Firm" />
-        <AssociationConnector Association="Model.FK_Images_PageContent" />
+        <AssociationConnector Association="Model.FK_Images_PageContent" ManuallyRouted="true" >
+          <ConnectorPoint PointX="6.5" PointY="9.3511141977649679" />
+          <ConnectorPoint PointX="6.60444190625" PointY="9.3511141977649679" />
+          <ConnectorPoint PointX="6.60444190625" PointY="9.34350239149305" />
+          <ConnectorPoint PointX="9.40625" PointY="9.34350239149305" />
+          <ConnectorPoint PointX="9.40625" PointY="10.125" />
+        </AssociationConnector>
         <AssociationConnector Association="Model.FK_News_ImageId" />
         <AssociationConnector Association="Model.FK_Videos_ImageId" />
         <AssociationConnector Association="Model.FK_News_LanguageId" />
